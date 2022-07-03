@@ -10,5 +10,5 @@ Disallow: /fonts/
 Disallow: /vendors/
 Disallow: /fancybox/
 
-Sitemap: http://yoursite/sitemap.xml
-Sitemap: http://yoursite/baidusitemap.xml
+Sitemap: http://eightyninth.github.io/sitemap.xml
+Sitemap: http://eightyninth.github.io/baidusitemap.xml
