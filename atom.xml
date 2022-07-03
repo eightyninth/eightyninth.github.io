@@ -18,8 +18,8 @@
   
   <entry>
     <title>github + hexo 简单搭建 github.io 网站</title>
-    <link href="https://eightyninth.github.io/2022/07/02/build_site/"/>
-    <id>https://eightyninth.github.io/2022/07/02/build_site/</id>
+    <link href="https://eightyninth.github.io/build_site.html"/>
+    <id>https://eightyninth.github.io/build_site.html</id>
     <published>2022-07-02T13:22:45.000Z</published>
     <updated>2022-07-02T13:29:24.337Z</updated>
     
@@ -43,27 +43,6 @@
     <category term="hexo" scheme="https://eightyninth.github.io/tags/hexo/"/>
     
     <category term="github" scheme="https://eightyninth.github.io/tags/github/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="https://eightyninth.github.io/2022/07/02/hello-world/"/>
-    <id>https://eightyninth.github.io/2022/07/02/hello-world/</id>
-    <published>2022-07-02T09:12:51.819Z</published>
-    <updated>2022-07-02T09:12:51.819Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
-        
-      
-    
-    
-    
     
   </entry>
   
