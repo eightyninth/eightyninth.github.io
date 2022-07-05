@@ -6,7 +6,7 @@
   <link href="https://eightyninth.github.io/atom.xml" rel="self"/>
   
   <link href="https://eightyninth.github.io/"/>
-  <updated>2022-07-02T13:29:24.337Z</updated>
+  <updated>2022-07-05T00:55:00.585Z</updated>
   <id>https://eightyninth.github.io/</id>
   
   <author>
@@ -21,15 +21,16 @@
     <link href="https://eightyninth.github.io/build_site.html"/>
     <id>https://eightyninth.github.io/build_site.html</id>
     <published>2022-07-02T13:22:45.000Z</published>
-    <updated>2022-07-02T13:29:24.337Z</updated>
+    <updated>2022-07-05T00:55:00.585Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;test&lt;/p&gt;
-</summary>
+    <summary type="html">&lt;h1 id=&quot;系统配置&quot;&gt;&lt;a href=&quot;#系统配置&quot; class=&quot;headerlink&quot; title=&quot;系统配置&quot;&gt;&lt;/a&gt;系统配置&lt;/h1&gt;&lt;p&gt;这里先说一下我的系统配置以供参考&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Ubuntu 20.04</summary>
         
       
     

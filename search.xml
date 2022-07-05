@@ -3,7 +3,228 @@
   <entry>
     <title>github + hexo 简单搭建 github.io 网站</title>
     <url>/build_site.html</url>
-    <content><![CDATA[<p>test</p>
+    <content><![CDATA[<h1 id="系统配置"><a href="#系统配置" class="headerlink" title="系统配置"></a>系统配置</h1><p>这里先说一下我的系统配置以供参考</p>
+<blockquote>
+<p>Ubuntu 20.04 5.13.0-51-generic x86_64</p>
+</blockquote>
+<h1 id="本地前置要求"><a href="#本地前置要求" class="headerlink" title="本地前置要求"></a>本地前置要求</h1><ul>
+<li><p>node.js &gt;&#x3D; 10.13</p>
+</li>
+<li><p>Git</p>
+</li>
+<li><p>hexo</p>
+</li>
+</ul>
+<h2 id="node-js"><a href="#node-js" class="headerlink" title="node.js"></a>node.js</h2><p>按照 <a href="https://github.com/nodesource/distributions">官方安装方式</a> , Ubuntu 采用安装命令行, 这里安装的版本是18.4.0.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -</span><br><span class="line">sudo apt-get install -y nodejs</span><br></pre></td></tr></table></figure>
+
+<p>进行测试</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm --version</span><br></pre></td></tr></table></figure>
+
+<p>出现版本号, 即为安装成功.</p>
+<h2 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h2><p>Ubuntu 安装命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get install git</span><br></pre></td></tr></table></figure>
+
+<h2 id="hexo"><a href="#hexo" class="headerlink" title="hexo"></a>hexo</h2><p>创建一个空文件夹作为 hexo 安装路径的同时也会是网站根目录.</p>
+<blockquote>
+<p>为了后述具体,此时假设新建的目录路径为: <font color=red>&#x2F;example</font></p>
+</blockquote>
+<h1 id="github前置要求"><a href="#github前置要求" class="headerlink" title="github前置要求"></a>github前置要求</h1><ul>
+<li><p>github账号</p>
+<blockquote>
+<p>为了后述具体,此时假设github账号</p>
+<p>用户名为: test</p>
+<p>邮箱为: <a href="mailto:&#116;&#101;&#115;&#x74;&#x40;&#49;&#x36;&#51;&#x2e;&#x63;&#111;&#109;">&#116;&#101;&#115;&#x74;&#x40;&#49;&#x36;&#51;&#x2e;&#x63;&#111;&#109;</a></p>
+<p>密码为: 123456</p>
+</blockquote>
+</li>
+<li><p>ssh密匙</p>
+</li>
+</ul>
+<h2 id="新建网站远程仓库"><a href="#新建网站远程仓库" class="headerlink" title="新建网站远程仓库"></a>新建网站远程仓库</h2><ol>
+<li><p>New Repository, 命名为</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">test.github.io</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>打开 <strong>test.github.io</strong> , 在与 <font color="red">code</font> 同级的 <font color="red">Settings</font>下打开与 <font color="red">General</font> 同级的 <font color="red">Pages</font>. 在<font color="red">Theme Chooser</font> 下选择<font color="red">Choose a theme</font>.</p>
+</li>
+<li><p>选择好主题后, 把新弹出的界面拉到底部, 选择<strong>commit changes</strong>, 网站就可以访问了.</p>
+</li>
+<li><p>输入 test.github.io 访问.</p>
+</li>
+</ol>
+<h2 id="设置ssh密匙"><a href="#设置ssh密匙" class="headerlink" title="设置ssh密匙"></a>设置ssh密匙</h2><p>为了hexo能够顺利push到我们的仓库, 需要在本地电脑设置ssh密匙</p>
+<ol>
+<li><p>检查本机是否有ssh密匙</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.ssh <span class="comment">#检查本机已存在的ssh密钥</span></span><br></pre></td></tr></table></figure>
+
+<p> 如果存在 <strong>No such file or directory</strong>, 说明你是第一次使用git, 需要创建ssh.</p>
+ <br />
+
+<p> 或者</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.ssh <span class="comment">#检查本机已存在的ssh密钥</span></span><br><span class="line"><span class="built_in">ls</span></span><br></pre></td></tr></table></figure>
+
+<p> 没有任何输出, 需要创建ssh.</p>
+ <br />
+
+<p> 若有ssh密匙, 直接跳转至第 3 步.</p>
+</li>
+<li><p>创建ssh密匙</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="built_in">test</span>@163.com</span><br></pre></td></tr></table></figure>
+
+<p> 然后<strong>连续3次回车</strong>, 最终会生成一个文件在 <font color=red>~</font> 下.</p>
+</li>
+<li><p>打开 <font color=red>~</font> , 找到 <font color=red>.ssh\id_rsa.pub</font> 文件.</p>
+<blockquote>
+<p>注: 如果打开 <font color=red>~</font> ,没有 <font color=red>.ssh</font> 文件夹, 需要 <kbd>Ctrl</kbd> + <kbd>H</kbd> 显示隐藏文件夹.</p>
+</blockquote>
+<p> 使用记事本一类的程序打开, 复制所有内容.</p>
+</li>
+<li><p>打开 github , 点击右上角个人头像, 在弹出的窗口中选择 <font color=red>Settings</font>.<br>然后选择与<font color=red>Public profile</font> 同级 <font color=red>Access</font> 下的<br><font color=red>SHH and GPG keys</font>.</p>
+</li>
+<li><p>选择 <font color=red>New SSH key </font>.</p>
+<blockquote>
+<p>title: 随便填</p>
+<p>Key: 粘贴从 <font color=red>.ssh\id_rsa.pub</font> 文件复制的内容</p>
+</blockquote>
+<p> <font color=red>Add SSH key </font>.</p>
+</li>
+<li><p>测试</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -T git@github.com <span class="comment"># 注意邮箱地址不用改</span></span><br></pre></td></tr></table></figure>
+
+<p> 如果提示<font color=blue>Are you sure you want to continue connecting (yes&#x2F;no)?</font>，输入<strong>yes</strong>, 然后会看到:</p>
+<blockquote>
+<p>Hi test! You’ve successfully authenticated, but GitHub does not provide shell access.</p>
+</blockquote>
+<p> 看到这个信息说明SSH已配置成功!</p>
+</li>
+</ol>
+<h2 id="Git本地配置："><a href="#Git本地配置：" class="headerlink" title="Git本地配置："></a>Git本地配置：</h2><p>打开命令行, 输入</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global user.name <span class="string">&quot;test&quot;</span>            // 你的github用户名，非昵称</span><br><span class="line">git config --global user.email  <span class="string">&quot;test@163.com&quot;</span>  // 填写你的github注册邮箱</span><br></pre></td></tr></table></figure>
+
+<h1 id="网站搭建"><a href="#网站搭建" class="headerlink" title="网站搭建"></a>网站搭建</h1><h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>在 <font color=red>&#x2F;example</font> 目录下, 打开命令行, 输入</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo npm install -g hexo-cli</span><br><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+
+<h2 id="加载主题"><a href="#加载主题" class="headerlink" title="加载主题"></a>加载主题</h2><p>在<a href="https://hexo.io/themes/">Hexo官网</a>选择喜欢的主题, 这里以<a href="https://shen-yu.gitee.io/2019/ayer/#%E4%BB%8B%E7%BB%8D">Ayer 主题</a>为例, 输入</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i hexo-theme-ayer -S</span><br></pre></td></tr></table></figure>
+
+<h2 id="主题设置"><a href="#主题设置" class="headerlink" title="主题设置"></a>主题设置</h2><ol>
+<li><p>主题使用</p>
+ <br />
+
+<p> 将 <font color=red>&#x2F;example</font> 目录下的 <strong>_config.yml</strong> 里的 theme 值修改成 ayer</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">theme: ayer</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>必要插件</p>
+ <br />
+ 
+<p> 在 <font color=red>&#x2F;example</font> 目录下, 打开命令行, 输入</p>
+ <br />
+
+<ul>
+<li><a href="https://github.com/theme-next/hexo-generator-searchdb">搜索</a></li>
+</ul>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure>
+<ul>
+<li><a href="https://github.com/hexojs/hexo-generator-feed">RSS 订阅</a></li>
+</ul>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-feed --save</span><br></pre></td></tr></table></figure>
+ <br />
+
+<p> 打开<font color=red>&#x2F;example</font> 目录下的 <strong>_config.yml</strong>, 输入</p>
+ <br />
+
+<ul>
+<li><a href="https://github.com/theme-next/hexo-generator-searchdb">搜索</a></li>
+</ul>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># hexo-generator-searchdb</span><br><span class="line">search:</span><br><span class="line">path: search.xml</span><br><span class="line">field: post</span><br><span class="line">format: html</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><a href="https://github.com/hexojs/hexo-generator-feed">RSS 订阅</a></li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">feed:</span><br><span class="line">type: atom</span><br><span class="line">path: atom.xml</span><br><span class="line">limit: 20</span><br><span class="line">hub:</span><br><span class="line">content:</span><br><span class="line">content_limit: 140</span><br><span class="line">content_limit_delim: &quot; &quot;</span><br><span class="line">order_by: -date</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>可选插件</p>
+ <br />
+ 
+<p> 在 <font color=red>&#x2F;example</font> 目录下, 打开命令行, 输入</p>
+ <br />
+
+<ul>
+<li><a href="https://github.com/netcan/hexo-generator-index-pin-top">文章置顶</a></li>
+</ul>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-index-pin-top --save</span><br></pre></td></tr></table></figure>
+<ul>
+<li><a href="https://github.com/EYHN/hexo-helper-live2d/blob/master/README.zh-CN.md">二次元看板娘</a></li>
+</ul>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install --save hexo-helper-live2d</span><br><span class="line">npm install npm install --save live2d-widget-model-xxx  <span class="comment"># xxx为你选择的模型</span></span><br></pre></td></tr></table></figure>
+ <br />
+
+<p> 打开<font color=red>&#x2F;example</font> 目录下的 <strong>_config.yml</strong>, 输入</p>
+ <br />
+
+<ul>
+<li><a href="https://github.com/netcan/hexo-generator-index-pin-top">文章置顶</a></li>
+</ul>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 已存在</span><br><span class="line">index_generator:</span><br><span class="line">path: &#x27;&#x27;</span><br><span class="line">per_page: 10</span><br><span class="line">order_by: -date</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><a href="https://github.com/EYHN/hexo-helper-live2d/blob/master/README.zh-CN.md">二次元看板娘</a></li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">live2d:</span><br><span class="line">enable: true</span><br><span class="line">scriptFrom: local</span><br><span class="line">pluginRootPath: live2dw/</span><br><span class="line">pluginJsPath: lib/</span><br><span class="line">pluginModelPath: assets/</span><br><span class="line">tagMode: false</span><br><span class="line">debug: false</span><br><span class="line">model:</span><br><span class="line">  use: live2d-widget-model-wanko  # 选择模型</span><br><span class="line">display:</span><br><span class="line">  position: right</span><br><span class="line">  width: 150</span><br><span class="line">  height: 300</span><br><span class="line">mobile:</span><br><span class="line">  show: true</span><br><span class="line">react:</span><br><span class="line">  opacity: 0.7</span><br></pre></td></tr></table></figure>
+
+<p> 更多插件查看 <a href="https://hexo.io/plugins/">hexo 插件市场</a>.</p>
+</li>
+<li><p>菜单处理</p>
+ <br />
+
+<p> Ayer 初始情况下, 菜单的<font color=blue>分类(categories), 标签(tags), 旅行(tags&#x2F;旅行), 友链(friends), 关于我(2019&#x2F;about)</font>, 点击全部显示 <font color=red>error</font>, 需要初始化.</p>
+<p> 模板, 对 XX(path) 的初始化:</p>
+ <br />
+
+<p> a. 在 <font color=red>&#x2F;example</font> 目录下, 打开命令行, 输入</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new page XX</span><br></pre></td></tr></table></figure>
+
+<p> b. 打开 <font color=red>&#x2F;example&#x2F;source&#x2F;XX</font>, 复制 <strong>index.md</strong> 到 <font color=red>&#x2F;example&#x2F;source&#x2F;path</font>, 删除 <font color=red>&#x2F;example&#x2F;source&#x2F;XX</font> 目录.</p>
+ <br />
+
+<p> c. 打开 <strong>index.md</strong>, 全部替换输入</p>
+ <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: XX</span><br><span class="line">type: &quot;XX&quot;</span><br><span class="line">layout: &quot;XX&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>本地测试</p>
+ <br />
+
+<p> 在完成上述操作后网站模板搭建完毕, 可以在本地查看网站效果.</p>
+ <br />
+
+<p> 在 <font color=red>&#x2F;example</font> 目录下, 打开命令行, 输入</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># hexo 网站生成命令</span></span><br><span class="line">hexo g</span><br><span class="line"><span class="comment"># hexo 网站本地部署命令</span></span><br><span class="line">hexo s -p 8008</span><br></pre></td></tr></table></figure>
+
+<p>打开<font color=blue> <a href="http://localhost:8008/">http://localhost:8008/</a> </font> 即可查看部署效果.</p>
+</li>
+<li><p>部署处理</p>
+ <br />
+
+<p> 在push网站到git之前, 要在<font color=red>&#x2F;example</font> 目录下的 <strong>_config.yml</strong>, 输入</p>
+ <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">type: git</span><br><span class="line">repository: git@github.com:test/test.github.io.git</span><br><span class="line">branch: master</span><br></pre></td></tr></table></figure>
+
+<p>在 <font color=red>&#x2F;example</font> 目录下, 打开命令行, 输入下述命令部署到云端.</p>
+<br />
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># hexo 网站生成命令</span></span><br><span class="line">hexo g</span><br><span class="line"><span class="comment"># hexo 网站云端部署命令</span></span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+
+<p> 打开<font color=blue> <a href="https://test.github.io/">https://test.github.io/</a> </font> 即可查看部署效果.</p>
+</li>
+</ol>
+<h2 id="新增页面"><a href="#新增页面" class="headerlink" title="新增页面"></a>新增页面</h2><p>   文章页面的新增和菜单的处理不同.</p>
+<ol>
+<li><p>在 <font color=red>&#x2F;example&#x2F;source&#x2F;_posts</font> 目录下, 新建md文件.</p>
+</li>
+<li><p>md写入:</p>
+</li>
+</ol>
+   <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 文章名</span><br><span class="line">date: 2022-07-02 21:22:45       # 时间</span><br><span class="line">tags: [网站, hexo, github]      # 标签, 可以填入多个</span><br><span class="line">categories: [网站]              # 只能填入一个</span><br><span class="line">---</span><br><span class="line">正文</span><br></pre></td></tr></table></figure>
+
+<p>以上, 网站搭建完成.</p>
 ]]></content>
       <categories>
         <category>网站</category>
