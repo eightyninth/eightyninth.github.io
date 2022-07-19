@@ -219,7 +219,7 @@
 <blockquote>
 <p>为了后述具体,此时假设github账号</p>
 <p>用户名为: test</p>
-<p>邮箱为: <a href="mailto:&#116;&#101;&#115;&#x74;&#x40;&#49;&#x36;&#51;&#x2e;&#x63;&#111;&#109;">&#116;&#101;&#115;&#x74;&#x40;&#49;&#x36;&#51;&#x2e;&#x63;&#111;&#109;</a></p>
+<p>邮箱为: <a href="mailto:&#116;&#x65;&#x73;&#116;&#x40;&#x31;&#54;&#x33;&#x2e;&#99;&#x6f;&#109;">&#116;&#x65;&#x73;&#116;&#x40;&#x31;&#54;&#x33;&#x2e;&#99;&#x6f;&#109;</a></p>
 <p>密码为: 123456</p>
 </blockquote>
 </li>
@@ -405,10 +405,8 @@
 <li><p>在 <font color=red>&#x2F;example&#x2F;source&#x2F;_posts</font> 目录下, 新建md文件.</p>
 </li>
 <li><p>md写入:</p>
-</li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 文章名</span><br><span class="line">date: 2022-07-02 21:22:45       # 时间</span><br><span class="line">tags: [网站, hexo, github]      # 标签, 可以填入多个</span><br><span class="line">categories: [网站]              # 只能填入一个</span><br><span class="line">---</span><br><span class="line">正文</span><br></pre></td></tr></table></figure></li>
 </ol>
-   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 文章名</span><br><span class="line">date: 2022-07-02 21:22:45       # 时间</span><br><span class="line">tags: [网站, hexo, github]      # 标签, 可以填入多个</span><br><span class="line">categories: [网站]              # 只能填入一个</span><br><span class="line">---</span><br><span class="line">正文</span><br></pre></td></tr></table></figure>
-
 <p>以上, 网站搭建完成.</p>
  
       <!-- reward -->
@@ -430,9 +428,560 @@
 </article>
 
     
+    <article
+  id="post-maskrcnn_pytorch"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/maskrcnn_pytorch.html"
+    >实现Mask RCNN Pytorch版本</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/maskrcnn_pytorch.html" class="article-date">
+  <time datetime="2022-07-02T13:22:45.000Z" itemprop="datePublished">2022-07-02</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%AF%AD%E4%B9%89%E5%88%86%E5%89%B2/">语义分割</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="整体架构"><a href="#整体架构" class="headerlink" title="整体架构"></a>整体架构</h1><p>本次实现的Mask RCNN主要分为以下几个部分：</p>
+<ul>
+<li><p>backbone</p>
+</li>
+<li><p>RPN</p>
+</li>
+</ul>
+<h1 id="backbone"><a href="#backbone" class="headerlink" title="backbone"></a>backbone</h1><p>首先原文提出了四种backbone：</p>
+<ul>
+<li>resnet50</li>
+<li>resnet50 + FPN</li>
+<li>resnet101</li>
+<li>resnet101 + FPN</li>
+</ul>
+<p>本次基于resnet101 + FPN实现</p>
+<h2 id="resnet101-1"><a href="#resnet101-1" class="headerlink" title="resnet101[1]"></a>resnet101<sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="[He K, Zhang X, Ren S, et al. Deep residual learning for image recognition[C]//Proceedings of the IEEE conference on computer vision and pattern recognition. 2016: 770-778.](http://openaccess.thecvf.com/content_cvpr_2016/html/He_Deep_Residual_Learning_CVPR_2016_paper.html)">[1]</span></a></sup></h2><p>就是基础的resnet模型, 可借用torchvision实现</p>
+<p><img src="/images/maskrcnn_pytorch/resnet.png" alt="(resnet模型图)"></p>
+<h2 id="特征金字塔-FPN-2"><a href="#特征金字塔-FPN-2" class="headerlink" title="特征金字塔(FPN)[2]"></a>特征金字塔(FPN)<sup id="fnref:2"><a href="#fn:2" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="[Lin T Y, Dollár P, Girshick R, et al. Feature pyramid networks for object detection[C]//Proceedings of the IEEE conference on computer vision and pattern recognition. 2017: 2117-2125.](https://arxiv.org/abs/1612.03144)">[2]</span></a></sup></h2><p>FPN, 又称特征金字塔, 初始的FPN使用来进行目标检测的, 但由于其性能, 现大多用来做特征提取.</p>
+<p><img src="/images/maskrcnn_pytorch/base_fpn.png" alt="(resnet模型图)"></p>
+<p>基础的FPN先对高层特征图<strong>上采样</strong>(2倍的最邻近插值), 再对低层特征图<strong>升维</strong>(1 * 1 卷积), 最后对维度, 高度, 宽度一致的两个特征图进行元素对应相加, 得到融合特征图.</p>
+<p><img src="/images/maskrcnn_pytorch/rcnn_fpn.jpg" alt="(resnet模型图)&lt;sup id=&quot;fnref:3&quot;&gt;&lt;a href=&quot;#fn:3&quot; rel=&quot;footnote&quot;&gt;&lt;span class=&quot;hint--top hint--error hint--medium hint--rounded hint--bounce&quot; aria-label=&quot;[Mask-RCNN 算法及其实现详解](https://blog.csdn.net/remanented/article/details/79564045)
+&quot;&gt;[3]&lt;/span&gt;&lt;/a&gt;&lt;/sup&gt;"></p>
+<p>Mask RCNN内的FPN上采样部分不变, 在<strong>升维</strong>部分, 这里的处理是把所有特征图维度处理至<font color="blue">256</font>.</p>
+<p>在得到第一次<strong>P5, P4, P3, P2</strong>后, 对每一个特征图作3 * 3 卷积, 输出仍为<font color="blue">256</font>.</p>
+<p>如图示, <strong>P6, P5, P4, P3, P2</strong>会送至<strong>RPN层</strong>.</p>
+<h1 id="RPN"><a href="#RPN" class="headerlink" title="RPN"></a>RPN</h1><div id="footnotes"><hr><div id="footnotelist"><ol style="list-style: none; padding-left: 0; margin-left: 40px"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">1.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;"><a target="_blank" rel="noopener" href="http://openaccess.thecvf.com/content_cvpr_2016/html/He_Deep_Residual_Learning_CVPR_2016_paper.html">He K, Zhang X, Ren S, et al. Deep residual learning for image recognition[C]//Proceedings of the IEEE conference on computer vision and pattern recognition. 2016: 770-778.</a><a href="#fnref:1" rev="footnote"> ↩</a></span></li><li id="fn:2"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">2.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;"><a target="_blank" rel="noopener" href="https://arxiv.org/abs/1612.03144">Lin T Y, Dollár P, Girshick R, et al. Feature pyramid networks for object detection[C]//Proceedings of the IEEE conference on computer vision and pattern recognition. 2017: 2117-2125.</a><a href="#fnref:2" rev="footnote"> ↩</a></span></li><li id="fn:3"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">3.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;"><a target="_blank" rel="noopener" href="https://blog.csdn.net/remanented/article/details/79564045">Mask-RCNN 算法及其实现详解</a><a href="#fnref:3" rev="footnote"> ↩</a></span></li></ol></div></div> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/COCO/" rel="tag">COCO</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/" rel="tag">github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AF%AD%E4%B9%89%E5%88%86%E5%89%B2/" rel="tag">语义分割</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
+  id="post-leetcode1"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/leetcode1.html"
+    >力扣 1. 两数之和</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/leetcode1.html" class="article-date">
+  <time datetime="2022-07-02T13:22:45.000Z" itemprop="datePublished">2022-07-02</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="使用快速排序-原数组index记录-双指针"><a href="#使用快速排序-原数组index记录-双指针" class="headerlink" title="使用快速排序 + 原数组index记录 + 双指针"></a>使用快速排序 + 原数组index记录 + 双指针</h1><ol>
+<li>快速排序 + 原数组index记录</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">quick_sort</span>(<span class="params">left, right</span>):</span><br><span class="line">    <span class="keyword">if</span> left &gt;= right: <span class="keyword">return</span></span><br><span class="line">    i, j = left, right</span><br><span class="line">    <span class="keyword">while</span> i &lt; j:</span><br><span class="line">        <span class="keyword">while</span> nums[j] &gt; nums[left] <span class="keyword">and</span> i &lt; j: j -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> nums[i] &lt;= nums[left] <span class="keyword">and</span> i &lt; j: i += <span class="number">1</span></span><br><span class="line">        nums[i], nums[j] = nums[j], nums[i]</span><br><span class="line">        idx[i], idx[j] = idx[j], idx[i]</span><br><span class="line">    nums[left], nums[i] = nums[i], nums[left]</span><br><span class="line">    idx[i], idx[left] = idx[left], idx[i]</span><br><span class="line"></span><br><span class="line">    quick_sort(left, i - <span class="number">1</span>)</span><br><span class="line">    quick_sort(i + <span class="number">1</span>, right)</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>双指针</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">i, j = <span class="number">0</span>, <span class="built_in">len</span>(nums) - <span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> <span class="number">0</span> &lt;= i &lt; j &lt; <span class="built_in">len</span>(nums):</span><br><span class="line">    cur = nums[i] + nums[j]</span><br><span class="line">    <span class="keyword">if</span> cur &gt; target:</span><br><span class="line">        j -= <span class="number">1</span></span><br><span class="line">    <span class="keyword">elif</span> cur &lt; target:</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+
+
+<h1 id="官方解法-hash表"><a href="#官方解法-hash表" class="headerlink" title="官方解法: hash表"></a>官方解法: hash表</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">in_ = &#123;&#125;</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(nums)):</span><br><span class="line">    <span class="keyword">if</span> target - nums[i] <span class="keyword">in</span> in_:</span><br><span class="line">        <span class="keyword">return</span> [in_[target - nums[i]], i]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        in_[nums[i]] = i</span><br></pre></td></tr></table></figure> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
+  id="post-leetcode10"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/leetcode10.html"
+    >力扣 10. 正则表达式匹配</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/leetcode10.html" class="article-date">
+  <time datetime="2022-07-02T13:22:45.000Z" itemprop="datePublished">2022-07-02</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="动态规划-二维数组"><a href="#动态规划-二维数组" class="headerlink" title="动态规划-二维数组"></a>动态规划-二维数组</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">isMatch</span>(<span class="params">s, p</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">match</span>(<span class="params">i, j</span>):</span><br><span class="line">        <span class="comment"># 指针未指向字符串s</span></span><br><span class="line">        <span class="keyword">if</span> i == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="comment"># 单个字符匹配任意字符</span></span><br><span class="line">        <span class="keyword">if</span> p[j - <span class="number">1</span>] == <span class="string">&quot;.&quot;</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="comment"># 单个字符一对一匹配</span></span><br><span class="line">        <span class="keyword">return</span> s[i - <span class="number">1</span>] == p[j - <span class="number">1</span>]</span><br><span class="line">    m, n = <span class="built_in">len</span>(s), <span class="built_in">len</span>(p)</span><br><span class="line">    dp = [[<span class="literal">False</span>] * (n + <span class="number">1</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(m + <span class="number">1</span>)]</span><br><span class="line">    dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(m + <span class="number">1</span>):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):</span><br><span class="line">            <span class="comment"># 零到多字符匹配</span></span><br><span class="line">            <span class="keyword">if</span> p[j - <span class="number">1</span>] == <span class="string">&quot;*&quot;</span>:</span><br><span class="line">                dp[i][j] |= dp[i][j - <span class="number">2</span>] <span class="comment"># 匹配零个</span></span><br><span class="line">                <span class="keyword">if</span> match(i, j - <span class="number">1</span>):     <span class="comment"># 要进行匹配</span></span><br><span class="line">                    dp[i][j] |= dp[i - <span class="number">1</span>][j]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="comment"># 一对一字符匹配</span></span><br><span class="line">                <span class="keyword">if</span> match(i, j):</span><br><span class="line">                    dp[i][j] |= dp[i - <span class="number">1</span>][j - <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> dp[m][n]</span><br></pre></td></tr></table></figure>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
+  id="post-leetcode11"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/leetcode11.html"
+    >力扣 11. 盛最多水的容器</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/leetcode11.html" class="article-date">
+  <time datetime="2022-07-02T13:22:45.000Z" itemprop="datePublished">2022-07-02</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="枚举-time-N-x2F-A"><a href="#枚举-time-N-x2F-A" class="headerlink" title="枚举: time N&#x2F;A"></a>枚举: time N&#x2F;A</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">maxArea</span>(<span class="params">height</span>):</span><br><span class="line">    cur = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(height)):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(i, <span class="built_in">len</span>(height)):</span><br><span class="line">            cur = <span class="built_in">max</span>(cur, (j - i) * <span class="built_in">min</span>(height[j], height[i]))</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> cur</span><br></pre></td></tr></table></figure>
+
+<h1 id="双指针收缩"><a href="#双指针收缩" class="headerlink" title="双指针收缩"></a>双指针收缩</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">maxArea</span>(<span class="params">height</span>):</span><br><span class="line">    i, j = <span class="number">0</span>, <span class="built_in">len</span>(height) - <span class="number">1</span></span><br><span class="line">    res = (j - i) * <span class="built_in">min</span>(height[i], height[j])</span><br><span class="line">    <span class="keyword">while</span> i &lt; j:</span><br><span class="line">        <span class="keyword">if</span> height[i] &gt;= height[j]: j -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>: i += <span class="number">1</span></span><br><span class="line">        res = <span class="built_in">max</span>(res, (j - i) * <span class="built_in">min</span>(height[i], height[j]))</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
+  id="post-leetcode15"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/leetcode15.html"
+    >力扣 15. 三数之和</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/leetcode15.html" class="article-date">
+  <time datetime="2022-07-02T13:22:45.000Z" itemprop="datePublished">2022-07-02</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="快排-双指针"><a href="#快排-双指针" class="headerlink" title="快排 + 双指针"></a>快排 + 双指针</h1><ol>
+<li>快排</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">quick_sort</span>(<span class="params">left, right</span>):</span><br><span class="line">    <span class="keyword">if</span> left &gt;= right: <span class="keyword">return</span></span><br><span class="line">    i, j = left, right</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> i &lt; j:</span><br><span class="line">        <span class="keyword">while</span> nums[j] &gt; nums[left] <span class="keyword">and</span> i &lt; j:</span><br><span class="line">            j -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> nums[i] &lt;= nums[left] <span class="keyword">and</span> i &lt; j:</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">        </span><br><span class="line">        nums[i], nums[j] = nums[j], nums[i]</span><br><span class="line">    nums[i], nums[left] = nums[left], nums[i]</span><br><span class="line"></span><br><span class="line">    quick_sort(left, i - <span class="number">1</span>)</span><br><span class="line">    quick_sort(i + <span class="number">1</span>, right)</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>双指针(三指针)</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">res = []</span><br><span class="line"><span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, num_len - <span class="number">2</span>):</span><br><span class="line">    <span class="keyword">if</span> nums[k] &gt; <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">if</span> k &gt; <span class="number">0</span> <span class="keyword">and</span> nums[k] == nums[k - <span class="number">1</span>]: <span class="keyword">continue</span></span><br><span class="line">    i, j = k + <span class="number">1</span>, num_len - <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> i &lt; j:</span><br><span class="line">        cur = nums[k] + nums[i] + nums[j]</span><br><span class="line">        <span class="keyword">if</span> cur &gt; <span class="number">0</span>:</span><br><span class="line">            j -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> i &lt; j <span class="keyword">and</span> nums[j] == nums[j + <span class="number">1</span>]: j -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> cur &lt; <span class="number">0</span>:</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> i &lt; j <span class="keyword">and</span> nums[i] == nums[i - <span class="number">1</span>]: i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            res.append([nums[k], nums[i], nums[j]])</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">            j -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> i &lt; j <span class="keyword">and</span> nums[i] == nums[i - <span class="number">1</span>]: i += <span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> i &lt; j <span class="keyword">and</span> nums[j] == nums[j + <span class="number">1</span>]: j -= <span class="number">1</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
+  id="post-leetcode17"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/leetcode17.html"
+    >力扣 17. 电话号码的字母组合</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/leetcode17.html" class="article-date">
+  <time datetime="2022-07-02T13:22:45.000Z" itemprop="datePublished">2022-07-02</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="暴力解法"><a href="#暴力解法" class="headerlink" title="暴力解法"></a>暴力解法</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">letterCombinations</span>(<span class="params">digits</span>):</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> digits:</span><br><span class="line">        <span class="keyword">return</span> []</span><br><span class="line">        </span><br><span class="line">    hash_ = &#123;<span class="string">&quot;2&quot;</span>: [<span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>, <span class="string">&quot;c&quot;</span>],</span><br><span class="line">             <span class="string">&quot;3&quot;</span>: [<span class="string">&quot;d&quot;</span>, <span class="string">&quot;e&quot;</span>, <span class="string">&quot;f&quot;</span>],</span><br><span class="line">             <span class="string">&quot;4&quot;</span>: [<span class="string">&quot;g&quot;</span>, <span class="string">&quot;h&quot;</span>, <span class="string">&quot;i&quot;</span>],</span><br><span class="line">             <span class="string">&quot;5&quot;</span>: [<span class="string">&quot;j&quot;</span>, <span class="string">&quot;k&quot;</span>, <span class="string">&quot;l&quot;</span>],</span><br><span class="line">             <span class="string">&quot;6&quot;</span>: [<span class="string">&quot;m&quot;</span>, <span class="string">&quot;n&quot;</span>, <span class="string">&quot;o&quot;</span>],</span><br><span class="line">             <span class="string">&quot;7&quot;</span>: [<span class="string">&quot;p&quot;</span>, <span class="string">&quot;q&quot;</span>, <span class="string">&quot;r&quot;</span>, <span class="string">&quot;s&quot;</span>],</span><br><span class="line">             <span class="string">&quot;8&quot;</span>: [<span class="string">&quot;t&quot;</span>, <span class="string">&quot;u&quot;</span>, <span class="string">&quot;v&quot;</span>],</span><br><span class="line">             <span class="string">&quot;9&quot;</span>: [<span class="string">&quot;w&quot;</span>, <span class="string">&quot;x&quot;</span>, <span class="string">&quot;y&quot;</span>, <span class="string">&quot;z&quot;</span>]&#125;</span><br><span class="line">    </span><br><span class="line">    tmp, res = [<span class="string">&quot;&quot;</span>], []</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> d <span class="keyword">in</span> digits:</span><br><span class="line">        <span class="keyword">if</span> d <span class="keyword">in</span> hash_:</span><br><span class="line">            <span class="keyword">for</span> t <span class="keyword">in</span> tmp:</span><br><span class="line">                <span class="keyword">for</span> ad <span class="keyword">in</span> hash_[d]:</span><br><span class="line">                    res.append(t + ad)</span><br><span class="line">            <span class="comment"># res += add_</span></span><br><span class="line">            tmp = res</span><br><span class="line">            res = []</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> tmp</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>回溯 + 队列</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">letterCombinations</span>(<span class="params">digits</span>):</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> digits:</span><br><span class="line">        <span class="keyword">return</span> []</span><br><span class="line"></span><br><span class="line">    hash_ = &#123;<span class="string">&quot;2&quot;</span>: [<span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>, <span class="string">&quot;c&quot;</span>],</span><br><span class="line">             <span class="string">&quot;3&quot;</span>: [<span class="string">&quot;d&quot;</span>, <span class="string">&quot;e&quot;</span>, <span class="string">&quot;f&quot;</span>],</span><br><span class="line">             <span class="string">&quot;4&quot;</span>: [<span class="string">&quot;g&quot;</span>, <span class="string">&quot;h&quot;</span>, <span class="string">&quot;i&quot;</span>],</span><br><span class="line">             <span class="string">&quot;5&quot;</span>: [<span class="string">&quot;j&quot;</span>, <span class="string">&quot;k&quot;</span>, <span class="string">&quot;l&quot;</span>],</span><br><span class="line">             <span class="string">&quot;6&quot;</span>: [<span class="string">&quot;m&quot;</span>, <span class="string">&quot;n&quot;</span>, <span class="string">&quot;o&quot;</span>],</span><br><span class="line">             <span class="string">&quot;7&quot;</span>: [<span class="string">&quot;p&quot;</span>, <span class="string">&quot;q&quot;</span>, <span class="string">&quot;r&quot;</span>, <span class="string">&quot;s&quot;</span>],</span><br><span class="line">             <span class="string">&quot;8&quot;</span>: [<span class="string">&quot;t&quot;</span>, <span class="string">&quot;u&quot;</span>, <span class="string">&quot;v&quot;</span>],</span><br><span class="line">             <span class="string">&quot;9&quot;</span>: [<span class="string">&quot;w&quot;</span>, <span class="string">&quot;x&quot;</span>, <span class="string">&quot;y&quot;</span>, <span class="string">&quot;z&quot;</span>]&#125;</span><br><span class="line">    </span><br><span class="line">    tmp, res, digit_len = [], [], <span class="built_in">len</span>(digits)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">back</span>(<span class="params">idx, digit_len</span>):</span><br><span class="line">        <span class="keyword">if</span> idx == digit_len:</span><br><span class="line">            res.append(<span class="string">&quot;&quot;</span>.join(tmp))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            digit = digits[idx]</span><br><span class="line">            <span class="keyword">for</span> d <span class="keyword">in</span> hash_[digit]:</span><br><span class="line">                tmp.append(d)</span><br><span class="line">                back(idx + <span class="number">1</span>, digit_len)</span><br><span class="line">                tmp.pop()</span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">    back(<span class="number">0</span>, digit_len)</span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+
+
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
+  id="post-leetcode2"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/leetcode2.html"
+    >力扣 2. 两数相加</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/leetcode2.html" class="article-date">
+  <time datetime="2022-07-02T13:22:45.000Z" itemprop="datePublished">2022-07-02</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="简单遍历链表"><a href="#简单遍历链表" class="headerlink" title="简单遍历链表"></a>简单遍历链表</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">a, b, cur_num, next_ = l1, l2, <span class="number">0</span>, <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> a <span class="keyword">and</span> b:</span><br><span class="line">    total = a.val + b.val + next_</span><br><span class="line">    cur_num = total % <span class="number">10</span></span><br><span class="line">    next_ = total // <span class="number">10</span></span><br><span class="line"></span><br><span class="line">    a.val = cur_num</span><br><span class="line">    b.val = cur_num</span><br><span class="line"></span><br><span class="line">    a = a.<span class="built_in">next</span></span><br><span class="line">    b = b.<span class="built_in">next</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> a:</span><br><span class="line">    <span class="keyword">while</span> a:</span><br><span class="line">        total = a.val + next_</span><br><span class="line">        cur_num = total % <span class="number">10</span></span><br><span class="line">        next_ = total // <span class="number">10</span></span><br><span class="line"></span><br><span class="line">        a.val = cur_num</span><br><span class="line">        a = a.<span class="built_in">next</span></span><br><span class="line">    res = l1</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">while</span> b:</span><br><span class="line">        total = b.val + next_</span><br><span class="line">        cur_num = total % <span class="number">10</span></span><br><span class="line">        next_ = total // <span class="number">10</span></span><br><span class="line"></span><br><span class="line">        b.val = cur_num</span><br><span class="line">        b = b.<span class="built_in">next</span></span><br><span class="line">    res = l2</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> next_ &gt; <span class="number">0</span>:</span><br><span class="line">    cur = res</span><br><span class="line">    <span class="keyword">while</span> cur.<span class="built_in">next</span>:</span><br><span class="line">        cur = cur.<span class="built_in">next</span></span><br><span class="line">    cur.<span class="built_in">next</span> = ListNode(next_)</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
+  id="post-leetcode2089"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/leetcode2089.html"
+    >力扣 2089. 找出数组排序后的目标下标</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/leetcode2089.html" class="article-date">
+  <time datetime="2022-07-02T13:22:45.000Z" itemprop="datePublished">2022-07-02</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="排序-查找"><a href="#排序-查找" class="headerlink" title="排序 + 查找"></a>排序 + 查找</h1><ol>
+<li>排序: 快速排序</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">sort_b2s</span>(<span class="params">nums, left, right</span>):</span><br><span class="line">    <span class="keyword">if</span> left &gt;= right: <span class="keyword">return</span></span><br><span class="line">    i, j= left, right</span><br><span class="line">    <span class="keyword">while</span> i &lt; j:</span><br><span class="line">        <span class="keyword">while</span> nums[j] &gt; nums[left] <span class="keyword">and</span> i &lt; j: j -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> nums[i] &lt;= nums[left] <span class="keyword">and</span> i &lt; j: i += <span class="number">1</span></span><br><span class="line">        nums[i], nums[j] = nums[j], nums[i]</span><br><span class="line">    nums[i], nums[left] = nums[left], nums[i]</span><br><span class="line">    sort_b2s(nums, left, i - <span class="number">1</span>)</span><br><span class="line">    sort_b2s(nums, i + <span class="number">1</span>, right)</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>查找: 二分查找</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">search_left</span>(<span class="params">nums, left, right, x</span>):</span><br><span class="line">    <span class="keyword">while</span> left &lt; right:</span><br><span class="line">        mid = left + right &gt;&gt; <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> nums[mid] &gt;= x:</span><br><span class="line">            right = mid</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            left = mid + <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> left</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">search_right</span>(<span class="params">nums, left, right, x</span>):</span><br><span class="line">    <span class="keyword">while</span> left &lt; right:</span><br><span class="line">        mid = left + right + <span class="number">1</span> &gt;&gt; <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> nums[mid] &gt; x:</span><br><span class="line">            right = mid - <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            left = mid</span><br><span class="line">    <span class="keyword">return</span> left</span><br></pre></td></tr></table></figure> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
+  id="post-leetcode2090"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/leetcode2090.html"
+    >力扣 2090. 半径为k的子数组平均值</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/leetcode2090.html" class="article-date">
+  <time datetime="2022-07-02T13:22:45.000Z" itemprop="datePublished">2022-07-02</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="使用前缀和-双指针实现"><a href="#使用前缀和-双指针实现" class="headerlink" title="使用前缀和 + 双指针实现"></a>使用前缀和 + 双指针实现</h1><ol>
+<li>前缀和</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curs = [<span class="number">0</span>]</span><br><span class="line"><span class="keyword">for</span> n <span class="keyword">in</span> nums:</span><br><span class="line">    curs.append(curs[-<span class="number">1</span>] + n)</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>双指针</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">left, right, res, nums_len = -k - <span class="number">1</span>, k - <span class="number">1</span>, [], <span class="built_in">len</span>(nums)</span><br><span class="line">        </span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(nums_len):</span><br><span class="line">    left += <span class="number">1</span></span><br><span class="line">    right += <span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> left &gt;= <span class="number">0</span> <span class="keyword">and</span> right &lt; nums_len:</span><br><span class="line">        cur = curs[right + <span class="number">1</span>] - curs[left]</span><br><span class="line">        res.append(cur // (<span class="number">2</span> * k + <span class="number">1</span>))</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        res.append(-<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
   </article>
   
 
+  
+  <nav class="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
+  </nav>
   
 </section>
 </div>
