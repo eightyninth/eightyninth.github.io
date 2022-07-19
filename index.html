@@ -157,6 +157,41 @@
     
     
     <article
+  id="post-Transfer_Learning_GNN_ Ego_graph_Info_ Maximization"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+     
+    <div class="article-meta">
+      <a href="/Transfer_Learning_GNN_%20Ego_graph_Info_%20Maximization.html" class="article-date">
+  <time datetime="2022-07-19T02:47:10.383Z" itemprop="datePublished">2022-07-19</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="Transfer-Learning-of-Graph-Neural-Networks-with-Ego-graph-Information-Maximization"><a href="#Transfer-Learning-of-Graph-Neural-Networks-with-Ego-graph-Information-Maximization" class="headerlink" title="Transfer Learning of Graph Neural Networks with Ego-graph Information Maximization"></a>Transfer Learning of Graph Neural Networks with Ego-graph Information Maximization</h1> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
   id="post-build_site"
   class="article article-type-post"
   itemscope
@@ -894,67 +929,6 @@
 <li>查找: 二分查找</li>
 </ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">search_left</span>(<span class="params">nums, left, right, x</span>):</span><br><span class="line">    <span class="keyword">while</span> left &lt; right:</span><br><span class="line">        mid = left + right &gt;&gt; <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> nums[mid] &gt;= x:</span><br><span class="line">            right = mid</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            left = mid + <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> left</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">search_right</span>(<span class="params">nums, left, right, x</span>):</span><br><span class="line">    <span class="keyword">while</span> left &lt; right:</span><br><span class="line">        mid = left + right + <span class="number">1</span> &gt;&gt; <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> nums[mid] &gt; x:</span><br><span class="line">            right = mid - <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            left = mid</span><br><span class="line">    <span class="keyword">return</span> left</span><br></pre></td></tr></table></figure> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-    
-</article>
-
-    
-    <article
-  id="post-leetcode2090"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/leetcode2090.html"
-    >力扣 2090. 半径为k的子数组平均值</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/leetcode2090.html" class="article-date">
-  <time datetime="2022-07-02T13:22:45.000Z" itemprop="datePublished">2022-07-02</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="使用前缀和-双指针实现"><a href="#使用前缀和-双指针实现" class="headerlink" title="使用前缀和 + 双指针实现"></a>使用前缀和 + 双指针实现</h1><ol>
-<li>前缀和</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curs = [<span class="number">0</span>]</span><br><span class="line"><span class="keyword">for</span> n <span class="keyword">in</span> nums:</span><br><span class="line">    curs.append(curs[-<span class="number">1</span>] + n)</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>双指针</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">left, right, res, nums_len = -k - <span class="number">1</span>, k - <span class="number">1</span>, [], <span class="built_in">len</span>(nums)</span><br><span class="line">        </span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(nums_len):</span><br><span class="line">    left += <span class="number">1</span></span><br><span class="line">    right += <span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> left &gt;= <span class="number">0</span> <span class="keyword">and</span> right &lt; nums_len:</span><br><span class="line">        cur = curs[right + <span class="number">1</span>] - curs[left]</span><br><span class="line">        res.append(cur // (<span class="number">2</span> * k + <span class="number">1</span>))</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        res.append(-<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
- 
       <!-- reward -->
       
     </div>
