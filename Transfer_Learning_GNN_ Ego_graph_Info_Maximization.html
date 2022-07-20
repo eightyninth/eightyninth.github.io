@@ -13,7 +13,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title> EightyNinth</title>
+      <title>Transfer Learning of Graph Neural Networks with Ego-graph Information Maximization |  EightyNinth</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -63,17 +63,31 @@
   data-scroll-reveal
 >
   <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Transfer Learning of Graph Neural Networks with Ego-graph Information Maximization
+</h1>
+ 
+
+      
+    </header>
      
     <div class="article-meta">
       <a href="/Transfer_Learning_GNN_%20Ego_graph_Info_Maximization.html" class="article-date">
   <time datetime="2022-07-19T02:47:10.383Z" itemprop="datePublished">2022-07-19</time>
-</a>   
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/">文献阅读</a>
+  </div>
+  
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">11</span>
+            <span class="post-count">553</span>
         </span>
     </span>
 
@@ -97,7 +111,25 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="Transfer-Learning-of-Graph-Neural-Networks-with-Ego-graph-Information-Maximization"><a href="#Transfer-Learning-of-Graph-Neural-Networks-with-Ego-graph-Information-Maximization" class="headerlink" title="Transfer Learning of Graph Neural Networks with Ego-graph Information Maximization"></a>Transfer Learning of Graph Neural Networks with Ego-graph Information Maximization</h1> 
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>论文地址: <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2009.05204.pdf">2009.05204.pdf</a></p>
+<p>代码地址: <a target="_blank" rel="noopener" href="https://github.com/GentleZhu/EGI">EGI</a></p>
+<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><ol>
+<li><p>GNN效果良好, 但针对大规模图的训练消耗良多.</p>
+</li>
+<li><p>在近年进行GNN预训练的研究中, 一是没有提供模型设计的理论支撑, 二是没有清楚地提出模型可转移性的要求和保证.</p>
+</li>
+<li><p>本文观点: 首先, 对<strong>基本图信息</strong>提出一个新的观点, 主张捕获<strong>基本图信息</strong>作为迁移GNN训练的目标. 这启发了<strong>EGI</strong>的设计, 使用<strong>EGI</strong>实现此目标.<br>其次, 当节点特征与结构相关时, 对目标图和源图局部拉普拉斯的不同进行EGI可转移性分析.</p>
+</li>
+</ol>
+<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>此次工作为迁移学习GNN构建了一个有理论支撑的框架, 并具现化为一个可实际应用的迁移学习GNN模型.</p>
+<p>下图为模型的概览, 其基于一个新的视角: 把图视作节点特征和k阶ego-图结构的联合分布采样.<br>这样的观点使得我们可以通过定义图的信息和相似度来分析图的可迁移性.</p>
+<p><img src="/images/Transfer_Learning_GNN_Ego_graph_Info_Maximization/EGI.png" alt="(EGI模型图)"></p>
+<p>我们所设计的模型称作<strong>EGI</strong>.其利用基于ego-图信息最大化的训练目标来有效捕获图信息.</p>
+<p>然后我们进一步具体说明了对可迁移节点特征的要求，并分析了依赖于源图和目标图的本地图拉普拉斯算子的 EGI 的可迁移性.</p>
+<h1 id="迁移GNN"><a href="#迁移GNN" class="headerlink" title="迁移GNN"></a>迁移GNN</h1><p>在图迁移学习设置中, 预训练过程是无法得知下游任务的.我们认为应该优化和量化GNN的一般效用(general utility).<br>而他捕获基础图信息的能力与图的拓扑结构和节点特征有关.</p>
+<p>基于上述观点, 我们设计了ego-图信息最大化模型( ego-graph information maximization model, EGI).<br>然后通过其对目标图和源图建模能力的差距来衡量GNN模型的一般迁移性.</p>
+<h2 id="EGI"><a href="#EGI" class="headerlink" title="EGI"></a>EGI</h2><p>此项工作关注于在原图上进行无监督预训练过后的GNN, 在直接迁移设置下, 不经过微调, 直接应用于目标图上.</p>
+ 
       <!-- reward -->
       
     </div>
@@ -166,11 +198,22 @@
 </div>
 
 <div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GNN/" rel="tag">GNN</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BF%81%E7%A7%BB%E5%AD%A6%E4%B9%A0/" rel="tag">迁移学习</a></li></ul>
+
     </footer>
   </div>
 
    
   <nav class="article-nav">
+    
+      <a href="/leetcode20.html" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            力扣 20. 有效的括号
+          
+        </div>
+      </a>
     
     
       <a href="/build_site.html" class="article-nav-link">

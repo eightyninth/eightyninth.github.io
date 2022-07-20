@@ -13,7 +13,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>力扣 15. 三数之和 |  EightyNinth</title>
+      <title>力扣 20. 有效的括号 |  EightyNinth</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -56,7 +56,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-leetcode15"
+  id="post-leetcode20"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -67,7 +67,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  力扣 15. 三数之和
+  力扣 20. 有效的括号
 </h1>
  
 
@@ -75,8 +75,8 @@
     </header>
      
     <div class="article-meta">
-      <a href="/leetcode15.html" class="article-date">
-  <time datetime="2022-07-02T13:22:45.000Z" itemprop="datePublished">2022-07-02</time>
+      <a href="/leetcode20.html" class="article-date">
+  <time datetime="2022-07-20T02:12:02.458Z" itemprop="datePublished">2022-07-20</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
@@ -87,7 +87,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">193</span>
+            <span class="post-count">64</span>
         </span>
     </span>
 
@@ -111,18 +111,7 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="快排-双指针"><a href="#快排-双指针" class="headerlink" title="快排 + 双指针"></a>快排 + 双指针</h1><ol>
-<li>快排</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">quick_sort</span>(<span class="params">left, right</span>):</span><br><span class="line">    <span class="keyword">if</span> left &gt;= right: <span class="keyword">return</span></span><br><span class="line">    i, j = left, right</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> i &lt; j:</span><br><span class="line">        <span class="keyword">while</span> nums[j] &gt; nums[left] <span class="keyword">and</span> i &lt; j:</span><br><span class="line">            j -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> nums[i] &lt;= nums[left] <span class="keyword">and</span> i &lt; j:</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">        </span><br><span class="line">        nums[i], nums[j] = nums[j], nums[i]</span><br><span class="line">    nums[i], nums[left] = nums[left], nums[i]</span><br><span class="line"></span><br><span class="line">    quick_sort(left, i - <span class="number">1</span>)</span><br><span class="line">    quick_sort(i + <span class="number">1</span>, right)</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>双指针(三指针)</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">res = []</span><br><span class="line"><span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, num_len - <span class="number">2</span>):</span><br><span class="line">    <span class="keyword">if</span> nums[k] &gt; <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">if</span> k &gt; <span class="number">0</span> <span class="keyword">and</span> nums[k] == nums[k - <span class="number">1</span>]: <span class="keyword">continue</span></span><br><span class="line">    i, j = k + <span class="number">1</span>, num_len - <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> i &lt; j:</span><br><span class="line">        cur = nums[k] + nums[i] + nums[j]</span><br><span class="line">        <span class="keyword">if</span> cur &gt; <span class="number">0</span>:</span><br><span class="line">            j -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> i &lt; j <span class="keyword">and</span> nums[j] == nums[j + <span class="number">1</span>]: j -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> cur &lt; <span class="number">0</span>:</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> i &lt; j <span class="keyword">and</span> nums[i] == nums[i - <span class="number">1</span>]: i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            res.append([nums[k], nums[i], nums[j]])</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">            j -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> i &lt; j <span class="keyword">and</span> nums[i] == nums[i - <span class="number">1</span>]: i += <span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> i &lt; j <span class="keyword">and</span> nums[j] == nums[j + <span class="number">1</span>]: j -= <span class="number">1</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
- 
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="栈-hash表"><a href="#栈-hash表" class="headerlink" title="栈 + hash表"></a>栈 + hash表</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">isValid</span>(<span class="params">s</span>):</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> s: <span class="keyword">return</span> <span class="literal">True</span> </span><br><span class="line">    pip = &#123;<span class="string">&quot;&#125;&quot;</span>: <span class="string">&quot;&#123;&quot;</span>,</span><br><span class="line">           <span class="string">&quot;)&quot;</span>: <span class="string">&quot;(&quot;</span>,</span><br><span class="line">           <span class="string">&quot;]&quot;</span>: <span class="string">&quot;[&quot;</span>&#125;</span><br><span class="line"></span><br><span class="line">    queue = []</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> sign <span class="keyword">in</span> s:</span><br><span class="line">        <span class="keyword">if</span> sign <span class="keyword">in</span> pip.keys():</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> queue:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                cur = queue.pop()</span><br><span class="line">                <span class="keyword">if</span> pip[sign] != cur:</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            queue.append(sign)</span><br><span class="line">        </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> queue:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure> 
       <!-- reward -->
       
     </div>
@@ -186,12 +175,12 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://eightyninth.github.io/leetcode15.html" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://eightyninth.github.io/leetcode20.html" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag">双指针</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BF%AB%E6%8E%92/" rel="tag">快排</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hash%E8%A1%A8/" rel="tag">hash表</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%88/" rel="tag">栈</a></li></ul>
 
     </footer>
   </div>
@@ -199,19 +188,19 @@
    
   <nav class="article-nav">
     
-      <a href="/leetcode11.html" class="article-nav-link">
+      <a href="/leetcode21.html" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            力扣 11. 盛最多水的容器
+            力扣 21. 合并两个有序链表
           
         </div>
       </a>
     
     
-      <a href="/leetcode17.html" class="article-nav-link">
+      <a href="/Transfer_Learning_GNN_%20Ego_graph_Info_Maximization.html" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">力扣 17. 电话号码的字母组合</div>
+        <div class="article-nav-title">Transfer Learning of Graph Neural Networks with Ego-graph Information Maximization</div>
       </a>
     
   </nav>
