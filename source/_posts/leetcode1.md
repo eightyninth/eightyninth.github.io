@@ -1,7 +1,7 @@
 ---
 title: 力扣 1. 两数之和
 date: 2022-07-02 21:22:45
-tags: [leetcode, 算法]
+tags: [leetcode, 快排, 双指针, hash表]
 categories: [leetcode]
 ---
 

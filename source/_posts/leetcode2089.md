@@ -1,7 +1,7 @@
 ---
 title: 力扣 2089. 找出数组排序后的目标下标
 date: 2022-07-02 21:22:45
-tags: [leetcode, 算法]
+tags: [leetcode, 快排,  二分查找]
 categories: [leetcode]
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: 力扣 17. 电话号码的字母组合
 date: 2022-07-02 21:22:45
-tags: [leetcode, 算法]
+tags: [leetcode, 回溯, 队列]
 categories: [leetcode]
 ---
 

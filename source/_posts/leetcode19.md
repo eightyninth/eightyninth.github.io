@@ -1,7 +1,7 @@
 ---
 title: 力扣 19. 删除链表的倒数第 N 个结点
 date: 2022-07-02 21:22:45
-tags: [leetcode, 算法]
+tags: [leetcode, 链表]
 categories: [leetcode]
 ---
 

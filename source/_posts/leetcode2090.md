@@ -1,7 +1,7 @@
 ---
 title: 力扣 2090. 半径为k的子数组平均值
 date: 2022-07-02 21:22:45
-tags: [leetcode, 算法]
+tags: [leetcode, 前缀和, 双指针]
 categories: [leetcode]
 ---
 

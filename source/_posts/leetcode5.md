@@ -1,7 +1,7 @@
 ---
 title: 力扣 5. 最长回文子串
 date: 2022-07-02 21:22:45
-tags: [leetcode, 算法]
+tags: [leetcode, 动态规划]
 categories: [leetcode]
 ---
 

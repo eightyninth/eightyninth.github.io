@@ -1,13 +1,11 @@
 ---
 title: 力扣 4. 寻找两个正序数组的中位数
 date: 2022-07-02 21:22:45
-tags: [leetcode, 算法]
+tags: [leetcode, 双指针]
 categories: [leetcode]
 ---
 
 # 双指针
-
-1. 双指针
 
 ```python
 len_1, len_2 = len(nums1), len(nums2)
