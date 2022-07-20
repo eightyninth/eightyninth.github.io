@@ -33,7 +33,7 @@ categories: [语义分割]
 
 FPN, 又称特征金字塔, 初始的FPN使用来进行目标检测的, 但由于其性能, 现大多用来做特征提取.
 
-![(resnet模型图)](/images/maskrcnn_pytorch/base_fpn.png)
+![(FPN模型图)](/images/maskrcnn_pytorch/base_fpn.png)
 
 基础的FPN先对高层特征图**上采样**(2倍的最邻近插值), 再对低层特征图**升维**(1 * 1 卷积), 最后对维度, 高度, 宽度一致的两个特征图进行元素对应相加, 得到融合特征图.
 
