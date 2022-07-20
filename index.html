@@ -357,7 +357,7 @@
 
     
     <article
-  id="post-Transfer_Learning_GNN_ Ego_graph_Info_Maximization"
+  id="post-egi"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -368,7 +368,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/Transfer_Learning_GNN_%20Ego_graph_Info_Maximization.html"
+  <a class="article-title" href="/egi.html"
     >Transfer Learning of Graph Neural Networks with Ego-graph Information Maximization</a> 
 </h2>
  
@@ -377,7 +377,7 @@
     </header>
      
     <div class="article-meta">
-      <a href="/Transfer_Learning_GNN_%20Ego_graph_Info_Maximization.html" class="article-date">
+      <a href="/egi.html" class="article-date">
   <time datetime="2022-07-19T02:47:10.383Z" itemprop="datePublished">2022-07-19</time>
 </a> 
   <div class="article-category">
@@ -400,7 +400,7 @@
 </ol>
 <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>此次工作为迁移学习GNN构建了一个有理论支撑的框架, 并具现化为一个可实际应用的迁移学习GNN模型.</p>
 <p>下图为模型的概览, 其基于一个新的视角: 把图视作节点特征和k阶ego-图结构的联合分布采样.<br>这样的观点使得我们可以通过定义图的信息和相似度来分析图的可迁移性.</p>
-<p><img src="/images/egi/egi.png" alt="(EGI模型图)"></p>
+<p><img src="/images/egi_img/model.png" alt="(EGI模型图)"></p>
 <p>我们所设计的模型称作<strong>EGI</strong>.其利用基于ego-图信息最大化的训练目标来有效捕获图信息.</p>
 <p>然后我们进一步具体说明了对可迁移节点特征的要求，并分析了依赖于源图和目标图的本地图拉普拉斯算子的 EGI 的可迁移性.</p>
 <h1 id="迁移GNN"><a href="#迁移GNN" class="headerlink" title="迁移GNN"></a>迁移GNN</h1><p>在图迁移学习设置中, 预训练过程是无法得知下游任务的.我们认为应该优化和量化GNN的一般效用(general utility).<br>而他捕获基础图信息的能力与图的拓扑结构和节点特征有关.</p>
