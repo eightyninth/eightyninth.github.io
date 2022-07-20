@@ -28,7 +28,7 @@ categories: [文献阅读]
 下图为模型的概览, 其基于一个新的视角: 把图视作节点特征和k阶ego-图结构的联合分布采样.
 这样的观点使得我们可以通过定义图的信息和相似度来分析图的可迁移性.
 
-![(EGI模型图)](/images/Transfer_Learning_GNN_Ego_graph_Info_Maximization/EGI.png)
+![(EGI模型图)](/images/Transfer_Learning_GNN_Ego_graph_Info_Maximization/egi.png)
 
 
 我们所设计的模型称作**EGI**.其利用基于ego-图信息最大化的训练目标来有效捕获图信息.
@@ -54,5 +54,8 @@ categories: [文献阅读]
 此项工作关注于在原图上进行无监督预训练过后的GNN, 在直接迁移设置下, 不经过微调, 直接应用于目标图上.
 
 
-
+| 含  义 |       公  式        |
+|:----:|:-----------------:|
+|  图   | $ G = \{V, E \} $ |
+|||
 
