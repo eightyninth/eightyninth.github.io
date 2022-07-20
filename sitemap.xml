@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://eightyninth.github.io/Transfer_Learning_GNN_%20Ego_graph_Info_Maximization.html</loc>
+    
+    <lastmod>2022-07-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://eightyninth.github.io/maskrcnn_pytorch.html</loc>
+    
+    <lastmod>2022-07-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://eightyninth.github.io/leetcode23.html</loc>
     
     <lastmod>2022-07-20</lastmod>
@@ -140,24 +158,6 @@
     <loc>https://eightyninth.github.io/leetcode11.html</loc>
     
     <lastmod>2022-07-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://eightyninth.github.io/Transfer_Learning_GNN_%20Ego_graph_Info_Maximization.html</loc>
-    
-    <lastmod>2022-07-19</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://eightyninth.github.io/maskrcnn_pytorch.html</loc>
-    
-    <lastmod>2022-07-13</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
