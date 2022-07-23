@@ -2,14 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://eightyninth.github.io/egi.html</loc>
-    <lastmod>2022-07-20</lastmod>
+    <lastmod>2022-07-23</lastmod>
   </url>
   <url>
-    <loc>https://eightyninth.github.io/maskrcnn_pytorch.html</loc>
-    <lastmod>2022-07-20</lastmod>
+    <loc>https://eightyninth.github.io/leetcode31.html</loc>
+    <lastmod>2022-07-21</lastmod>
   </url>
   <url>
     <loc>https://eightyninth.github.io/leetcode23.html</loc>
+    <lastmod>2022-07-21</lastmod>
+  </url>
+  <url>
+    <loc>https://eightyninth.github.io/maskrcnn_pytorch.html</loc>
     <lastmod>2022-07-20</lastmod>
   </url>
   <url>

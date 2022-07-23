@@ -6,7 +6,7 @@
   <link href="https://eightyninth.github.io/atom.xml" rel="self"/>
   
   <link href="https://eightyninth.github.io/"/>
-  <updated>2022-07-20T04:48:18.932Z</updated>
+  <updated>2022-07-21T04:14:45.406Z</updated>
   <id>https://eightyninth.github.io/</id>
   
   <author>
@@ -17,18 +17,18 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
-    <link href="https://eightyninth.github.io/leetcode23.html"/>
-    <id>https://eightyninth.github.io/leetcode23.html</id>
-    <published>2022-07-20T04:46:31.179Z</published>
-    <updated>2022-07-20T04:48:18.932Z</updated>
+    <title>力扣 31. 下一个排列</title>
+    <link href="https://eightyninth.github.io/leetcode31.html"/>
+    <id>https://eightyninth.github.io/leetcode31.html</id>
+    <published>2022-07-21T01:46:35.221Z</published>
+    <updated>2022-07-21T04:14:45.406Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot;</summary>
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;类似双指针&quot;&gt;&lt;a href=&quot;#类似双指针&quot;</summary>
         
       
     
@@ -38,6 +38,33 @@
     
     
     <category term="leetcode" scheme="https://eightyninth.github.io/tags/leetcode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>力扣 23. 合并K个升序链表</title>
+    <link href="https://eightyninth.github.io/leetcode23.html"/>
+    <id>https://eightyninth.github.io/leetcode23.html</id>
+    <published>2022-07-20T04:46:31.179Z</published>
+    <updated>2022-07-21T01:48:03.342Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;预置&quot;&gt;&lt;a href=&quot;#预置&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="leetcode" scheme="https://eightyninth.github.io/categories/leetcode/"/>
+    
+    
+    <category term="leetcode" scheme="https://eightyninth.github.io/tags/leetcode/"/>
+    
+    <category term="队列" scheme="https://eightyninth.github.io/tags/%E9%98%9F%E5%88%97/"/>
     
     <category term="链表" scheme="https://eightyninth.github.io/tags/%E9%93%BE%E8%A1%A8/"/>
     
@@ -133,7 +160,7 @@
     <link href="https://eightyninth.github.io/egi.html"/>
     <id>https://eightyninth.github.io/egi.html</id>
     <published>2022-07-19T02:47:10.383Z</published>
-    <updated>2022-07-20T05:37:06.129Z</updated>
+    <updated>2022-07-23T02:39:19.418Z</updated>
     
     
       
