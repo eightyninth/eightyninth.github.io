@@ -13,7 +13,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>Tag: 栈 |  EightyNinth</title>
+      <title>笔试题 基础计算器 |  EightyNinth</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -55,126 +55,183 @@
       
     <main class="content on">
       <section class="outer">
-  
-  
-  <article class="articles">
+  <article
+  id="post-writtten_exam1"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
     
-    
-    <h1 class="page-type-title">#&nbsp栈</h1>
-    
-    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  笔试题 基础计算器
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/writtten_exam1.html" class="article-date">
+  <time datetime="2022-07-24T14:26:31.234Z" itemprop="datePublished">2022-07-24</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
   
-  
-  
-  
-  
-  
-  <div class="archives-wrap">
-    <div class="archive-year-wrap">
-      <a href="/archives/2022" class="archive-year">2022</a>
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">286</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">1 min</span>
+        </span>
+    </span>
+</div>
+ 
     </div>
-    <div class="archives">
       
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/leetcode32.html" class="archive-article-date">
-  <time datetime="2022-07-26T06:19:57.264Z" itemprop="datePublished">07/26</time>
-</a>
-      
+    <div class="tocbot"></div>
 
-    </header>
-    
-    
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%88/" rel="tag">栈</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%B4%AA%E5%BF%83/" rel="tag">贪心</a></li></ul>
 
-    
-  </div>
-</article>
-      
+
+
   
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/leetcode224.html" class="archive-article-date">
-  <time datetime="2022-07-25T02:58:54.182Z" itemprop="datePublished">07/25</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
        
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/leetcode224.html"
-    >力扣 224. 基本计算器</a> 
-</h2>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>实现一个表达式计算, 输入包括: 非负整数, “(“, “)”, “+”, “-“, “*”, “&#x2F;“, 空格</p>
+<p>示例</p>
+<blockquote>
+<p>“2 * ( 6 - 1 ) &#x2F; 4”</p>
+</blockquote>
+<p>输出</p>
+<blockquote>
+<p>2</p>
+</blockquote>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>实际上是中缀表达式的计算, 中缀转后缀计算</p>
+<h1 id="栈-hash"><a href="#栈-hash" class="headerlink" title="栈 + hash"></a>栈 + hash</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">cal</span>(<span class="params">s</span>):</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> s: <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    prior = &#123;<span class="string">&quot;+&quot;</span>: <span class="number">0</span>, <span class="string">&quot;-&quot;</span>: <span class="number">0</span>, <span class="string">&quot;*&quot;</span>: <span class="number">1</span>, <span class="string">&quot;/&quot;</span>: <span class="number">1</span>, <span class="string">&quot;(&quot;</span>: -<span class="number">1</span>&#125;</span><br><span class="line">    stack, op = [], []</span><br><span class="line">    num = <span class="literal">None</span></span><br><span class="line">    <span class="comment"># 中缀 -&gt; 后缀</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(s)):</span><br><span class="line">        <span class="keyword">if</span> s[i] != <span class="string">&quot; &quot;</span>:</span><br><span class="line">            <span class="keyword">if</span> s[i].isdigit():</span><br><span class="line">                num = <span class="number">10</span> * num + <span class="built_in">int</span>(s[i]) <span class="keyword">if</span> num != <span class="literal">None</span> <span class="keyword">else</span> <span class="built_in">int</span>(s[i])</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">if</span> num != <span class="literal">None</span>:</span><br><span class="line">                    stack.append(num)</span><br><span class="line">                    num = <span class="literal">None</span></span><br><span class="line">                <span class="keyword">if</span> op:</span><br><span class="line">                    <span class="keyword">if</span> s[i] != <span class="string">&quot;(&quot;</span> <span class="keyword">and</span> s[i] != <span class="string">&quot;)&quot;</span>:</span><br><span class="line">                        <span class="keyword">while</span> op <span class="keyword">and</span> prior[s[i]] &lt;= prior[op[-<span class="number">1</span>]]:</span><br><span class="line">                            stack.append(op.pop())</span><br><span class="line">                        op.append(s[i])</span><br><span class="line">                    <span class="keyword">elif</span> s[i] == <span class="string">&quot;(&quot;</span>:</span><br><span class="line">                        op.append(s[i])</span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        <span class="keyword">while</span> op <span class="keyword">and</span> op[-<span class="number">1</span>] != <span class="string">&quot;(&quot;</span>:</span><br><span class="line">                            stack.append(op.pop())</span><br><span class="line">                        op.pop()</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    op.append(s[i])</span><br><span class="line">    <span class="keyword">if</span> num != <span class="literal">None</span>: stack.append(num)</span><br><span class="line">    <span class="keyword">while</span> op: stack.append(op.pop())</span><br><span class="line"></span><br><span class="line">    <span class="comment"># print(stack)</span></span><br><span class="line">    <span class="comment"># 计算后缀</span></span><br><span class="line">    res = []</span><br><span class="line">    <span class="keyword">for</span> cur <span class="keyword">in</span> stack:</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">type</span>(cur) == <span class="built_in">int</span>:</span><br><span class="line">            res.append(cur)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            num2, num1 = res.pop(), res.pop()</span><br><span class="line">            <span class="keyword">if</span> cur == <span class="string">&quot;+&quot;</span>:</span><br><span class="line">                tmp = num1 + num2</span><br><span class="line">            <span class="keyword">elif</span> cur ==<span class="string">&quot;-&quot;</span>:</span><br><span class="line">                tmp = num1 - num2</span><br><span class="line">            <span class="keyword">elif</span> cur == <span class="string">&quot;*&quot;</span>:</span><br><span class="line">                tmp = num1 * num2</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                tmp = num1 / num2</span><br><span class="line">            res.append(tmp)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> res[-<span class="number">1</span>]</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+
+<h1 id="扩展-前缀表达式的计算"><a href="#扩展-前缀表达式的计算" class="headerlink" title="扩展: 前缀表达式的计算"></a>扩展: 前缀表达式的计算</h1><p>前缀不需要转换, 利用<strong>栈</strong>对表达式从右到左扫描计算</p>
  
-
-    </header>
-    
-    
+      <!-- reward -->
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%88/" rel="tag">栈</a></li></ul>
-
+    </div>
     
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/writtten_exam1.html" class="archive-article-date">
-  <time datetime="2022-07-24T14:26:31.234Z" itemprop="datePublished">07/24</time>
-</a>
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
        
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/writtten_exam1.html"
-    >笔试题 基础计算器</a> 
-</h2>
- 
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
 
-    </header>
-    
-    
-      
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://eightyninth.github.io/writtten_exam1.html" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hash%E8%A1%A8/" rel="tag">hash表</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%88/" rel="tag">栈</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AC%94%E8%AF%95/" rel="tag">笔试</a></li></ul>
 
-    
+    </footer>
   </div>
-</article>
-      
+
+   
+  <nav class="article-nav">
+    
+      <a href="/leetcode224.html" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            力扣 224. 基本计算器
+          
+        </div>
+      </a>
+    
+    
+      <a href="/leetcode31.html" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">力扣 31. 下一个排列</div>
+      </a>
+    
+  </nav>
+
   
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/leetcode20.html" class="archive-article-date">
-  <time datetime="2022-07-20T02:12:02.458Z" itemprop="datePublished">07/20</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/leetcode20.html"
-    >力扣 20. 有效的括号</a> 
-</h2>
+   
+    
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
  
-
-    </header>
-    
-    
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hash%E8%A1%A8/" rel="tag">hash表</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%88/" rel="tag">栈</a></li></ul>
-
-    
-  </div>
 </article>
-      
-      
-    </div>
-  </div>
-  
-  
 
-  
 </section>
       <footer class="footer">
   <div class="outer">
@@ -311,6 +368,22 @@
 <script src="/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
 
 <script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
 <link
