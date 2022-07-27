@@ -1,5 +1,5 @@
 ---
-title:
+title: 力扣 32. 最长有效括号
 date: 2022/7/26 下午2:19
 tags: [leetcode, 动态规划, 栈, 贪心]
 categories: [leetcode]
