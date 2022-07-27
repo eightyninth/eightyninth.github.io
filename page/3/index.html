@@ -157,6 +157,119 @@
     
     
     <article
+  id="post-leetcode2090"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/leetcode2090.html"
+    >力扣 2090. 半径为k的子数组平均值</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/leetcode2090.html" class="article-date">
+  <time datetime="2022-07-02T13:22:45.000Z" itemprop="datePublished">2022-07-02</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="使用前缀和-双指针实现"><a href="#使用前缀和-双指针实现" class="headerlink" title="使用前缀和 + 双指针实现"></a>使用前缀和 + 双指针实现</h1><ol>
+<li>前缀和</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curs = [<span class="number">0</span>]</span><br><span class="line"><span class="keyword">for</span> n <span class="keyword">in</span> nums:</span><br><span class="line">    curs.append(curs[-<span class="number">1</span>] + n)</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>双指针</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">left, right, res, nums_len = -k - <span class="number">1</span>, k - <span class="number">1</span>, [], <span class="built_in">len</span>(nums)</span><br><span class="line">        </span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(nums_len):</span><br><span class="line">    left += <span class="number">1</span></span><br><span class="line">    right += <span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> left &gt;= <span class="number">0</span> <span class="keyword">and</span> right &lt; nums_len:</span><br><span class="line">        cur = curs[right + <span class="number">1</span>] - curs[left]</span><br><span class="line">        res.append(cur // (<span class="number">2</span> * k + <span class="number">1</span>))</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        res.append(-<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" rel="tag">前缀和</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag">双指针</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
+  id="post-leetcode3"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/leetcode3.html"
+    >力扣 3. 无重复字符的最长子串</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/leetcode3.html" class="article-date">
+  <time datetime="2022-07-02T13:22:45.000Z" itemprop="datePublished">2022-07-02</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="哈希表-双指针"><a href="#哈希表-双指针" class="headerlink" title="哈希表 + 双指针"></a>哈希表 + 双指针</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> s: <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">res, bi, left, right = <span class="number">1</span>, <span class="built_in">set</span>(), <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">bi.add(s[<span class="number">0</span>])</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="built_in">len</span>(s)):</span><br><span class="line">    right += <span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> s[i] <span class="keyword">in</span> bi:</span><br><span class="line">        <span class="keyword">while</span> left &lt;= right:</span><br><span class="line">            <span class="keyword">if</span> s[left] != s[i]:</span><br><span class="line">                bi.remove(s[left])</span><br><span class="line">                left += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                left += <span class="number">1</span></span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">    bi.add(s[i])</span><br><span class="line">    </span><br><span class="line">    res = <span class="built_in">max</span>(right - left + <span class="number">1</span>, res)</span><br><span class="line"><span class="keyword">return</span> res</span><br></pre></td></tr></table></figure> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hash%E8%A1%A8/" rel="tag">hash表</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag">双指针</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
   id="post-leetcode4"
   class="article article-type-post"
   itemscope

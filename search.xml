@@ -1,7 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title></title>
+    <title>力扣 34. 在排序数组中查找元素的第一个和最后一个位置</title>
+    <url>/leetcode34.html</url>
+    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="左右二分查找"><a href="#左右二分查找" class="headerlink" title="左右二分查找"></a>左右二分查找</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">searchRange</span>(<span class="params">nums, target</span>):</span><br><span class="line">    <span class="comment"># 左右二分</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">search_left</span>(<span class="params">l, r, t</span>):</span><br><span class="line">        <span class="keyword">while</span> l &lt; r:</span><br><span class="line">            m = l + r &gt;&gt; <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> nums[m] &lt; t:</span><br><span class="line">                l = m + <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                r = m</span><br><span class="line">        <span class="keyword">return</span> l</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">search_right</span>(<span class="params">l, r, t</span>): </span><br><span class="line">        <span class="keyword">while</span> l &lt; r:</span><br><span class="line">            m = l + r + <span class="number">1</span> &gt;&gt; <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> nums[m] &gt; t:</span><br><span class="line">                r = m - <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                l = m</span><br><span class="line">        <span class="keyword">return</span> l</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> nums: <span class="keyword">return</span> [-<span class="number">1</span>, -<span class="number">1</span>]</span><br><span class="line">    nums_len = <span class="built_in">len</span>(nums) - <span class="number">1</span></span><br><span class="line">    left = search_left(<span class="number">0</span>, nums_len, target)</span><br><span class="line">    right = search_right(<span class="number">0</span>, nums_len, target)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> [left, right] <span class="keyword">if</span> nums[left] == target <span class="keyword">and</span> nums[right] == target <span class="keyword">else</span> [-<span class="number">1</span>, -<span class="number">1</span>]</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>二分查找</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>力扣 33. 搜索旋转排序树组</title>
+    <url>/leetcode33.html</url>
+    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">search</span>(<span class="params">nums, target</span>):</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> nums: <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">    <span class="comment"># 数组是局部有序的</span></span><br><span class="line">    left, right = <span class="number">0</span>, <span class="built_in">len</span>(nums) - <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> left &lt;= right:</span><br><span class="line">        mid = left + right &gt;&gt; <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> nums[mid] == target:</span><br><span class="line">            <span class="keyword">return</span> mid</span><br><span class="line">        <span class="comment"># [l, mid - 1] 有序</span></span><br><span class="line">        <span class="keyword">if</span> nums[<span class="number">0</span>] &lt;= nums[mid]:</span><br><span class="line">            <span class="keyword">if</span> nums[left] &lt;= target &lt; nums[mid]:</span><br><span class="line">                right = mid - <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                left = mid + <span class="number">1</span></span><br><span class="line">        <span class="comment"># [mid + 1, right] 有序</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">if</span> nums[mid] &lt; target &lt;= nums[right]:</span><br><span class="line">                left = mid + <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                right = mid - <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>二分查找</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>力扣 32. 最长有效括号</title>
     <url>/leetcode32.html</url>
     <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><h2 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h2><p>dp[i] 表示到第i个字符的有效括号数量<br>初始情况下, 全部初始化为0</p>
 <ol>
