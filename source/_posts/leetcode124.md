@@ -1,0 +1,36 @@
+---
+title: 力扣 124. 二叉树中最大路径和
+date: 2022/8/7 上午9:37
+tags: [letcode, 递归, 树]
+categories: [leetcode]
+---
+
+# 前置
+
+```python
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+```
+
+# 递归
+
+```python
+class Solution:
+    def __init__(self):
+        self.ret = float("-inf")
+
+    def maxPathSum(self, root):
+        def order(node):
+            if not node:
+                return 0
+            left = order(node.left)
+            right = order(node.right)
+            self.ret = max(left + node.val + right, self.ret)
+            cur = node.val + max(0, left, right)
+            return cur if cur > 0 else 0
+        order(root)
+        return self.ret
+```
