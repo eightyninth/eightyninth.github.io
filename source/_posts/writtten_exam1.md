@@ -1,8 +1,8 @@
 ---
 title: 笔试题 基础计算器
 date: 2022/7/24 下午10:25
-tags: [笔试, 栈, hash表]
-categories: [leetcode]
+tags: [笔试, 栈, hash表, 校招]
+categories: [leetcode, 校招]
 ---
 
 # 题目描述
