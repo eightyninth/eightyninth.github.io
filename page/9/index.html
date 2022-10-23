@@ -528,7 +528,7 @@
 <blockquote>
 <p>为了后述具体,此时假设github账号</p>
 <p>用户名为: test</p>
-<p>邮箱为: <a href="mailto:&#x74;&#x65;&#x73;&#116;&#x40;&#49;&#x36;&#x33;&#46;&#x63;&#x6f;&#x6d;">&#x74;&#x65;&#x73;&#116;&#x40;&#49;&#x36;&#x33;&#46;&#x63;&#x6f;&#x6d;</a></p>
+<p>邮箱为: <a href="mailto:&#116;&#x65;&#x73;&#x74;&#x40;&#x31;&#54;&#x33;&#46;&#x63;&#x6f;&#x6d;">&#116;&#x65;&#x73;&#x74;&#x40;&#x31;&#54;&#x33;&#46;&#x63;&#x6f;&#x6d;</a></p>
 <p>密码为: 123456</p>
 </blockquote>
 </li>
@@ -1101,8 +1101,30 @@
         
       </li>
     </ul>
+    <!-- 运行天数 -->
+    <ul>
+        <li><span id="runtime_span"></span></li>
+    </ul>
   </div>
-</footer>    
+</footer>
+<script type="text/javascript">
+    function show_runtime() {
+        window.setTimeout("show_runtime()", 1000);
+        X = new Date("02/22/2020 22:22:22");
+        Y = new Date();
+        T = (Y.getTime() - X.getTime());
+        M = 24 * 60 * 60 * 1000;
+        a = T / M;
+        A = Math.floor(a);
+        b = (a - A) * 24;
+        B = Math.floor(b);
+        c = (b - B) * 60;
+        C = Math.floor((b - B) * 60);
+        D = Math.floor((c - C) * 60);
+        runtime_span.innerHTML = "小站在各种崩坏中坚持了: " + A + "天" + B + "小时" + C + "分" + D + "秒"
+    }
+    show_runtime();
+</script>    
     </main>
     <div class="float_btns">
       <div class="totop" id="totop">
