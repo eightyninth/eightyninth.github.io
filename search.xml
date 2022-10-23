@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title></title>
+    <title>力扣 1768. 交替合并字符串</title>
     <url>/leetcode/1768.html</url>
     <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">mergeAlternately</span>(<span class="params">word1, word2</span>):</span><br><span class="line">    ret = <span class="string">&quot;&quot;</span></span><br><span class="line">    i, a_len, b_len = <span class="number">0</span>, <span class="built_in">len</span>(word1), <span class="built_in">len</span>(word2)</span><br><span class="line">    <span class="keyword">while</span> i &lt; a_len <span class="keyword">and</span> i &lt; b_len:</span><br><span class="line">        ret += word1[i] + word2[i]</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> i &lt; a_len: ret += word1[i:]</span><br><span class="line">    <span class="keyword">if</span> i &lt; b_len: ret += word2[i:]</span><br><span class="line">    <span class="keyword">return</span> ret</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
@@ -2610,7 +2610,7 @@
 <blockquote>
 <p>为了后述具体,此时假设github账号</p>
 <p>用户名为: test</p>
-<p>邮箱为: <a href="mailto:&#116;&#x65;&#x73;&#116;&#64;&#x31;&#x36;&#x33;&#x2e;&#x63;&#111;&#109;">&#116;&#x65;&#x73;&#116;&#64;&#x31;&#x36;&#x33;&#x2e;&#x63;&#111;&#109;</a></p>
+<p>邮箱为: <a href="mailto:&#x74;&#x65;&#x73;&#116;&#x40;&#49;&#x36;&#x33;&#46;&#x63;&#x6f;&#x6d;">&#x74;&#x65;&#x73;&#116;&#x40;&#49;&#x36;&#x33;&#46;&#x63;&#x6f;&#x6d;</a></p>
 <p>密码为: 123456</p>
 </blockquote>
 </li>
