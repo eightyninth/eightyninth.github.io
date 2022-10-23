@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+      <meta name="google-site-verification" content="yMlXxmAWazMPKfNgrF2K0JWa_oOfOfZMFm5i1eu7E9A" />
+      <meta name="baidu-site-verification" content="code-tf4h4LWHuW" />
+        
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>计算机网络笔记 1 |  EightyNinth</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="EightyNinth" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-books/network_1"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  计算机网络笔记 1
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/books/network_1.html" class="article-date">
+  <time datetime="2022-08-18T01:34:40.754Z" itemprop="datePublished">2022-08-18</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%A0%A1%E6%8B%9B/">校招</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">5.8k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">19 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><h2 id="21世纪的计算机网络"><a href="#21世纪的计算机网络" class="headerlink" title="21世纪的计算机网络"></a>21世纪的计算机网络</h2><p>21世纪特征: 数字化，网络化， 信息化，是一个以网络为核心的时代。</p>
+<p>网络包括: 电信网络，有线电视网络，计算机网络。</p>
+<ol>
+<li>电信网络: 提供电话，电报及传真服务；</li>
+<li>有线电视网络: 传送各种电视节目；</li>
+<li>计算机网络: 在计算机之间传送数据文件。</li>
+</ol>
+<p>互联网(Internet)的基本特点: 连通性， 共享。</p>
+<h2 id="互联网概述"><a href="#互联网概述" class="headerlink" title="互联网概述"></a>互联网概述</h2><p>计算机网络(网络)由若干节点(node)和连接这些节点的链路(link)组成。<strong>节点</strong>可以是计算机，集线器，交换机或路由器等。</p>
+<blockquote>
+<p>注: 习惯上，把与网络相连的计算机称为主机(host)。<br>注: internet泛指由多个计算机网络互连而成的计算机网络；Internet指当前全球最大的，开放的，由众多网络相互连接而成的特定互联网，它采用TCP&#x2F;IP协议族作为通信的规则，且其前身是美国的ARPANET。</p>
+</blockquote>
+<p>网络把许多计算机连接在一起，而互联网则把许多网络通过路由器连接在一起。</p>
+<h3 id="ISP-Internet-Service-Provider"><a href="#ISP-Internet-Service-Provider" class="headerlink" title="ISP(Internet Service Provider)"></a>ISP(Internet Service Provider)</h3><p><strong>互联网服务提供者ISP</strong>可分为主干ISP，地区ISP，本地ISP。</p>
+<p>主干ISP(移动，联通)服务面积最大(国家级别)，拥有高速主干网，一些地区ISP可直接与主干ISP相连。<br>地区ISP是一些较小的ISP，地区ISP一般通过一个或多个主干ISP连接起来。<br>本地ISP(企业，大学)给用户提供直接的服务。本地ISP可以连接到地区ISP，也可以直接连接到主干ISP。</p>
+<p>理论上讲，只要每一个本地ISP都安装路由器连接到某个地区ISP，每一个地区ISP也有路由器连接到主干ISP，在这些相互连接的ISP共同合作下，就可以完成互联网中的所有分组转发任务。<br>但随着互联网上数据流量的急剧增长，需要研究更快的转发分组，以及更有效地利用网络资源，提出**互联网交换点IXP(Internet eXchange Point)**。</p>
+<h3 id="互联网交换点IXP-Internet-eXchange-Point"><a href="#互联网交换点IXP-Internet-eXchange-Point" class="headerlink" title="互联网交换点IXP(Internet eXchange Point)"></a>互联网交换点IXP(Internet eXchange Point)</h3><p>互联网交换点IXP的主要作用是允许两个网络直接相连并交换分组，不需要通过第三个网络来转发分组。</p>
+<p>若两个地区ISP通过一个IXP连接起来，主机之间进行交换分组时，不必经过主干ISP，直接在两个地区ISP之间用高速链路对等的交换分组。使得互联网上的流量数据分布更加合理，同时减少了分组转发的延迟时间，降低了分组转发的费用。</p>
+<p>典型的IXP由一个或多个网络交换机组成，许多ISP再连接到这些网络交换机的相关端口上。IXP常采用工作在<strong>数据链路层</strong>的数据交换机，这些网络交换机都哟格局与网互联起来。</p>
+<h3 id="互联网组成"><a href="#互联网组成" class="headerlink" title="互联网组成"></a>互联网组成</h3><p>互联网从工作方式看，可以划分为边缘部分及核心部分。</p>
+<ol>
+<li><p>边缘部分: 由所有连接在互联网上的主机组成。是用户直接使用的，用于通信和资源共享。</p>
+</li>
+<li><p>核心部分: 由大量网络和连接这网络的路由器组成。为边缘部分提供服务，提供连通性和交换。</p>
+</li>
+</ol>
+<h4 id="边缘部分"><a href="#边缘部分" class="headerlink" title="边缘部分"></a>边缘部分</h4><p>   处于互联网边缘的部分，连接在互联网上的所有主机。又称为端系统(end system)。</p>
+<p>   边缘部分利用核心部分提供的服务，使众多主机之间能够互相通信并交换或共享信息。</p>
+<p>   更严格的说，主机A和主机B进行通信，应该表述为，运行在主机A上的某个程序和运行在主机B上的另一个程序进行通信，即，主机A的某个进程和主机B上的另一个进程通信。</p>
+<p>   在网络边缘的端系统之间的通信方式通常划分为客户-服务器方式(C&#x2F;S)和对等方式(P2P)。</p>
+<ol>
+<li><p>客户-服务器通信方式</p>
+<p> <img src="/../images/network/C_S.png" alt="客户-服务器方式"></p>
+<p> 这是互联网上最常用，传统的方式。</p>
+<p> 客户(client)和服务器(server)都是指通信中所涉及的两个应用进程。客户-服务器方式所描述的是进程之间服务和被服务的关系。</p>
+<p> 主机A运行客户程序，主机B运行服务器程序。客户是服务请求方，服务器是服务提供方。</p>
+<p> 客户A向服务器B发出服务请求，服务器B向客户A提供服务。二者都要使用网络核心部分所提供的服务。</p>
+<p> 客户程序:</p>
+<p> a. 被用户调用后运行，在通信时主动向远地服务器发起通信(请求服务)。需要知道服务器程序的地址。</p>
+<p> b. 不需要特殊的硬件和很复杂的操作系统。</p>
+<p> 服务器程序: </p>
+<p> a. 专门用来提供某种服务的程序，可同时处理多个远地或本地客户的请求。</p>
+<p> b. 系统启动后即自动调用并一直不断的运行着，被动地等待并接受来自各地的客户的通信请求。不需要知道客户程序地址。</p>
+<p> c. 需要强大的硬件和高级的操作系统支持。</p>
+<p> 在客户和服务器的通信建立后，通信是双向的，二者都可以发送和接收数据。</p>
+</li>
+<li><p>对等连接方式</p>
+<p><img src="/../images/network/p2p.png" alt="对等连接工作方式"></p>
+<p>两台主机在通信时并不区分哪一个是服务请求方，哪一个是服务提供方。只要两台主机都运行了对等连接软件，就可以进行平等，对等连接通信。这时，双方都可以下载对方已经存储在硬盘中的共享文档。</p>
+</li>
+</ol>
+<h4 id="核心部分"><a href="#核心部分" class="headerlink" title="核心部分"></a>核心部分</h4><p>   网络核心部分是互联网中最复杂的部分，因为网络中的核心部分要向网络边缘中的大量主机提供连通性，使边缘部分中的任何一台主机都能够向其他主机通信。</p>
+<p>   在网络核心部分起特殊作用的是<strong>路由器</strong>，它是一种专用计算机，是用于实现分组交换的关键构件，其任务是转发收到的分组，这是网络核心部分最重要的功能。</p>
+<blockquote>
+<p>电路交换<br>必须经过<strong>建立连接</strong>(占用通信资源)，<strong>通话</strong>(一直占用通信资源)，<strong>释放连接</strong>(归还通信资源)三个步骤的交换方式。</p>
+</blockquote>
+<p>   电路交换在通信过程一直占用通信资源，在用来传送计算机数据时，其线路的传输效率会很低。</p>
+<ul>
+<li>分组交换</li>
+</ul>
+<p>   分组交换采用<strong>存储转发</strong>技术。</p>
+<p>   通常把一个报文(message)划分成几个分组(packet, 首部(header) + 比报文小的等长数据段)后再进行传送。</p>
+<p>   分组是在互联网中传送的数据单元。分组(packet)，又称包；首部(header)，又称包头。首部包含了诸如目的地址和源地址等重要控制信息，确保分组在互联网中独立地选择传输路径，并被正确的交付到分组传输的终点。</p>
+<blockquote>
+<p>路由器的分组交换</p>
+<p>路由器收到一个分组，先暂时存储一下，检查其首部，查找转发表(路由器记录)，按照首部中的目标地址，找到合适的接口转发出去，把分组交给下一个路由器。</p>
+<p>这样一步一步地以存储转发的方式，把分组交付给最终的目的主机。</p>
+<p><font color=red> 各路由器之间必须经常交换彼此掌握的路由信息，以便创建和动态维护路由器中转发表，使得转发表能够在整个网络拓扑发生变化时及时更新。 </font></p>
+</blockquote>
+<p>   <img src="/../images/network/packet_eg.png" alt="分组转发示例"></p>
+<p>   假定主机$H_1$向主机$H_5$发送数据。</p>
+<p>   主机$H_1$先将分组逐个地发往与它直接相连的路由器$A$中。此时除链路$H_1 - A$外，其他通信链路并不被目前通信的双方所占用。<br>   即使是链路$H_1 - A$，也只是当分组正在此链路上传送时才被占用。在各分组传送之间的空闲时间，链路$H_1 - A$仍可为其他主机发送的分组使用。</p>
+<p>   路由器A把主机$H_1$发来的分组放入缓存。假定从路由器$A$的转发表中查出应把该分组转发到链路$A - C$。于是把分组就转发到路由器$C$，再转发到路由器$E$，最终到主机$H_5$。<br>   若链路$A- C$的通信量太大，路由器$A$可以把分组沿另一个路由传送，即把分组转发到路由器$B$，再转发到路由器$E$，最终到主机$H_5$。</p>
+<p>   分组转发在传送数据之前不必先占用一条端到端的链路的通信资源，同时省去了建立连接和释放连接的开销，因此数据的传输效率更高。</p>
+<p>   采用存储转发的分组转发实际是采用了在数据通信的过程中断续&#x2F;动态分配传输带宽的策略。</p>
+<p>   为了提高分组交换的可靠性，互联网的核心部分常采用网络拓扑结构，使得当发生网络堵塞或少数节点，链路出现故障时，路由器可以灵活地改变转发路由器而不致引起通信的中断或全网瘫痪。<br>   此外，通信网络的主干线路往往由一些高速链路构成，这样就可以较高的数据率迅速地传送计算机数据。</p>
+<p>   分组交换的优点：</p>
+<ol>
+<li>高效: 在分组传输的过程中动态分配传输带宽，对通信链路是逐段占用。</li>
+<li>灵活: 为每一个分组独立地选择最合适的转发路由。</li>
+<li>迅速: 以分组为传送单位，可以不先建立链接就可以向其他主机发送分组。</li>
+<li>可靠: 保证可靠性的网络协议；分布式多路由的分组交换网，使网络有很好的生存性。</li>
+</ol>
+<p>   电路交换: 整个报文的比特流连续的从源点直达终点，好像在一个管道中传送。</p>
+<p>   报文交换: 整个报文先传送到相邻接点，全部存储下来后查找转发表，转发到下一个节点。</p>
+<p>   分组交换: 单个交换传送到相邻节点，存储下来后查找转发表，转发到下一个节点。</p>
+<p>   <img src="/../images/network/differ.png" alt="电路交换 报文交换 分组交换的区别"></p>
+<p>   若要连续传送大量的数据，且其传送时间远大于链接建立时间，则电路交换的传输速率较快。<br>   报文交换和分组交换不需要预先分配传输带宽，在传送突发数据时可提高整个网络的信道利用率。<br>   由于一个分组的长度往往远小于整个报文的长度，因此分组交换币报文交换的时延小，同时具有更好的灵活性。</p>
+<h3 id="计算机网络分类"><a href="#计算机网络分类" class="headerlink" title="计算机网络分类"></a>计算机网络分类</h3><p>   按照网络的作用范围进行分类:</p>
+<ol>
+<li>广域网WAN(Wide Area Network): 是互联网的核心部分，通过长距离(跨国)运送主机所发送的数据。连接广域网各节点交换机的链路一般是高速链路，具有较大的通信容量。</li>
+<li>城域网MAN(Metropolitan Area Network): 可跨越几个街区乃至整个城市。用于将多个局域网进行互连。目前很多城域网采用的是以太网技术。</li>
+<li>局域网LAN(Local Area Network): 一般用微型计算机或工作站通过高速通信线路相连，地理局限范围小。</li>
+<li>个人区域网PAN(Personal Area Network): 在10m左右的范围把属于个人的电子设备用无线技术连接起来的网络。</li>
+</ol>
+<p>   按照网络的使用者进行分类:</p>
+<ol>
+<li>公用网(public network): 所有按照愿意按电信公司的规定缴纳费用的人都可以使用这种网络。</li>
+<li>专用网(private network): 某个部门为了满足本单位的特殊业务工作的需要而建造的网络。不向本单位以外的人提供服务。</li>
+</ol>
+<h3 id="计算机网络的性能指标"><a href="#计算机网络的性能指标" class="headerlink" title="计算机网络的性能指标"></a>计算机网络的性能指标</h3><ol>
+<li><p>速率</p>
+<p>数据的传送速率，数据率(data rate)&#x2F;比特率(bit rate)。</p>
+<p>一般提到网络的速率，指的是额定速率或标称速率，不是实际的网络运行速率。</p>
+</li>
+<li><p>带宽</p>
+<p>在频域中，衡量模拟信号时，带宽指某个信号具有的频带宽度，单位为赫兹，表示某信道允许通过的信号频带范围。</p>
+<p>在时域中，衡量数字信号时，带宽指在单位时间内网络中某信道所能通过的最高数据率，单位为比特每秒。表示网络中某通道传送数据的能力。</p>
+</li>
+<li><p>吞吐量(throughout)</p>
+<p>表示在单位时间内通过某个网络&#x2F;信道&#x2F;接口的实际的数据量。</p>
+<p>吞吐量是对实际网络数据量通过的衡量，受网络的带宽或网络的额定速率的限制。</p>
+</li>
+<li><p>各种时延</p>
+<p>时延(delay&#x2F;latency)，又称延迟&#x2F;迟延，指数据从网络的一端传送到另一端所需的时间。</p>
+<p><img src="/../images/network/time_delay.png" alt="各种时延"></p>
+<p><strong>发送时延</strong>(transmission delay)，又称传输时延，是主机或路由器发送数据帧所需要的时间，即从发送数据帧的第一个比特算起，到该帧的最后一个比特发送完毕所需的时间。</p>
+<p>$$ 发送时延 &#x3D; \frac{数据帧长度(bit)}{发送速率(bit&#x2F;s)} $$</p>
+<p>发送时延并非固定不变，而是与发送的帧长成正比，与发送速率成反比。</p>
+<p><strong>传播时延</strong>(propagation delay)是电磁波在信道中传播一定的距离需要花费的时间。</p>
+<p>$$ 传播时延 &#x3D; \frac{信道长度(m)}{电磁波在信道上的传播速率(m&#x2F;s)} $$</p>
+<p>传播时延与信号的发送速率无关，信号传送的距离越远，传播时延越大。</p>
+<p><strong>处理时延</strong>即主机或路由器在收到分组时需要花费一定的时间进行处理。</p>
+<p><strong>排队时延</strong>即分组在经过网络传输时，要经过许多路由器。分组在进入路由器后要先在输入队列中排队等待处理。路由器确定转发接口后，在输出队列中排队等待转发，产生排队时延。</p>
+<p>$$ 总时延 &#x3D; 发送时延 + 传播时延 + 处理时延 + 排队时延 $$</p>
+</li>
+<li><p>时延带宽积</p>
+<p>$$ 时延带宽积 &#x3D; 传播时延 \times 带宽 $$</p>
+<p>以比特为单位的链路长度。</p>
+</li>
+<li><p>往返时间RTT</p>
+<p>RTT(Round-Trip Time)表示信息双向交互的时间。</p>
+</li>
+<li><p>利用率</p>
+<p>分为信道利用率和网络利用率。</p>
+<p>信道利用率指某信道有数据通过的时间；网络利用率指全网络的信道利用率的加权平均值。</p>
+<p>信道利用率不是越大越好，根据公式</p>
+<p>$$ D &#x3D; \frac{D_0}{1 - U} $$</p>
+<p>信道或网络的利用率过高会产生非常大的时延。</p>
+<p><img src="/../images/network/delay_use.png" alt="时延与利用率的关系"></p>
+</li>
+</ol>
+<h3 id="计算机网络的非性能指标"><a href="#计算机网络的非性能指标" class="headerlink" title="计算机网络的非性能指标"></a>计算机网络的非性能指标</h3><ol>
+<li><p>费用</p>
+<p>一般，网络的速率越高，价格越高。</p>
+</li>
+<li><p>质量</p>
+<p>网络的质量取决于网络中所有构件的质量，以及这些构建是怎样组成网络的。</p>
+</li>
+<li><p>标准化</p>
+<p>网络的硬件和软件的设计即可以按照通用的国际标准，也可以遵循特定的专用网络标准。最好遵循国际标准，可以得到更好的互操作性，易于升级换代和维修，以及技术上的支持。</p>
+</li>
+<li><p>可靠性</p>
+<p>可靠性与网络的质量和性能密切相关。</p>
+</li>
+<li><p>可扩展性和可升级性</p>
+<p>网络的性能越高，其扩展费用往往也越高，难度也会相应增加。</p>
+</li>
+<li><p>易于管理和维护</p>
+<p>网络如果没有良好的管理和维护，就很难达到和保持所设计的性能。</p>
+</li>
+</ol>
+<h2 id="计算机网络体系结构"><a href="#计算机网络体系结构" class="headerlink" title="计算机网络体系结构"></a>计算机网络体系结构</h2><p>   计算机网络的各层及其协议的集合就是网络的体系结构，即计算机网络机器狗和构建所应完成的功能。</p>
+<p>   分层带来的优点:</p>
+<ol>
+<li>各层之间是独立的：层级之间只需要知道该层通过层间的接口所提供的服务。</li>
+<li>灵活性好：只要层间接口关系保持不变，层内部的改变不影响这层以上或以下各层。</li>
+<li>结构上可分隔开。</li>
+<li>易于实现和维护。</li>
+<li>促进标准化工作：<br>各层完成的功能可以是以下的任务的集合：<ol>
+<li>差错控制：使相应层次对等方的通信更加可靠。</li>
+<li>流量控制：发送端的发送速率必须使接收端来得及接收，不要太快。</li>
+<li>分段和重装：发送端将要发送的数据块划分为更小的单位，在接收端将其还原。</li>
+<li>复用和分用 发送端几个高层会话复用一条底层的链接，在接收端再分用。</li>
+<li>连接建立和释放：交换数据前先建立一条逻辑连接，数据传送结束后释放链接。</li>
+</ol>
+</li>
+</ol>
+<p>   网络协议用来实现在计算机网络中有条不紊的交换数据，明确规定了所交换数据的格式以及有关的同步问题。</p>
+<p>   网络协议(network protocol)是为进行网络中的数据交换而建立的规则，标准或约定。</p>
+<p>   网络协议包含三个要素：</p>
+<ol>
+<li>语法：数据与控制信息的结构或格式。</li>
+<li>语义：需要发出何种控制信息，完成何种动作以及做出何种相应。</li>
+<li>同步：时间实现顺序的详细说明。</li>
+</ol>
+<p>   <img src="/../images/network/OSI_TCPIP.png" alt="计算机网络体系结构"></p>
+<p>   目前，计算机体系结构中，TCP&#x2F;IP的四层结构是常实现的结构，为了讲解清楚，采用OSI和TCP&#x2F;IP的优点，讲解5层体系结构。</p>
+<ol>
+<li><p>应用层(application layer)</p>
+<p>应用层是体系结构中的最高层。</p>
+<p>任务是通过应用进程之间的交互来完成特定网络应用。</p>
+<p>应用层协议定义的是应用进程之间通信和交互的规则。互联网中的应用层协议有: 域名系统DNS，支持万维网应用的HTTP等。</p>
+<p>应用层交互的数据单元称为报文。</p>
+</li>
+<li><p>运输层(transport layer)</p>
+<p>运输层的任务是负责向两台主机中进程之间提供通用的数据传输服务。应用进程利用该服务传送应用层报文。</p>
+<p>由于一台主机可同时运行多个进程，因此运输层有复用和分用的功能。</p>
+<blockquote>
+<p><strong>复用</strong>：多个应用层进程可同时使用下面的运输层服务。</p>
+<p><strong>分用</strong>：运输层把收到的信息分别交付给上面应用层的相应进程。</p>
+</blockquote>
+<p>运输层主要使用TCP协议和UDP协议。</p>
+<blockquote>
+<p><strong>传输控制协议TCP</strong>(Transmission Control Protocol)：提供面向连接，可靠的的数据传输服务，其数据传输的单位是报文段(segment)。</p>
+<p><strong>用户数据报协议UDP</strong>(User Datagram Protocol)：提供无连接，尽最大努力的数据传输服务。其数据传输的单位是用户数据报。</p>
+</blockquote>
+</li>
+<li><p>网络层(network layer)</p>
+<p>一个任务是为分组交换网上的不同主机提供通信服务，另一个任务是选择合适的路由，使源主机运输层所传下来的分组能够通过网络中的路由器找到目的主机。</p>
+<p>在发送数据时，网络层把运输层产生的报文段或用户数据包封装成分组或包进行传送。在TCP&#x2F;IP体系中，由于网络层使用IP协议，因此分组&#x2F;包也叫IP数据报，或简称数据报。</p>
+</li>
+<li><p>数据链路层&#x2F;链路层(data link layer)</p>
+<p>两台主机之间的数据传输，总是在一段一段的链路上传送的，因此需要使用专门的链路层协议。</p>
+<p>在两个相邻节点之间传送数据时，数据链路层将网络层交下来的IP数据报<strong>组装成帧</strong>(framing)，在两个相邻节点间的链路上传送<strong>帧</strong>(frame)。</p>
+<p>每一帧包括数据和必要的控制信息。控制信息一是使得接收端在接收数据时能够知道一个帧从哪个比特开始和到那个比特结束，使得数据链路层在收到一个帧后从中提取数据部分上交给网络层。二是使得接收端能够检测到所收到的帧中是否有差错，若存在差错，数据链路层丢弃该帧，或者需要修正差错，需要使用可靠传输协议来纠错。</p>
+</li>
+<li><p>物理层(physical layer)</p>
+<p>在物理层上所传送的数据的单位是比特。物理层需要考虑用多大的电压代表二进制位，以及接收方如何识别发送方所发送的比特，还需要确认连接电缆的插头应当有多少根引脚以及各引脚应如何连接。</p>
+</li>
+</ol>
+<p>   <img src="/../images/network/data_in_network.png" alt="数据在各层之间的传递过程"></p>
+<p>   假定两台主机通过一台路由器连接起来，主机1的应用进程$ AP_1 $向主机2的应用进程$ AP_2 $传送数据。说明应用进程的数据在各层之间传递过程中经历的变化。</p>
+<ol>
+<li>$ AP_1 $先将数据交给本主机的应用层。</li>
+<li>应用层加上必要的控制信息$ H_5 $就变成了下一层的数据单元。</li>
+<li>运输层收到这个数据单元后，加上本层的控制信息$ H_4 $就变成了下一层的数据单元。</li>
+<li>网络层收到这个数据单元后，加上本层的控制信息$ H_3 $就变成了下一层的数据单元。</li>
+<li>数据链路收到这个数据单元后，本层控制信息分为头部$ H_2 $和尾部$ T_2 $进行添加就变成了下一层的数据单元。</li>
+<li>物理层收到这个数据单元后，以比特进行传送。</li>
+<li>比特流离开主机1网络的物理媒体传送到路由器时，就从路由器的第一层依次上升到第三层，每一层都根据控制信息进行必要的操作，将控制信息剥去，该层剩下的数据单元上交给更高一层。</li>
+<li>当分组上升到第3层时，根据首部中的目的地址查找路由器中的转发表，找出转发分组的接口，往下传送到第2层，加上新的首部和尾部控制信息后。再到最下面第1层，接着在物理媒体上把每一个比特发送出去。</li>
+<li>比特流离开路由器到达目的站主机2时，就从主机2的的第1层依次上升到最高层第5层。</li>
+<li>最后，应用进程$ AP_1 $发送的数据交给目的站的应用程序$ AP_2 $。</li>
+</ol>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://eightyninth.github.io/books/network_1.html" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%A1%E6%8B%9B/" rel="tag">校招</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/leetcode/148.html" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            力扣 148. 排序链表
+          
+        </div>
+      </a>
+    
+    
+      <a href="/leetcode/146.html" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">力扣 146. LRU缓存</div>
+      </a>
+    
+  </nav>
+
+  
+   
+    
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2022
+        <i class="ri-heart-fill heart_icon"></i> eightyninth
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="EightyNinth"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2022/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+ 
+<script src="/js/clickLove.js"></script>
+ 
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+ 
+<script src="/js/dz.js"></script>
+ 
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+
+</html>

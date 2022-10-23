@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+      <meta name="google-site-verification" content="yMlXxmAWazMPKfNgrF2K0JWa_oOfOfZMFm5i1eu7E9A" />
+      <meta name="baidu-site-verification" content="code-tf4h4LWHuW" />
+        
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>SwinTextSpotter - Scene Text Spotting via Better Synergy between Text Detection and Text Recognition |  EightyNinth</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="EightyNinth" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-paper/swin_text_spotter"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  SwinTextSpotter - Scene Text Spotting via Better Synergy between Text Detection and Text Recognition
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/paper/swin_text_spotter.html" class="article-date">
+  <time datetime="2022-07-27T09:12:54.485Z" itemprop="datePublished">2022-07-27</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/">文献阅读</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">3.2k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">11 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>论文地址: <a target="_blank" rel="noopener" href="https://openaccess.thecvf.com/content/CVPR2022/papers/Huang_SwinTextSpotter_Scene_Text_Spotting_via_Better_Synergy_Between_Text_Detection_CVPR_2022_paper.pdf">Huang_SwinTextSpotter_Scene_Text_Spotting_via_Better_Synergy_Between_Text_Detection_CVPR_2022_paper.pdf</a></p>
+<p>代码地址: <a target="_blank" rel="noopener" href="https://github.com/mxin262/SwinTextSpotter">SwinTextSpotter</a></p>
+<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><ol>
+<li><p>近年来SOTA的文字定位方法仅仅是把从backbone得到的特征, 输送到检测与识别分支, 并没有直接利用两个任务之间的特征交互.</p>
+</li>
+<li><p>SwinTextSpotter: 端到端的文字定位框架. 使用动态头的Transformer编码器作为检测器, 此次工作将这两个任务与一种新的识别转换机制统一起来，通过识别损失明确指导文本定位.</p>
+</li>
+<li><p>这样直接的设计产生了一个简洁的框架，既不需要额外的纠正模块，也不需要对任意形状的文本进行字符级注释.</p>
+</li>
+</ol>
+<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>传统的文字定位方法把检测和识别视作两个分离的任务. 首先, 从输入图像上定位并裁剪出文本区域, 然后把裁剪的区域送入文本识别器预测文本序列.</p>
+<p>这样的框架会有以下限制:</p>
+<ol>
+<li><p>两个任务的误差累加. eg: 不精确的检测结果会严重影响文字识别的性能.</p>
+</li>
+<li><p>检测与分割两个任务的各自优化或许不会使得文字定位得到最好的效果.</p>
+</li>
+<li><p>内存消耗大, 推理效率低.</p>
+</li>
+</ol>
+<p>为解决以上限制, 现尝试在一个端到端的框架解决文字定位问题.</p>
+<p>现存这样的框架同样存在限制:</p>
+<ol>
+<li><p>如果检测仅仅基于输入特征的视觉信息, 检测器容易被背景噪声分散注意力并提出不一致的检测.</p>
+</li>
+<li><p>检测和识别之间的交互通过共享backbone是不够的, 因为检测器既没有优化识别损失, 识别器也没有利用检测特征.</p>
+</li>
+</ol>
+<p>此次工作提出<strong>SwinTextSpotter</strong>, 是一个端到端训练, 基于Transformer的框架.</p>
+<p>为了更好的区别拥挤场景中密集分散的文本实例, 在<strong>SwinTextSpotter</strong>中使用Transformer和两层自注意力机制激励文本实例之间的交互.</p>
+<p>为了解决任意形状场景文字定位, 把文本检测任务视作集合预测问题, 然后使用基于查询的文字检测器.</p>
+<p>此次工作进一步提出了<strong>识别转换RC</strong>模块, 它通过结合检测特征隐式地引导识别头. <strong>识别转换RC</strong>模块可以反向传播识别信息到检测器, 并且抑制识别特征中的背景噪声, 引导检测器与识别器的联合优化.</p>
+<p>通过使用<strong>识别转换RC</strong>模块, <strong>SwinTextSpotter</strong>是一个简洁的框架, 没有先前工作中用于提升识别器的字符及注释和矫正模块.</p>
+<p>此次工作主要贡献总结如下:</p>
+<ol>
+<li><p><strong>SwinTextSpotter</strong>开创性的展示了Transformer和集合预测在端到端场景文字预测的有效性.</p>
+</li>
+<li><p><strong>SwinTextSpotter</strong>使用了<strong>识别转换RC</strong>模块来利用文字检测和识别之间的协同作用.</p>
+</li>
+<li><p><strong>SwinTextSpotter</strong>是一个简单的框架, 既不需要字符级别的注释, 也不需要为了识别任意形状的文字设计修正模块.</p>
+</li>
+<li><p><strong>SwinTextSpotter</strong>在多个公共场景文字基准上实现了SOTA性能.</p>
+</li>
+</ol>
+<h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><p><span id="model"><img src="/images/swinTextSpotter_img/model.png" alt="图1: SwinTextSpotter model"></span></p>
+<p><strong>SwinTextSpotter</strong>模型的整体结构如<a href="#model">图1</a>所示.它包含四个组件:</p>
+<ol>
+<li>基于Swin-Transformer的backbone,</li>
+<li>基于查询的文字检测器,</li>
+<li>连接文字检测器和识别器的<strong>识别转换RC</strong>模块,</li>
+<li>基于注意力的识别器.</li>
+</ol>
+<p>如<a href="#model">图1</a>绿色箭头所示, <strong>检测</strong>的第一阶段, 首先随机初始化训练参数作为box$ bbox_{0} $和proposal特征$ f_{0}^{prop} $.</p>
+<p>为了proposal特征能够获得全局信息, 使用全局平均池化提取图像特征, 并把他们加入到$ f_{0}^{prop} $中.</p>
+<p>然后使用$ bbox_{0} $提取ROI特征.</p>
+<p>把ROI特征和$ f_{0}^{prop} $送入带动态头的Transformer编码器中.</p>
+<p>Transformer编码器的输出展开并命名为$ f_{1}^{prop} $, 送入检测头输出检测结果.</p>
+<p>box$ bbox_{k - 1} $和proposal特征$ f_{k - 1}^{prop} $作为第$ k^{th} $个阶段检测器的输入.</p>
+<p>proposal特征$ f_{k}^{prop} $通过融合ROI特征与之前的$ f_{k - 1}^{prop} $来反复更新自己, 这样使得proposal特征保存了先前阶段的信息.</p>
+<p>此次工作对总计$ K $个阶段重复这样的细化, 类似与基于查询检测器的迭代结构.</p>
+<p>这样的设计使得在尺寸和纵横比方面进行更加鲁棒的检测.</p>
+<p>在<strong>识别阶段</strong>, <a href="#model">图1</a>即橙色箭头所示, 相较于检测, 需要更高的分辨率.</p>
+<p>此次工作使用检测的第$ K $个阶段的输出box$ bbox_{k} $来获取ROI特征, 此时的分辨率是检测阶段的四倍.</p>
+<p>为了在融合proposal特征时保持分辨率与检测器一致, 对ROI特征进行下采样, 得到三个尺寸递减的特征图, 以$ \lbrace a_1, a_2, a_3 \rbrace $表示.</p>
+<p>通过融合最小的$ a_3 $和proposal特征$ f_{K}^{prop} $得到检测特征$ f^{det} $.</p>
+<p>在识别阶段, 检测特征$ f^{det} $包含先前所有的检测信息.</p>
+<p>最终, $ \lbrace a_1, a_2, a_3 \rbrace $和检测特征$ f^{det} $送入<strong>识别转换RC</strong>模块以及为了生成识别结果的识别器中.</p>
+<h2 id="Dilated-Swin-Transformer"><a href="#Dilated-Swin-Transformer" class="headerlink" title="Dilated Swin-Transformer"></a>Dilated Swin-Transformer</h2><p><span id="Dilated_Swin_Transformer"><img src="/images/swinTextSpotter_img/Dilated_Swin_Transformer.png" alt="图2: Dilated Swin Transformer"></span></p>
+<p>对于文字定位, 建模不同文字之间的关系是十分重要的, 因为同一张图像上的文字有着极强的相似性, 例如其背景和样式.</p>
+<p>考虑到全局建模能力和计算效率, 使用FPN + Swin-Transformer作为backbone. </p>
+<p>鉴于一行文字字之间存在空白, 感受野需要足够大来帮助区分来相邻文字是否属于同一文本行.</p>
+<p>为了获得这样的感受野, 在原始Swin-Transformer中使用了两个空洞卷积, 一个普通卷积和一个残差结构, 如<a href="#Dilated_Swin_Transformer">图2</a>所示, 这样也把CNN的属性引入Transformer中.</p>
+<h2 id="基于查询的检测器"><a href="#基于查询的检测器" class="headerlink" title="基于查询的检测器"></a>基于查询的检测器</h2><p>使用基于查询的检测器检测文本, 基于查询的检测器建立在ISTR之上, 把检测视为一个集合预测问题.</p>
+<p>检测器使用一个proposal boxes集合, 用来替代RPN的庞大候选集, 一个proposal 特征集合表示目标的高阶语义向量.</p>
+<p>检测器根据经验设计为具有六个查询阶段.</p>
+<p>用动态头的Transformer编码器, 使得后续的阶段可以获得存储在proposal特征中的之间阶段的信息.</p>
+<p>通过多个阶段的微调, 检测器可以适用于任何尺寸.</p>
+<p><span id="detection_head"><img src="/images/swinTextSpotter_img/detectionAtKStage.png" alt="图3: k Stage detection head"></span></p>
+<p>检测器在$ k^{th} $阶段的结构如<a href="#detection_head">图2</a>所示.</p>
+<p>$ k - 1 $阶段的输出: proposal 特征$ f_{k - 1}^{prop} \in \mathbb{R}^{N, d} $在$ k^{th} $阶段输入到自注意力模块$ MSA_{k} $来建模关系, 并生成两个卷积的参数. 因此, 先前阶段的检测信息嵌入到卷积之中.</p>
+<p>以先前的proposal特征为约束的卷积用来编码ROI特征.</p>
+<p>$ k - 1 $阶段的输出: $ bbox_{k - 1} $, 利用其在RoI Aligin模块提取ROI特征, ROI特征输入到卷积层中, 然后输入到线性映射中, 生成下一个阶段的输入$ f_{k}^{prop} $.</p>
+<p>$ f_{k}^{prop} $ 接着输入到预测头中生成$ bbox_{k} $和$ mask_{k} $.</p>
+<p>为了减少计算, 2D mask 通过主成分分析(PCA)转换为 1D mask向量.</p>
+<p>当 $ k &#x3D; 1 $时, $ bbox_{0} $和$ f_{0}^{prop} $是随机初始化的参数, 作为输入. </p>
+<p>在整个训练过程中, 这些参数仅仅通过反向传播进行更新, 学习文本高级语义特征的归纳偏置.</p>
+<p>整个文本检测任务是做一个集合预测问题. 使用二分匹配来匹配预测和真值.如$ 式 \eqref{eq:one} $.</p>
+<p>$$ L_{match} &#x3D; \lambda_{cls} \cdot L_{cls} + \lambda_{L1} \cdot L_{L1} + \lambda_{giou} \cdot L_{giou} + \lambda_{mask} \cdot L_{mask} \tag{1} \label{eq:one}$$</p>
+<p>其中, $ \lambda $是用于平衡损失的超参数, $ L_{cls} $是focal 损失, $ L_{L1} $损失是用于回归检测框的L1 损失, $ L_{giou} $ 是generalized IoU 损失, $ L_{mask} $本应计算预测mask和真值之间的余弦相似度, 但检测损失与匹配成本相似，改用 L2 损失和dice 损失来代替余弦相似度.</p>
+<h2 id="识别转换RC模块"><a href="#识别转换RC模块" class="headerlink" title="识别转换RC模块"></a><strong>识别转换RC</strong>模块</h2><p><span id="rc"><img src="/images/swinTextSpotter_img/RC.png" alt="图4: RC模块"></span></p>
+<p>为了更好地协同检测与识别, <strong>识别转换RC</strong>模块被用来在空间上结合从检测头得到的特征到识别阶段, 如<a href="#rc">图4</a>所示.</p>
+<p><strong>识别转换RC</strong>模块由Transformer 编码器和四个上采样结构组成.</p>
+<p><strong>识别转换RC</strong>模块的输入是检测特征$ f^{det} $和三个下采样特征$ \lbrace a_1, a_2, a_3 \rbrace $.</p>
+<p>检测特征输送到Transformer 编码器$ TrE() $中, 使得先前检测阶段的信息与$ a_3 $进一步融合, 然后进行一系列上采样操作$ E_{u}() $和Sigmoid函数$ \phi() $, 生成三个文本区域掩码$ \lbrace M_1, M_2, M_3 \rbrace $.</p>
+<p>$$ d_{1} &#x3D; TrE(f^{det}) \tag{2} \label{eq:two} $$</p>
+<p>$$ d_{2} &#x3D; (E_{u}(d_{1}) + a_{2}) \tag{3} \label{eq:three} $$</p>
+<p>$$ d_{3} &#x3D; (E_{u}(d_{2}) + a_{1}) \tag{4} \label{eq:four} $$</p>
+<p>$$M_{i} &#x3D; \phi (d_{i}), i&#x3D;1,2,3. \tag{5} \label{eq:five} $$</p>
+<p>进一步有效整合文本区域掩码$ \lbrace M_1, M_2, M_3 \rbrace $和输入特征$ \lbrace a_1, a_2, a_3 \rbrace $:</p>
+<p>$$ r_1 &#x3D; M_1 \cdot a_3, \tag{6} \label{eq:six} $$</p>
+<p>$$ r_2 &#x3D; M_2 \cdot (E_u(r_1) +a_2), \tag{7} \label{eq:seven} $$</p>
+<p>$$ r_3 &#x3D; M_3 \cdot (E_u(r_2) +a_1), \tag{8} \label{eq:eight} $$</p>
+<p>其中, $ {r_1, r_2, r_3} $表示识别特征. $ r_3 $ 如<a href="#rc">图4</a>所示, 是最终的融合特征, 会输送到最高分辨率的识别器中.</p>
+<p>如<a href="#rc">图4</a>蓝色虚线所示, 识别损失$ L_{reg} $的梯度能够反向传播到检测特征中, 使得RC通过识别监督隐式改进检测头.</p>
+<p>一般来说, 为了抑制背景, 融合特征会乘以检测头的输出$ L_{mask} $. 然而, 检测框不够精细, 特征图中仍然存在背景噪声. 这个问题可以通过RC模块缓解, 因为RC可以通过使用检测特征生成精细掩码抑制背景噪声, 整个过程受识别损失和检测损失监督.</p>
+<p>如<a href="#rc">图4</a>右上角所示, $ M_3 $相较于$ mask_{K} $更能抑制背景噪声, $ M_3 $在文本区域有着更高的激活, 在背景区域有着更低的激活.因此, RC模块输出的掩码$ \lbrace M_1, M_2, M_3 \rbrace $可以应用于识别特征$ \lbrace r_1, r_2, r_3 \rblace $, 使得识别器更好地专注于文本区域.</p>
+<p>使用RC模块, 识别损失的梯度不仅可以影响backbone网络, 也会影响proposal特征.</p>
+<p>通过检测和识别监督优化, proposal特征能够更好的编码文本高阶语义信息.因此, RC模块可以激励检测与识别之间的协调.</p>
+<h1 id="识别器"><a href="#识别器" class="headerlink" title="识别器"></a>识别器</h1><p>在特征图使用RC模块后, 背景噪声被有效抑制, 因此文本区域的框定更加精细. 这使得仅仅使用序列识别网络就可以得到有保证的识别结果, 而不需要矫正模块或字符级分割模块.</p>
+<p>为了增强细粒度特征提取和序列建模，采用了双层自注意机制作为识别编码器.</p>
+<p>两级自注意力机制分别包含局部邻域区域和全局区域的细粒度和粗粒度自注意力机制. 因此, 可以在维持全局建模能力的同时有效提取细粒度特征. </p>
+<p>解码器使用SAM.</p>
+<p>识别损失如$ 式 \eqref{eq:nine} $.</p>
+<p>$$ L_{reg} &#x3D; -\frac{1}{T} \sum_{k &#x3D; 1}^{T} \log p(y_i) \tag{9} \label{eq: nine} $$</p>
+<p>其中, $ T $是序列的最大长度, $ p(y_i) $是序列概率.</p>
+<h1 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h1><p>在ROIC3, ICDAR 2015, ReCTS, Vintext, Total-Text, SCUT-CTW 1500数据集上进行实验.</p>
+<p><a href="#table1">表1</a>是模型在ICDAR 2015数据集上的结果, S, W和G分别代表强,弱和通用词典的识别.</p>
+<p><span id="table1"><img src="/images/swinTextSpotter_img/table1.png" alt="Table1: ICDAR 2015"></span></p>
+<p><a href="#table2">表2</a>是模型在ReCTS数据集上的结果, P, R, H分别表示准确率, 召回率和H-mean.</p>
+<p><span id="table2"><img src="/images/swinTextSpotter_img/table2.png" alt="Table2: ReCTS"></span></p>
+<p><a href="#table3">表3</a>是模型在RoIC13数据集上的结果, P, R, H分别表示准确率, 召回率和H-mean.</p>
+<p><span id="table3"><img src="/images/swinTextSpotter_img/table3.png" alt="Table3: RoIC13"></span></p>
+<p><a href="#table4">表4</a>是模型在VinText数据集上的结果.</p>
+<p><span id="table4"><img src="/images/swinTextSpotter_img/table4.png" alt="Table4: VinText"></span></p>
+<p><a href="#table5">表5</a>是模型在Total-Text数据集上的结果.</p>
+<p><span id="table5"><img src="/images/swinTextSpotter_img/table5.png" alt="Table5: Total-Text"></span></p>
+<p><a href="#table6">表6</a>是模型在SCUT-CTW1500数据集上的结果.</p>
+<p><span id="table6"><img src="/images/swinTextSpotter_img/table6.png" alt="Table6: SCUT-CTW1500"></span></p>
+<p><a href="#table7">表7</a>是模型的消融实验.</p>
+<p><span id="table7"><img src="/images/swinTextSpotter_img/abl.png" alt="Table7: 消融实验"></span></p>
+<p><a href="#vis">图5</a>是模型的消融实验.</p>
+<p><span id="vis"><img src="/images/swinTextSpotter_img/vis.png" alt="图5: 结果可视化"></span></p>
+<h1 id="限制"><a href="#限制" class="headerlink" title="限制"></a>限制</h1><p>对于长任意形状文本的识别有限制. 长任意形状文本的识别需要分辨率高的特征图, 当特征图越大, 在识别器中的注意力图也会随之扩张. 大的注意力图可能会导致识别器的不匹配, 从而导致端到端文字定位性能的下降.</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://eightyninth.github.io/paper/swin_text_spotter.html" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%96%87%E5%AD%97%E5%AE%9A%E4%BD%8D/" rel="tag">文字定位</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/leetcode/39.html" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            力扣 39. 组合总和
+          
+        </div>
+      </a>
+    
+    
+      <a href="/leetcode/34.html" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">力扣 34. 在排序数组中查找元素的第一个和最后一个位置</div>
+      </a>
+    
+  </nav>
+
+  
+   
+    
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2022
+        <i class="ri-heart-fill heart_icon"></i> eightyninth
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="EightyNinth"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2022/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+ 
+<script src="/js/clickLove.js"></script>
+ 
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+ 
+<script src="/js/dz.js"></script>
+ 
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+
+</html>

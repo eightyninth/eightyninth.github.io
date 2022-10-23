@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+      <meta name="google-site-verification" content="yMlXxmAWazMPKfNgrF2K0JWa_oOfOfZMFm5i1eu7E9A" />
+      <meta name="baidu-site-verification" content="code-tf4h4LWHuW" />
+        
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>软件测试笔记 1 |  EightyNinth</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="EightyNinth" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-books/soft_test1"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  软件测试笔记 1
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/books/soft_test1.html" class="article-date">
+  <time datetime="2022-08-22T08:31:16.250Z" itemprop="datePublished">2022-08-22</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%A0%A1%E6%8B%9B/">校招</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">2.3k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">7 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><blockquote>
+<p><strong>软件测试</strong>是通过考虑软件的<font color=blue>可靠性，可伸缩性，可移植性，可重用性，可用性</font>和评估软件组件的执行来查找软件错误或缺陷来识别软件正确性的过程。</p>
+</blockquote>
+<p>软件测试提供了软件的独立视图和目标，并确保软件的适用性。它涉及在所需服务下测试所有组件，以确认它是否满足指定的要求。该过程还向客户提供有关软件质量的信息。</p>
+<blockquote>
+<p><strong>测试</strong>是一组用于预定义脚本下确定应用程序正确性的技术。</p>
+</blockquote>
+<p>测试无法找到应用程序的所有缺陷，其主要目的是检测应用程序的故障，以便发现和纠正故障。其无法证明产品可以在所有条件下都能正常运行，仅表明它在某些特定条件下无法正常工作。</p>
+<p>测试提供了比较软件的行为和状态与机制的比较，可以包括相同指定产品的过去版本，可比较产品，以及预期目的，相关标准或其他标准的界面等。</p>
+<p>测试包括检查代码以及各种环境中的代码执行，条件以及代码的所有检查方面。</p>
+<h1 id="软件开发生命周期"><a href="#软件开发生命周期" class="headerlink" title="软件开发生命周期"></a>软件开发生命周期</h1><blockquote>
+<p>软件开发生命周期是一个创建软件开发结构的过程。</p>
+<p>需求 → 设计 → 开发 → 测试</p>
+</blockquote>
+<ol>
+<li><p>需求阶段</p>
+<p>这是软件开发生命周期中最关键的阶段。</p>
+<p>在此阶段，客户说明要求，规格，期望以及产品或者软件相关的任何其他特殊要求。</p>
+</li>
+<li><p>设计阶段</p>
+<p>这是软件开发生命周期中的高优先阶段。</p>
+<p>设计阶段包括根据需求阶段对新软件的详细分析，系统的逻辑设计转换为物理设计。</p>
+<p>需求阶段的输出是所需事物的集合，设计阶段为实现这些需求提供了方法。</p>
+</li>
+<li><p>建设&#x2F;设计阶段</p>
+<p>这是软件开发周期中花费最长的时间，使用最集中的方法的阶段。</p>
+<p>在成功完成需求和设计阶段后，下一步是将设计实现到软件系统的开发中。</p>
+<p>编码由开发团队根据前一个阶段讨论的设计开始，并根据需求阶段讨论的客户要求产生的所需的结果。</p>
+<p>前端开发人员开发简单的且具有吸引力的GUI和必要的接口，以便与后端操作进行交互，后端开发人员根据所需的操作进行后端编码。</p>
+</li>
+<li><p>测试阶段</p>
+<p>测试阶段是完成软件系统的最后一步。</p>
+<p>在获得开发的的GUI和后端组合之后，将根据需求阶段中的要求对其进行测试。测试确定软件是否实际按照需求阶段中的要求提供结果。</p>
+<p>测试计划包括所有类型的测试。如果软件中存在任何缺陷，或者它没有按照预期工作，那么测试团队会向开发团队提供有关该问题的详细信息。</p>
+</li>
+<li><p>部署&#x2F;交付阶段</p>
+<p>当软件测试完成，且结果令人满意，并且软件工作中没有余留问题时，就可以进行交付，供客户使用。</p>
+<p>当客户收到产品，首先进行beta测试。在beta测试中，客户可以要求软件中没有但在需求文档或任何其他GUI更改中提及的任何更改，以使其更加用户友好。</p>
+</li>
+<li><p>维护阶段</p>
+<p>维护是软件开发生命周期的最后和持久阶段。</p>
+<p>当客户开始使用软件时，实际问题就开始发生，那时需要解决这些问题。同时，还包括对硬件和软件进行更改以维持其运营效率。</p>
+</li>
+</ol>
+<h1 id="软件测试生命周期"><a href="#软件测试生命周期" class="headerlink" title="软件测试生命周期"></a>软件测试生命周期</h1><ol>
+<li><p>需求分析</p>
+<p>手动测试程序的第一步是需求分析。测试人员分析需求文档，检查客户所述的要求。在检查要求后，测试人员制定测试计划以检查软件是否满足要求。</p>
+<p>应当提供应用程序体系结构文档和明确定义的验收标准。</p>
+<p>准备所有要求和查询的列表，列出要执行的所有类型的测试，列出测试环境详细信息。</p>
+<p>此阶段的交付成果是列出可测试要求和测试环境详细信息的所有必要测试。</p>
+</li>
+<li><p>测试计划</p>
+<p>创建测试计划是软件测试生命周期的关键阶段，定义了所有测试策略。</p>
+<p>测试人员确定整个项目的估计工作量和成本。</p>
+<p>列出测试中涉及的方法，测试过程概述。</p>
+<p>解决测试环境，准备测试计划和控制程序，确定角色和责任，列出测试可交付成果，定义风险。</p>
+<p>此阶段的交付成果是测试估算文件。</p>
+</li>
+<li><p>环境设置</p>
+<p>测试环境是一项独立的活动，可以和测试用例开发一起进行。</p>
+<p>环境设置需要一组必要的软件和硬件来创造测试环境。</p>
+<p>通过分析需求规范来准备软件和硬件列表。在设置测试环境后，执行测试用例以检查测试环境的准备情况。</p>
+</li>
+<li><p>测试用例</p>
+<p>测试团队启动案例开发和执行。测试团队记下详细的测试用例，并在需要时准备测试数据。</p>
+<p>此阶段的交付成果是测试执行结果以及具有缺陷详细说明的功能列表。</p>
+</li>
+<li><p>缺陷记录</p>
+<p>测试人员和开发人员根据测试覆盖范围，质量，时间消耗，成本和关键业务目标评估软件的完成标准。此阶段确定了软件的特性和缺点。</p>
+<p>深入分析测试用例和错误报告，以检测缺陷的类型及其严重性、</p>
+<p>缺陷记录分析主要用于根据严重程度和类型找出缺陷分布。</p>
+<p>此阶段的完成标志测试的结束，交付关闭报告和测试指标。</p>
+</li>
+<li><p>测试周期</p>
+<p>关闭测试周期结束报告包括与软件设计，开发，测试结果和缺陷报告相关的所有文档。如果存在具有相同规范的软件，此阶段将评估开发策略，测试过程，可能的缺陷，以便将来使用这些实践。</p>
+<p>此阶段交付测试结束报告。</p>
+</li>
+</ol>
+<h1 id="软件质量保证-QA-和软件质量控制-QC"><a href="#软件质量保证-QA-和软件质量控制-QC" class="headerlink" title="软件质量保证(QA)和软件质量控制(QC)"></a>软件质量保证(QA)和软件质量控制(QC)</h1><h2 id="软件质量保证-QA"><a href="#软件质量保证-QA" class="headerlink" title="软件质量保证(QA)"></a>软件质量保证(QA)</h2><p>   软件质量保证用于防止缺陷并确保为特定应用程序设计的技术，方法，和过程必须正确实施。</p>
+<p>   质量保证测试确保了高质量软件的开发，因为它主要关注软件开发过程中的高质量流程，良好的质量管理体系和定期的一致性审核。</p>
+<p>   软件质量保证是一种管理工具，包括计划和系统的活动文件，以防止与质量有关的问题。</p>
+<p>   软件质量保证的责任是每一个开发团队成员的责任。</p>
+<h2 id="软件质量控制-QC"><a href="#软件质量控制-QC" class="headerlink" title="软件质量控制(QC)"></a>软件质量控制(QC)</h2><p>   软件质量控制也称为质量控制，是一系列任务，也是一个被动的过程，主要目的在于在发布软件之前纠正所有类型的缺陷。</p>
+<p>   通过识别缺陷和纠正开发软件中的缺陷来确保软件质量。</p>
+<p>   通过纠正工具消除问题根源，从而使软件能够满足用户的要求和高质量，从而完成该过程。</p>
+<p>   质量控制的责任在于测试团队，通过验证和纠正工具测试软件的缺陷。</p>
+<h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><table>
+<thead>
+<tr>
+<th align="center">项目</th>
+<th align="center">质量保证QA</th>
+<th align="center">质量控制QC</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">定义</td>
+<td align="center">质量保证是一组活动，可确保始终保持软件开发过程中使用的过程质量。</td>
+<td align="center">QC是一组用于检测已开发软件中的缺陷的活动。</td>
+</tr>
+<tr>
+<td align="center">关注重点</td>
+<td align="center">通过关注流程来防止开发软件中的缺陷。</td>
+<td align="center">通过关注测试过程来识别开发软件中缺陷。</td>
+</tr>
+<tr>
+<td align="center">如何做</td>
+<td align="center">建立高质量的管理系统，并定期审核开发软件的操作是否符合要求。</td>
+<td align="center">通过使用开发软件中的测试技术和工具来检测和消除质量问题。</td>
+</tr>
+<tr>
+<td align="center">为什么做</td>
+<td align="center">通过使用包括文档在内的系统活动来确保质量问题。</td>
+<td align="center">通过使用流程和技术来实现和维护高质量的软件，从而确保识别和消除缺陷。</td>
+</tr>
+<tr>
+<td align="center">面向</td>
+<td align="center">流程</td>
+<td align="center">产品</td>
+</tr>
+<tr>
+<td align="center">过程类型</td>
+<td align="center">积极主动</td>
+<td align="center">QC是一种反应过程，因为它涉及在产品开发之后和产品发布之前识别缺陷。</td>
+</tr>
+<tr>
+<td align="center">责任</td>
+<td align="center">开发团队每个成员</td>
+<td align="center">特定的检测团队</td>
+</tr>
+<tr>
+<td align="center">示例</td>
+<td align="center">验证软件流程</td>
+<td align="center">检验软件功能和流程</td>
+</tr>
+</tbody></table>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://eightyninth.github.io/books/soft_test1.html" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%A1%E6%8B%9B/" rel="tag">校招</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/" rel="tag">软件测试</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/leetcode/152.html" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            (no title)
+          
+        </div>
+      </a>
+    
+    
+      <a href="/leetcode/148.html" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">力扣 148. 排序链表</div>
+      </a>
+    
+  </nav>
+
+  
+   
+    
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2022
+        <i class="ri-heart-fill heart_icon"></i> eightyninth
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="EightyNinth"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2022/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+ 
+<script src="/js/clickLove.js"></script>
+ 
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+ 
+<script src="/js/dz.js"></script>
+ 
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+
+</html>
