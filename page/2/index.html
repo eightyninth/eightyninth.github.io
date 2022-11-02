@@ -157,7 +157,7 @@
     
     
     <article
-  id="post-leetcode/279"
+  id="post-leetcode/322"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -168,8 +168,8 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/leetcode/279.html"
-    >力扣 279. 完全平方数</a> 
+  <a class="article-title" href="/leetcode/322.html"
+    >力扣 322. 零钱兑换</a> 
 </h2>
  
 
@@ -177,8 +177,8 @@
     </header>
      
     <div class="article-meta">
-      <a href="/leetcode/279.html" class="article-date">
-  <time datetime="2022-10-08T14:36:06.723Z" itemprop="datePublished">2022-10-08</time>
+      <a href="/leetcode/322.html" class="article-date">
+  <time datetime="2022-10-26T07:27:10.477Z" itemprop="datePublished">2022-10-26</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
@@ -188,7 +188,7 @@
       
     <div class="article-entry" itemprop="articleBody">
        
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">numSquares</span>(<span class="params">n</span>):</span><br><span class="line">    <span class="comment"># 动态规划</span></span><br><span class="line">    dp = [<span class="number">0</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n + <span class="number">1</span>)]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):</span><br><span class="line">        dp[i] = i</span><br><span class="line">        j = <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> j * j &lt;= i:</span><br><span class="line">            dp[i] = <span class="built_in">min</span>(dp[i], dp[i - j * j] + <span class="number">1</span>)</span><br><span class="line">            j += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> dp[-<span class="number">1</span>]</span><br></pre></td></tr></table></figure> 
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">coinChange</span>(<span class="params">coins, amount</span>):</span><br><span class="line">    <span class="comment"># 无限背包最大变最小问题</span></span><br><span class="line">    dp = [<span class="built_in">float</span>(<span class="string">&quot;inf&quot;</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(amount + <span class="number">1</span>)]</span><br><span class="line">    dp[<span class="number">0</span>] = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(coins)):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(coins[i], amount + <span class="number">1</span>):</span><br><span class="line">            dp[j] = <span class="built_in">min</span>(dp[j], dp[j - coins[i]] + <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> dp[amount] <span class="keyword">if</span> dp[amount] != <span class="built_in">float</span>(<span class="string">&quot;inf&quot;</span>) <span class="keyword">else</span> -<span class="number">1</span></span><br></pre></td></tr></table></figure> 
       <!-- reward -->
       
     </div>
@@ -209,7 +209,7 @@
 
     
     <article
-  id="post-trick"
+  id="post-leetcode/862"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -220,8 +220,8 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/trick.html"
-    >技巧，知识积累，持续更新</a> 
+  <a class="article-title" href="/leetcode/862.html"
+    >力扣 862. 和至少为k的最短子数组</a> 
 </h2>
  
 
@@ -229,27 +229,18 @@
     </header>
      
     <div class="article-meta">
-      <a href="/trick.html" class="article-date">
-  <time datetime="2022-09-27T15:26:32.606Z" itemprop="datePublished">2022-09-27</time>
+      <a href="/leetcode/862.html" class="article-date">
+  <time datetime="2022-10-26T02:59:38.231Z" itemprop="datePublished">2022-10-26</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%A0%A1%E6%8B%9B/">校招</a>
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
   </div>
    
     </div>
       
     <div class="article-entry" itemprop="articleBody">
        
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="堆的构建-以大根堆为例"><a href="#堆的构建-以大根堆为例" class="headerlink" title="堆的构建: 以大根堆为例"></a>堆的构建: 以大根堆为例</h1><blockquote>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq876940285/article/details/88360807">参考</a></p>
-</blockquote>
-<ol>
-<li>找到堆中最后一个父节点</li>
-<li>对比当前父节点和左右子节点的大小，最大的和较小的交换。</li>
-<li>数组逆序到上一个父节点，执行第二步以后，如果交换的子节点还有子节点，执行第二步到叶节点</li>
-<li>执行到根节点结束</li>
-</ol>
- 
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="解法：前缀和-单调双端队列"><a href="#解法：前缀和-单调双端队列" class="headerlink" title="解法：前缀和+单调双端队列"></a>解法：前缀和+单调双端队列</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">shortestSubarray</span>(<span class="params">nums, k</span>):</span><br><span class="line">    <span class="comment"># 前缀和+单调双端队列</span></span><br><span class="line">    sums = [<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">for</span> num <span class="keyword">in</span> nums:</span><br><span class="line">        sums.append(num + sums[-<span class="number">1</span>])</span><br><span class="line">    </span><br><span class="line">    queue, ret = deque(), <span class="built_in">float</span>(<span class="string">&quot;inf&quot;</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(sums)):</span><br><span class="line">        <span class="keyword">while</span> queue <span class="keyword">and</span> queue[-<span class="number">1</span>][<span class="number">1</span>] &gt;= sums[i]:</span><br><span class="line">            queue.pop()</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span> queue <span class="keyword">and</span> sums[i] - queue[<span class="number">0</span>][<span class="number">1</span>] &gt;= k:</span><br><span class="line">            ret = <span class="built_in">min</span>(ret, i - queue.popleft()[<span class="number">0</span>])</span><br><span class="line">        </span><br><span class="line">        queue.append((i, sums[i]))</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> ret <span class="keyword">if</span> ret != <span class="built_in">float</span>(<span class="string">&quot;inf&quot;</span>) <span class="keyword">else</span> -<span class="number">1</span></span><br></pre></td></tr></table></figure> 
       <!-- reward -->
       
     </div>
@@ -259,7 +250,7 @@
     
     <footer class="article-footer">
        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%A0%86/" rel="tag">堆</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" rel="tag">前缀和</a></li></ul>
 
     </footer>
   </div>
@@ -270,7 +261,7 @@
 
     
     <article
-  id="post-leetcode/253"
+  id="post-leetcode/312"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -281,8 +272,8 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/leetcode/253.html"
-    >力扣 253. 会议室II</a> 
+  <a class="article-title" href="/leetcode/312.html"
+    >力扣 312. 戳气球</a> 
 </h2>
  
 
@@ -290,8 +281,8 @@
     </header>
      
     <div class="article-meta">
-      <a href="/leetcode/253.html" class="article-date">
-  <time datetime="2022-09-17T13:42:16.060Z" itemprop="datePublished">2022-09-17</time>
+      <a href="/leetcode/312.html" class="article-date">
+  <time datetime="2022-10-26T00:57:04.762Z" itemprop="datePublished">2022-10-26</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
@@ -301,32 +292,9 @@
       
     <div class="article-entry" itemprop="articleBody">
        
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>由于是会员题目，这里对题目进行描述</p>
-<h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>给定一个会议时间安排的数组，每个会议时间都会包括开始和结束的时间[[s1, e1], [s2,e2], …](si &lt; ei)，为避免会议冲突，同时要考虑充分利用会议室资源，请你计算至少需要多少间会议室，才能满足这些会议安排？</p>
-<blockquote>
-<p>示例1：<br>input： [[0, 30], [5, 10], [15, 20]]<br>output：2</p>
-</blockquote>
-<blockquote>
-<p> 示例2：<br>input： [[7, 10], [2, 4]]<br>output：1</p>
-</blockquote>
-<h1 id="思路1-优先队列"><a href="#思路1-优先队列" class="headerlink" title="思路1 优先队列"></a>思路1 优先队列</h1><ol>
-<li>按照开始时间对会议进行排序。</li>
-<li>以会议结束时间构建最小堆，判断是否有会议室空着可使用。</li>
-<li><ol>
-<li>如果空闲，直接开始会议</li>
-<li>如果不空闲，开新房间，加入堆</li>
-</ol>
-</li>
-</ol>
-<h1 id="解法1"><a href="#解法1" class="headerlink" title="解法1"></a>解法1</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> heapq</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">minMeetingRooms</span>(<span class="params">intervals</span>):</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> intervals: <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    <span class="comment"># 堆</span></span><br><span class="line">    intervals.sort(key=<span class="keyword">lambda</span> x: x[<span class="number">0</span>])</span><br><span class="line">    heap = []</span><br><span class="line">    <span class="keyword">for</span> inter <span class="keyword">in</span> intervals:</span><br><span class="line">        <span class="keyword">if</span> heap <span class="keyword">and</span> heap[<span class="number">0</span>] &lt;= inter[<span class="number">0</span>]:</span><br><span class="line">            heapq.heappop(heap)</span><br><span class="line">        heapq.heappush(heap, inter[<span class="number">1</span>])</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">len</span>(heap)</span><br></pre></td></tr></table></figure>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="解法：dfs"><a href="#解法：dfs" class="headerlink" title="解法：dfs"></a>解法：dfs</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">maxCoins</span>(<span class="params">nums</span>):</span><br><span class="line"><span class="meta">    @lru_cache(<span class="params"><span class="literal">None</span></span>)</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">solve</span>(<span class="params">left, right</span>):</span><br><span class="line">        <span class="keyword">if</span> left &gt;= right - <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        best = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(left + <span class="number">1</span>, right):</span><br><span class="line">            cur = new[left] * new[i] * new[right]</span><br><span class="line">            cur += solve(left, i) + solve(i, right)</span><br><span class="line">            best = <span class="built_in">max</span>(best, cur)</span><br><span class="line">        <span class="keyword">return</span> best</span><br><span class="line">    new = [<span class="number">1</span>] + nums + [<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">return</span> solve(<span class="number">0</span>, <span class="built_in">len</span>(nums) + <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
 
-<h1 id="思路2-双指针"><a href="#思路2-双指针" class="headerlink" title="思路2 双指针"></a>思路2 双指针</h1><ol>
-<li>分别按照开始时间和结束时间对会议进行排序。</li>
-<li>双指针分别指向开始和结束</li>
-<li>会议室会随着开始指针右移一直增加，但如果开始指针大于等于结束指针，会议室数量-1，结束指针后移1位</li>
-</ol>
-<h1 id="解法2"><a href="#解法2" class="headerlink" title="解法2"></a>解法2</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">minMeetingRooms</span>(<span class="params">intervals</span>):</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> intervals: <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    <span class="comment"># 双指针</span></span><br><span class="line">    start, end = [], []</span><br><span class="line">    <span class="keyword">for</span> inter <span class="keyword">in</span> intervals:</span><br><span class="line">        start.append(inter[<span class="number">0</span>])</span><br><span class="line">        end.append(inter[<span class="number">1</span>])</span><br><span class="line">    start.sort()</span><br><span class="line">    end.sort()</span><br><span class="line">    left, right, ret = <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> left &lt; <span class="built_in">len</span>(intervals) <span class="keyword">and</span> right &lt; <span class="built_in">len</span>(intervals):</span><br><span class="line">        <span class="keyword">if</span> start[left] &gt;= end[right]:</span><br><span class="line">            right += <span class="number">1</span></span><br><span class="line">            ret -= <span class="number">1</span></span><br><span class="line">        ret += <span class="number">1</span></span><br><span class="line">        left += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> ret</span><br></pre></td></tr></table></figure>
- 
+<h1 id="解法二：动态规划"><a href="#解法二：动态规划" class="headerlink" title="解法二：动态规划"></a>解法二：动态规划</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">maxCoins</span>(<span class="params">nums</span>):</span><br><span class="line">    <span class="comment"># 动态规划</span></span><br><span class="line">    n = <span class="built_in">len</span>(nums)</span><br><span class="line">    dp = [[<span class="number">0</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n + <span class="number">2</span>)] <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n + <span class="number">2</span>)]</span><br><span class="line">    new = [<span class="number">1</span>] + nums + [<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n - <span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>):      <span class="comment"># 左边缘气球</span></span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(i + <span class="number">2</span>, n + <span class="number">2</span>):   <span class="comment"># 右边缘气球</span></span><br><span class="line">            <span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(i + <span class="number">1</span>, j):   <span class="comment"># 戳爆的气球</span></span><br><span class="line">                total = new[i] * new[k] * new[j]</span><br><span class="line">                total += dp[i][k] + dp[k][j]</span><br><span class="line">                dp[i][j] = <span class="built_in">max</span>(dp[i][j], total)</span><br><span class="line">    <span class="keyword">return</span> dp[<span class="number">0</span>][n + <span class="number">1</span>]</span><br></pre></td></tr></table></figure> 
       <!-- reward -->
       
     </div>
@@ -336,7 +304,7 @@
     
     <footer class="article-footer">
        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag">双指针</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%A0%86/" rel="tag">堆</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dfs/" rel="tag">dfs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li></ul>
 
     </footer>
   </div>
@@ -347,7 +315,7 @@
 
     
     <article
-  id="post-leetcode/240"
+  id="post-leetcode/309"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -358,8 +326,8 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/leetcode/240.html"
-    >力扣 240. 搜索二维矩阵II</a> 
+  <a class="article-title" href="/leetcode/309.html"
+    >力扣 309. 最佳买卖股票时期含冷冻期</a> 
 </h2>
  
 
@@ -367,8 +335,8 @@
     </header>
      
     <div class="article-meta">
-      <a href="/leetcode/240.html" class="article-date">
-  <time datetime="2022-09-17T13:09:35.172Z" itemprop="datePublished">2022-09-17</time>
+      <a href="/leetcode/309.html" class="article-date">
+  <time datetime="2022-10-25T03:23:06.173Z" itemprop="datePublished">2022-10-25</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
@@ -378,7 +346,177 @@
       
     <div class="article-entry" itemprop="articleBody">
        
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">searchMatrix</span>(<span class="params">matrix, target</span>):</span><br><span class="line">    ret = <span class="literal">False</span></span><br><span class="line">    m, n = <span class="built_in">len</span>(matrix), <span class="built_in">len</span>(matrix[<span class="number">0</span>])</span><br><span class="line">    i, j = <span class="number">0</span>, n - <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">not</span> ret <span class="keyword">and</span> i &lt; m <span class="keyword">and</span> j &gt; -<span class="number">1</span>:</span><br><span class="line">        <span class="keyword">if</span> matrix[i][j] == target:</span><br><span class="line">            ret = <span class="literal">True</span></span><br><span class="line">        <span class="keyword">elif</span> matrix[i][j] &lt; target:</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            j -= <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> ret</span><br></pre></td></tr></table></figure> 
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">maxProfit</span>(<span class="params">prices</span>):</span><br><span class="line">    <span class="comment"># 动态规划</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    dp_0表示手中持有股票的状态</span></span><br><span class="line"><span class="string">    dp_1表示手中没有股票，但处于冷冻期的状态</span></span><br><span class="line"><span class="string">    dp_2表示手中没有股票，也没有处于冷冻期的状态</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    dp_0, dp_1, dp_2 = -prices[<span class="number">0</span>], <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="built_in">len</span>(prices)):</span><br><span class="line">        cur_0 = <span class="built_in">max</span>(dp_0, dp_2-prices[i])</span><br><span class="line">        cur_1 = dp_0 + prices[i]</span><br><span class="line">        cur_2 = <span class="built_in">max</span>(dp_1, dp_2)</span><br><span class="line">        dp_0, dp_1, dp_2 = cur_0, cur_1, cur_2</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">max</span>(dp_1, dp_2)</span><br></pre></td></tr></table></figure> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
+  id="post-leetcode/934"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/leetcode/934.html"
+    >力扣 934. 最短的桥</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/leetcode/934.html" class="article-date">
+  <time datetime="2022-10-25T02:31:23.416Z" itemprop="datePublished">2022-10-25</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> deque</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">shortestBridge</span>(<span class="params">grid</span>):</span><br><span class="line">    n = <span class="built_in">len</span>(grid)</span><br><span class="line">    queue, island = deque(), <span class="built_in">set</span>()</span><br><span class="line">    <span class="comment"># 第一次bfs查找第一个岛</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">            <span class="keyword">if</span> grid[i][j] == <span class="number">1</span>:</span><br><span class="line">                queue.append((i, j, <span class="number">0</span>))</span><br><span class="line">                island.add((i, j))</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">if</span> queue:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 第二次bfs查找扩展岛边界直到两岛接触</span></span><br><span class="line">    <span class="keyword">while</span> queue:</span><br><span class="line">        x, y, step = queue.popleft()</span><br><span class="line">        <span class="keyword">for</span> dx, dy <span class="keyword">in</span> ((-<span class="number">1</span>, <span class="number">0</span>), (<span class="number">1</span>, <span class="number">0</span>), (<span class="number">0</span>, -<span class="number">1</span>), (<span class="number">0</span>, <span class="number">1</span>)):</span><br><span class="line">            cx, cy = x + dx, y + dy</span><br><span class="line">            <span class="keyword">if</span> <span class="number">0</span> &lt;= cx &lt; n <span class="keyword">and</span> <span class="number">0</span> &lt;= cy &lt; n <span class="keyword">and</span> (cx, cy) <span class="keyword">not</span> <span class="keyword">in</span> island:</span><br><span class="line">                island.add((cx, cy))</span><br><span class="line">                <span class="keyword">if</span> grid[cx][cy] == <span class="number">1</span>:</span><br><span class="line">                    <span class="keyword">if</span> step:</span><br><span class="line">                        <span class="keyword">return</span> step</span><br><span class="line">                    queue.appendleft((cx, cy, <span class="number">0</span>))</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    queue.append((cx, cy, step + <span class="number">1</span>))</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span></span><br></pre></td></tr></table></figure> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bfs/" rel="tag">bfs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
+  id="post-leetcode/301"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/leetcode/301.html"
+    >力扣 301. 删除无效的括号</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/leetcode/301.html" class="article-date">
+  <time datetime="2022-10-24T07:14:03.204Z" itemprop="datePublished">2022-10-24</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="思路1：回溯-dfs"><a href="#思路1：回溯-dfs" class="headerlink" title="思路1：回溯 + dfs"></a>思路1：回溯 + dfs</h1><ol>
+<li>首先判断需要最少删除的左括号和右括号</li>
+<li>进行回溯</li>
+</ol>
+<h1 id="解法1"><a href="#解法1" class="headerlink" title="解法1"></a>解法1</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">removeInvalidParentheses</span>(<span class="params">self, s: <span class="built_in">str</span></span>) -&gt; <span class="type">List</span>[<span class="built_in">str</span>]:</span><br><span class="line">        <span class="comment"># 1. 确定最小删除的左括号数量和右括号数量</span></span><br><span class="line">        left_del, right_del = self.get_ld_rd(s)</span><br><span class="line"></span><br><span class="line">        ret, path = <span class="built_in">set</span>(), []</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 2. dfs回溯</span></span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">dfs</span>(<span class="params">i, ld, rd, score</span>):</span><br><span class="line">            <span class="keyword">nonlocal</span> ret, path</span><br><span class="line">            <span class="comment"># 回溯终止条件</span></span><br><span class="line">            <span class="keyword">if</span> i &gt;= <span class="built_in">len</span>(s):</span><br><span class="line">                <span class="comment"># 判断结果是否合法，能够加入到结果中</span></span><br><span class="line">                <span class="keyword">if</span> ld == <span class="number">0</span> <span class="keyword">and</span> rd == <span class="number">0</span> <span class="keyword">and</span> score == <span class="number">0</span>:</span><br><span class="line">                    ret.add(<span class="string">&quot;&quot;</span>.join(path))</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            </span><br><span class="line">            <span class="comment"># 剪枝条件,也可是说是到目前为止能够确保下一步结果一定合法的值</span></span><br><span class="line">            <span class="keyword">if</span> score &lt; <span class="number">0</span>:</span><br><span class="line">                <span class="keyword">return</span> </span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> s[i] == <span class="string">&quot;(&quot;</span>:</span><br><span class="line">                <span class="comment"># 删除</span></span><br><span class="line">                <span class="keyword">if</span> ld &gt; <span class="number">0</span>:</span><br><span class="line">                    dfs(i + <span class="number">1</span>, ld - <span class="number">1</span>, rd, score)</span><br><span class="line">                <span class="comment"># 不删除</span></span><br><span class="line">                path.append(s[i])</span><br><span class="line">                dfs(i + <span class="number">1</span>, ld, rd, score + <span class="number">1</span>)</span><br><span class="line">                path.pop()</span><br><span class="line">            <span class="keyword">elif</span> s[i] == <span class="string">&quot;)&quot;</span>:</span><br><span class="line">                <span class="comment"># 删除</span></span><br><span class="line">                <span class="keyword">if</span> rd &gt; <span class="number">0</span>:</span><br><span class="line">                    dfs(i + <span class="number">1</span>, ld, rd - <span class="number">1</span>, score)</span><br><span class="line">                <span class="comment"># 不删除</span></span><br><span class="line">                path.append(s[i])</span><br><span class="line">                dfs(i + <span class="number">1</span>, ld, rd, score - <span class="number">1</span>)</span><br><span class="line">                path.pop()</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                path.append(s[i])</span><br><span class="line">                dfs(i + <span class="number">1</span>, ld, rd, score)</span><br><span class="line">                path.pop()</span><br><span class="line">        </span><br><span class="line">        dfs(<span class="number">0</span>, left_del, right_del, <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">list</span>(ret)</span><br><span class="line">            </span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">get_ld_rd</span>(<span class="params">self, s: <span class="built_in">str</span></span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        ld, rd = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> s:</span><br><span class="line">            <span class="keyword">if</span> i ==<span class="string">&quot;(&quot;</span>:</span><br><span class="line">                ld += <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> i == <span class="string">&quot;)&quot;</span>:</span><br><span class="line">                <span class="keyword">if</span> ld &gt; <span class="number">0</span>: ld -= <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>: rd += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">        <span class="keyword">return</span> ld, rd</span><br></pre></td></tr></table></figure>
+
+<h1 id="思路2：bfs"><a href="#思路2：bfs" class="headerlink" title="思路2：bfs"></a>思路2：bfs</h1><p>就粗暴解法<br>逐层判断合法值，保留进行下一层，直至遍历完毕。</p>
+<h1 id="解法2"><a href="#解法2" class="headerlink" title="解法2"></a>解法2</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">removeInvalidParentheses</span>(<span class="params">s</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">isValid</span>(<span class="params">s</span>):</span><br><span class="line">        score = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> s:</span><br><span class="line">            <span class="keyword">if</span> i == <span class="string">&quot;(&quot;</span>:</span><br><span class="line">                score += <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> i == <span class="string">&quot;)&quot;</span>:</span><br><span class="line">                <span class="keyword">if</span> score &lt;= <span class="number">0</span>:</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    score -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> score == <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    cur = &#123;s&#125;</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        valid = <span class="built_in">list</span>(<span class="built_in">filter</span>(isValid, cur))</span><br><span class="line">        <span class="keyword">if</span> valid:</span><br><span class="line">            <span class="keyword">return</span> valid</span><br><span class="line">        cur = &#123;c[:i] + c[i + <span class="number">1</span>:] <span class="keyword">for</span> c <span class="keyword">in</span> cur <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(c)) <span class="keyword">if</span> c[i] <span class="keyword">in</span> <span class="string">&quot;()&quot;</span>&#125;</span><br></pre></td></tr></table></figure> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bfs/" rel="tag">bfs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dfs/" rel="tag">dfs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%9E%E6%BA%AF/" rel="tag">回溯</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
+  id="post-leetcode/915"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/leetcode/915.html"
+    >力扣 915. 分割数组</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/leetcode/915.html" class="article-date">
+  <time datetime="2022-10-24T03:08:36.175Z" itemprop="datePublished">2022-10-24</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="思路1：两次遍历"><a href="#思路1：两次遍历" class="headerlink" title="思路1：两次遍历"></a>思路1：两次遍历</h1><p>可以说是接雨水的简化版。</p>
+<p>从右向左遍历数组，得到当前子数组的最小值</p>
+<p>再从左向右遍历数组拿到当前子数组最大值的同时，找到满足左连续子数组的所有值小于等于又连续子数组的位置。</p>
+<h1 id="解法1"><a href="#解法1" class="headerlink" title="解法1"></a>解法1</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">partitionDisjoint</span>(<span class="params">nums</span>):</span><br><span class="line">    <span class="comment"># 两次遍历</span></span><br><span class="line">    min_right = [<span class="number">0</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(nums))]</span><br><span class="line">    min_right[-<span class="number">1</span>] = nums[-<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(nums) - <span class="number">2</span>, -<span class="number">1</span>, -<span class="number">1</span>):</span><br><span class="line">        min_right[i] = <span class="built_in">min</span>(min_right[i + <span class="number">1</span>], nums[i])</span><br><span class="line">    </span><br><span class="line">    max_left = nums[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="built_in">len</span>(nums)):</span><br><span class="line">        <span class="keyword">if</span> max_left &lt;= min_right[i]:</span><br><span class="line">            <span class="keyword">return</span> i</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            max_left = <span class="built_in">max</span>(max_left, nums[i])</span><br></pre></td></tr></table></figure>
+
+<h1 id="思路2：一次遍历"><a href="#思路2：一次遍历" class="headerlink" title="思路2：一次遍历"></a>思路2：一次遍历</h1><p>只需要维护左连续子数组即可。</p>
+<p>cur_max 维护当前左连续子数组的最大值<br>left_max 维护左连续最短子数组的最大值</p>
+<h1 id="解法2"><a href="#解法2" class="headerlink" title="解法2"></a>解法2</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">partitionDisjoint</span>(<span class="params">nums</span>):</span><br><span class="line">    <span class="comment"># 一次遍历</span></span><br><span class="line">    cur_max, left_max, ret = nums[<span class="number">0</span>], nums[<span class="number">0</span>], <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="built_in">len</span>(nums)):</span><br><span class="line">        cur_max = <span class="built_in">max</span>(cur_max, nums[i])</span><br><span class="line">        <span class="keyword">if</span> nums[i] &lt; left_max:</span><br><span class="line">            left_max, ret = cur_max, i</span><br><span class="line">    <span class="keyword">return</span> ret + <span class="number">1</span></span><br></pre></td></tr></table></figure> 
       <!-- reward -->
       
     </div>
@@ -399,7 +537,7 @@
 
     
     <article
-  id="post-books/network_3"
+  id="post-leetcode/1768"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -410,8 +548,8 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/books/network_3.html"
-    >计算机网络笔记 3</a> 
+  <a class="article-title" href="/leetcode/1768.html"
+    >力扣 1768. 交替合并字符串</a> 
 </h2>
  
 
@@ -419,267 +557,18 @@
     </header>
      
     <div class="article-meta">
-      <a href="/books/network_3.html" class="article-date">
-  <time datetime="2022-09-06T06:07:41.598Z" itemprop="datePublished">2022-09-06</time>
+      <a href="/leetcode/1768.html" class="article-date">
+  <time datetime="2022-10-23T12:02:39.675Z" itemprop="datePublished">2022-10-23</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%A0%A1%E6%8B%9B/">校招</a>
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
   </div>
    
     </div>
       
     <div class="article-entry" itemprop="articleBody">
        
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h1><p>数据链路层使用的信道主要分为以下两种类型：</p>
-<ol>
-<li><strong>点对点信道</strong>。一对一的点对点通信。<br/> <br/></li>
-<li><strong>广播信道</strong>。一对多的广播通信方式。</li>
-</ol>
-<h2 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h2><h3 id="数据链路"><a href="#数据链路" class="headerlink" title="数据链路"></a>数据链路</h3><blockquote>
-<p>链路和数据链路的区别: </p>
-<p><strong>链路</strong>(link)是从一个节点到相邻接点的一段物理线路，中间没有任何其他交换节点，只是一条路径的组成部分。</p>
-<p><strong>数据链路</strong>(data link)包括物理线路以及必要的通信协议来控制数据的传输。把实现这些协议的硬件和软件加到链路上，就构成了数据链路。</p>
-</blockquote>
-<p>最常用的方法是使用<strong>网络适配器</strong>实现用于控制数据传输的协议。一般的适配器都包括了数据链路层和物理层两种功能。</p>
-<blockquote>
-<p>注: 因为早期的数据通信协议也叫做通信<strong>规程</strong>(procedure)。规程和协议是同义词。</p>
-</blockquote>
-<h3 id="帧"><a href="#帧" class="headerlink" title="帧"></a>帧</h3><p>数据链路层把网络层下才来的数据构成<strong>帧</strong>发送到链路上，以及把接收到的<strong>帧</strong>中的数据取出并上交给网络层。</p>
-<h2 id="点对点信道"><a href="#点对点信道" class="headerlink" title="点对点信道"></a>点对点信道</h2><h3 id="数据流向"><a href="#数据流向" class="headerlink" title="数据流向"></a>数据流向</h3><p>为了主要关注数据链路层，使用3层和单层结构表示。</p>
-<p><img src="/../images/network/data_link_3.png" alt="三层简化点对点数据链路层"></p>
-<p><img src="/../images/network/data_link_1.png" alt="单层简化点对点数据链路层"></p>
-<p>点对点的数据链路层进行通信的主要步骤如下：</p>
-<ol>
-<li>节点A的数据链路层把网络层交下来的IP数据报添加首部和尾部封装成<strong>帧</strong>。<br/> <br/></li>
-<li>节点A把封装好的帧发送给节点B的数据链路层。<br/> <br/></li>
-<li>若节点B的数据链路层收到的帧无差错，则从收到的帧中提取出IP数据报交给上面的网络层，否则丢弃这个帧。</li>
-</ol>
-<p>数据链路层不必考虑物理层如何实现比特传输的细节，甚至可以简单的设想数据是沿着两个数据链路层之间的水平方向把帧直接发送到对方。<br/> <br/></p>
-<h3 id="基本问题"><a href="#基本问题" class="headerlink" title="基本问题"></a>基本问题</h3><ol>
-<li><p><strong>封装成帧</strong></p>
-<p><strong>封装成帧</strong>(framing)就是在一段数据的前后分别添加首部和尾部，来构成帧。<br/> <br/> </p>
-<p>接收端在收到物理层上交的比特流后，就能根据首部和尾部的标记，从收到比特流中识别帧的开始和结束。<br/> <br/></p>
-<p><img src="/../images/network/framing.png" alt="封装成帧"></p>
-<p>网络层的IP数据报传送到数据链路层就成为帧的数据部分。在帧的数据部分的前面和后面分别添加上首部和尾部，就构成了完整的帧。<br/> <br/></p>
-<p>一个帧的帧长等于帧的数据部分长度加上帧首部和帧尾部的长度。<br/> <br/></p>
-<p>帧首部和尾部的作用不仅是进行<strong>帧定界</strong>，此外还包含许多必要的控制信息。<br/> <br/></p>
-<p>在发送帧时，是从帧首部开始的。各种数据链路层的协议都对帧首部和帧尾部的格式有明确的规定。<br/> <br/></p>
-<p>为了提高帧的传输效率，应当使帧的数据部分长度尽可能地大于首部和尾部的长度。但是，每一种链路层协议都规定了所能传送帧的数据部分的长度上限:<strong>最大传送单元MTU</strong>(Maximum Transfer Unit)<br/> <br/></p>
-<p>当数据在传输中出现差错时，帧定界符就体现了它的作用。假定发送端在尚未发送完一个帧时突然出现故障，中断了发送，随后恢复正常，重头开始发送刚才未发送完的帧。在接收端，由于使用了帧定界符，接收端就知道前面收到的数据是不完整的帧，需要丢弃。下一个接收的帧是完整的帧，可以收下。<br/> <br/></p>
-</li>
-<li><p><strong>透明传输</strong><br/> <br/><br>所谓透明传输，即在数据链路层透明传送数据，表示无论怎样的比特组合数据，都能够原样没有差错地通过这个数据链路层。也就是说，对于传送的数据，数据链路层是”透明”的。<br/> <br/></p>
-<p>为了解决透明传输问题，在帧的数据部分绝对不可以出现链路层协议所定义的SOH(Start of Header)以及EOT(End of Transmission)。<br/> <br/></p>
-<p>为了解决帧的数据部分出现假性”SOH”和”EOT”，具体方式是<strong>字节填充</strong>(byte stuffing)&#x2F;<strong>字符填充</strong>(character stuffing)，即发送端的数据在假性”SOH”或”EOT”之前插入一个<strong>转义字符(ESC),0x1B</strong>，在接收端的数据链路层把数据送往网络层之前删除这个插入的转义字符。如果<strong>转义字符</strong>也出现在数据中，那么就在转义字符之前插入一个转义字符。<br/> <br/></p>
-<p><img src="/../images/network/character_stuffing.png" alt="字节填充方法"></p>
-</li>
-<li><p><strong>差错检测</strong><br/> <br/></p>
-<blockquote>
-<p>比特差错： 比特在传输过程中可能会产生差错:1可能会变成0，0可能变成1。</p>
-<p>误码率BER(bit error rate): 在一段时间内，传输错误的比特占所传输比特总数的比率。</p>
-</blockquote>
-<p>首先，这里的差错仅指比特差错，但在比特差错之上，还会有<strong>帧丢失</strong>，<strong>帧重复</strong>或<strong>帧失序</strong>。<br/> <br/></p>
-<blockquote>
-<p>发送端发送帧: [#1]-[#2]-[#3]</p>
-<p>帧丢失: 接收端收到[#1]-[#3] 丢失[#2]</p>
-<p>帧重复：收到[#1]-[#2]-[#2]-[#3] 收到两个[#2]</p>
-<p>帧失序：收到[#1]-[#3]-[#2]</p>
-</blockquote>
-<p>无比特差错和无传输差错因此并不是同一个概念。因此在CRC检错(针对比特差错)的基础上增加了<strong>帧编号</strong>，<strong>确认</strong>和<strong>重传机制</strong>。<br/> <br/></p>
-<p>收到正确的帧就要向发送端发送确认。发送端在一定的期限内若没有收到对方的确认，就认为出现了差错，因而就进行重传，直到收到对方的确认的为止。<br/> <br/></p>
-<p>目前的做法是，对于通信质量良好的有线传输线路，数据链路层协议不使用确认和重传机制，不要求数据链路层向上层提供可靠的传输服务。如果出错，改正差错的任务交由上层协议完成。对于通信质量较差的的无线传输链路，数据链路层协议使用确认和重传机制，向上层提供可靠传输的服务。<br/> <br/></p>
-<p>此节仅针对比特差错问题进行讨论，目前在数据链路层广泛使用的是<strong>循环冗余检验CRC</strong>(Cyclic Redundancy Check)技术。<br/> <br/></p>
-<p>在发送端，CRC利用预先约定好的除数<em>P</em>对帧数据作除法操作，最终的余数作为冗余码，又叫<strong>帧检验序列FCS</strong>(Frame Check Sequence)，构成发送数据。<br/> <br/></p>
-<p>在接收端，CRC以帧为单位进行检测。把接收的帧数据除以约定好的除数。如果得出的余数为0，判定此帧没有差错，接受。如果得出的余数不为0，判定此帧有差错，丢弃。<br/> <br/></p>
-<p>使用多项式来表示CRC检验过程。此多项式称为生成多项式。<br/> <br/></p>
-<p>目前广泛使用的生成多项式$ P(X) $包括:</p>
-<ol>
-<li>$ CRC-16 &#x3D; X^{16} + X^{15} + X^{2} + 1 $<br/> <br/></li>
-<li>$ CRC-CCITT &#x3D; X^{16} + X^{12} + X^{5} + 1 $<br/> <br/></li>
-<li>$ CRC-32 &#x3D; X^{32} + X^{26} + X^{23} + X^{22} + X^{16} + X^{12} + X^{11} + X^{10} + X^{8} + X^{7} + X^{5} + X^{4} + X^{2} + X + 1 $<br/> <br/></li>
-</ol>
-</li>
-</ol>
-<h3 id="点对点协议PPP"><a href="#点对点协议PPP" class="headerlink" title="点对点协议PPP"></a>点对点协议PPP</h3><p><strong>点对点协议PPP</strong>(Point-to-Point Protocol)是在目前通信线路质量变好的情况下点对点链路使用的数据链路层协议。<br/> <br/></p>
-<p>PPP协议是用户计算机和ISP进行通信时所使用的数据链路层协议。</p>
-<p>PPP协议应满足的需求：</p>
-<ol>
-<li><strong>简单</strong>。<br/> <br/><br>   互联网体系结构最复杂的部分是TCP协议，其次是IP网络协议，IP协议提供不可靠的数据报服务。<br/> <br/><br>   在此基础上数据链路层没必要提供多于IP协议的功能。<br/> <br/><br>   数据链路层协议: 接收方每收到一个帧，就进行CRC检验。如果CRC检验正确，就收下这个帧；反之，丢弃此帧。<br/> <br/></li>
-<li><strong>封装成帧</strong><br/> <br/><br>   PPP协议必须规定特殊的字符作为帧定界符(SOH EOT)，以便使接收端从收到的比特流中能准确地找出帧的开始和结束位置。<br/> <br/></li>
-<li><strong>透明性</strong><br/> <br/><br>   PPP协议必须保证数据传输的透明性。<br/> <br/></li>
-<li><strong>多种网络层协议</strong><br/> <br/><br>   PPP协议必须能够在<strong>同一条物理链路上同时支持多种网络层协议</strong>的运行。<br/> <br/></li>
-<li><strong>多种类型链路</strong><br/> <br/><br>   PPP协议必须能够在多种类型的链路上运行。<br/> <br/></li>
-<li><strong>差错检测(error detection)</strong><br/> <br/><br>   PPP协议必须能够对接收端收到的帧进行检测，并<strong>立刻丢弃有差错的帧</strong>。<br/> <br/></li>
-<li><strong>检测链接状态</strong><br/> <br/><br>   PPP协议必须具有一种机制能够及时自动检测出链路是否处于正常工作状态。<br/> <br/></li>
-<li><strong>最大传送单元</strong><br/> <br/><br>   PPP协议必须对每一种类型的点对点链路设置<strong>最大传送单元MTU</strong>的标准默认值。<br/> <br/><br>   如果高层协议发送的分组长度超过MTU的数值，PPP就要丢弃这样的帧，并返回差错。<br/> <br/><br>   MTU是数据链路层的帧可以载荷的<strong>数据部分</strong>的最大长度，不是<strong>帧的总长度</strong>。<br/> <br/></li>
-<li><strong>网络层地址协商</strong><br/> <br/><br>   PPP协议必须提供一种机制使通信的两个网络层的实体能够通过协商知道或能够配置彼此的网络地址。<br/> <br/></li>
-<li><strong>数据压缩协商</strong><br/> <br/><br>   PPP协议必须提供一种方法协商来使用数据压缩算法。<br/> <br/></li>
-</ol>
-<p>PPP协议只支持全双工链路。<br/> <br/></p>
-<p><img src="/../images/network/frameformat.png" alt="PPP帧的格式"></p>
-<p>PPP帧的首部和尾部分别为四个字段和两个字段。</p>
-<p>首部的第一个字段和尾部的第二个字段都是<strong>标志字段F(Flag)<strong>，规定为</strong>0x7E</strong>，即二进制的01111110。标志字段表示一个帧的开始或结束，即PPP帧的定界符。</p>
-<p>首部中的<strong>地址字段A</strong>规定为<strong>0xFF</strong>，即二进制的11111111。</p>
-<p>首部中的<strong>控制字段C</strong>规定为<strong>0x03</strong>，即二进制的00000011。</p>
-<p>首部中的第四个字段是2字节的<strong>协议字段</strong>。当协议字段为<strong>0x0021</strong>时，PPP帧的信息字段就是<strong>IP数据报</strong>。若为<strong>0xC021</strong>，信息字段是<strong>PPP协议链路控制协议LCP的数据</strong>。若为<strong>0x8021</strong>，信息字段是<strong>网络层的控制数据</strong>。</p>
-<p>信息字段的长度是可变的，不超过1500字节(MTU)。</p>
-<p>尾部中第一个字段(2字节)，是使用CRC检验的帧检验序列FCS。</p>
-<p>当信息字段中出现和标志字段一样的比特(0x7E)组合时，就必须要采取一些措施使得这种形式上和标志字符一样的比特组合不出现在信息字段中。</p>
-<p>当PPP使用<strong>异步传输(逐个字符地传送)</strong> 时，它把 <strong>转义符</strong>定义为<strong>0x7D</strong>，即二进制的01111101，并使用<strong>字节填充</strong>。填充方法如下：</p>
-<ol>
-<li>把信息字段中出现的每一个0x7E转变为2字节序列(0x7D,0x5E)。<br/> <br/></li>
-<li>若信息字段中出现一个0x7D的字节，则把0x7D转变成为2字节序列(0x7D,0x5D)。<br/> <br/></li>
-<li>若信息字段中出现ASCII码中的控制字符，即小于0x20的字符，则在该字符前加入0x7D字节，同时改变该字符的编码。<br/> <br/></li>
-</ol>
-<p>当PPP协议用在SONET&#x2F;SDH链路时，使用<strong>同步传输(一连串的比特连续发送)<strong>。在这种情况下，PPP协议采用</strong>零比特填充</strong>方法来实现透明传输，具体做法如下：</p>
-<p><img src="/../images/network/zeropadding.png" alt="零比特填充"></p>
-<ol>
-<li>在发送端，扫描整个信息字段，只要发现有连续5个1，则立刻填入一个0。<br/> <br/></li>
-<li>接收端在接收到一个帧时，先找到标志字段F以确定一个帧的边界，接着对比特流进行扫描。<br/> <br/></li>
-<li>每发现5个连续的1时，删除后续的一个0，以还原成原来的信息比特流。<br/> <br/></li>
-</ol>
-<p><img src="/../images/network/PPPstatus.png" alt="PPP协议的状态图"></p>
-<ol>
-<li>用户拨号接入ISP，建立从用户个人电脑到ISP的物理连接。<br/> <br/></li>
-<li>用户个人电脑向ISP发送一系列的链路控制协议LCP分组(封装成多个PPP帧)，以便建立LCP连接。<br/> <br/></li>
-<li>进行网络层配置，网络控制协议NCP给新接入的用户个人电脑分配一个临时的IP地址。<br/> <br/></li>
-<li>用户通信完毕，NCP释放网络层连接，收回原来分配的IP地址。<br/> <br/></li>
-<li>LCP释放数据链路层连接。<br/> <br/></li>
-<li>释放物理层的连接。<br/> <br/></li>
-</ol>
-<p>PPP链路的起始状态和终止状态永远是<strong>链路静止</strong>(Link Dead)状态，这时在用户个人电脑和ISP的路由器之间并不存在物理层的连接。</p>
-<p>当用户个人电脑通过调制解调器呼叫路由器时，路由器就能够检测到调制解调器发出的载波信号。在双方建立了物理层连接后，PPP就进入<strong>链路建立</strong>(Link Establish)状态，目的是建立链路层的LCP连接。</p>
-<p>LCP在建立连接后，开始协商一些<strong>配置选项</strong>，即发送LCP的<strong>配置请求帧</strong>(Configure-Request)。这也是一个PPP帧，其首部的协议字段置为LCP对应的代码(0xC021)，而信息字段包含特定的配置请求。连路的另一端可以发送的响应有：</p>
-<ol>
-<li><strong>配置确认帧</strong>(Configure-Ack) 所有选项都接受。<br/> <br/></li>
-<li><strong>配置否认帧</strong>(Configure-Nak) 所有选项都理解但不能接受。<br/> <br/></li>
-<li><strong>配置拒绝帧</strong>(Configure-Reject) 所有选项有的无法识别或不能接受，需要协商。<br/> <br/></li>
-</ol>
-<p>LCP配置选项包括链路上的最大帧长，所使用的<strong>鉴别协议</strong>(authentication protocol)的规约，以及不使用PPP帧中的地址和控制字段。</p>
-<p>协商结束后双方建立起了LCP链路，接着进入<strong>鉴别</strong>(Authenticate)状态。在这一状态，只允许传送LCP协议的分组，鉴别协议的分组以及监测链路质量的分组。若使用<strong>口令鉴别协议PAP</strong>(Password Authentication Protocol)，则需要发起通信的一方发送身份标识符和口令。系统允许用户重试若干次，如果需要有更好的安全性，则可使用更复杂的<strong>口令握手鉴别协议CHAP</strong>(Challenge-Handshake Authentication Protocol)。若鉴定身份失败，则转到<strong>链路终止</strong>(Link Terminate)状态。若鉴别成功，则进入<strong>网络层协议</strong>(Network-Layer Protocol)状态。</p>
-<p>在<strong>网络层协议</strong>状态，PPP链路的两端的网络控制协议NCP根据网络层的不同协议相互交换网络层特定的网络控制分组，即PPP协议两端网络层可以运行不同的网络层协议，但仍然可以使用同一个PPP协议进行通信。</p>
-<p>如果在PPP链路上运行的是IP协议，则对PPP链路的每一端配置IP协议模块时就要使用NCP中支持IP的协议-<strong>IP控制协议IPCP</strong>(IP Control Protocol)。IPCP分组也封装成PPP帧(帧的首部协议字段为0x8021)在PPP链路上传送。</p>
-<p>当网络层配置完毕后，链路就进入可进行数据通信的<strong>链路打开</strong>(Link Open)状态。链路的连个PPP端点可以彼此向对方发送分组。两个PPP端点还可以发送<strong>回送请求</strong>LCP分组(Echo-Request)和<strong>回送回答</strong>LCP分组(Echo-Reply)，以检查链路的状态。</p>
-<p>数据传输结束后，可以由链路的一端发出<strong>终止请求</strong>LCP分组(Terminate-Request)请求终止链路连接，在收到对方发送的<strong>终止确认</strong>LCP分组(Terminate-Ack)后，转到<strong>链路终止</strong>状态。如果链路出现故障，也会从<strong>链路打开</strong>状态转到<strong>链路终止</strong>状态。当调制解调器的载波停止后，则回到<strong>链路静止</strong>状态。</p>
-<h2 id="广播信道"><a href="#广播信道" class="headerlink" title="广播信道"></a>广播信道</h2><p>广播信道可以进行一对多的通信。</p>
-<h3 id="局域网的数据链路层"><a href="#局域网的数据链路层" class="headerlink" title="局域网的数据链路层"></a>局域网的数据链路层</h3><p>局域网最主要的特点是<strong>网络为一个单位所拥有，且地理范围和站点数目均有限</strong>。</p>
-<p>局域网具有如下优点：</p>
-<ol>
-<li>具有广播功能，从一个站点可很方便的访问全网。局域网的主机可共享连接在局域网上的各种硬件和软件资源。<br/> <br/></li>
-<li>便于系统的扩展和逐渐演变，各设备的位置可灵活调整和改变。<br/> <br/></li>
-<li>提高了系统的可靠性，可用性和生存性。</li>
-</ol>
-<p><img src="/../images/network/WLANcls.png" alt="局域网的拓扑"></p>
-<p>局域网按照<strong>网络拓扑</strong>分类，可分为星形网，环形网和总线网。</p>
-<p><strong>星形网</strong>的出现是因为<strong>集线器</strong>(hub)的出现和双绞线的大量应用。</p>
-<p><strong>环形网</strong>和<strong>总线网</strong>的各站直连在总线上。总线两端的匹配电阻吸收再总线上传播的电磁波信号的能量，避免在总线上产生有害的电磁波反射。</p>
-<p>局域网可使用多种传输媒体，双绞线最便宜，是局域网中的主流传输媒体，但只能在10Mbit&#x2F;s至10Gbit&#x2F;s上使用。在数据率比较高时，往往需要使用光纤作为传输媒体。</p>
-<p>共享信道技术上实现众多用户合理而方便的使用共享信道媒体资源有两种方法：</p>
-<ol>
-<li><p><strong>静态划分信道</strong><br/> <br/><br>频分复用，时分复用，波分复用，码分复用都在此列。用户只要分配到了信道就不会和其他用户发生冲突。但这种划分信道的方式代价较高，不适合局域网使用。<br/> <br/></p>
-</li>
-<li><p><strong>动态媒体接入控制</strong>，又称<strong>多点接入</strong>(multiple access)<br/> <br/><br>特点是信道并非在用户通信是固定分配给用户。<br/> <br/></p>
-<ol>
-<li><strong>随机接入</strong><br/> <br/><br>随机接入的特点是所有的用户可随机地发送信息。<br/> <br/><br>但如果恰巧有两个或更多的用户在同一时刻发送信息，那么在共享媒体上就要产生<strong>碰撞</strong>，使得这些用户的发送都失败。因此，必须有解决碰撞的网络协议。<br/> <br/></li>
-<li><strong>受控接入</strong><br/> <br/><br>受控接入的特点是用户不能随机地发送信息而必须服从一定的控制。<br/> <br/><br>这类的典型代表有分散控制的令牌环局域网和集中控制的多点线路<strong>探询</strong>(polling)或称为<strong>轮询</strong>。<br/> <br/></li>
-</ol>
-</li>
-</ol>
-<blockquote>
-<p>传统以太网用来称呼最早流行的10Mbit&#x2F;s速率的以太网。<br>现今的以太网数据率已经演进到每秒吉比特乃至100吉比特。</p>
-</blockquote>
-<blockquote>
-<p>为讨论原理，从传统以太网入手。</p>
-</blockquote>
-<h4 id="媒体接入控制MAC-Medium-Access-Control"><a href="#媒体接入控制MAC-Medium-Access-Control" class="headerlink" title="媒体接入控制MAC(Medium Access Control)"></a><strong>媒体接入控制MAC</strong>(Medium Access Control)</h4><p>由于历史原因，局域网802标准难以形成一个统一的局域网标准。为了使数据链路层能更好的适应多种局域网标准，局域网的数据链路层拆分为<strong>逻辑链路控制层LLC</strong>(Logical Link Control)和<strong>媒体接入控制MAC</strong>(Medium Access Control)。与接入媒体有关的内容都放在MAC子层，LLC子层与传输媒体无关。</p>
-<p>在以太网占据局域网市场的垄断地位后，802标准被淘汰，使用DIX Ethernet V2标准。此时LLC的作用已经消失，厂商的适配器仅存在MAC协议。</p>
-<h4 id="适配器"><a href="#适配器" class="headerlink" title="适配器"></a>适配器</h4><p><img src="/../images/network/adapter.png" alt="计算机通过适配器和局域网进行通信"></p>
-<p>计算机和外界局域网的链接是通过通信<strong>适配器</strong>(adapter)实现的。</p>
-<p>原本计算机仅有PCMCIA卡，又称<strong>网络接口卡NIC</strong>(Network Interface Card)，简称<strong>网卡</strong>。现今适配器已经集成到计算机主板上。这种适配器上装有处理器和存储器(RAM和ROM)。</p>
-<p>适配器和局域网之间的通信是通过电缆或双绞线以串行运输方式进行的，而适配器和计算机之间的通信则是通过计算机主板的I&#x2F;O总线以并行运输方式进行的。因此适配器的一个重要功能是进行数据串行传输和并行传输的转换。由于网络上的数据率和计算机总线上的数据率并不相同，因此在适配器中必须装有对数据进行缓存的存储芯片。</p>
-<p>在主板插入适配器时，必须把管理该适配器的设备驱动程序安装在计算机操作系统中。这个驱动程序会告诉适配器额，应当从存储器的什么位置上把多长的数据块发送到局域网，或者应当在存储器的什么位置上把局域网传送的数据块存储下来。</p>
-<p>适配器还需要能够实现以太网协议。</p>
-<p>适配器在接收和发送各种帧时，不使用计算机的CPU。这时计算机中的CPU可以处理其他任务。</p>
-<p>当适配器收到有差错的帧时，就把这个帧直接丢弃而不必通知计算机。当适配器收到正确的帧时，它就使用中断来通知该计算机，并交付协议栈中的网络层。</p>
-<p>当计算机要发送IP数据报时，就由协议栈把IP数据报向下交给适配器，组装成帧后发送到局域网。</p>
-<blockquote>
-<p>计算机的硬件地址在适配器的ROM中，计算机的软件地址-IP地址在计算机的存储器中。</p>
-</blockquote>
-<h3 id="CSMA-x2F-CD-协议"><a href="#CSMA-x2F-CD-协议" class="headerlink" title="CSMA&#x2F;CD 协议"></a>CSMA&#x2F;CD 协议</h3><p>最早的以太网是将许多计算机都连接到一根总线上。当一台计算机发送数据时，总线上的所有计算机都能检测到这个数据，即广播通信。</p>
-<p>为了在总线上实现一对一通信，可以使每一台计算机的适配器拥有一个与其他适配器都不同的地址。在发送数据帧时，在帧的首部写明接收站的地址。</p>
-<p>仅在数据帧中的目的地址与适配器ROM中存放的硬件地址一致时，该适配器才能接收这个数据帧。适配器不是发送给自己的数据帧就丢弃。</p>
-<blockquote>
-<p>局域网上的计算机也称为主机，工作站，站点，站。</p>
-</blockquote>
-<p>为了通信的简便，以太网采取了以下两种措施：</p>
-<ol>
-<li>采用较为灵活的<strong>无连接</strong>的工作方式，即不必先建立连接就可以直接发送数据。适配器对发送的数据帧<strong>不进行编号，也不要求对方发回确认</strong>。这样做可以使以太网工作起来非常简单，而局域网信道的质量很好，因通信质量不好产生差错的概率是很小的。因此，<strong>以太网提供的服务是尽最大努力的交付</strong>，即<strong>不可靠的交付</strong>。<br/> <br/><br>当目的站收到有差错的数据帧时，就把帧丢弃，其他什么也不做。<strong>对有差错的帧是否需要重传则由高层决定</strong>。<br/> <br/><br>在总线上，只要有一台计算机在发送数据，总线的传输资源就被占用。<strong>在同一时间只能允许一台计算机发送数据</strong>，否则各计算机之间就会互相干扰，使得所发送的数据被破坏。<br/> <br/><br>以太网采用最简单的随机接入，但有很好的协议用来减少冲突发生的概率，即<strong>CSMA&#x2F;CD</strong>，**载波监听多点接入&#x2F;碰撞检测(Carrier Sense Multiple Access with Collision Detection)**。<br/> <br/></li>
-<li>以太网发送的数据都使用<strong>曼彻斯特(Manchester)编码</strong>。<br/> <br/><br>曼彻斯特编码的编码方法是把每一个码元再分成两个相等的间隔。码元1是前一个间隔为低电压而后一个间隔为高电压。码元0正好相反，从高电压到低电压。也可以采用相反的约定。<br/> <br/><br>但这样的操作会使得所占频带宽度会比原始的基带信号增加一倍。</li>
-</ol>
-<h4 id="CSMA-x2F-CD协议要点"><a href="#CSMA-x2F-CD协议要点" class="headerlink" title="CSMA&#x2F;CD协议要点"></a>CSMA&#x2F;CD协议要点</h4><p><strong>多点接入</strong>说明这是总线型网络，许多计算机以多点接入的方式连接在一根总线上。</p>
-<p>协议的实质是<strong>载波监听</strong>和<strong>碰撞检测</strong>。</p>
-<p><strong>载波监听</strong>是用电子技术检测总线上是否有正在发送的数据。它在检测信道。不管在发送前，还是发送中，每个站都必须不停地检测信道。</p>
-<p>在发送前检测信道，是为了获得发送权。如果检测出已经有其他站在发送，则自己就暂时不许发送数据，必须要等到信道变为空闲时才能发送。</p>
-<p>在发送中检测信道，是为了及时发现有没有其他站的发送和本站发送的碰撞，即碰撞检测。</p>
-<p><strong>碰撞检测</strong>即<strong>边发送边监听</strong>。适配器边发送数据边检测信道上的信号电压的变化情况，以便判断自己在发送数据时其他站是否也在发送数据。</p>
-<p>当几个站同时在总线上发送数据时，总线上的信号电压变化幅度将会增大(互相叠加)。当适配器检测到的信号电压变化幅度超过一定的门限值时，就认为总线上至少有两个站同时在发送数据，产生了碰撞。此时，总线上传输的信号产生了严重的失真，无法从中恢复出有用的信息。因此，任何一个正在发送数据的站一但发现总线上出现了碰撞，其适配器就要立刻停止发送，免得继续进行无效的发送，浪费网络资源，然后等待一段随机时间后再次发送。</p>
-<p><img src="/../images/network/collision.png" alt="传播时延对载波监听的影响"></p>
-<p>设图中的局域网两端的站A和B相距1km，用同轴电缆相连。</p>
-<blockquote>
-<p>电磁波在1km电缆的传播时延约为<strong>5微秒</strong>。</p>
-</blockquote>
-<p>A向B发出的数据，约在5微秒后才能传送到B。B若在A发送的数据到达B之前发送自己的帧，则必然要在某个时间和A发送的帧发生碰撞。</p>
-<p>假设总线上<strong>单程端到端传播时延</strong>为$ \tau $。</p>
-<p>A在发送数据后，最迟要经过<strong>两倍的总线端到端的传播时延($ 2\tau $)</strong> 才能知道自己发送的数据和其他站发送的数据有没有发生碰撞。</p>
-<p>由于局域网上任意两个站之间的传播时延有长有短，因此局域网必须按最坏情况设计，即取总线两端的两个站之间的传播时延(距离最大的两个站)为端到端传播时延。</p>
-<p>显然，在使用CSMA&#x2F;CD协议时，一个站<strong>不可能同时进行发送和接收(但必须边发送边监听信道)<strong>。因此，使用CSMA&#x2F;CD协议的以太网不可能进行全双工通信，只能进行</strong>双向交替通信&#x2F;半双工通信</strong>。</p>
-<ol>
-<li><p>在$ t&#x3D;0 $时，A发送数据。B检测到信道为空闲。</p>
-</li>
-<li><p>在$ t &#x3D; \tau - \delta, \tau &gt; \delta &gt; 0 $时，A发送的数据还没有到达B时，由于B检测到信道是空闲的，因此B发送数据。</p>
-</li>
-<li><p>经过时间$ \delta &#x2F; 2 $后，即在$ t &#x3D; \tau - \delta &#x2F; 2 $时，A发送的数据和B发送的数据发生了碰撞。但这时A和B都不知道发生了碰撞。</p>
-</li>
-<li><p>在$ t &#x3D; \tau $时，B检测到发生了碰撞，于是停止发送数据。</p>
-</li>
-<li><p>在$ t &#x3D; 2\tau - \delta $时，A也检测到发生了碰撞，因此也停止发送数据。</p>
-</li>
-<li><p>A和B发送数据均失败，他们都要推迟一段时间再重新发送。</p>
-</li>
-</ol>
-<p><strong>每一个站在自己发送数据之后的一小段时间内，存在着遭遇碰撞的可能性</strong>。这一小段时间是<strong>不确定</strong>的，它取决于另一个发送数据的站到本站的距离。因此，以太网不能保证某一时间之内一定能够把自己的数据帧成功地发送出去。这一特点称为以太网的<strong>发送的不确定性</strong>。</p>
-<p>要使在以太网上发生碰撞的机会很小，必须使整个以太网的平均通信量远小于以太网的最高数据率。</p>
-<p>最先发送数据帧的A站，在发送数据帧后<strong>至多</strong>经过时间$ 2\tau $就能够知道所发送的数据帧是否遭受到了碰撞。这是$ \delta → 0 $的情况。因此，以太网的端到端往返时间$ 2\tau $称为**争用期(contention period)&#x2F;碰撞窗口(collision window)**。</p>
-<p>以太网使用**截断二进制指数退避(truncated binary exponential backoff)**算法来确定碰撞后重传的时机。</p>
-<p>在发生碰撞后，该算法让站在停止发送数据后，不是等待信道变为空闲后就立刻再发送数据，而是<strong>推迟&#x2F;退避</strong>一个随机的时间。</p>
-<p>具体的退避算法如下：<br/> <br/></p>
-<ol>
-<li>协议规定了基本退避时间为争用期$ 2\tau $，具体的争用期时间是51.2微秒。对于10Mbit&#x2F;s以太网，在争用期内可发送512bit，即64字节。也可以说争用期是512比特时间。<br/> <br/></li>
-<li>从离散的整数集合$ [0,1,\cdots,(2^k-1)] $中随机取出一个数，记为r。重传应推后的时间就是r倍的争用期。上面的参数k按$ 式 \eqref{eq:one} $计算：<br/> <br/><br>$$ k&#x3D;Min[重传次数,10] \tag{1} \label{eq:one}$$<br>可见当重传次数不超过10时，参数k等于重传次数；但当重传次数超过10时，k就不再增大而一直等于10。</li>
-<li>当重传次数达到16次仍不能成功时，则丢弃此帧，并向高层报告。</li>
-</ol>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/jasonchen_gbd/article/details/80170309">为什么要考虑这种情况？</a>现考虑一种情况，某个站发送了一个很短的帧。但在发送完毕之前并没有检测出碰撞。假定这个帧在继续向前传播到达目的站之前和别的站发送的帧发生了碰撞，因而目的站将收到这个有差错的帧，并丢弃。可是发送站不知道这个帧发生了碰撞，因而不会重传这个帧。为避免发生这种情况，以太网规定了一个最短帧长64字节。如果发送的数据非常少，必须加入填充字节，使得帧长不小于64字节。</p>
-<p>以上，以太网在发送数据时，如果在争用期没有发生碰撞，那么后续发送的数据就一定不会发生冲突。也就是说，如果发生碰撞，一定是在发送的前64字节内。</p>
-<p>由于一检测到冲突就立刻中止发送，这时已经发送出去的数据一定小于64字节，因此，<strong>长度小于64字节的帧都是由于冲突而异常中止的无效帧</strong>。只要收到这种无效帧，就应当立即将其丢弃。</p>
-<p>以太网的争用期确定为51.2微秒，不仅考虑到以太网的端到端时延，而且还包括其他的许多因素，例如存在的转发器所增加的时延，以及强化碰撞的干扰信号的持续时间。</p>
-<p><strong>强化碰撞</strong>是指当发送数据的站一旦发现发生了碰撞时，除了立即停止发送数据外，还要继续发送32bit&#x2F;48bit的**人为干扰信号(jamming signal)**，以便让所有用户都知道现在已经发生了碰撞。</p>
-<p><img src="/../images/network/jamming.png" alt="人为干扰信号的加入"></p>
-<blockquote>
-<p>B站得知发生碰撞后也要发送人为干扰信号，忽略。</p>
-</blockquote>
-<p>A站从发送数据开始到发现碰撞并停止发送的时间间隔是$ T_B $。A站得知碰撞已经发生时所发送的强化碰撞的干扰信号的持续时间是$ T_J $。发生碰撞使A浪费时间$ T_B + T_J $。可是整个信道被占用的时间还要增加一个单程端到端时延$ \tau $。因此，总线被占用的时间是$ T_B + T_J + \tau $。</p>
-<p>以太网还规定了<strong>帧间最小间隔</strong>为9.6微秒。相当于96比特时间。这样做是使得刚接收数据帧的站的接收缓存来得及清理，做好接收下一帧的准备。</p>
-<p>CSMA&#x2F;CD协议的要点归纳如下：</p>
-<ol>
-<li>准备发送：适配器从网络层获得一个分组，加上以太网的首部和尾部，组成以太网帧，放入适配器的缓存中。但在发送之前，必须<strong>先检测信道</strong>。<br/> <br/></li>
-<li>检测信道：若检测到信道忙，则应不停地检测，一直等待信道转为空闲，若检测到信道空闲，并在96bit时间内信道保持空闲(帧间最小间隔)，就发送这个帧。<br/> <br/></li>
-<li>在发送过程中仍不停地检测信道，即网络适配器要<strong>边发送边监听</strong>。这里只有两种可能性：<br/> <br/><ol>
-<li>发送成功：在争用期内一直未检测到碰撞。这个帧肯定能够发送成功。发送完毕后，什么也不做，返回第1步。<br/> <br/></li>
-<li>发送失败：在争用期内检测到碰撞。这时立即停止发送数据，并按规定发送人为干扰信号。适配器接着就执行指数退避算法，等待r倍512比特时间后，返回第2步，继续监测信道。若重传16次仍不能成功，则停止重传而向上报错。</li>
-</ol>
-</li>
-</ol>
-<p>以太网每发送完一帧，一定要把已发送的帧暂时保留一下。如果在争用期内检测出发生了碰撞，那么在推迟一段时间后再把这个暂时保留的帧重传一次。</p>
-<h3 id="使用集线器的星型拓扑"><a href="#使用集线器的星型拓扑" class="headerlink" title="使用集线器的星型拓扑"></a>使用集线器的星型拓扑</h3> 
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">mergeAlternately</span>(<span class="params">word1, word2</span>):</span><br><span class="line">    ret = <span class="string">&quot;&quot;</span></span><br><span class="line">    i, a_len, b_len = <span class="number">0</span>, <span class="built_in">len</span>(word1), <span class="built_in">len</span>(word2)</span><br><span class="line">    <span class="keyword">while</span> i &lt; a_len <span class="keyword">and</span> i &lt; b_len:</span><br><span class="line">        ret += word1[i] + word2[i]</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> i &lt; a_len: ret += word1[i:]</span><br><span class="line">    <span class="keyword">if</span> i &lt; b_len: ret += word2[i:]</span><br><span class="line">    <span class="keyword">return</span> ret</span><br></pre></td></tr></table></figure> 
       <!-- reward -->
       
     </div>
@@ -689,7 +578,7 @@
     
     <footer class="article-footer">
        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%A1%E6%8B%9B/" rel="tag">校招</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag">双指针</a></li></ul>
 
     </footer>
   </div>
@@ -700,7 +589,7 @@
 
     
     <article
-  id="post-leetcode/239"
+  id="post-leetcode/1235"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -711,8 +600,8 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/leetcode/239.html"
-    >力扣 239. 滑动窗口最大值</a> 
+  <a class="article-title" href="/leetcode/1235.html"
+    >力扣 901. 股票价格跨度</a> 
 </h2>
  
 
@@ -720,8 +609,8 @@
     </header>
      
     <div class="article-meta">
-      <a href="/leetcode/239.html" class="article-date">
-  <time datetime="2022-09-01T07:52:03.363Z" itemprop="datePublished">2022-09-01</time>
+      <a href="/leetcode/1235.html" class="article-date">
+  <time datetime="2022-10-22T13:35:56.747Z" itemprop="datePublished">2022-10-22</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
@@ -731,9 +620,19 @@
       
     <div class="article-entry" itemprop="articleBody">
        
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="单调队列-N-x2F-A"><a href="#单调队列-N-x2F-A" class="headerlink" title="单调队列 N&#x2F;A"></a>单调队列 N&#x2F;A</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">maxSlidingWindow</span>(<span class="params">nums, k</span>):</span><br><span class="line">    queue, ret = [], []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(nums)):</span><br><span class="line">        <span class="keyword">while</span> queue <span class="keyword">and</span> queue[-<span class="number">1</span>] &lt; nums[i]: queue.pop()</span><br><span class="line">        queue.append(nums[i])</span><br><span class="line">        <span class="keyword">if</span> i &gt;= k - <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">if</span> i &gt;= k <span class="keyword">and</span> nums[i - k] == queue[<span class="number">0</span>]:</span><br><span class="line">                queue.pop(<span class="number">0</span>)</span><br><span class="line">            ret.append(queue[<span class="number">0</span>])</span><br><span class="line">    <span class="keyword">return</span> ret</span><br></pre></td></tr></table></figure>
-
-<h1 id="修改单调队列格式"><a href="#修改单调队列格式" class="headerlink" title="修改单调队列格式"></a>修改单调队列格式</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> collections</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">maxSlidingWindow</span>(<span class="params">nums, k</span>):</span><br><span class="line">    queue, ret = collections.deque(), []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(nums)):</span><br><span class="line">        <span class="keyword">while</span> queue <span class="keyword">and</span> queue[-<span class="number">1</span>] &lt; nums[i]:</span><br><span class="line">            queue.pop()</span><br><span class="line">        queue.append(nums[i])</span><br><span class="line">        <span class="keyword">if</span> i &gt;= k - <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">if</span> i &gt;= k <span class="keyword">and</span> nums[i - k] == queue[<span class="number">0</span>]:</span><br><span class="line">                queue.popleft()</span><br><span class="line">            ret.append(queue[<span class="number">0</span>])</span><br><span class="line">        <span class="comment"># print(queue)</span></span><br><span class="line">    <span class="keyword">return</span> ret</span><br></pre></td></tr></table></figure> 
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>可以转化为背包问题</p>
+<p>dp[i]表示做到第i份工作后的最大利益</p>
+<p>因此在面对第i件工作时有两种情况</p>
+<ol>
+<li>不做第i件工作：dp[i] &#x3D; dp[i - 1]</li>
+<li>做第i件工作，利益承接和第i件工作不冲突的dp：dp[i] &#x3D; dp[k] + profit[i]<ol>
+<li>查找和第i件不冲突的工作k: bisect_right(data, starttime[i], hi&#x3D;i, key&#x3D;endtime[i])</li>
+<li>完成第k件工作，还可以完成第i件工作</li>
+</ol>
+</li>
+</ol>
+<p>综合上述情况 dp[i] &#x3D; max(dp[i - 1], dp[k] + profit[i])</p>
+<h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">jobScheduling</span>(<span class="params">startTime, endTime, profit</span>):</span><br><span class="line">    <span class="comment"># 背包问题 + 二分查找</span></span><br><span class="line">    n = <span class="built_in">len</span>(profit)</span><br><span class="line">    dp = [<span class="number">0</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n + <span class="number">1</span>)]</span><br><span class="line">    data = <span class="built_in">sorted</span>(<span class="built_in">zip</span>(startTime, endTime, profit), key=<span class="keyword">lambda</span> x: x[<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):</span><br><span class="line">        k = bisect_right(data, data[i - <span class="number">1</span>][<span class="number">0</span>], hi=i, key=<span class="keyword">lambda</span> x: x[<span class="number">1</span>])</span><br><span class="line">        dp[i] = <span class="built_in">max</span>(dp[i - <span class="number">1</span>], data[i - <span class="number">1</span>][-<span class="number">1</span>] + dp[k])</span><br><span class="line">    <span class="keyword">return</span> dp[-<span class="number">1</span>]</span><br></pre></td></tr></table></figure> 
       <!-- reward -->
       
     </div>
@@ -743,7 +642,7 @@
     
     <footer class="article-footer">
        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%98%9F%E5%88%97/" rel="tag">队列</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" rel="tag">二分查找</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li></ul>
 
     </footer>
   </div>
@@ -754,7 +653,7 @@
 
     
     <article
-  id="post-leetcode/238"
+  id="post-leetcode/901"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -765,8 +664,8 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/leetcode/238.html"
-    >力扣 238. 除自身以外数组的乘积</a> 
+  <a class="article-title" href="/leetcode/901.html"
+    >力扣 901. 股票价格跨度</a> 
 </h2>
  
 
@@ -774,8 +673,8 @@
     </header>
      
     <div class="article-meta">
-      <a href="/leetcode/238.html" class="article-date">
-  <time datetime="2022-09-01T03:44:36.136Z" itemprop="datePublished">2022-09-01</time>
+      <a href="/leetcode/901.html" class="article-date">
+  <time datetime="2022-10-21T08:41:39.146Z" itemprop="datePublished">2022-10-21</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
@@ -785,7 +684,10 @@
       
     <div class="article-entry" itemprop="articleBody">
        
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">productExceptSelf</span>(<span class="params">nums</span>):</span><br><span class="line">    nums_len = <span class="built_in">len</span>(nums)</span><br><span class="line">    left = [<span class="number">1</span>] * nums_len</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, nums_len):</span><br><span class="line">        left[i] = left[i - <span class="number">1</span>] * nums[i - <span class="number">1</span>]</span><br><span class="line">    <span class="comment"># print(left)</span></span><br><span class="line">    right = [<span class="number">1</span>] *nums_len</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(nums_len - <span class="number">2</span>, -<span class="number">1</span>, -<span class="number">1</span>):</span><br><span class="line">        right[i] = right[i + <span class="number">1</span>] * nums[i + <span class="number">1</span>]</span><br><span class="line">    <span class="comment"># print(right)</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(nums_len):</span><br><span class="line">        left[i] = left[i] * right[i]</span><br><span class="line">    <span class="keyword">return</span> left</span><br></pre></td></tr></table></figure> 
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>分别保存每日股价以及每日股票跨度，</p>
+<p>对每日股价倒叙查找，判断查找的股价小于等于当日股价，则根据他的股票跨度进行倒退，再次判断直到查找的股价大于当日股价，</p>
+<p>得到最终当日股价的跨度。</p>
+<h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">StockSpanner</span>:</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        self.prices = []</span><br><span class="line">        self.dp = []</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">next</span>(<span class="params">self, price: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        cur, dp = <span class="built_in">len</span>(self.prices) - <span class="number">1</span>, <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> cur &gt; -<span class="number">1</span> <span class="keyword">and</span> self.prices[cur] &lt;= price:</span><br><span class="line">            dp += self.dp[cur]</span><br><span class="line">            cur -= self.dp[cur]</span><br><span class="line">        self.prices.append(price)</span><br><span class="line">        self.dp.append(dp)</span><br><span class="line">        <span class="keyword">return</span> self.dp[-<span class="number">1</span>]</span><br></pre></td></tr></table></figure> 
       <!-- reward -->
       
     </div>
@@ -795,171 +697,7 @@
     
     <footer class="article-footer">
        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-    
-</article>
-
-    
-    <article
-  id="post-leetcode/236"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/leetcode/236.html"
-    >力扣 236. 二叉树的最近公共祖先</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/leetcode/236.html" class="article-date">
-  <time datetime="2022-08-28T12:52:46.259Z" itemprop="datePublished">2022-08-28</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="前置"><a href="#前置" class="headerlink" title="前置"></a>前置</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">TreeNode</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, val=<span class="number">0</span>, left=<span class="literal">None</span>, right=<span class="literal">None</span></span>):</span><br><span class="line">        self.val = val</span><br><span class="line">        self.left = left</span><br><span class="line">        self.right = right</span><br></pre></td></tr></table></figure>
-
-<h1 id="递归1"><a href="#递归1" class="headerlink" title="递归1"></a>递归1</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        self.ret = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">lowestCommonAncestor</span>(<span class="params">self, root: <span class="string">&#x27;TreeNode&#x27;</span>, p: <span class="string">&#x27;TreeNode&#x27;</span>, q: <span class="string">&#x27;TreeNode&#x27;</span></span>) -&gt; <span class="string">&#x27;TreeNode&#x27;</span>:</span><br><span class="line">        <span class="comment"># 后序遍历</span></span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">order</span>(<span class="params">root</span>):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> root: <span class="keyword">return</span> root</span><br><span class="line">            left = order(root.left)</span><br><span class="line">            right = order(root.right)</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> p <span class="keyword">in</span> (left, root, right) <span class="keyword">and</span> q <span class="keyword">in</span> (left, root, right):</span><br><span class="line">                self.ret = root</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line">            <span class="keyword">elif</span> p <span class="keyword">in</span> (left, root, right):</span><br><span class="line">                <span class="keyword">return</span> p</span><br><span class="line">            <span class="keyword">elif</span> q <span class="keyword">in</span> (left, root, right):</span><br><span class="line">                <span class="keyword">return</span> q</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">        order(root)</span><br><span class="line">        <span class="keyword">return</span> self.ret</span><br></pre></td></tr></table></figure>
-
-<h1 id="递归2"><a href="#递归2" class="headerlink" title="递归2"></a>递归2</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">lowestCommonAncestor</span>(<span class="params">root, p, q</span>):</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> root: <span class="keyword">return</span> root</span><br><span class="line">    <span class="keyword">if</span> root == p <span class="keyword">or</span> root == q: <span class="keyword">return</span> root</span><br><span class="line">    left = lowestCommonAncestor(root.left, p, q)</span><br><span class="line">    right = lowestCommonAncestor(root.right, p, q)</span><br><span class="line">    <span class="keyword">if</span> left <span class="keyword">and</span> right: <span class="keyword">return</span> root</span><br><span class="line">    <span class="keyword">return</span> left <span class="keyword">if</span> left <span class="keyword">else</span> right</span><br></pre></td></tr></table></figure> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%91/" rel="tag">树</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%80%92%E5%BD%92/" rel="tag">递归</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-    
-</article>
-
-    
-    <article
-  id="post-leetcode/234"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/leetcode/234.html"
-    >力扣 234. 回文链表</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/leetcode/234.html" class="article-date">
-  <time datetime="2022-08-28T10:06:58.909Z" itemprop="datePublished">2022-08-28</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="前置"><a href="#前置" class="headerlink" title="前置"></a>前置</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ListNode</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, val=<span class="number">0</span>, <span class="built_in">next</span>=<span class="literal">None</span></span>):</span><br><span class="line">        self.val = val</span><br><span class="line">        self.<span class="built_in">next</span> = <span class="built_in">next</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">isPalindrome</span>(<span class="params">head</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">digui</span>(<span class="params">s, e</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> e: <span class="keyword">return</span> s, <span class="literal">True</span></span><br><span class="line">        s, ret = digui(s, e.<span class="built_in">next</span>)</span><br><span class="line">        ret = ret <span class="keyword">and</span> s.val == e.val</span><br><span class="line">        <span class="keyword">return</span> s.<span class="built_in">next</span>, ret</span><br><span class="line">    _, ret = digui(head, head)</span><br><span class="line">    <span class="keyword">return</span> ret</span><br></pre></td></tr></table></figure> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%80%92%E5%BD%92/" rel="tag">递归</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8/" rel="tag">链表</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-    
-</article>
-
-    
-    <article
-  id="post-leetcode/226"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/leetcode/226.html"
-    >力扣 226. 翻转二叉树</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/leetcode/226.html" class="article-date">
-  <time datetime="2022-08-28T08:14:56.588Z" itemprop="datePublished">2022-08-28</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="前置"><a href="#前置" class="headerlink" title="前置"></a>前置</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">TreeNode</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, val=<span class="number">0</span>, left=<span class="literal">None</span>, right=<span class="literal">None</span></span>):</span><br><span class="line">        self.val = val</span><br><span class="line">        self.left = left</span><br><span class="line">        self.right = right</span><br></pre></td></tr></table></figure>
-
-<h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">invertTree</span>(<span class="params">root</span>):</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> root: <span class="keyword">return</span> root</span><br><span class="line">    invertTree(root.left)</span><br><span class="line">    invertTree(root.right)</span><br><span class="line">    root.left, root.right = root.right, root.left</span><br><span class="line">    <span class="keyword">return</span> root</span><br></pre></td></tr></table></figure> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%91/" rel="tag">树</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%80%92%E5%BD%92/" rel="tag">递归</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li></ul>
 
     </footer>
   </div>
@@ -975,7 +713,7 @@
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/3/">下一页</a>
+    <a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/3/">下一页</a>
   </nav>
   
 </section>

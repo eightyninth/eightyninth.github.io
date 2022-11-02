@@ -157,7 +157,7 @@
     
     
     <article
-  id="post-leetcode/139"
+  id="post-leetcode/207"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -168,8 +168,8 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/leetcode/139.html"
-    >力扣 139. 单词拆分</a> 
+  <a class="article-title" href="/leetcode/207.html"
+    >力扣 207. 课程表</a> 
 </h2>
  
 
@@ -177,8 +177,8 @@
     </header>
      
     <div class="article-meta">
-      <a href="/leetcode/139.html" class="article-date">
-  <time datetime="2022-08-09T01:50:28.853Z" itemprop="datePublished">2022-08-09</time>
+      <a href="/leetcode/207.html" class="article-date">
+  <time datetime="2022-08-26T03:31:00.928Z" itemprop="datePublished">2022-08-26</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
@@ -188,13 +188,11 @@
       
     <div class="article-entry" itemprop="articleBody">
        
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="dfs"><a href="#dfs" class="headerlink" title="dfs"></a>dfs</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">wordBreak</span>(<span class="params">s, wordDict</span>):</span><br><span class="line">    <span class="comment"># dfs</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">dfs</span>(<span class="params">start</span>):</span><br><span class="line">        <span class="keyword">if</span> start == s_len: <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> cur.get(start, -<span class="number">1</span>) != -<span class="number">1</span>: <span class="keyword">return</span> cur.get(start, -<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(start + <span class="number">1</span>, s_len + <span class="number">1</span>):</span><br><span class="line">            s_c = s[start: i]</span><br><span class="line">            <span class="keyword">if</span> s_c <span class="keyword">in</span> word_set <span class="keyword">and</span> dfs(i):</span><br><span class="line">                cur[start] = <span class="number">1</span></span><br><span class="line">                <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        cur[start] = <span class="number">0</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span> </span><br><span class="line">    </span><br><span class="line">    s_len = <span class="built_in">len</span>(s)</span><br><span class="line">    word_set, cur = <span class="built_in">set</span>(wordDict), &#123;&#125;</span><br><span class="line">    <span class="keyword">return</span> dfs(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>把课程看作图中的节点，所有所需学习的课程构成有向图，问题转化为查看图是否是有向无环图。</p>
+<p>拓扑排序: 对有向无环图的顶点进行排序，使得每一条有向边均有边起点定点在有向边终点之前。</p>
+<h1 id="bfs"><a href="#bfs" class="headerlink" title="bfs"></a>bfs</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> collections</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">canFinish</span>(<span class="params">numCourses, prerequisites</span>):</span><br><span class="line">    <span class="comment"># 入度表和邻接表</span></span><br><span class="line">    indeg, adj = [<span class="number">0</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(numCourses)], [[] <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(numCourses)]</span><br><span class="line">    <span class="comment"># 构建入度表和有向图邻接表</span></span><br><span class="line">    <span class="keyword">for</span> e, s <span class="keyword">in</span> prerequisites:</span><br><span class="line">        indeg[e] += <span class="number">1</span></span><br><span class="line">        adj[s].append(e)</span><br><span class="line">    <span class="comment"># 查找入度为0的节点</span></span><br><span class="line">    queue = collections.deque()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(indeg)):</span><br><span class="line">        <span class="keyword">if</span> indeg[i] == <span class="number">0</span>:</span><br><span class="line">            queue.append(i)</span><br><span class="line">    <span class="comment"># bfs</span></span><br><span class="line">    <span class="keyword">while</span> queue:</span><br><span class="line">        s = queue.popleft()</span><br><span class="line">        numCourses -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> adj[s]:</span><br><span class="line">            indeg[i] -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> indeg[i] == <span class="number">0</span>:</span><br><span class="line">                queue.append(i)</span><br><span class="line">    <span class="keyword">return</span> numCourses == <span class="number">0</span></span><br></pre></td></tr></table></figure>
 
-<h1 id="bfs"><a href="#bfs" class="headerlink" title="bfs"></a>bfs</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">wordBreak</span>(<span class="params">s, wordDict</span>):</span><br><span class="line">    <span class="comment"># bfs</span></span><br><span class="line">    i, s_len = <span class="number">1</span>, <span class="built_in">len</span>(s)</span><br><span class="line">    word_set, cur, queue = <span class="built_in">set</span>(wordDict), <span class="built_in">set</span>(), [<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">while</span> queue:</span><br><span class="line">        start = queue.pop(<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">if</span> start <span class="keyword">in</span> cur: <span class="keyword">continue</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(start + <span class="number">1</span>, s_len + <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span> s[start: i] <span class="keyword">in</span> word_set:</span><br><span class="line">                <span class="keyword">if</span> i == s_len: <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">                queue.append(i)</span><br><span class="line">                </span><br><span class="line">        cur.add(start)</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">wordBreak</span>(<span class="params">s, wordDict</span>):</span><br><span class="line">    <span class="comment"># 动态规划</span></span><br><span class="line">    s_len = <span class="built_in">len</span>(s)</span><br><span class="line">    dp, wordSet = [<span class="literal">False</span>] * (s_len + <span class="number">1</span>), <span class="built_in">set</span>(wordDict)</span><br><span class="line">    dp[<span class="number">0</span>] = <span class="literal">True</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, s_len + <span class="number">1</span>):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, i):</span><br><span class="line">            cur = s[j: i]</span><br><span class="line">            <span class="keyword">if</span> dp[j] <span class="keyword">and</span> cur <span class="keyword">in</span> wordSet:</span><br><span class="line">                dp[i] = <span class="literal">True</span></span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> dp[-<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
-
-<h1 id="动态规划优化"><a href="#动态规划优化" class="headerlink" title="动态规划优化"></a>动态规划优化</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">wordBreak</span>(<span class="params">s, wordDict</span>):</span><br><span class="line">    <span class="comment"># 动态规划优化</span></span><br><span class="line">    s_len = <span class="built_in">len</span>(s)</span><br><span class="line">    dp, wordSet = [<span class="literal">False</span>] * (s_len + <span class="number">1</span>), <span class="built_in">set</span>(wordDict)</span><br><span class="line">    dp[<span class="number">0</span>] = <span class="literal">True</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, s_len + <span class="number">1</span>):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, i):</span><br><span class="line">            <span class="keyword">if</span> dp[i]:</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> dp[j]:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            cur = s[j: i]</span><br><span class="line">            <span class="keyword">if</span> dp[j] <span class="keyword">and</span> cur <span class="keyword">in</span> wordSet:</span><br><span class="line">                dp[i] = <span class="literal">True</span></span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> dp[-<span class="number">1</span>]</span><br></pre></td></tr></table></figure> 
+<h1 id="dfs"><a href="#dfs" class="headerlink" title="dfs"></a>dfs</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> collections</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">canFinish</span>(<span class="params">numCourses, prerequisites</span>):</span><br><span class="line">    <span class="comment"># 邻接表</span></span><br><span class="line">    adj = [[] <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(numCourses)]</span><br><span class="line">    <span class="comment"># 构建有向图邻接表</span></span><br><span class="line">    <span class="keyword">for</span> e, s <span class="keyword">in</span> prerequisites:</span><br><span class="line">        adj[s].append(e)</span><br><span class="line">    flags = [<span class="number">0</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(numCourses)]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># dfs</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">dfs</span>(<span class="params">i, flags, adj</span>):</span><br><span class="line">        <span class="keyword">if</span> flags[i] == -<span class="number">1</span>: <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">if</span> flags[i] == <span class="number">1</span>: <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        flags[i] = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> adj[i]:</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> dfs(j, flags, adj): <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        flags[i] = -<span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(numCourses):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> dfs(i, flags, adj): <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure> 
       <!-- reward -->
       
     </div>
@@ -204,7 +202,7 @@
     
     <footer class="article-footer">
        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bfs/" rel="tag">bfs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dfs/" rel="tag">dfs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bfs/" rel="tag">bfs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dfs/" rel="tag">dfs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE/" rel="tag">图</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%98%9F%E5%88%97/" rel="tag">队列</a></li></ul>
 
     </footer>
   </div>
@@ -215,7 +213,7 @@
 
     
     <article
-  id="post-leetcode/136"
+  id="post-books/sql_1"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -226,8 +224,8 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/leetcode/136.html"
-    >力扣 136. 只出现一次的数字</a> 
+  <a class="article-title" href="/books/sql_1.html"
+    >数据库 1</a> 
 </h2>
  
 
@@ -235,18 +233,107 @@
     </header>
      
     <div class="article-meta">
-      <a href="/leetcode/136.html" class="article-date">
-  <time datetime="2022-08-08T03:02:16.098Z" itemprop="datePublished">2022-08-08</time>
+      <a href="/books/sql_1.html" class="article-date">
+  <time datetime="2022-08-25T14:19:10.054Z" itemprop="datePublished">2022-08-25</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+    <a class="article-category-link" href="/categories/%E6%A0%A1%E6%8B%9B/">校招</a>
   </div>
    
     </div>
       
     <div class="article-entry" itemprop="articleBody">
        
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">singleNumber</span>(<span class="params">nums</span>):</span><br><span class="line">    <span class="comment"># 位运算</span></span><br><span class="line">    ret = nums[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="built_in">len</span>(nums)):</span><br><span class="line">        ret = nums[i] ^ ret</span><br><span class="line">    <span class="keyword">return</span> ret </span><br></pre></td></tr></table></figure> 
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><blockquote>
+<p>SQL: Structured Query Language</p>
+<p>RDBMS: Relational Database Management System</p>
+</blockquote>
+<h1 id="查看命令"><a href="#查看命令" class="headerlink" title="查看命令"></a>查看命令</h1><ol>
+<li>查看数据库</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use your_database_name;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>设置使用的字符集</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> names utf-8;</span><br></pre></td></tr></table></figure>
+
+<h1 id="select"><a href="#select" class="headerlink" title="select"></a>select</h1><p>用于从数据库中选取数据</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1.</span></span><br><span class="line">select * </span><br><span class="line">from table_name;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2.</span></span><br><span class="line">select column_name, column_name </span><br><span class="line">from table_name;</span><br></pre></td></tr></table></figure>
+<h1 id="select-distinct"><a href="#select-distinct" class="headerlink" title="select distinct"></a>select distinct</h1><p>用于返回唯一不同的值(去重子集)。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select distinct column_name, column_name </span><br><span class="line">from table_name;</span><br></pre></td></tr></table></figure>
+
+<h1 id="where"><a href="#where" class="headerlink" title="where"></a>where</h1><p>用于过滤记录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select column_name, column_name </span><br><span class="line">from table_name </span><br><span class="line"><span class="built_in">where</span> column_name operator value;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="center">运算符</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">&#x3D;</td>
+<td align="center">等于</td>
+</tr>
+<tr>
+<td align="center">&lt;&gt;&#x2F;!&#x3D;</td>
+<td align="center">不等于</td>
+</tr>
+<tr>
+<td align="center">&gt;</td>
+<td align="center">大于</td>
+</tr>
+<tr>
+<td align="center">&lt;</td>
+<td align="center">小于</td>
+</tr>
+<tr>
+<td align="center">&gt;&#x3D;</td>
+<td align="center">大于等于</td>
+</tr>
+<tr>
+<td align="center">&lt;&#x3D;</td>
+<td align="center">小于等于</td>
+</tr>
+<tr>
+<td align="center">between</td>
+<td align="center">在某个范围内</td>
+</tr>
+<tr>
+<td align="center">like</td>
+<td align="center">搜索某种模式</td>
+</tr>
+<tr>
+<td align="center">in</td>
+<td align="center">指定针对某个列的多个可能值</td>
+</tr>
+</tbody></table>
+<h1 id="and-x2F-or"><a href="#and-x2F-or" class="headerlink" title="and &#x2F; or"></a>and &#x2F; or</h1><p>用于基于一个以上的条件对记录进行过滤</p>
+<p>如果所有条件都成立，and运算符显示一条记录。</p>
+<p>如果有一个条件成立，or运算符显示一条记录。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">select * </span><br><span class="line">from table_name</span><br><span class="line"><span class="built_in">where</span> column_name operator value </span><br><span class="line">or / and column_name operator value;</span><br></pre></td></tr></table></figure>
+
+<h1 id="order-by"><a href="#order-by" class="headerlink" title="order by"></a>order by</h1><p>用于对结果集进行排序</p>
+<p>对结果集按照一个列或者多个列进行排序。</p>
+<p>默认按照升序对结果进行排序。</p>
+<p>需要按照降序排列， 使用desc关键字。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select column_name, column_name </span><br><span class="line">from table_name</span><br><span class="line">order by column_name, column_name asc / desc;</span><br></pre></td></tr></table></figure>
+
+<h1 id="insert-into"><a href="#insert-into" class="headerlink" title="insert into"></a>insert into</h1><p>用于向表中插入新纪录。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 无需指定要插入数据的列名,只需要提供被插入的值即可;</span></span><br><span class="line">insert into table_name</span><br><span class="line">values (value1, value2, ..., valuen);</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 需要指定列名及被插入的值.</span></span><br><span class="line">insert into table_name (column1, column2, ..., columnn)</span><br><span class="line">values (value1, value2, ..., valuen);</span><br></pre></td></tr></table></figure>
+<h1 id="update"><a href="#update" class="headerlink" title="update"></a>update</h1><p>用于更新表中已存在的记录。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">update table_name</span><br><span class="line"><span class="built_in">set</span> column1=value1, column2=value2</span><br><span class="line"><span class="built_in">where</span> some_column = some_value;</span><br></pre></td></tr></table></figure>
+
+<h1 id="delete"><a href="#delete" class="headerlink" title="delete"></a>delete</h1><p>用于删除表中的记录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">delete from table_name</span><br><span class="line"><span class="built_in">where</span> some_column=some_value;</span><br></pre></td></tr></table></figure>
+
+<h1 id="select-top-x2F-limit-x2F-rownum"><a href="#select-top-x2F-limit-x2F-rownum" class="headerlink" title="select top &#x2F; limit &#x2F; rownum"></a>select top &#x2F; limit &#x2F; rownum</h1><p>select top </p>
+<blockquote>
+<p>select top是SQL Server使用的语句，并非所有数据库系统都支持。mysql支持limit</p>
+</blockquote>
+<h1 id="create-database"><a href="#create-database" class="headerlink" title="create database"></a>create database</h1><h1 id="alter-database"><a href="#alter-database" class="headerlink" title="alter database"></a>alter database</h1><h1 id="create-table"><a href="#create-table" class="headerlink" title="create table"></a>create table</h1><h1 id="alter-table"><a href="#alter-table" class="headerlink" title="alter table"></a>alter table</h1><h1 id="drop-table"><a href="#drop-table" class="headerlink" title="drop table"></a>drop table</h1><h1 id="create-index"><a href="#create-index" class="headerlink" title="create index"></a>create index</h1><h1 id="drop-index"><a href="#drop-index" class="headerlink" title="drop index"></a>drop index</h1> 
       <!-- reward -->
       
     </div>
@@ -256,7 +343,7 @@
     
     <footer class="article-footer">
        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" rel="tag">位运算</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%A1%E6%8B%9B/" rel="tag">校招</a></li></ul>
 
     </footer>
   </div>
@@ -267,7 +354,7 @@
 
     
     <article
-  id="post-leetcode/128"
+  id="post-leetcode/206"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -278,8 +365,8 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/leetcode/128.html"
-    >力扣 128. 最长连续序列</a> 
+  <a class="article-title" href="/leetcode/206.html"
+    >力扣 206. 反转链表</a> 
 </h2>
  
 
@@ -287,16 +374,24 @@
     </header>
      
     <div class="article-meta">
-      <a href="/leetcode/128.html" class="article-date">
-  <time datetime="2022-08-08T02:27:01.363Z" itemprop="datePublished">2022-08-08</time>
-</a>    
+      <a href="/leetcode/206.html" class="article-date">
+  <time datetime="2022-08-25T13:30:47.150Z" itemprop="datePublished">2022-08-25</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+   
     </div>
       
     <div class="article-entry" itemprop="articleBody">
        
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="hash表"><a href="#hash表" class="headerlink" title="hash表"></a>hash表</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">longestConsecutive</span>(<span class="params">nums</span>):</span><br><span class="line">    ret = <span class="number">0</span></span><br><span class="line">    nums_set = <span class="built_in">set</span>(nums)</span><br><span class="line">    <span class="keyword">for</span> num <span class="keyword">in</span> nums_set:</span><br><span class="line">        <span class="keyword">if</span> num - <span class="number">1</span> <span class="keyword">in</span> nums_set:</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        cur, cur_num = <span class="number">1</span>, num + <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> cur_num <span class="keyword">in</span> nums_set:</span><br><span class="line">            cur += <span class="number">1</span></span><br><span class="line">            cur_num += <span class="number">1</span></span><br><span class="line">        ret = <span class="built_in">max</span>(ret, cur)</span><br><span class="line">    <span class="keyword">return</span> ret</span><br></pre></td></tr></table></figure>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="前置"><a href="#前置" class="headerlink" title="前置"></a>前置</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ListNode</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, val=<span class="number">0</span>, <span class="built_in">next</span>=<span class="literal">None</span></span>):</span><br><span class="line">        self.val = val</span><br><span class="line">        self.<span class="built_in">next</span> = <span class="built_in">next</span></span><br></pre></td></tr></table></figure>
 
-<h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">longestConsecutive</span>(<span class="params">nums</span>):</span><br><span class="line">    num_dict, ret = &#123;&#125;, <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> num <span class="keyword">in</span> nums:</span><br><span class="line">        <span class="keyword">if</span> num <span class="keyword">not</span> <span class="keyword">in</span> num_dict:</span><br><span class="line">            left = num_dict.get(num - <span class="number">1</span>, <span class="number">0</span>)</span><br><span class="line">            right = num_dict.get(num + <span class="number">1</span>, <span class="number">0</span>)</span><br><span class="line">            cur = left + right + <span class="number">1</span></span><br><span class="line">            ret = <span class="built_in">max</span>(ret, cur)</span><br><span class="line"></span><br><span class="line">            num_dict[num] = cur</span><br><span class="line">            num_dict[num - left] = cur</span><br><span class="line">            num_dict[num + right] = cur</span><br><span class="line">    <span class="keyword">return</span> ret</span><br></pre></td></tr></table></figure> 
+<h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">reverseList</span>(<span class="params">head</span>):</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> head <span class="keyword">or</span> <span class="keyword">not</span> head.<span class="built_in">next</span>: <span class="keyword">return</span> head</span><br><span class="line">    end = reverseList(head.<span class="built_in">next</span>)</span><br><span class="line">    head.<span class="built_in">next</span>.<span class="built_in">next</span> = head</span><br><span class="line">    head.<span class="built_in">next</span> = <span class="literal">None</span></span><br><span class="line">    <span class="keyword">return</span> end</span><br></pre></td></tr></table></figure>
+
+<h1 id="迭代-1"><a href="#迭代-1" class="headerlink" title="迭代 1"></a>迭代 1</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">reverseList</span>(<span class="params">head</span>):</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> head <span class="keyword">or</span> <span class="keyword">not</span> head.<span class="built_in">next</span>: <span class="keyword">return</span> head</span><br><span class="line">    pre, cur, nex = <span class="literal">None</span>, head, head.<span class="built_in">next</span></span><br><span class="line">    <span class="keyword">while</span> nex:</span><br><span class="line">        cur.<span class="built_in">next</span> = pre</span><br><span class="line">        pre, cur, nex = cur, nex, nex.<span class="built_in">next</span></span><br><span class="line">    cur.<span class="built_in">next</span> = pre</span><br><span class="line">    <span class="keyword">return</span> cur</span><br></pre></td></tr></table></figure>
+
+<h1 id="迭代-2"><a href="#迭代-2" class="headerlink" title="迭代 2"></a>迭代 2</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">reverseList</span>(<span class="params">head</span>):</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> head <span class="keyword">or</span> <span class="keyword">not</span> head.<span class="built_in">next</span>: <span class="keyword">return</span> head</span><br><span class="line">    pre, cur, nex = <span class="literal">None</span>, head, head.<span class="built_in">next</span></span><br><span class="line">    <span class="keyword">while</span> cur:</span><br><span class="line">        cur.<span class="built_in">next</span> = pre</span><br><span class="line">        pre, cur = cur, nex</span><br><span class="line">        <span class="keyword">if</span> nex: nex = nex.<span class="built_in">next</span></span><br><span class="line">    <span class="keyword">return</span> pre</span><br></pre></td></tr></table></figure> 
       <!-- reward -->
       
     </div>
@@ -306,7 +401,7 @@
     
     <footer class="article-footer">
        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hash%E8%A1%A8/" rel="tag">hash表</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BF%AD%E4%BB%A3/" rel="tag">迭代</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%80%92%E5%BD%92/" rel="tag">递归</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8/" rel="tag">链表</a></li></ul>
 
     </footer>
   </div>
@@ -317,7 +412,7 @@
 
     
     <article
-  id="post-leetcode/124"
+  id="post-leetcode/200"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -328,8 +423,8 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/leetcode/124.html"
-    >力扣 124. 二叉树中最大路径和</a> 
+  <a class="article-title" href="/leetcode/200.html"
+    >力扣 200. 岛屿数量</a> 
 </h2>
  
 
@@ -337,8 +432,8 @@
     </header>
      
     <div class="article-meta">
-      <a href="/leetcode/124.html" class="article-date">
-  <time datetime="2022-08-07T01:37:59.535Z" itemprop="datePublished">2022-08-07</time>
+      <a href="/leetcode/200.html" class="article-date">
+  <time datetime="2022-08-25T13:02:57.761Z" itemprop="datePublished">2022-08-25</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
@@ -348,10 +443,9 @@
       
     <div class="article-entry" itemprop="articleBody">
        
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="前置"><a href="#前置" class="headerlink" title="前置"></a>前置</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">TreeNode</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, val=<span class="number">0</span>, left=<span class="literal">None</span>, right=<span class="literal">None</span></span>):</span><br><span class="line">        self.val = val</span><br><span class="line">        self.left = left</span><br><span class="line">        self.right = right</span><br></pre></td></tr></table></figure>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="dfs"><a href="#dfs" class="headerlink" title="dfs"></a>dfs</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">numIslands</span>(<span class="params">grid</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">dfs</span>(<span class="params">grid, i, j</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> <span class="number">0</span> &lt;= i &lt; width <span class="keyword">or</span> <span class="keyword">not</span> <span class="number">0</span> &lt;= j &lt; height <span class="keyword">or</span> grid[i][j] == <span class="string">&quot;0&quot;</span>: <span class="keyword">return</span></span><br><span class="line">        grid[i][j] = <span class="string">&quot;0&quot;</span></span><br><span class="line">        dfs(grid, i + <span class="number">1</span>, j)</span><br><span class="line">        dfs(grid,i - <span class="number">1</span>, j)</span><br><span class="line">        dfs(grid,i, j + <span class="number">1</span>)</span><br><span class="line">        dfs(grid,i, j - <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    width, height = <span class="built_in">len</span>(grid), <span class="built_in">len</span>(grid[<span class="number">0</span>])</span><br><span class="line">    ret = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(width):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(height):</span><br><span class="line">            <span class="keyword">if</span> grid[i][j] == <span class="string">&quot;0&quot;</span>:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            dfs(grid, i, j)</span><br><span class="line">            ret += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> ret</span><br></pre></td></tr></table></figure>
 
-<h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        self.ret = <span class="built_in">float</span>(<span class="string">&quot;-inf&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">maxPathSum</span>(<span class="params">self, root</span>):</span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">order</span>(<span class="params">node</span>):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> node:</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">            left = order(node.left)</span><br><span class="line">            right = order(node.right)</span><br><span class="line">            self.ret = <span class="built_in">max</span>(left + node.val + right, self.ret)</span><br><span class="line">            cur = node.val + <span class="built_in">max</span>(<span class="number">0</span>, left, right)</span><br><span class="line">            <span class="keyword">return</span> cur <span class="keyword">if</span> cur &gt; <span class="number">0</span> <span class="keyword">else</span> <span class="number">0</span></span><br><span class="line">        order(root)</span><br><span class="line">        <span class="keyword">return</span> self.ret</span><br></pre></td></tr></table></figure>
- 
+<h1 id="bfs"><a href="#bfs" class="headerlink" title="bfs"></a>bfs</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">numIslands</span>(<span class="params">grid</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">bfs</span>(<span class="params">grid, i, j</span>):</span><br><span class="line">        queue = [[i, j]]</span><br><span class="line">        <span class="keyword">while</span> queue:</span><br><span class="line">            <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(queue)):</span><br><span class="line">                w, h = queue.pop(<span class="number">0</span>)</span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">not</span> <span class="number">0</span> &lt;= w &lt; width <span class="keyword">or</span> <span class="keyword">not</span> <span class="number">0</span> &lt;= h &lt; height <span class="keyword">or</span> grid[w][h] == <span class="string">&quot;0&quot;</span>:</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                queue.append([w + <span class="number">1</span>, h])</span><br><span class="line">                queue.append([w - <span class="number">1</span>, h])</span><br><span class="line">                queue.append([w, h + <span class="number">1</span>])</span><br><span class="line">                queue.append([w, h - <span class="number">1</span>])</span><br><span class="line">                grid[w][h] = <span class="string">&quot;0&quot;</span></span><br><span class="line"></span><br><span class="line">    width, height = <span class="built_in">len</span>(grid), <span class="built_in">len</span>(grid[<span class="number">0</span>])</span><br><span class="line">    ret = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(width):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(height):</span><br><span class="line">            <span class="keyword">if</span> grid[i][j] == <span class="string">&quot;0&quot;</span>:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            bfs(grid, i , j)</span><br><span class="line">            ret += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> ret</span><br></pre></td></tr></table></figure> 
       <!-- reward -->
       
     </div>
@@ -361,7 +455,7 @@
     
     <footer class="article-footer">
        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%91/" rel="tag">树</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%80%92%E5%BD%92/" rel="tag">递归</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bfs/" rel="tag">bfs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dfs/" rel="tag">dfs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li></ul>
 
     </footer>
   </div>
@@ -372,7 +466,7 @@
 
     
     <article
-  id="post-leetcode/121"
+  id="post-leetcode/198"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -383,8 +477,8 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/leetcode/121.html"
-    >力扣 121. 买卖股票的最佳时机</a> 
+  <a class="article-title" href="/leetcode/198.html"
+    >力扣 198. 打家劫舍</a> 
 </h2>
  
 
@@ -392,8 +486,8 @@
     </header>
      
     <div class="article-meta">
-      <a href="/leetcode/121.html" class="article-date">
-  <time datetime="2022-08-06T03:33:59.475Z" itemprop="datePublished">2022-08-06</time>
+      <a href="/leetcode/198.html" class="article-date">
+  <time datetime="2022-08-25T08:35:16.239Z" itemprop="datePublished">2022-08-25</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
@@ -403,7 +497,11 @@
       
     <div class="article-entry" itemprop="articleBody">
        
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">maxProfit</span>(<span class="params">prices</span>):</span><br><span class="line">    p_len = <span class="built_in">len</span>(prices)</span><br><span class="line">    <span class="keyword">if</span> p_len &lt;= <span class="number">1</span>: <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    profit, in_ = <span class="number">0</span>, prices[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, p_len):</span><br><span class="line">        in_ = <span class="built_in">min</span>(prices[i], in_)</span><br><span class="line">        profit = <span class="built_in">max</span>(profit, prices[i] - in_)</span><br><span class="line">    <span class="keyword">return</span> profit</span><br></pre></td></tr></table></figure> 
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="动态规划方程"><a href="#动态规划方程" class="headerlink" title="动态规划方程"></a>动态规划方程</h1><p>状态转移: $ f(i) &#x3D; max(f(i - 2) + cur, f(i - 1)) $</p>
+<p>初始化: $dp[0]&#x3D;0,dp[1]&#x3D;nums[0]$</p>
+<h1 id="一维动态规划"><a href="#一维动态规划" class="headerlink" title="一维动态规划"></a>一维动态规划</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">rob</span>(<span class="params">nums</span>):</span><br><span class="line">    <span class="comment"># 动态规划</span></span><br><span class="line">    dp = [<span class="number">0</span>] * (<span class="built_in">len</span>(nums) + <span class="number">1</span>)</span><br><span class="line">    dp[<span class="number">1</span>] = nums[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="built_in">len</span>(nums)):</span><br><span class="line">        dp[i + <span class="number">1</span>] = <span class="built_in">max</span>(nums[i] + dp[i - <span class="number">1</span>],dp[i])</span><br><span class="line">    <span class="keyword">return</span> dp[-<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+
+<h1 id="空间优化动态规划"><a href="#空间优化动态规划" class="headerlink" title="空间优化动态规划"></a>空间优化动态规划</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">rob</span>(<span class="params">nums</span>):</span><br><span class="line">    <span class="comment"># 动态规划</span></span><br><span class="line">    ppre, pre, cur = <span class="number">0</span>, nums[<span class="number">0</span>], <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="built_in">len</span>(nums)):</span><br><span class="line">        cur = <span class="built_in">max</span>(nums[i] + ppre, pre)</span><br><span class="line">        ppre, pre = pre, cur</span><br><span class="line">    <span class="keyword">return</span> pre</span><br></pre></td></tr></table></figure> 
       <!-- reward -->
       
     </div>
@@ -424,7 +522,7 @@
 
     
     <article
-  id="post-leetcode/114"
+  id="post-books/soft_test2"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -435,8 +533,8 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/leetcode/114.html"
-    >力扣 114. 二叉树展开为链表</a> 
+  <a class="article-title" href="/books/soft_test2.html"
+    >软件测试笔记 2</a> 
 </h2>
  
 
@@ -444,20 +542,120 @@
     </header>
      
     <div class="article-meta">
-      <a href="/leetcode/114.html" class="article-date">
-  <time datetime="2022-08-06T03:21:23.567Z" itemprop="datePublished">2022-08-06</time>
+      <a href="/books/soft_test2.html" class="article-date">
+  <time datetime="2022-08-25T03:36:33.909Z" itemprop="datePublished">2022-08-25</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+    <a class="article-category-link" href="/categories/%E6%A0%A1%E6%8B%9B/">校招</a>
   </div>
    
     </div>
       
     <div class="article-entry" itemprop="articleBody">
        
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="前置"><a href="#前置" class="headerlink" title="前置"></a>前置</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">TreeNode</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, val=<span class="number">0</span>, left=<span class="literal">None</span>, right=<span class="literal">None</span></span>):</span><br><span class="line">        self.val = val</span><br><span class="line">        self.left = left</span><br><span class="line">        self.right = right</span><br></pre></td></tr></table></figure>
-
-<h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">flatten</span>(<span class="params">root</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Do not return anything, modify root in-place instead.</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">order</span>(<span class="params">node</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> node:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        order(node.left)</span><br><span class="line">        order(node.right)</span><br><span class="line">        <span class="keyword">if</span> node.left:</span><br><span class="line">            next_ = node.right <span class="keyword">if</span> node.right <span class="keyword">else</span> <span class="literal">None</span></span><br><span class="line">            node.left, node.right = <span class="literal">None</span>, node.left</span><br><span class="line">            <span class="keyword">if</span> next_:</span><br><span class="line">                cur = node.right</span><br><span class="line">                <span class="keyword">while</span> cur.right:</span><br><span class="line">                    cur = cur.right</span><br><span class="line">                cur.right = next_</span><br><span class="line">    order(root)</span><br></pre></td></tr></table></figure> 
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="软件测试-黑盒测试"><a href="#软件测试-黑盒测试" class="headerlink" title="软件测试 黑盒测试"></a>软件测试 黑盒测试</h1><p><strong>黑盒测试</strong>是一种软件测试技术，它可以检查软件的功能，而不会窥视其内部结构或编码。其主要来源是用户声明的要求规范。</p>
+<p>在此方法中，测试人员选择一个函数并提供输入值以检查它的功能，并检查该函数是否给出了预期的输出。如果函数产生正确的输出，则在测试中传递，否则测试失败。测试团队将结果报告给开发团队，然后测试下一个功能。如果出现严重问题，在完成所有功能测试的测试后，会将测试结果返回给开发团队进行修正。</p>
+<ol>
+<li><p>黑盒测试基于要求的规范，因此在开始的时候进行检查。</p>
+</li>
+<li><p>测试人员通过选择有效和无效的输入值来检查软件是正确还是错误的处理它们，从而创建肯定的测试场景和不利的测试场景。</p>
+</li>
+<li><p>测试人员开发各种测试用例: 决策表，所有对测试，等效划分，误差估计，因果图等。</p>
+</li>
+<li><p>包括执行所有测试用例。</p>
+</li>
+<li><p>测试仪将预期输出与实际输出进行比较。</p>
+</li>
+<li><p>最后一步，如果软件中存在任何缺陷，则将其修复并再次测试。</p>
+</li>
+</ol>
+<h2 id="测试程序"><a href="#测试程序" class="headerlink" title="测试程序"></a>测试程序</h2><p>黑盒测试的测试过程是测试人员对软件工作有特定知识的一种过程，它开发测试用例以检查软件功能的准确性。</p>
+<p>此过程不需要软件的编程知识。所有测试用例都是通过考虑特定函数的输入输出来设计的。测试人员知道特定输入的输出，但不知道结果是怎样产生的。</p>
+<h2 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h2><p>测试用例是根据要求的规范创建的。测试用例通常是根据软件的工作描述创建的，包括要求，设计参数和其他规范。</p>
+<p>对于测试，测试设计者通过采用有效输入值和不利测试场景来选择测试场景，方法是采用无效输入值来确定正确的输出。</p>
+<p>测试用例主要用于功能测试，也可以用于非功能测试。</p>
+<p>测试用例是由测试团队设计的，没有任何软件开发团队的参与。</p>
+<h2 id="黑盒测试使用的技术"><a href="#黑盒测试使用的技术" class="headerlink" title="黑盒测试使用的技术"></a>黑盒测试使用的技术</h2><table>
+<thead>
+<tr>
+<th align="center">编号</th>
+<th align="center">技术</th>
+<th align="center">描述说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">决策表技术</td>
+<td align="center">系统方法。以表的形式捕获各种输入组合及其各自的系统行为。适用于在两个或两个以上输入之间具有逻辑关系的函数。</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">边界值问题技术</td>
+<td align="center">用于测试边界值，边界值是包含变量上限和下限的边界值。在输入边界值时测试软件是否产生正确的输出。</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">状态转换技术</td>
+<td align="center">用于在向同一功能提供不同的输入值时捕获软件应用程序的行为。适用于那些提供访问应用程序的特定尝试次数的应用程序类型。</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">成对测试技术</td>
+<td align="center">用于测试所有可能的离散值组合。这种组合方法用于测试使用复选框，单选按钮输入，列表框，文本框等的应用程序。</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">因果技术</td>
+<td align="center">强调了给定结果与影响结果的所有因素之间的关系。基于一系列要求。</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">等价类划分技术</td>
+<td align="center">其输入数据被划分为有效值和无效值的分区，并且所有分区必须表现出相同的行为。</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="center">错误猜测技术</td>
+<td align="center">一种没有用于识别错误的特定方法的技术。基于测试分析师的经验，测试人员来猜测软件的有问题区域。</td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center">用例技术</td>
+<td align="center">用于根据系统的使用情况从系统的开头到结尾识别测试用例。通过这种技术，测试团队创建了一个测试场景，可以从头到尾根据每个功能的功能运行整个软件。</td>
+</tr>
+</tbody></table>
+<h2 id="决策表技术"><a href="#决策表技术" class="headerlink" title="决策表技术"></a>决策表技术</h2><p>决策表技术是用于黑盒测试的用例设计技术之一，是一种系统方法，以表格形式捕获各种输入组合及其各自的系统行为。</p>
+<p>决策表又称因果表，用于系统的选择测试用例，能够节省测试时间，并为软件应用程序的测试区域提供良好的覆盖。</p>
+<p>决策表技术适用于在两个和两个以上输入之间具有逻辑关系的函数。</p>
+<p>该技术与输入的正确组合有关，并确定各种输入组合的结果。要通过决策表技术设计测试用例，需要将条件视为输入，将操作视为输出。</p>
+<p>在使用决策表技术时，测试人员确定预期输出，如果函数产生预期输出，则在测试中传递，如果不是，则失败。将失败的软件发送回开发团队以修复缺陷。</p>
+<h2 id="边界值分析技术"><a href="#边界值分析技术" class="headerlink" title="边界值分析技术"></a>边界值分析技术</h2><p>边界值分析是用于黑盒测试用例设计技术之一。</p>
+<p>边界值分析用于测试边界值，因为边界附近的输入值具有较高的误差机会。</p>
+<p>边界值是包含变量上限和下限的值。</p>
+<p>边界值的测试是通过制作有效和无效的分区来完成的。测试无效分区是因为在不利条件下测试输出也是必要的。</p>
+<p>在使用边界值分析技术时，软件系统接收有效数字并提供所需的输出，则软件系统将在测试中传递。如果不是，则不成功。在另一种情况下，软件系统不应接受无效数字。如果输入的数字无效，则应显示错误信息。如果正在测试的软件遵循所有测试指南和规范，则将其发送给发布团队，否则发送给开发团队以修复缺陷。</p>
+<h2 id="状态转化技术"><a href="#状态转化技术" class="headerlink" title="状态转化技术"></a>状态转化技术</h2><p>状态转换的一般意义是相同情况的不同形式，状态转换方法也是如此。</p>
+<p>当不同的输入值赋予相同的函数时，它用于捕获软件应用程序的行为。</p>
+<p>使用相同的函数，但每次输出不同时，称为状态转换。</p>
+<p>在测试软件应用程序的情况下，此方法测试函数是否遵循进入不同输入的状态转换规范。适用于那些提供访问应用程序的特定尝试次数的应用程序类型。</p>
+<h2 id="成对测试技术"><a href="#成对测试技术" class="headerlink" title="成对测试技术"></a>成对测试技术</h2><p>成对测试技术也称为配对测试。</p>
+<p>适用于测试所有可能的离散值组合。</p>
+<p>用于测试使用复选框输入，单选按钮输入的应用程序，列表框，文本框等。</p>
+<h2 id="因果测试技术"><a href="#因果测试技术" class="headerlink" title="因果测试技术"></a>因果测试技术</h2><p>因果图来自黑盒测试技术，强调了给定结果与影响结果的所有因素之间的关系。用于编写动态测试实例。</p>
+<p>当代码根据用户输入动态运行时，将使用动态测试用例。</p>
+<p>因果图基于一系列需求，用于确定可覆盖软件最大测试区域的最小可能测试用例。</p>
+<p>主要优点是减少了测试执行的时间和成本。</p>
+<p>该技术旨在减少测试用例的数量，但仍覆盖所有必要的测试用例，覆盖范围大，以达到所需的应用程序质量。</p>
+<p>因果图技术通过使用AND，OR和NOT等逻辑运算符将需求规范转换为输入和输出条件之间的逻辑关系。</p>
+<p>在给定情况的因果图后，测试人员需要将原因和结果转换为逻辑语句，然后设计因果图。如果函数根据输入(原因)给出输出(效果)，则认为它是无缺陷，如果不这样做，则将其发送给开发团队指正。</p>
+<p>步骤总结：</p>
+<ol>
+<li>画出效果和圆圈；</li>
+<li>从效果开始，然后选择导致此效果的原因。</li>
+<li>最后绘制相互排斥的原因(通过一种效应和一种原因直接连接的独占原因)。</li>
+<li>使用逻辑门绘制动态测试用例。</li>
+</ol>
+<h2 id="等效分区技术"><a href="#等效分区技术" class="headerlink" title="等效分区技术"></a>等效分区技术</h2> 
       <!-- reward -->
       
     </div>
@@ -467,7 +665,7 @@
     
     <footer class="article-footer">
        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%91/" rel="tag">树</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%A1%E6%8B%9B/" rel="tag">校招</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/" rel="tag">软件测试</a></li></ul>
 
     </footer>
   </div>
@@ -478,7 +676,7 @@
 
     
     <article
-  id="post-leetcode/105"
+  id="post-leetcode/169"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -489,8 +687,8 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/leetcode/105.html"
-    >力扣 105. 从前序与中序遍历序列构造二叉树</a> 
+  <a class="article-title" href="/leetcode/169.html"
+    >力扣 169. 多数元素</a> 
 </h2>
  
 
@@ -498,8 +696,8 @@
     </header>
      
     <div class="article-meta">
-      <a href="/leetcode/105.html" class="article-date">
-  <time datetime="2022-08-06T03:19:05.617Z" itemprop="datePublished">2022-08-06</time>
+      <a href="/leetcode/169.html" class="article-date">
+  <time datetime="2022-08-24T08:49:38.297Z" itemprop="datePublished">2022-08-24</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
@@ -509,9 +707,9 @@
       
     <div class="article-entry" itemprop="articleBody">
        
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="前置"><a href="#前置" class="headerlink" title="前置"></a>前置</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">TreeNode</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, val=<span class="number">0</span>, left=<span class="literal">None</span>, right=<span class="literal">None</span></span>):</span><br><span class="line">        self.val = val</span><br><span class="line">        self.left = left</span><br><span class="line">        self.right = right</span><br></pre></td></tr></table></figure>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="暴力hash解法"><a href="#暴力hash解法" class="headerlink" title="暴力hash解法"></a>暴力hash解法</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">majorityElement</span>(<span class="params">nums</span>):</span><br><span class="line">    <span class="comment"># 假设只有两个数</span></span><br><span class="line">    save = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> num <span class="keyword">in</span> nums:</span><br><span class="line">        <span class="keyword">if</span> num <span class="keyword">in</span> save.keys():</span><br><span class="line">            save[num] += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            save[num] = <span class="number">1</span></span><br><span class="line">    </span><br><span class="line">    save = &#123;v: k <span class="keyword">for</span> k, v <span class="keyword">in</span> save.items()&#125;</span><br><span class="line">    <span class="keyword">return</span> save[<span class="built_in">max</span>(save.keys())]</span><br></pre></td></tr></table></figure>
 
-<h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">buildTree</span>(<span class="params">preorder, inorder</span>):</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> preorder: <span class="keyword">return</span> </span><br><span class="line">    root = TreeNode(preorder[<span class="number">0</span>])</span><br><span class="line">    root_idx = inorder.index(preorder.pop(<span class="number">0</span>))</span><br><span class="line">    root.left = self.buildTree(preorder[:root_idx], inorder[:root_idx])</span><br><span class="line">    root.right = self.buildTree(preorder[root_idx:], inorder[root_idx + <span class="number">1</span>:])</span><br><span class="line">    <span class="keyword">return</span> root</span><br></pre></td></tr></table></figure> 
+<h1 id="摩尔投票法"><a href="#摩尔投票法" class="headerlink" title="摩尔投票法"></a>摩尔投票法</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">majorityElement</span>(<span class="params">nums</span>):</span><br><span class="line">    <span class="comment"># 假设只有两个数</span></span><br><span class="line">    cand, count = nums[<span class="number">0</span>], <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> num <span class="keyword">in</span> nums:</span><br><span class="line">        <span class="keyword">if</span> cand == num:</span><br><span class="line">            count += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            count -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> count == <span class="number">0</span>:</span><br><span class="line">                cand, count = num, <span class="number">1</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> cand</span><br></pre></td></tr></table></figure> 
       <!-- reward -->
       
     </div>
@@ -521,7 +719,7 @@
     
     <footer class="article-footer">
        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%91/" rel="tag">树</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hash%E8%A1%A8/" rel="tag">hash表</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li></ul>
 
     </footer>
   </div>
@@ -532,7 +730,7 @@
 
     
     <article
-  id="post-leetcode/104"
+  id="post-books/network_2"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -543,8 +741,8 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/leetcode/104.html"
-    >力扣 104. 二叉树的最大深度</a> 
+  <a class="article-title" href="/books/network_2.html"
+    >计算机网络笔记 2</a> 
 </h2>
  
 
@@ -552,20 +750,324 @@
     </header>
      
     <div class="article-meta">
-      <a href="/leetcode/104.html" class="article-date">
-  <time datetime="2022-08-06T01:49:41.847Z" itemprop="datePublished">2022-08-06</time>
+      <a href="/books/network_2.html" class="article-date">
+  <time datetime="2022-08-24T02:41:35.447Z" itemprop="datePublished">2022-08-24</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+    <a class="article-category-link" href="/categories/%E6%A0%A1%E6%8B%9B/">校招</a>
   </div>
    
     </div>
       
     <div class="article-entry" itemprop="articleBody">
        
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="前置"><a href="#前置" class="headerlink" title="前置"></a>前置</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">TreeNode</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, val=<span class="number">0</span>, left=<span class="literal">None</span>, right=<span class="literal">None</span></span>):</span><br><span class="line">        self.val = val</span><br><span class="line">        self.left = left</span><br><span class="line">        self.right = right</span><br></pre></td></tr></table></figure>
-
-<h1 id="dfs"><a href="#dfs" class="headerlink" title="dfs"></a>dfs</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">maxDepth</span>(<span class="params">root</span>):</span><br><span class="line">    <span class="comment"># dfs</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">dfs</span>(<span class="params">node</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> node:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">max</span>(dfs(node.left), dfs(node.right)) + <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> dfs(root) </span><br></pre></td></tr></table></figure> 
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h1><p>物理层考虑的是怎样才能在连接各种计算机的传输媒体上传输数据比特流。需要尽可能屏蔽计算机网络中的硬件设备和传输媒体以及通信手段的不同，使得物理层上面的数据链路层感觉不到这些差异，让数据链路层只需要考虑如何完成本层的协议和服务，不必考虑网络具体的传输媒体和通信手段。</p>
+<p>物理层<strong>规程</strong>(procedure)指物理层的协议。</p>
+<p>物理层的主要任务是确定与传输媒体的借口有关的一些特性：</p>
+<ol>
+<li>机械特性: 指明接口所用接线器的形状和尺寸，引脚数目和排列，固定和锁定装置等。</li>
+<li>电气特性: 指明在接口电缆的各条线上出现的电压的范围。</li>
+<li>功能特性: 指明某条线上出现的某一点评的电压的意义。</li>
+<li>过程特性: 指明对于不同功能的各种可能事件的出现顺序。</li>
+</ol>
+<h2 id="数据通信系统的模型"><a href="#数据通信系统的模型" class="headerlink" title="数据通信系统的模型"></a>数据通信系统的模型</h2><p>   数据通信系统可划分为三部分: 源系统&#x2F;发送端&#x2F;发送方，传输系统&#x2F;传输网络，目的系统&#x2F;接收端&#x2F;接收方。</p>
+<p>   <img src="/../images/network/data_system.png" alt="数据通信系统的模型"></p>
+<ol>
+<li><p>源系统</p>
+<p>源系统一般包括两个部分，<strong>源点&#x2F;源站&#x2F;信源</strong>(source)和<strong>发送器</strong>。</p>
+<ul>
+<li>源点: 源点设备产生要传输的数据。</li>
+<li>发送器: 通常源点生成的数字比特流要通过发送器编码后才能够在传输系统中进行传输。</li>
+</ul>
+</li>
+<li><p>目的系统<br>目的系统一般包括两个部分，<strong>接收器</strong>和<strong>终点&#x2F;目的站&#x2F;信宿</strong>(destination)。</p>
+<ul>
+<li>接收器: 接收传输系统传送过来的信号，并把它转换为能够被目的设备处理的信息。</li>
+<li>终点: 终点设备从接收器获取传送来的数字比特流，把信息输出。</li>
+</ul>
+</li>
+</ol>
+<p>   在源系统和目的系统之间的传输系统可以是简单的传输线，也可以是连接在源系统和目标系统之间的复杂网络系统。</p>
+<blockquote>
+<p>通信的目的是传送<strong>消息</strong>(message)。</p>
+<p><strong>数据</strong>(data)是运送消息的实体。其严格定义为是使用特定方式表示的信息，通常是有异议的符号序列。</p>
+<p><strong>信号</strong>(signal)则是数据的电气或电磁的表现。</p>
+</blockquote>
+<p>信号可分为<strong>模拟信号</strong>和<strong>数字信号</strong>:</p>
+<ol>
+<li>模拟信号&#x2F;连续信号: 消息参数的取值是连续的。</li>
+<li>数字信号&#x2F;离散信号: 消息参数的取值是离散的。代表不同离散数值的基本波形成为<strong>码元</strong>。</li>
+</ol>
+<blockquote>
+<p><strong>信道</strong>(channel)一般用来表示向某一个方向传送信息的媒体。</p>
+</blockquote>
+<p>从通信的双方信息交互的方式来看，有三种基本方式: <strong>单向通信&#x2F;单工通信</strong>，<strong>双向交替通信&#x2F;半双工通信</strong>和<strong>双向同时通信&#x2F;全双工通信</strong>。</p>
+<ol>
+<li>单向通信: 只能有一个方向的通信而没有反方向的交互，eg: 无线广播，电视。</li>
+<li>双向交替通信: 通信的双方都可以发送信息，但不能双方同时发送&#x2F;同时接收。这种通信方式是一方发送另一方接收，过一段时间后反向工作。</li>
+<li>双向同时通信: 通信的双方可以同时发送和接收信息。</li>
+</ol>
+<h2 id="调制"><a href="#调制" class="headerlink" title="调制"></a>调制</h2><blockquote>
+<p>来自信源的信号称为基带信号(基本频带信号)。</p>
+</blockquote>
+<p>基带信号往往包含有较多的低频成分，甚至有直流成分，而很多信道并不能传输这种低频分量或直流分量。</p>
+<p>为了解决这一问题，就必须对基带信号进行<strong>调制</strong>(modulation)。</p>
+<p>调制可分为两大类:<strong>基带调制</strong>和<strong>带通调制</strong>。</p>
+<ol>
+<li><p>基带调制: 仅仅对基带信号的波形进行变换，使它能够与信道特性相适应。变换后的信号仍是基带信号。</p>
+<p>这种基带调制是把数字信号转换为另一种形式的数字信号，又称为<strong>编码</strong>(coding)。</p>
+</li>
+<li><p>带通调制: 使用<strong>载波</strong>(carrier)的调制。把基带信号的频率范围搬移到较高的频段，并转换为模拟信号，这样就能够更好地在模拟信道中传输。</p>
+<p> 经过载波调制后的信号成为<strong>带通信号</strong>，即仅在一段频率范围内能够通过信道。</p>
+</li>
+</ol>
+<h3 id="常用编码方式"><a href="#常用编码方式" class="headerlink" title="常用编码方式"></a>常用编码方式</h3><p><img src="/../images/network/coding_type.png" alt="数字信号常用的编码方式"></p>
+<ol>
+<li>不归零制: 正电平代表1，负电平代表0。</li>
+<li>归零制: 正脉冲代表1，负脉冲代表0。</li>
+<li>曼彻斯特编码: 位周期中心的向上跳变代表0，为周期中心的向下跳变代表1，但也可以反过来定义。</li>
+<li>差分曼彻斯特编码: 在每一位中心处始终都有跳变。位开始边界有跳变代表0， 而位开始边界没有跳变代表1。</li>
+</ol>
+<p>从信号波形看，曼彻斯特(Manchester)编码产生的信号频率比不归零高。</p>
+<p>从自同步能力看，不归零制不能从信号波形本身中提取信号时钟频率，即没有自同步能力，而曼彻斯特编码具有自同步能力。</p>
+<h3 id="基本的带通调制方法"><a href="#基本的带通调制方法" class="headerlink" title="基本的带通调制方法"></a>基本的带通调制方法</h3><p><img src="/../images/network/cattier_type.png" alt="最基本的三种调制方法"></p>
+<ol>
+<li>调幅(AM): 载波的振幅随基带数字信号而变化。</li>
+<li>调频(FM): 载波的频率随基带数字信号而变化。</li>
+<li>调相(PM): 载波的初始相位随基带数字信号而变化。</li>
+</ol>
+<p>为了达到更多的信息传输速率，必须技术上采用更复杂的多元制的振幅相位混合调制方法，eg:<strong>正交振幅调制</strong>(Quadrature Amplitude Modulation)。</p>
+<h2 id="信道的极限容量"><a href="#信道的极限容量" class="headerlink" title="信道的极限容量"></a>信道的极限容量</h2><p>数字通信的优点: 虽然信号在信道上传输时会不可避免的失真，但在只要在接收端从失真的波形中能够识别出原来的信号，那么这种失真对通信质量就没有影响。</p>
+<p>码元传输的速率越高，或信号传输的距离越远，或噪声干扰越大，或传输媒体质量差，在接收端的波形失真就越严重。</p>
+<p>从概念上讲，限制码元在信道上的传输速率的因素有两个:</p>
+<ol>
+<li><p>信道能够通过的频率范围<br>具体的信道所能通过的频率范围总是有限的，信号中的许多高频分量往往不能通过信道。</p>
+<blockquote>
+<p>码间串扰: 信号中的高频分量在传输时受到衰减，在接收端收到的波形前沿和后沿就变得不陡峭了，每一个码元所占的时间界限就会变得模糊，失去了码元之间的清晰界限。</p>
+</blockquote>
+<p>在任何信道中，码元传输的速率是有上限的，传输速率超过此上限，就会出现严重的码间串扰问题，使接收端对码元的判决&#x2F;识别成为不可能。</p>
+<p>如果信道的频带越宽，能通过的高频分量越多，就可以用更高的速率传送码元而不出现码间干扰。</p>
+</li>
+<li><p>信噪比<br>噪声存在于所有的电子设备和通信信道中，但噪声的影响是相对的。如果信号相对较强，那么噪声的影响就相对较小。</p>
+<blockquote>
+<p>信噪比: 信号的平均功率和噪声的平均功率之比，$S&#x2F;N$。单位为分贝(dB)。</p>
+<p>$ 信噪比 &#x3D; 10 \log_{10}(S&#x2F;N)$</p>
+</blockquote>
+<blockquote>
+<p>香农公式: 信道的极限信息传输速率$ C &#x3D; W \log_2(1 + S&#x2F;N) $</p>
+<p>$ W $为信道的带宽，$ S $为信道内所传信号的平均功率，$ N $为信道内部的高斯噪声功率。</p>
+</blockquote>
+<p>香农公式表明，信道的带宽或信道中的信噪比越大，信息的极限传输速率就越高。</p>
+<p>如果信道频带宽度一定，信噪比无法提升，码元的传输速率也达到了上限值，那么为了提高信息的传输速率，就要使用编码的方法使得每一个码元携带更多比特的信息量。</p>
+</li>
+</ol>
+<h2 id="物理层下的传输媒体"><a href="#物理层下的传输媒体" class="headerlink" title="物理层下的传输媒体"></a>物理层下的传输媒体</h2><p>传输媒体也称传输介质&#x2F;传输媒介，是数据传输系统中在发送器和接收器之间的物理通路。</p>
+<p>传输媒体可分为<strong>导引型传输媒体</strong>和<strong>非导引型传输媒体</strong>。</p>
+<h3 id="导引型传输媒体"><a href="#导引型传输媒体" class="headerlink" title="导引型传输媒体"></a>导引型传输媒体</h3><p>在导引型传输媒体中，电磁波被导引沿着固体媒体传播。</p>
+<ol>
+<li><p>双绞线&#x2F;双扭线</p>
+<p>把两根互相绝缘的铜导线并排放在一起，然后用规则的方法<strong>绞合</strong>(twist)起来就构成了双绞线。</p>
+<p>绞合可以减少对相邻导线的电磁干扰。</p>
+<p>模拟传输和数字传输都可以使用双绞线，其通信距离一般为几到十几公里。距离太长就需要放大器将衰减的信号放大到合适的数值(模拟传输)，中继器对失真的数字信号进行整形(数字传输)。</p>
+<p><img src="/../images/network/twist_pair.png" alt="双绞线的示意图"></p>
+<p>为了提高双绞线抗电磁干扰的能力，可以在双绞线的外面加上一层用金属丝编织成的屏蔽层，即<strong>屏蔽双绞线</strong>(STP，Shielded Twisted Pair)。以此作为区别，还有<strong>无屏蔽双绞线</strong>(UTP，Unshielded Twisted Pair)。</p>
+<p>用于室内传送数据的无屏蔽双绞线和屏蔽双绞线的最新布线标准为EIA&#x2F;TIA-568-A。此标准规定了5个种类的UTP标准(1-5类线)。</p>
+<p>5类线和3类线的最主要区别就是大大增加了每单位长度的绞合次数。3类线的绞合长度是7.5至10cm，5类线的绞合长度是0.6至0.85cm。</p>
+<p><img src="/../images/network/UTP.png" alt="常用的绞合线的类别，带宽和典型应用"></p>
+<p>无论是哪种类别的双绞线，衰减都随频率的升高而增大。使用更粗的导线可以降低衰减，增加导线的重量和价格。</p>
+<p>信号应当有足够大的振幅，以便在噪声干扰下能够在接收端正确的被检测出来。</p>
+<p>双绞线的最高速率还与数字信号的编码方法有关。</p>
+</li>
+<li><p>同轴电缆</p>
+<p><img src="/../images/network/CoaxialCable.png" alt="同轴电缆的结构"></p>
+<p>同轴电缆由内导体铜制芯线(单股实心线或多股绞合线)，绝缘层，网状编织的外导体屏蔽层以及保护塑料外层组成。</p>
+<p>由于外导体屏蔽层的作用，同轴电缆具有很好的抗干扰特性，被广泛用于传输较高速率的数据。</p>
+<p>同轴电缆目前主用于在有限电视网的居民小区中。同轴电缆的带宽取决于电缆的质量。目前高质量的同轴电缆的带宽已接近1GHz。</p>
+</li>
+<li><p>光缆</p>
+<p>光线通信就是利用光导纤维传递光脉冲来进行通信。光纤是光纤通信的传输媒体。</p>
+<p>有光脉冲相当于1，没有光脉冲相当于0。</p>
+<p>在发送端有光源，可以采用发光二极管或半导体激光器，它们在电脉冲的作用下能产生出光脉冲。在接收端利用光电二极管做成光检测器，在检测到光脉冲时可还原出电脉冲。</p>
+<p>光纤通常由非常透明的石英玻璃拉成细丝，主要由纤芯和包层构成双层通信圆柱体。纤芯很细，直径只有8~100微米。</p>
+<p>光波通过纤芯进行传导。包层较纤芯有较低的折射率。当光线从该折射率的媒体射向低折射率媒体时，其折射角将大于入射角。因此，如果入射角足够大，就会出现全反射，即光线碰到包层时就会折射回纤芯。这个过程不断重复，光也就会沿着光纤传输下去。</p>
+<p>只要从纤芯中射到纤芯表面的光线的入射角大于某个临界角度，就可产生全反射。因此，可以存在多条不同角度入射的光线在一条光线中传输。这样的光纤叫做<strong>多模光纤</strong>。</p>
+<p>多模光纤中，光脉冲在多模光纤中传输时会逐渐展宽，造成失真，只适合近距离传输。单模光纤是光纤的直径减少到只有一个光的波长，使光纤一直向前传播，不会产生多次反射。</p>
+<p>光纤通信中常用的三个波段中心是850纳米，1300纳米和1550纳米。带宽为25000~30000GHz。</p>
+<p>一根光缆少则只有一根光纤，多则可包括数十、数百根光纤，再加上加强芯和填充物可提高机械强度，可再加上远供电源线，最后加上包带层和外护套。这样就达到工程施工的强度要求。</p>
+<p>光纤的特点：</p>
+<ol>
+<li>通信容量大</li>
+<li>传输损耗小，中继距离长，对远距离传输很经济。</li>
+<li>抗雷电和电磁干扰性能好。</li>
+<li>无串音干扰，保密性好，也不易被窃听或截取数据。</li>
+<li>体积小，重量轻。</li>
+</ol>
+</li>
+</ol>
+<h3 id="非导引型传输媒体"><a href="#非导引型传输媒体" class="headerlink" title="非导引型传输媒体"></a>非导引型传输媒体</h3><p>非导引型传输媒体，即自由空间。在非导引型传输媒体中电磁波的传输常称为无线传输。</p>
+<p><img src="/../images/network/frequency_spectrum.png" alt="电信领域使用的电磁波的频谱"></p>
+<p>   波段的正式名称：</p>
+<ol>
+<li><p>LF&#x2F;低频：波长1km~10km&#x2F;30kHz~300kHz。</p>
+</li>
+<li><p>MF&#x2F;中频：300kHz~3MHz。</p>
+</li>
+<li><p>HF&#x2F;高频：3MHz~30MHz。</p>
+</li>
+<li><p>VHF&#x2F;甚高频：30MHz~300MHz。</p>
+</li>
+<li><p>UHF&#x2F;特高频：300MHz~3GHz。</p>
+</li>
+<li><p>SHF&#x2F;超高频：3GHz~30GHz。</p>
+</li>
+<li><p>EHF&#x2F;极高频：30GHz~300GHz。</p>
+</li>
+<li><p>短波通信</p>
+<blockquote>
+<p>多径效应：同一个信号经过不同的反射路径到达同一个接收点，但各反射路径的衰减和时延都不相同，时的最后得到的合成信号失真很大。</p>
+</blockquote>
+<p>短波通信&#x2F;高频通信，主要靠电离层反射。但电离层的不稳定所产生的衰落现象以及电离层反射产生的多径效应，使得短波信道的通信质量较差。当必须使用短波无线电台传送数据时，一般是低速传输。</p>
+</li>
+<li><p>地面微波接力通信</p>
+<p>地面微波接力通信和卫星通信同属无线电微波通信。</p>
+<p>微波在空间中主要以直线传播。能够穿透电离层进入宇宙。</p>
+<p>微波在空间中直线传播，地球是球体，传播距离受到限制，一般为50km。若采用100m高的天线塔，可增大到100km。</p>
+<p>为实现远距离通信，在一条微波通信信道的两个终端之间建立若干个中继站。中继站把前一站传送过来的信号经过放大再发送到下一站。</p>
+<p>微波接力通信可传输电话，电报，图像，数据等信息。主要特点是：</p>
+<ol>
+<li>微波波段频率很高，其频段范围很宽，其通信新到的容量很大。</li>
+<li>微波通信因为其高频率，可以避免工业干扰和天气干扰，传输质量较高。</li>
+<li>与相同容量和长度的电缆载波通信比较，微波接力通信建设性价比高。</li>
+</ol>
+<p>微波接力通信的缺点：</p>
+<ol>
+<li>相邻站之间必须直视，不能有障碍物。</li>
+<li>微波的传输有时也会受到恶略天气的影响。</li>
+<li>与电缆通信系统比较，微波通信的隐蔽性和保密性较差。</li>
+<li>对大量中继站的使用和维护要耗费较多的人力和物力。</li>
+</ol>
+</li>
+<li><p>卫星通信</p>
+<p>常用的卫星通信方法是在地球站之间利用位于约3万6千公里高空的人造同步地球卫星作为中继器的一种微波接力通信。</p>
+<p>卫星通信的最大特点是通信距离远，且通信费用与通信距离无关。</p>
+<p>与微波接力通信相似，卫星通信的频带很宽，通信容量很大，信号受到的干扰也比较小，通信比较稳定。</p>
+<p>卫星通信的另一特点是具有较大的传播时延。</p>
+<p>在偏远地区进行通信几乎要完全依赖卫星通信。</p>
+<p>上述卫星通信使用的是对地静止的卫星。现在低轨道卫星通信系统也开始使用。低轨道卫星不停绕地球旋转。目前，大功率，大容量，低轨道宽带卫星已经开始在空间部署，并构成了空间高速链路。</p>
+</li>
+</ol>
+<p>另外，红外通信，激光通信也使用非引导型传输媒体，用于近距离的笔记本电脑相互传送数据。</p>
+<h2 id="信道复用技术"><a href="#信道复用技术" class="headerlink" title="信道复用技术"></a>信道复用技术</h2><p><strong>复用</strong>(multiplexing)最基本的是<strong>频分复用FDM</strong>(Frequency Division Multiplexing)和<strong>时分复用TDM</strong>(Time Division Multiplexing)。</p>
+<p>在进行通信时，<strong>复用器</strong>(multiplexer)总是和<strong>分用器</strong>(demultiplexer)成对的使用。在复用器和分用器之间是用户共享的高速信道。</p>
+<p>在发送端使用复用器，可以让复数用户共享一个信道。分用器把高速信道传送过来的数据进行分用，分别交付给相应的用户。</p>
+<h3 id="频分复用和时分复用"><a href="#频分复用和时分复用" class="headerlink" title="频分复用和时分复用"></a>频分复用和时分复用</h3><p>用户在分配到一定的频带后，在通信过程中自始至终都占用这个频带。频分复用的所有用户在同样的时间占用不同的带宽(频带)资源。</p>
+<p>把时间划分为一段段等长的时分复用帧(TDM帧)。每一个时分复用的用户在每一个TDM帧中占用固定序号的时隙。时分复用的所有用户是在不同的时间占用相同的频带宽度。</p>
+<p>上述两种复用方法的优点是技术比较成熟，但缺点是不够灵活。同时，时分复用更有利于数字传输。</p>
+<h3 id="统计时分复用"><a href="#统计时分复用" class="headerlink" title="统计时分复用"></a>统计时分复用</h3><p>统计时分复用STDM(Statistic TDM)是一种改进的时分复用，能够提高信道利用率。</p>
+<p><strong>集中器</strong>(concentrator)常用于统计时分复用。</p>
+<p><img src="/../images/network/statistic_tdm.png" alt="统计时分复用的工作原理"></p>
+<p>统计时分复用使用STDM帧来传送复用的数据，但每一个STDM帧中的时隙数小于连接在集中器上的用户数。</p>
+<p>各用户有了数据就随时发往集中器的输入缓存，然后集中器按顺序依次扫描输入缓存，把缓存中的输入数据放入STDM帧中。对没有数据的缓存就跳过去。当一个帧的数据放满了，就发送出去。因此，STDM帧不是固定分配时隙，而是按需动态分配时隙。因此，统计时分复用可以提高线路的利用率。</p>
+<p>因为STDM帧中的时隙并不是固定的分配给每个用户，因此在每个时隙中还必须有用户的地址信息，这是统计时分复用必须要有的和不可避免的开销。</p>
+<p>集中器又称智能复用器。它能提供对整个报文的存储转发能力，通过排队方式使各用户更合理地共享信道。</p>
+<h3 id="波分复用"><a href="#波分复用" class="headerlink" title="波分复用"></a>波分复用</h3><p><strong>波分复用WDM</strong>(Wavelength Division Multiplexing)就是光的频分复用。使用一根光纤同时传输多个频率很接近的光载波信号。</p>
+<p>最初的波分复用，一根光纤只能复用两路光载波信号。<strong>密集波分复用</strong>(Dense Wavelength Division Multiplexing)可在一根光纤上复用几十路或更多路的信号。</p>
+<p><img src="/../images/network/wavelength.png" alt="波分复用的概念"></p>
+<p>首先将光载波调制到不同的波长。</p>
+<p>送到光复用器&#x2F;合波器后，在一根光纤中传输。</p>
+<p>光信号会在传输一段距离后衰减，因此需要对衰减了的光信号进行放大才能继续传输。现在利用<strong>掺铒光纤放大器</strong>(Erbium Doped Fiber Amplifier)，其不需要进行光电转换而直接对光信号进行放大。两个光纤放大器之间的光缆线路长度可达120km。</p>
+<p>光复用器&#x2F;合波器和光分用器&#x2F;分波器之间的无光电转换的距离可达600k(4个EDFA光纤放大器)。</p>
+<h3 id="码分复用"><a href="#码分复用" class="headerlink" title="码分复用"></a>码分复用</h3><p><strong>码分复用CDM</strong>(Code Division Multiplexing)也是共享信道的方法。又称<strong>码分多址CDMA</strong>(Code Division Multiple Access)。</p>
+<p>每一个用户可以在同样的时间使用同样的频带进行通信。这是因为各用户使用经过特殊挑选的不同码型，因此各用户之间不会造成干扰。有很强的抗干扰能力，其频谱类似白噪声，不易被敌人发现。</p>
+<p>CDMA可提高通信的话音质量和数据传输的可靠性，减少干扰对通信的影响，增大通信系统的容量，降低手机的平均发射功率等。</p>
+<blockquote>
+<p><strong>码片</strong>(chip)指在CDMA中每一个比特再划分为<em>m</em>个短的间隔。 </p>
+<p>通常<em>m</em>的值是64或者128。</p>
+</blockquote>
+<blockquote>
+<p>扩频: 要发送信息的数据率为<em>b</em> bit&#x2F;s，由于每一个比特要转换成<em>m</em>个比特的码片，因此实际的发送数据率为<em>mb</em> bit&#x2F;s，其所占的频带也提高到原来数值的<em>m</em>倍。</p>
+</blockquote>
+<p>扩频通常有<strong>直接序列扩频DSSS</strong>(Direct Sequence Spread Spectrum)和<strong>跳频扩频FHSS</strong>(Frequency Hopping Spread Spectrum)。</p>
+<ol>
+<li><p>直接序列扩频<br><img src="/../images/network/DSSS.png" alt="直接序列扩频的工作原理"></p>
+<p>使用码分多址的每一站被指派一个唯一的<em>m</em> bit<strong>码片序列</strong>(chip sequence)。</p>
+<p>一个站如果要发送比特1，则发送它的<em>m</em> bit码片序列，如果要发送比特0，则发送该码片序列的反码。</p>
+<p>在实用的系统中使用伪随机码序列，并且需要给每一个站分配的码片序列不相同的同时正交。</p>
+<p>如果需要接收某站发送的数据，使用此站的唯一性码片序列和接受的数据流作内积，得到真实信号。</p>
+</li>
+<li><p>跳频扩频</p>
+<p><img src="/../images/network/FHSS.jpg" alt="跳频扩频的工作原理"></p>
+<p>使用码分多址的每一站被指派一个唯一的<em>m</em> bit<strong>码片序列</strong>(chip sequence)。</p>
+<p>跳频是载波频率在一定范围内不断跳变意义上的扩频，而不是对被传送信息进行扩谱，不会得到直序扩频的处理增益。</p>
+<p>解扩需要知道扩频码。</p>
+</li>
+</ol>
+<h2 id="宽带接入技术"><a href="#宽带接入技术" class="headerlink" title="宽带接入技术"></a>宽带接入技术</h2><p>从宽带接入的媒体来看，可以划分为有线宽带接入技术和无线宽带接入技术。现仅对有线宽带接入进行讨论。</p>
+<h3 id="ADSL技术"><a href="#ADSL技术" class="headerlink" title="ADSL技术"></a>ADSL技术</h3><p><strong>非对称数字用户线ADSL</strong>(Asymmetric Digital Subscriber Line)技术是用数字技术对现有的模拟电话用户线进行改造，使它能够承载宽带数字业务。</p>
+<p>ADSL技术把0-4kHz低端频谱留给传统电话使用，而把原来没有被利用的高端频谱留给用户上网使用。</p>
+<p>ADSL技术的传输距离取决于数据率和用户线的线径。用户线越细，信号传输时的衰减就越大。</p>
+<p>ADSL在用户线的两端各安装一个ADSL调制解调器。我国目前采用的调制解调方案是<strong>离散多音调DMT</strong>(Discrete Multi-Tone)。</p>
+<p>DMT调制技术采用频分复用的方法，把40kHz以上至1.1MHz的高端频谱划分为许多子信道，其中25个子信道用于上行信道，249个子信道用于下行信道，并使用不同的载波进行数字调制。</p>
+<p>ADSL采用自适应调制技术使用户线能够传送尽可能高的数据率。当ADSL启动时，用户线两端的ADSL调制解调器就会测试可用的频率，各子信道受到干扰的情况以及在每一个频率上测试信号的传输质量。这样使得ADSL能够选择合适的调制方案以获得尽可能高的数据率。ADSL不能保证固定的数据率。</p>
+<p>基于ADSL的接入网由以下三个部分组成：</p>
+<p><img src="/../images/network/ADSL.png" alt="基于ADSL的接入网的组成"></p>
+<ol>
+<li><strong>数字用户线接入复用器DSLAM</strong>(DSL Access Multiplexer)。</li>
+<li>用户线。</li>
+<li>用户家的一些设施。</li>
+</ol>
+<p>   数字用户线接入复用器包括许多ADSL调制解调器。</p>
+<p>   ADSL调制解调器又称<strong>接入端接单元ATU</strong>(Access Termination Unit)。</p>
+<p>   由于ADSL调制解调器必须成对使用，因此把在电话端局&#x2F;远端站和用户家中所用的ADSL调制解调器分别记为ATU-C(entral Office)和ATU-R(emote)。</p>
+<p>   用户电话通过电话<strong>分离器</strong>(Splitter)和ATU-R连在一起，经用户线到端局，并再次经过一个电话分离器把电话连到本地电话交换机。</p>
+<p>   一个DSLAM可支持500~1000个用户。</p>
+<p>ADSL可以利用现有电话网中的用户线，不需要重新布线。</p>
+<p><img src="/../images/network/ATU.png" alt="ATU-R以及电话分离器"></p>
+<p>ADSL调制解调器有两个插口，较大的一个是RJ-45，较小的一个是RJ-11。RJ-45用来与计算机相连，RJ-11用来与电话分离机相连。</p>
+<p>电话分离机只需要用三个带有RJ-11插的连线就可以连接好。</p>
+<p>ADSL借用了在用户线两端安装的ADSL调制解调器对数字信号进行调制，使得调制后的数字信号的频谱适合在原来的用户线上传输。</p>
+<p>ADSL技术也在不断改进，ADSL2(G.992.3 G.992.4)和ADSL2+(G.992.5)是新提出的更高速率的第二代ADSL标准。</p>
+<p>第二代ADSL的主要改进点在于：</p>
+<ol>
+<li>通过提高调制效率得到了更高的数据率。</li>
+<li>采用了<strong>无缝速率自适应技术SRA</strong>(Seamless Rate Adaptation)。可在运营中不中断通信和不产生误码的情况下根据线路的实时状况，自适应的调整数据率。</li>
+<li>改善了线路质量评测和故障定位功能，这对提高网络的运行维护水平具有非常重要的意义。</li>
+</ol>
+<p>ADSL适用于居民用户，这是因为居民上行数据并不多。但是ADSL技术并不适用于企业。企业需要使用上行信道发送大量数据给用户。为了满足企业的需求，ADSL技术有几种变形。</p>
+<ol>
+<li>对称DSL：把ADSL的带宽平均分配到上行和下行两个方向。</li>
+<li>HDSL(High speed DSL): 使用一对线或两对线的对称DSL，用来取代T1线路的<strong>高速数字用户线</strong>。</li>
+<li>VDSL(Very high speed DSL)，是ADSL的快速版本，又称甚高速数字用户线。</li>
+</ol>
+<h3 id="光纤同轴混合网-x2F-HFC网"><a href="#光纤同轴混合网-x2F-HFC网" class="headerlink" title="光纤同轴混合网&#x2F;HFC网"></a>光纤同轴混合网&#x2F;HFC网</h3><p><strong>光纤同轴混合网</strong>(HFC网, Hybrid Fiber Coax)是在目前覆盖面很广的有线电视网的基础上开发的一种居民宽带接入网，除可传送电视节目外，还能提供电话，数据和其他宽带交互型业务。</p>
+<p>最早的有线电视网是树形拓扑结构的同轴电缆网络，它采用模拟技术的频分复用对电视节目进行单向广播传输，改造后，成为光纤同轴混合网。</p>
+<p>光纤同轴混合网的主要特点：</p>
+<p><img src="/../images/network/HFC.png" alt="HFC网的结构图"></p>
+<p>为了提高传输的可靠性和电视信号的质量，同轴电缆主干换为光纤，光纤从头端连接到<strong>光纤节点</strong>(fiber node)。在光纤节点光信号被转换为电信号，然后通过同轴电缆传送到每个用户家庭。</p>
+<p>从头端到用户家庭所需的放大器因为末端采用同轴电缆数目仅有4~5个。</p>
+<p>连接到一个光纤节点的典型用户数是500~2000。</p>
+<p>光纤节点与头端的典型距离为25km，从光纤节点到其用户的距离则不超过2~3km。</p>
+<p>原有有限电视网的最高传输频率是450MHz，并且仅用于电视信号的下行传输。光纤同轴混合网具有双向传输功能，而且扩展了传输频带。</p>
+<p><img src="/../images/network/HFC_freq.png" alt="我国HFC的频带划分"></p>
+<p>要使现有的模拟电视机能够接收数字电视信号，需要把<strong>机顶盒</strong>(set-top box)设备连接在同轴电缆和用户的电视机之间。同时，为了用户使用HFC网接入互联网，以及在上行信道中传送交互数字电视所需的一些信息，需要增加一个为HFC网使用调制解调器：<strong>电缆调制解调器</strong>(cable modem)。电缆调制解调器可以做成一个单独的设备，例如ADSL的猫，也可以做成内置式，安装在电视机的机顶盒中。</p>
+<p>电缆调制解调器不需要成对使用，只需要安装在用户端。电缆调制解调器因为是多用户共享的，需要思考共享信道中可能出现的冲突问题。</p>
+<h3 id="FTTx技术"><a href="#FTTx技术" class="headerlink" title="FTTx技术"></a>FTTx技术</h3><p>为了更快地下载视频文件，以及更加流畅的欣赏网上的各种高清视频节目，需要升级用户的上网效率，<strong>光纤到户FTTH</strong>(Fiber To The Home)从技术上来说是最好的选择。</p>
+<p>光纤到户是把光纤一直铺设到用户家庭。只有到用户家庭后，才从光信号转化为电信号，使用户获得最高的上网效率。</p>
+<p>问题:</p>
+<ol>
+<li>价格不够低。</li>
+<li>用户需求不需要如此高的数据率。</li>
+</ol>
+<p>基于以上两个问题，出现了多种宽带光纤接入方式：FTTx。x表示不同的光纤接入地点。</p>
+<p>为了有限利用光纤资源(问题2)，在光纤干线和广大用户之间还需要铺设一段中间的转换装置：<strong>光配线网ODN</strong>(Optical Distribution Network)，使得数十个家庭用户能够共享一根光纤干线。</p>
+<p>无源光网络表明在光配网中无需配备电源，因此基本不要维护，长期运营和管理成本很低，而无源的光配网又称为<strong>无源光网络PON</strong>(Passive Optical Network)。</p>
+<p><img src="/../images/network/ODN.png" alt="无源光配线网的组成"></p>
+<p><strong>OLT光线路终端</strong>(Optical Line Terminal)是连接到光纤干线的终端设备。</p>
+<p>OLT把收到的下行数据发往无源的1：N<strong>光分路器</strong>(splitter)，然后用广播向所有用户端的<strong>光网络单元ONU</strong>(Optical Network Unit)发送。典型的光分路器使用分路比是1：32，有时也可使用多级的光分路器。每个ONU根据特有的标识只接收发送给自己的数据，然后转换为电信号发往用户家中。每一个ONU到用户家的距离具体情况具体分析，OLT给ONU分配适当的光功率。</p>
+<p>OLT发送上行数据时， 先把电信号转化为光信号，光分路器把各ONU发来的上行数据汇总后，以TDMA方式发往OLT，发送时间和长度由OLT集中控制，以便有序地共享光纤主干。</p>
+<p>光配线网采用波分复用，上行和下行分别使用不同的波长。</p>
+<p>FTTx有光纤到户FTTH，光纤到路边FTTC(urb)，光纤到小区FTTZ(one)，光线到大楼FTTB(uliding)，光纤到楼层FTTF(loor)，光纤到办公室FTTO(ffice)，光纤到桌面FTTD(esk)。</p>
+ 
       <!-- reward -->
       
     </div>
@@ -575,7 +1077,7 @@
     
     <footer class="article-footer">
        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dfs/" rel="tag">dfs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%A1%E6%8B%9B/" rel="tag">校招</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
 
     </footer>
   </div>
@@ -586,7 +1088,7 @@
 
     
     <article
-  id="post-leetcode/102"
+  id="post-leetcode/160"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -597,8 +1099,8 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/leetcode/102.html"
-    >力扣 102. 二叉树的层序遍历</a> 
+  <a class="article-title" href="/leetcode/160.html"
+    >力扣 160. 相交链表</a> 
 </h2>
  
 
@@ -606,8 +1108,8 @@
     </header>
      
     <div class="article-meta">
-      <a href="/leetcode/102.html" class="article-date">
-  <time datetime="2022-08-05T12:55:20.523Z" itemprop="datePublished">2022-08-05</time>
+      <a href="/leetcode/160.html" class="article-date">
+  <time datetime="2022-08-23T14:28:29.574Z" itemprop="datePublished">2022-08-23</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
@@ -617,9 +1119,9 @@
       
     <div class="article-entry" itemprop="articleBody">
        
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="前置"><a href="#前置" class="headerlink" title="前置"></a>前置</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">TreeNode</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, val=<span class="number">0</span>, left=<span class="literal">None</span>, right=<span class="literal">None</span></span>):</span><br><span class="line">        self.val = val</span><br><span class="line">        self.left = left</span><br><span class="line">        self.right = right</span><br></pre></td></tr></table></figure>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="前置"><a href="#前置" class="headerlink" title="前置"></a>前置</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ListNode</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, val=<span class="number">0</span>, <span class="built_in">next</span>=<span class="literal">None</span></span>):</span><br><span class="line">        self.val = val</span><br><span class="line">        self.<span class="built_in">next</span> = <span class="built_in">next</span></span><br></pre></td></tr></table></figure>
 
-<h1 id="bfs"><a href="#bfs" class="headerlink" title="bfs"></a>bfs</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">levelOrder</span>(<span class="params">root</span>):</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">        <span class="keyword">return</span> []</span><br><span class="line">    res, cur = [], [root]</span><br><span class="line">    <span class="keyword">while</span> cur:</span><br><span class="line">        tmp = []</span><br><span class="line">        <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(cur)):</span><br><span class="line">            node = cur.pop(<span class="number">0</span>)</span><br><span class="line">            tmp.append(node.val)</span><br><span class="line">            <span class="keyword">if</span> node.left: cur.append(node.left)</span><br><span class="line">            <span class="keyword">if</span> node.right: cur.append(node.right)</span><br><span class="line">        res.append(tmp)</span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure> 
+<h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">getIntersectionNode</span>(<span class="params">headA, headB</span>):</span><br><span class="line">    a, countA, b, countB = headA, <span class="number">0</span>, headB, <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> a:</span><br><span class="line">        countA += <span class="number">1</span></span><br><span class="line">        a = a.<span class="built_in">next</span></span><br><span class="line">    <span class="keyword">while</span> b:</span><br><span class="line">        countB += <span class="number">1</span></span><br><span class="line">        b = b.<span class="built_in">next</span></span><br><span class="line">    <span class="comment"># print(countA, countB)</span></span><br><span class="line">    <span class="keyword">if</span> countA &gt; countB:</span><br><span class="line">        c, cur, other = countA - countB, headA, headB</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        c, cur, other = countB - countA, headB, headA</span><br><span class="line">    <span class="keyword">while</span> c &gt; <span class="number">0</span>:</span><br><span class="line">        cur = cur.<span class="built_in">next</span></span><br><span class="line">        c -= <span class="number">1</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> cur != other:</span><br><span class="line">        cur = cur.<span class="built_in">next</span></span><br><span class="line">        other = other.<span class="built_in">next</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> cur</span><br></pre></td></tr></table></figure> 
       <!-- reward -->
       
     </div>
@@ -629,7 +1131,7 @@
     
     <footer class="article-footer">
        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bfs/" rel="tag">bfs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8/" rel="tag">链表</a></li></ul>
 
     </footer>
   </div>
@@ -640,7 +1142,7 @@
 
     
     <article
-  id="post-leetcode/101"
+  id="post-leetcode/155"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -651,8 +1153,8 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/leetcode/101.html"
-    >力扣 101. 对称二叉树</a> 
+  <a class="article-title" href="/leetcode/155.html"
+    >力扣 155. 最小栈</a> 
 </h2>
  
 
@@ -660,8 +1162,8 @@
     </header>
      
     <div class="article-meta">
-      <a href="/leetcode/101.html" class="article-date">
-  <time datetime="2022-08-05T11:07:17.905Z" itemprop="datePublished">2022-08-05</time>
+      <a href="/leetcode/155.html" class="article-date">
+  <time datetime="2022-08-23T12:40:29.145Z" itemprop="datePublished">2022-08-23</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
@@ -671,8 +1173,7 @@
       
     <div class="article-entry" itemprop="articleBody">
        
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="前置"><a href="#前置" class="headerlink" title="前置"></a>前置</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">TreeNode</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, val=<span class="number">0</span>, left=<span class="literal">None</span>, right=<span class="literal">None</span></span>):</span><br><span class="line">        self.val = val</span><br><span class="line">        self.left = left</span><br><span class="line">        self.right = right</span><br></pre></td></tr></table></figure>
-<h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">isSymmetric</span>(<span class="params">root</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">order</span>(<span class="params">left, right</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> left <span class="keyword">and</span> <span class="keyword">not</span> right: <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> left <span class="keyword">or</span> <span class="keyword">not</span> right: <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">return</span> left.val == right.val <span class="keyword">and</span> order(left.left, right.right) <span class="keyword">and</span> order(left.right, right.left)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> order(root, root)</span><br></pre></td></tr></table></figure> 
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> collections</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MinStack</span>:</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        self.stack = collections.deque()</span><br><span class="line">        self.min_stack = collections.deque()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">push</span>(<span class="params">self, val: <span class="built_in">int</span></span>) -&gt; <span class="literal">None</span>:</span><br><span class="line">        self.stack.append(val)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.min_stack <span class="keyword">or</span> self.min_stack[-<span class="number">1</span>] &gt;= val:</span><br><span class="line">            self.min_stack.append(val)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">pop</span>(<span class="params">self</span>) -&gt; <span class="literal">None</span>:</span><br><span class="line">        cur = self.stack.pop()</span><br><span class="line">        <span class="keyword">if</span> cur == self.min_stack[-<span class="number">1</span>]: self.min_stack.pop()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">top</span>(<span class="params">self</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        <span class="keyword">return</span> self.stack[-<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">getMin</span>(<span class="params">self</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        <span class="keyword">return</span> self.min_stack[-<span class="number">1</span>]</span><br></pre></td></tr></table></figure> 
       <!-- reward -->
       
     </div>
@@ -682,7 +1183,7 @@
     
     <footer class="article-footer">
        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%91/" rel="tag">树</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%88/" rel="tag">栈</a></li></ul>
 
     </footer>
   </div>
@@ -698,7 +1199,7 @@
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/4/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/6/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/4/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/6/">下一页</a>
   </nav>
   
 </section>

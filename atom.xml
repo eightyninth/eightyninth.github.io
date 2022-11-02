@@ -6,7 +6,7 @@
   <link href="https://eightyninth.github.io/atom.xml" rel="self"/>
   
   <link href="https://eightyninth.github.io/"/>
-  <updated>2022-10-23T13:29:24.074Z</updated>
+  <updated>2022-11-02T08:34:24.471Z</updated>
   <id>https://eightyninth.github.io/</id>
   
   <author>
@@ -15,6 +15,461 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>力扣 1620. 网络信号最好的坐标</title>
+    <link href="https://eightyninth.github.io/leetcode/1620.html"/>
+    <id>https://eightyninth.github.io/leetcode/1620.html</id>
+    <published>2022-11-02T08:30:52.544Z</published>
+    <updated>2022-11-02T08:34:24.471Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;解法：暴力&quot;&gt;&lt;a href=&quot;#解法：暴力&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="leetcode" scheme="https://eightyninth.github.io/categories/leetcode/"/>
+    
+    
+    <category term="leetcode" scheme="https://eightyninth.github.io/tags/leetcode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>力扣 1662. 检查两个字符串数组是否相等</title>
+    <link href="https://eightyninth.github.io/leetcode/1662.html"/>
+    <id>https://eightyninth.github.io/leetcode/1662.html</id>
+    <published>2022-11-01T02:29:14.434Z</published>
+    <updated>2022-11-01T02:30:23.075Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;解法&quot;&gt;&lt;a href=&quot;#解法&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="leetcode" scheme="https://eightyninth.github.io/categories/leetcode/"/>
+    
+    
+    <category term="leetcode" scheme="https://eightyninth.github.io/tags/leetcode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>力扣 481. 神奇字符串</title>
+    <link href="https://eightyninth.github.io/leetcode/481.html"/>
+    <id>https://eightyninth.github.io/leetcode/481.html</id>
+    <published>2022-10-31T13:48:43.767Z</published>
+    <updated>2022-10-31T13:50:16.512Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;解法：-暴力&quot;&gt;&lt;a href=&quot;#解法：-暴力&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="leetcode" scheme="https://eightyninth.github.io/categories/leetcode/"/>
+    
+    
+    <category term="leetcode" scheme="https://eightyninth.github.io/tags/leetcode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>力扣 784. 字母大小写全排列</title>
+    <link href="https://eightyninth.github.io/leetcode/784.html"/>
+    <id>https://eightyninth.github.io/leetcode/784.html</id>
+    <published>2022-10-30T12:43:08.440Z</published>
+    <updated>2022-10-30T12:44:28.645Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;解法：回溯&quot;&gt;&lt;a href=&quot;#解法：回溯&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="leetcode" scheme="https://eightyninth.github.io/categories/leetcode/"/>
+    
+    
+    <category term="leetcode" scheme="https://eightyninth.github.io/tags/leetcode/"/>
+    
+    <category term="回溯" scheme="https://eightyninth.github.io/tags/%E5%9B%9E%E6%BA%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>力扣 1773. 统计匹配检索规则的物品数量</title>
+    <link href="https://eightyninth.github.io/leetcode/1773.html"/>
+    <id>https://eightyninth.github.io/leetcode/1773.html</id>
+    <published>2022-10-29T03:20:41.989Z</published>
+    <updated>2022-10-29T03:22:24.370Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;解法：hash表&quot;&gt;&lt;a href=&quot;#解法：hash表&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="leetcode" scheme="https://eightyninth.github.io/categories/leetcode/"/>
+    
+    
+    <category term="leetcode" scheme="https://eightyninth.github.io/tags/leetcode/"/>
+    
+    <category term="hash表" scheme="https://eightyninth.github.io/tags/hash%E8%A1%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>力扣 347. 前K个高频元素</title>
+    <link href="https://eightyninth.github.io/leetcode/347.html"/>
+    <id>https://eightyninth.github.io/leetcode/347.html</id>
+    <published>2022-10-29T03:10:54.125Z</published>
+    <updated>2022-10-29T03:12:17.110Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;解法-堆&quot;&gt;&lt;a href=&quot;#解法-堆&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="leetcode" scheme="https://eightyninth.github.io/categories/leetcode/"/>
+    
+    
+    <category term="堆" scheme="https://eightyninth.github.io/tags/%E5%A0%86/"/>
+    
+    <category term="leetcode" scheme="https://eightyninth.github.io/tags/leetcode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>力扣 907. 子数组的最小值之和</title>
+    <link href="https://eightyninth.github.io/leetcode/907.html"/>
+    <id>https://eightyninth.github.io/leetcode/907.html</id>
+    <published>2022-10-28T12:59:23.344Z</published>
+    <updated>2022-10-28T13:31:59.834Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;解法1-贡献法&quot;&gt;&lt;a href=&quot;#解法1-贡献法&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="leetcode" scheme="https://eightyninth.github.io/categories/leetcode/"/>
+    
+    
+    <category term="leetcode" scheme="https://eightyninth.github.io/tags/leetcode/"/>
+    
+    <category term="单调栈" scheme="https://eightyninth.github.io/tags/%E5%8D%95%E8%B0%83%E6%A0%88/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>力扣 338. 比特位计数</title>
+    <link href="https://eightyninth.github.io/leetcode/338.html"/>
+    <id>https://eightyninth.github.io/leetcode/338.html</id>
+    <published>2022-10-28T09:10:56.703Z</published>
+    <updated>2022-10-28T09:13:14.894Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;解法1&quot;&gt;&lt;a href=&quot;#解法1&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="leetcode" scheme="https://eightyninth.github.io/categories/leetcode/"/>
+    
+    
+    <category term="leetcode" scheme="https://eightyninth.github.io/tags/leetcode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>力扣 1822. 数组元素积的符号</title>
+    <link href="https://eightyninth.github.io/leetcode/1822.html"/>
+    <id>https://eightyninth.github.io/leetcode/1822.html</id>
+    <published>2022-10-27T02:33:05.919Z</published>
+    <updated>2022-10-28T09:12:47.174Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;解法&quot;&gt;&lt;a href=&quot;#解法&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="leetcode" scheme="https://eightyninth.github.io/categories/leetcode/"/>
+    
+    
+    <category term="leetcode" scheme="https://eightyninth.github.io/tags/leetcode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>力扣 337. 打家劫舍III</title>
+    <link href="https://eightyninth.github.io/leetcode/337.html"/>
+    <id>https://eightyninth.github.io/leetcode/337.html</id>
+    <published>2022-10-27T02:23:08.417Z</published>
+    <updated>2022-10-27T02:24:48.291Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;前置&quot;&gt;&lt;a href=&quot;#前置&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="leetcode" scheme="https://eightyninth.github.io/categories/leetcode/"/>
+    
+    
+    <category term="leetcode" scheme="https://eightyninth.github.io/tags/leetcode/"/>
+    
+    <category term="动态规划" scheme="https://eightyninth.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    
+    <category term="树" scheme="https://eightyninth.github.io/tags/%E6%A0%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>力扣 322. 零钱兑换</title>
+    <link href="https://eightyninth.github.io/leetcode/322.html"/>
+    <id>https://eightyninth.github.io/leetcode/322.html</id>
+    <published>2022-10-26T07:27:10.477Z</published>
+    <updated>2022-10-26T07:28:14.290Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;figure class=&quot;highlight</summary>
+        
+      
+    
+    
+    
+    <category term="leetcode" scheme="https://eightyninth.github.io/categories/leetcode/"/>
+    
+    
+    <category term="leetcode" scheme="https://eightyninth.github.io/tags/leetcode/"/>
+    
+    <category term="动态规划" scheme="https://eightyninth.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>力扣 862. 和至少为k的最短子数组</title>
+    <link href="https://eightyninth.github.io/leetcode/862.html"/>
+    <id>https://eightyninth.github.io/leetcode/862.html</id>
+    <published>2022-10-26T02:59:38.231Z</published>
+    <updated>2022-10-26T03:01:21.545Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;解法：前缀和-单调双端队列&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="leetcode" scheme="https://eightyninth.github.io/categories/leetcode/"/>
+    
+    
+    <category term="leetcode" scheme="https://eightyninth.github.io/tags/leetcode/"/>
+    
+    <category term="前缀和" scheme="https://eightyninth.github.io/tags/%E5%89%8D%E7%BC%80%E5%92%8C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>力扣 312. 戳气球</title>
+    <link href="https://eightyninth.github.io/leetcode/312.html"/>
+    <id>https://eightyninth.github.io/leetcode/312.html</id>
+    <published>2022-10-26T00:57:04.762Z</published>
+    <updated>2022-10-26T01:38:39.898Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;解法：dfs&quot;&gt;&lt;a href=&quot;#解法：dfs&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="leetcode" scheme="https://eightyninth.github.io/categories/leetcode/"/>
+    
+    
+    <category term="leetcode" scheme="https://eightyninth.github.io/tags/leetcode/"/>
+    
+    <category term="动态规划" scheme="https://eightyninth.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    
+    <category term="dfs" scheme="https://eightyninth.github.io/tags/dfs/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>力扣 309. 最佳买卖股票时期含冷冻期</title>
+    <link href="https://eightyninth.github.io/leetcode/309.html"/>
+    <id>https://eightyninth.github.io/leetcode/309.html</id>
+    <published>2022-10-25T03:23:06.173Z</published>
+    <updated>2022-10-25T03:24:54.775Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;解法&quot;&gt;&lt;a href=&quot;#解法&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="leetcode" scheme="https://eightyninth.github.io/categories/leetcode/"/>
+    
+    
+    <category term="leetcode" scheme="https://eightyninth.github.io/tags/leetcode/"/>
+    
+    <category term="动态规划" scheme="https://eightyninth.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>力扣 934. 最短的桥</title>
+    <link href="https://eightyninth.github.io/leetcode/934.html"/>
+    <id>https://eightyninth.github.io/leetcode/934.html</id>
+    <published>2022-10-25T02:31:23.416Z</published>
+    <updated>2022-10-25T03:26:04.604Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;解法&quot;&gt;&lt;a href=&quot;#解法&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="leetcode" scheme="https://eightyninth.github.io/categories/leetcode/"/>
+    
+    
+    <category term="leetcode" scheme="https://eightyninth.github.io/tags/leetcode/"/>
+    
+    <category term="bfs" scheme="https://eightyninth.github.io/tags/bfs/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>力扣 301. 删除无效的括号</title>
+    <link href="https://eightyninth.github.io/leetcode/301.html"/>
+    <id>https://eightyninth.github.io/leetcode/301.html</id>
+    <published>2022-10-24T07:14:03.204Z</published>
+    <updated>2022-10-24T08:56:24.216Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;思路1：回溯-dfs&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="leetcode" scheme="https://eightyninth.github.io/categories/leetcode/"/>
+    
+    
+    <category term="leetcode" scheme="https://eightyninth.github.io/tags/leetcode/"/>
+    
+    <category term="dfs" scheme="https://eightyninth.github.io/tags/dfs/"/>
+    
+    <category term="bfs" scheme="https://eightyninth.github.io/tags/bfs/"/>
+    
+    <category term="回溯" scheme="https://eightyninth.github.io/tags/%E5%9B%9E%E6%BA%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>力扣 915. 分割数组</title>
+    <link href="https://eightyninth.github.io/leetcode/915.html"/>
+    <id>https://eightyninth.github.io/leetcode/915.html</id>
+    <published>2022-10-24T03:08:36.175Z</published>
+    <updated>2022-10-25T03:25:42.067Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;思路1：两次遍历&quot;&gt;&lt;a href=&quot;#思路1：两次遍历&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="leetcode" scheme="https://eightyninth.github.io/categories/leetcode/"/>
+    
+    
+    <category term="leetcode" scheme="https://eightyninth.github.io/tags/leetcode/"/>
+    
+  </entry>
   
   <entry>
     <title>力扣 1768. 交替合并字符串</title>
@@ -96,472 +551,6 @@
     <category term="leetcode" scheme="https://eightyninth.github.io/tags/leetcode/"/>
     
     <category term="动态规划" scheme="https://eightyninth.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>力扣 779. 第K个语法符号</title>
-    <link href="https://eightyninth.github.io/leetcode/779.html"/>
-    <id>https://eightyninth.github.io/leetcode/779.html</id>
-    <published>2022-10-20T11:31:17.541Z</published>
-    <updated>2022-10-20T11:51:45.388Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;思路&quot;&gt;&lt;a href=&quot;#思路&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="leetcode" scheme="https://eightyninth.github.io/categories/leetcode/"/>
-    
-    
-    <category term="leetcode" scheme="https://eightyninth.github.io/tags/leetcode/"/>
-    
-    <category term="递归" scheme="https://eightyninth.github.io/tags/%E9%80%92%E5%BD%92/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>力扣 1700. 无法吃午餐的学生数量</title>
-    <link href="https://eightyninth.github.io/leetcode/1700.html"/>
-    <id>https://eightyninth.github.io/leetcode/1700.html</id>
-    <published>2022-10-19T09:32:06.575Z</published>
-    <updated>2022-10-19T09:34:37.429Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;模拟1&quot;&gt;&lt;a href=&quot;#模拟1&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="leetcode" scheme="https://eightyninth.github.io/categories/leetcode/"/>
-    
-    
-    <category term="leetcode" scheme="https://eightyninth.github.io/tags/leetcode/"/>
-    
-    <category term="模拟" scheme="https://eightyninth.github.io/tags/%E6%A8%A1%E6%8B%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>力扣 902. 最大为N的数字组合</title>
-    <link href="https://eightyninth.github.io/leetcode/902.html"/>
-    <id>https://eightyninth.github.io/leetcode/902.html</id>
-    <published>2022-10-19T08:41:04.985Z</published>
-    <updated>2022-10-23T12:42:26.875Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;数位dp&quot;&gt;&lt;a href=&quot;#数位dp&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="leetcode" scheme="https://eightyninth.github.io/categories/leetcode/"/>
-    
-    
-    <category term="leetcode" scheme="https://eightyninth.github.io/tags/leetcode/"/>
-    
-    <category term="动态规划" scheme="https://eightyninth.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>力扣 300. 最长递增子序列</title>
-    <link href="https://eightyninth.github.io/leetcode/300.html"/>
-    <id>https://eightyninth.github.io/leetcode/300.html</id>
-    <published>2022-10-16T08:29:23.700Z</published>
-    <updated>2022-10-16T09:29:35.004Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;时间复杂度-O-n-2&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="leetcode" scheme="https://eightyninth.github.io/categories/leetcode/"/>
-    
-    
-    <category term="leetcode" scheme="https://eightyninth.github.io/tags/leetcode/"/>
-    
-    <category term="动态规划" scheme="https://eightyninth.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
-    
-    <category term="二分查找" scheme="https://eightyninth.github.io/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>力扣 297. 二叉树的序列化</title>
-    <link href="https://eightyninth.github.io/leetcode/297.html"/>
-    <id>https://eightyninth.github.io/leetcode/297.html</id>
-    <published>2022-10-14T13:39:34.140Z</published>
-    <updated>2022-10-16T08:31:42.646Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;层序遍历树&quot;&gt;&lt;a href=&quot;#层序遍历树&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="leetcode" scheme="https://eightyninth.github.io/categories/leetcode/"/>
-    
-    
-    <category term="leetcode" scheme="https://eightyninth.github.io/tags/leetcode/"/>
-    
-    <category term="树" scheme="https://eightyninth.github.io/tags/%E6%A0%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>力扣 287. 寻找重复数</title>
-    <link href="https://eightyninth.github.io/leetcode/287.html"/>
-    <id>https://eightyninth.github.io/leetcode/287.html</id>
-    <published>2022-10-08T15:25:31.555Z</published>
-    <updated>2022-10-14T02:17:45.314Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;二分查找&quot;&gt;&lt;a href=&quot;#二分查找&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="leetcode" scheme="https://eightyninth.github.io/categories/leetcode/"/>
-    
-    
-    <category term="leetcode" scheme="https://eightyninth.github.io/tags/leetcode/"/>
-    
-    <category term="双指针" scheme="https://eightyninth.github.io/tags/%E5%8F%8C%E6%8C%87%E9%92%88/"/>
-    
-    <category term="二分查找" scheme="https://eightyninth.github.io/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>力扣 283. 移动零</title>
-    <link href="https://eightyninth.github.io/leetcode/283.html"/>
-    <id>https://eightyninth.github.io/leetcode/283.html</id>
-    <published>2022-10-08T15:02:12.497Z</published>
-    <updated>2022-10-08T15:24:35.738Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;双指针&quot;&gt;&lt;a href=&quot;#双指针&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="leetcode" scheme="https://eightyninth.github.io/categories/leetcode/"/>
-    
-    
-    <category term="leetcode" scheme="https://eightyninth.github.io/tags/leetcode/"/>
-    
-    <category term="双指针" scheme="https://eightyninth.github.io/tags/%E5%8F%8C%E6%8C%87%E9%92%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>力扣 279. 完全平方数</title>
-    <link href="https://eightyninth.github.io/leetcode/279.html"/>
-    <id>https://eightyninth.github.io/leetcode/279.html</id>
-    <published>2022-10-08T14:36:06.723Z</published>
-    <updated>2022-10-08T15:00:44.492Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;动态规划&quot;&gt;&lt;a href=&quot;#动态规划&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="leetcode" scheme="https://eightyninth.github.io/categories/leetcode/"/>
-    
-    
-    <category term="leetcode" scheme="https://eightyninth.github.io/tags/leetcode/"/>
-    
-    <category term="动态规划" scheme="https://eightyninth.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>技巧，知识积累，持续更新</title>
-    <link href="https://eightyninth.github.io/trick.html"/>
-    <id>https://eightyninth.github.io/trick.html</id>
-    <published>2022-09-27T15:26:32.606Z</published>
-    <updated>2022-09-28T01:09:23.410Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;堆的构建-以大根堆为例&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="校招" scheme="https://eightyninth.github.io/categories/%E6%A0%A1%E6%8B%9B/"/>
-    
-    
-    <category term="堆" scheme="https://eightyninth.github.io/tags/%E5%A0%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>力扣 253. 会议室II</title>
-    <link href="https://eightyninth.github.io/leetcode/253.html"/>
-    <id>https://eightyninth.github.io/leetcode/253.html</id>
-    <published>2022-09-17T13:42:16.060Z</published>
-    <updated>2022-10-08T14:32:51.068Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;p&gt;由于是会员题目，这里对题目进行描述&lt;/p&gt;
-&lt;h1</summary>
-        
-      
-    
-    
-    
-    <category term="leetcode" scheme="https://eightyninth.github.io/categories/leetcode/"/>
-    
-    
-    <category term="堆" scheme="https://eightyninth.github.io/tags/%E5%A0%86/"/>
-    
-    <category term="leetcode" scheme="https://eightyninth.github.io/tags/leetcode/"/>
-    
-    <category term="双指针" scheme="https://eightyninth.github.io/tags/%E5%8F%8C%E6%8C%87%E9%92%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>力扣 240. 搜索二维矩阵II</title>
-    <link href="https://eightyninth.github.io/leetcode/240.html"/>
-    <id>https://eightyninth.github.io/leetcode/240.html</id>
-    <published>2022-09-17T13:09:35.172Z</published>
-    <updated>2022-09-17T13:11:10.506Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;解法&quot;&gt;&lt;a href=&quot;#解法&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="leetcode" scheme="https://eightyninth.github.io/categories/leetcode/"/>
-    
-    
-    <category term="leetcode" scheme="https://eightyninth.github.io/tags/leetcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>计算机网络笔记 3</title>
-    <link href="https://eightyninth.github.io/books/network_3.html"/>
-    <id>https://eightyninth.github.io/books/network_3.html</id>
-    <published>2022-09-06T06:07:41.598Z</published>
-    <updated>2022-10-07T14:10:42.038Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;数据链路层&quot;&gt;&lt;a href=&quot;#数据链路层&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="校招" scheme="https://eightyninth.github.io/categories/%E6%A0%A1%E6%8B%9B/"/>
-    
-    
-    <category term="计算机网络" scheme="https://eightyninth.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
-    
-    <category term="校招" scheme="https://eightyninth.github.io/tags/%E6%A0%A1%E6%8B%9B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>力扣 239. 滑动窗口最大值</title>
-    <link href="https://eightyninth.github.io/leetcode/239.html"/>
-    <id>https://eightyninth.github.io/leetcode/239.html</id>
-    <published>2022-09-01T07:52:03.363Z</published>
-    <updated>2022-09-01T08:15:26.637Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;单调队列-N-x2F-A&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="leetcode" scheme="https://eightyninth.github.io/categories/leetcode/"/>
-    
-    
-    <category term="leetcode" scheme="https://eightyninth.github.io/tags/leetcode/"/>
-    
-    <category term="队列" scheme="https://eightyninth.github.io/tags/%E9%98%9F%E5%88%97/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>力扣 238. 除自身以外数组的乘积</title>
-    <link href="https://eightyninth.github.io/leetcode/238.html"/>
-    <id>https://eightyninth.github.io/leetcode/238.html</id>
-    <published>2022-09-01T03:44:36.136Z</published>
-    <updated>2022-09-01T03:45:55.754Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;解法&quot;&gt;&lt;a href=&quot;#解法&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="leetcode" scheme="https://eightyninth.github.io/categories/leetcode/"/>
-    
-    
-    <category term="leetcode" scheme="https://eightyninth.github.io/tags/leetcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>力扣 236. 二叉树的最近公共祖先</title>
-    <link href="https://eightyninth.github.io/leetcode/236.html"/>
-    <id>https://eightyninth.github.io/leetcode/236.html</id>
-    <published>2022-08-28T12:52:46.259Z</published>
-    <updated>2022-08-28T13:04:01.917Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;前置&quot;&gt;&lt;a href=&quot;#前置&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="leetcode" scheme="https://eightyninth.github.io/categories/leetcode/"/>
-    
-    
-    <category term="leetcode" scheme="https://eightyninth.github.io/tags/leetcode/"/>
-    
-    <category term="树" scheme="https://eightyninth.github.io/tags/%E6%A0%91/"/>
-    
-    <category term="递归" scheme="https://eightyninth.github.io/tags/%E9%80%92%E5%BD%92/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>力扣 234. 回文链表</title>
-    <link href="https://eightyninth.github.io/leetcode/234.html"/>
-    <id>https://eightyninth.github.io/leetcode/234.html</id>
-    <published>2022-08-28T10:06:58.909Z</published>
-    <updated>2022-08-28T10:08:53.203Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;前置&quot;&gt;&lt;a href=&quot;#前置&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="leetcode" scheme="https://eightyninth.github.io/categories/leetcode/"/>
-    
-    
-    <category term="leetcode" scheme="https://eightyninth.github.io/tags/leetcode/"/>
-    
-    <category term="递归" scheme="https://eightyninth.github.io/tags/%E9%80%92%E5%BD%92/"/>
-    
-    <category term="链表" scheme="https://eightyninth.github.io/tags/%E9%93%BE%E8%A1%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>力扣 226. 翻转二叉树</title>
-    <link href="https://eightyninth.github.io/leetcode/226.html"/>
-    <id>https://eightyninth.github.io/leetcode/226.html</id>
-    <published>2022-08-28T08:14:56.588Z</published>
-    <updated>2022-08-28T08:17:41.520Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h1 id=&quot;前置&quot;&gt;&lt;a href=&quot;#前置&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="leetcode" scheme="https://eightyninth.github.io/categories/leetcode/"/>
-    
-    
-    <category term="leetcode" scheme="https://eightyninth.github.io/tags/leetcode/"/>
-    
-    <category term="树" scheme="https://eightyninth.github.io/tags/%E6%A0%91/"/>
-    
-    <category term="递归" scheme="https://eightyninth.github.io/tags/%E9%80%92%E5%BD%92/"/>
     
   </entry>
   

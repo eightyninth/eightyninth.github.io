@@ -157,7 +157,7 @@
     
     
     <article
-  id="post-leetcode/22"
+  id="post-leetcode/62"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -168,8 +168,8 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/leetcode/22.html"
-    >力扣 22. 括号生成</a> 
+  <a class="article-title" href="/leetcode/62.html"
+    >力扣 62. 不同路径</a> 
 </h2>
  
 
@@ -177,8 +177,8 @@
     </header>
      
     <div class="article-meta">
-      <a href="/leetcode/22.html" class="article-date">
-  <time datetime="2022-07-20T02:44:49.522Z" itemprop="datePublished">2022-07-20</time>
+      <a href="/leetcode/62.html" class="article-date">
+  <time datetime="2022-07-31T07:01:23.901Z" itemprop="datePublished">2022-07-31</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
@@ -188,729 +188,9 @@
       
     <div class="article-entry" itemprop="articleBody">
        
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="回溯思想-深度优先遍历-dfs-实现"><a href="#回溯思想-深度优先遍历-dfs-实现" class="headerlink" title="回溯思想 + 深度优先遍历(dfs)实现"></a>回溯思想 + 深度优先遍历(dfs)实现</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">generateParenthesis</span>(<span class="params">n</span>):</span><br><span class="line">    res, cur = [], <span class="string">&quot;&quot;</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">dfs</span>(<span class="params">cur, left, right</span>):</span><br><span class="line">        <span class="keyword">if</span> left == <span class="number">0</span> <span class="keyword">and</span> right == <span class="number">0</span>:</span><br><span class="line">            res.append(cur)</span><br><span class="line">        <span class="keyword">elif</span> right &lt; left:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">if</span> left &gt; <span class="number">0</span>:</span><br><span class="line">                dfs(cur + <span class="string">&quot;(&quot;</span>, left - <span class="number">1</span>, right)</span><br><span class="line">            <span class="keyword">if</span> right &gt; <span class="number">0</span>:</span><br><span class="line">                dfs(cur + <span class="string">&quot;)&quot;</span>, left, right - <span class="number">1</span>)</span><br><span class="line">    dfs(cur, n, n) </span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
- 
-      <!-- reward -->
-      
-    </div>
-    
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="动态规划-二维数组"><a href="#动态规划-二维数组" class="headerlink" title="动态规划 - 二维数组"></a>动态规划 - 二维数组</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">uniquePaths</span>(<span class="params">m, n</span>):</span><br><span class="line">    dp = [[<span class="number">0</span>] * n <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(m)]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">            <span class="keyword">if</span> i == <span class="number">0</span> <span class="keyword">and</span> j == <span class="number">0</span>:</span><br><span class="line">                dp[i][j] = <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> i == <span class="number">0</span>: </span><br><span class="line">                dp[i][j] = dp[i][j - <span class="number">1</span>]</span><br><span class="line">            <span class="keyword">elif</span> j == <span class="number">0</span>:</span><br><span class="line">                dp[i][j] = dp[i - <span class="number">1</span>][j]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                dp[i][j] = dp[i - <span class="number">1</span>][j] + dp[i][j - <span class="number">1</span>]</span><br><span class="line">    <span class="comment"># print(dp)</span></span><br><span class="line">    <span class="keyword">return</span> dp[-<span class="number">1</span>][-<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
 
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dfs/" rel="tag">dfs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%9E%E6%BA%AF/" rel="tag">回溯</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-    
-</article>
-
-    
-    <article
-  id="post-leetcode/21"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/leetcode/21.html"
-    >力扣 21. 合并两个有序链表</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/leetcode/21.html" class="article-date">
-  <time datetime="2022-07-20T02:23:32.185Z" itemprop="datePublished">2022-07-20</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="预置"><a href="#预置" class="headerlink" title="预置"></a>预置</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ListNode</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, val=<span class="number">0</span>, <span class="built_in">next</span>=<span class="literal">None</span></span>):</span><br><span class="line">        self.val = val</span><br><span class="line">        self.<span class="built_in">next</span> = <span class="built_in">next</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="虚拟头节点-链表基础操作"><a href="#虚拟头节点-链表基础操作" class="headerlink" title="虚拟头节点 + 链表基础操作"></a>虚拟头节点 + 链表基础操作</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">mergeTwoLists</span>(<span class="params">list1, list2</span>):</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> list1: <span class="keyword">return</span> list2</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> list2: <span class="keyword">return</span> list1</span><br><span class="line">    top = ListNode()</span><br><span class="line">    cur1, cur2, cur = list1, list2, top</span><br><span class="line">    <span class="keyword">while</span> cur1 <span class="keyword">and</span> cur2:</span><br><span class="line">        <span class="keyword">if</span> cur1.val &lt;= cur2.val:</span><br><span class="line">            cur.<span class="built_in">next</span>, cur1 = cur1, cur1.<span class="built_in">next</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            cur.<span class="built_in">next</span>, cur2 = cur2, cur2.<span class="built_in">next</span></span><br><span class="line">        cur = cur.<span class="built_in">next</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> cur1: cur.<span class="built_in">next</span> = cur1</span><br><span class="line">    <span class="keyword">if</span> cur2: cur.<span class="built_in">next</span> = cur2</span><br><span class="line">    <span class="keyword">return</span> top.<span class="built_in">next</span></span><br></pre></td></tr></table></figure> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8/" rel="tag">链表</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-    
-</article>
-
-    
-    <article
-  id="post-leetcode/20"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/leetcode/20.html"
-    >力扣 20. 有效的括号</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/leetcode/20.html" class="article-date">
-  <time datetime="2022-07-20T02:12:02.458Z" itemprop="datePublished">2022-07-20</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="栈-hash表"><a href="#栈-hash表" class="headerlink" title="栈 + hash表"></a>栈 + hash表</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">isValid</span>(<span class="params">s</span>):</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> s: <span class="keyword">return</span> <span class="literal">True</span> </span><br><span class="line">    pip = &#123;<span class="string">&quot;&#125;&quot;</span>: <span class="string">&quot;&#123;&quot;</span>,</span><br><span class="line">           <span class="string">&quot;)&quot;</span>: <span class="string">&quot;(&quot;</span>,</span><br><span class="line">           <span class="string">&quot;]&quot;</span>: <span class="string">&quot;[&quot;</span>&#125;</span><br><span class="line"></span><br><span class="line">    queue = []</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> sign <span class="keyword">in</span> s:</span><br><span class="line">        <span class="keyword">if</span> sign <span class="keyword">in</span> pip.keys():</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> queue:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                cur = queue.pop()</span><br><span class="line">                <span class="keyword">if</span> pip[sign] != cur:</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            queue.append(sign)</span><br><span class="line">        </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> queue:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hash%E8%A1%A8/" rel="tag">hash表</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%88/" rel="tag">栈</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-    
-</article>
-
-    
-    <article
-  id="post-paper/egi"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/paper/egi.html"
-    >Transfer Learning of Graph Neural Networks with Ego-graph Information Maximization</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/paper/egi.html" class="article-date">
-  <time datetime="2022-07-19T02:47:10.383Z" itemprop="datePublished">2022-07-19</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/">文献阅读</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>论文地址: <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2009.05204.pdf">2009.05204.pdf</a></p>
-<p>代码地址: <a target="_blank" rel="noopener" href="https://github.com/GentleZhu/EGI">EGI</a></p>
-<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><ol>
-<li><p>GNN效果良好, 但针对大规模图的训练消耗良多.</p>
-</li>
-<li><p>在近年进行GNN预训练的研究中, 一是没有提供模型设计的理论支撑, 二是没有清楚地提出模型可转移性的要求和保证.</p>
-</li>
-<li><p>本文观点: 首先, 对<strong>基本图信息</strong>提出一个新的观点, 主张捕获<strong>基本图信息</strong>作为迁移GNN训练的目标. 这启发了<strong>EGI</strong>的设计, 使用<strong>EGI</strong>实现此目标.<br>其次, 当节点特征与结构相关时, 对目标图和源图局部拉普拉斯的不同进行EGI可转移性分析.</p>
-</li>
-</ol>
-<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>此次工作为迁移学习GNN构建了一个有理论支撑的框架, 并具现化为一个可实际应用的迁移学习GNN模型.</p>
-<p>下图为模型的概览, 其基于一个新的视角: 把图视作节点特征和k阶ego-图结构的联合分布采样.<br>这样的观点使得我们可以通过定义图的信息和相似度来分析图的可迁移性.</p>
-<p><span id="GNNframework"><img src="/images/egi_img/framework.png" alt="(图1: 图迁移学习框架图)"></span></p>
-<p>我们所设计的模型称作<strong>EGI</strong>.其利用基于ego-图信息最大化的训练目标来有效捕获图信息.</p>
-<p>然后我们进一步具体说明了对可迁移节点特征的要求，并分析了依赖于源图和目标图的本地图拉普拉斯算子的 EGI 的可迁移性.</p>
-<h1 id="迁移GNN"><a href="#迁移GNN" class="headerlink" title="迁移GNN"></a>迁移GNN</h1><p>在图迁移学习设置中, 预训练过程是无法得知下游任务的.我们认为应该优化和量化GNN的一般效用(general utility).<br>而他捕获基础图信息的能力与图的拓扑结构和节点特征有关.</p>
-<p>基于上述观点, 我们设计了ego-图信息最大化模型( ego-graph information maximization model, EGI).<br>然后通过其对目标图和源图建模能力的差距来衡量GNN模型的一般迁移性.</p>
-<h2 id="EGI"><a href="#EGI" class="headerlink" title="EGI"></a>EGI</h2><p>此项工作关注于在原图上进行无监督预训练过后的GNN, 在直接迁移设置下, 不经过微调, 直接应用于目标图上.</p>
-<table>
-<thead>
-<tr>
-<th align="center">含  义</th>
-<th align="center">公  式</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">源图</td>
-<td align="center">$ G_{a} $</td>
-</tr>
-<tr>
-<td align="center">目标图</td>
-<td align="center">$ G_{b} $</td>
-</tr>
-<tr>
-<td align="center">节点特征</td>
-<td align="center">$ X $</td>
-</tr>
-<tr>
-<td align="center">节点集</td>
-<td align="center">$ V $</td>
-</tr>
-<tr>
-<td align="center">边集</td>
-<td align="center">$ E $</td>
-</tr>
-<tr>
-<td align="center">图</td>
-<td align="center">$ G &#x3D; \lbrace V, E \rbrace $</td>
-</tr>
-</tbody></table>
-<p>直觉上来说, 只有在源图$ G_{a} $和目标图$ G_{b} $的特征和结构在某些方面相似时, 迁移学习才会成功.<br>因此, 在图$ G_{a} $上进行学习的GNN图滤波( graph filters)能够兼容$ G_{b} $的特征和结构.</p>
-<p>我们提出了一个新的观点: 图可以视为节点特征和k阶ego-图结构的联合分布采样.<br>由于这样操作本质是对k阶ego图采样进行编码, 可以帮助我们在迁移学习下对图的结构信息进行具体定义.<br>这样有利于图之间的相似&#x2F;不相似性度量.</p>
-<p>我们设计了<strong>EGI</strong>, 此网络通过互信息最大化用以代替k阶图的恢复.</p>
-<blockquote>
-<p>k阶ego图: 对于节点$ v_{i} $, 只要它具有k层质心扩展, 使得$ v_{i} $到ego图中的人任何节点的最好距离是k ($ \forall v_{i} \in V(g_{i}), |distance(v_{i}, v_{j})| \leq k $), 它的k阶ego图定义为$g_{i} &#x3D; \lbrace V(g_{i}), E(g_{i}) \rbrace $.</p>
-</blockquote>
-<p>在此次工作中, 我们使用k阶有向图, 其方向由是否到中心节点的输入边还是输出边决定. 当然, 其结果同样适用于无向图.</p>
-<blockquote>
-<p>结构信息: $ \mathcal{G} $是拓扑空间的子图, $ G $ 视作按照概率$ \mu $从$ \mathcal{G} $采样的独立同分布的k阶ego图$ \lbrace g_{i} \rbrace_{i&#x3D;1}^{n} $. 从而$ G $的结构信息定义为k阶ego图集合$ \lbrace g_{i} \rbrace_{i&#x3D;1}^{n} $和经验分布.</p>
-</blockquote>
-<p>如<a href="#GNNframework">图1</a>所示, $ G_{0} $, $ G_{1} $, $ G_{2} $通过1阶ego图的集合和经验分布进行区分, 这使得我们能够衡量图之间的结构相似性.</p>
-<h3 id="ego图信息最大化"><a href="#ego图信息最大化" class="headerlink" title="ego图信息最大化"></a>ego图信息最大化</h3><p><img src="/images/egi_img/model.png" alt="(图2: EGI框架图)"></p>
-<p>给定从经验联合分布$ (g_{i}, x_{i}) \backsim \mathbb{P} $采样的ego图集合$ \lbrace (g_{i}, x_{i}) \rbrace_{i} $.<br>GNN编码器$ \Psi $的训练目标为最大化定义为结构信息的k阶ego图$ g_{i} $和节点嵌入$ z_{i} &#x3D; \Psi(g_{i}, x_{i}) $的互信息$ MI(g_{i}, \Psi(g_{i}, x_{i}))$.<br>为了最大化互信息$ MI $, 引入判别器$ \mathcal{D}(g_{i}, z_{i}): E(g_{i}) \times z_{i} \rightarrow \mathbb{R}^{+} $来计算边$ e $属于ego图$ g_{i} $的概率.<br>EGI模型损失函数使用JS散度:</p>
-<p>$$ \mathcal{L}_{EGI} &#x3D; -MI^{(JSD)}( \mathcal{G}, \Psi ) &#x3D; \frac{1}{N} \sum_{i&#x3D;1}^{N} [sp( \mathcal{D}(g_i, z_{i}^{‘})) + sp(-\mathcal{D}(g_i, z_{i}))] \tag{1} \label{eq:one} $$</p>
-<p>其中, $ sp(x) &#x3D; \log(1 + e^{x}) $ 是softplus function(一种激活函数), $ (g_{i}, z_{i}^{‘}) $是从边缘分布的乘积中随机抽取的, 即$ z_{i}^{‘} &#x3D; \Psi (g_{i^{‘}}, x_{i^{‘}}), (g_{i^{‘}}, x_{i^{‘}}) \backsim \mathbb{P}, i^{‘} \neq i $.</p>
-<p>在$ 式 \eqref{eq:one} $中, 对边是否属于k阶ego图$ E(g_i) $进行计算的判别器$ \mathcal{D} $依赖于节点顺序.<br>以固定的图顺序来描述判别器$ \mathcal{D} $的决策过程.具体来说, $ E(g_i) $的顺序是广度优先遍历(BFS-ordering) $ \pi $.</p>
-<p>$ \mathcal{D} &#x3D; f \circ	\Phi $, 通过另一个GNN编码器$ \Phi $和对边序列$ E^{\pi}: \lbrace e_1 , e_2 , \cdots , e_n \rbrace $在有向图层面是否属于k阶ego图进行预测的得分函数$ f $ 输出的准确度得到的召回率进行相乘.</p>
-<p>根&#x2F; 中心节点编码器$ \Psi $输入$ (g_i, x_i) $, 在判别器$ \mathcal{D} $中对邻域节点处理的编码器$ \phi $输入$ (\tilde{g_i}, x_i) $：</p>
-<p>$$ \Psi(g_i , x_i ) &#x3D; GNN_{\Psi} (A_i, X_i ), \Phi (\tilde{g_i}, x_i ) &#x3D; GNN_{\Phi} (A_{i}^{‘}, X_i) $$</p>
-<p>$ A_i, A_{i}^{‘} $是$ g_i, \tilde{g_i} $包括自向边的邻接矩阵.同时$ A_i &#x3D; A_{i}^{‘T}$.自向边的存在使得GNN可以关注到根节点自身的影响.</p>
-<p>$ \Psi $ 的输出为$ z_i \in \mathbb{R}^n $ 是根节点的节点嵌入, $ \Phi $ 的输出$ K \in \mathbb{R}^{|g_i| \times n} $ 为ego图邻域节点的表示.</p>
-<p>得到$ H $ 后, 就可以计算得分函数$ f $: 对于每个在边序列的节点对$ (p, q) \in E^{\pi} $, $ h_p $是从$ \Phi $得到的源节点表示, $ x_q $是目标节点特征.</p>
-<p>$$ f(h_p, x_q, z_i) &#x3D; \sigma (U^T \cdot	\tau (W^T [h_p || x_q || z_i])) \tag{2} \label{eq:two}$$</p>
-<p>$ \sigma $ 和 $ \tau $ 是Sigmoid和ReLU激活函数. </p>
-<p>然后, 判别器$ \mathcal{D} $用以区分$ g_i $中边的正负对:正对-$ ((p, q), z_i) $,负对-$ ((p, q), z_{i}^{‘}) $:</p>
-<p>$$ \mathcal{D} (g_i, z_i)  &#x3D; \sum_{(p,q) \in E^{\pi}} \log f(h_p, x_q, z_i), \mathcal{D} (g_i, z_{i}^{‘})  &#x3D; \sum_{(p,q)}^{E^{\pi}} \log f(h_p, x_q, z_{i}^{‘}) \tag{3} \label{eq:three} $$</p>
-<p>在节点序列中, 我们考虑了两种边$ (p, q) $, 第一种: 边连接了对于根节点来说跨阶的节点; 第二种: 边连接了对于根节点来说同阶的节点.</p>
-<p>前述提及了节点对的广度优先遍历(BFS-ordering), 而在$ 式 \eqref{eq:three} $中, 对第一种边的序列变化很敏感, 对第二种不敏感.</p>
-<p>基于上述事实, 由于k层GNN的输出仅取决于编码器$ \Psi $和$ \Phi $的k阶ego图, 因此可以通过对$ g_i $的批量采样来并行训练EGI.</p>
-<h3 id="EGI-的使用场合"><a href="#EGI-的使用场合" class="headerlink" title="EGI 的使用场合"></a>EGI 的使用场合</h3><p>EGI 的使用场合为直接迁移, 即目标领域标签未知, 其可迁移性是通过没有进行微调的模型性能差异来衡量的.</p>
-<h2 id="基于局部图的拉普拉斯可迁移性分析"><a href="#基于局部图的拉普拉斯可迁移性分析" class="headerlink" title="基于局部图的拉普拉斯可迁移性分析"></a>基于局部图的拉普拉斯可迁移性分析</h2><p>此次工作主要为基于源图$ G_a $和目标图$ G_b $之间相似性的GNN的可迁移性.</p>
-<p>我们认为GNN的输出由三部分构成: 输入的节点特征, 固定的图拉普拉斯, 学习到的图过滤器.<br>GNN的效用由这三者决定.<br>为了实现这种兼容性，我们要求节点特征与结构有关.</p>
-<blockquote>
-<p>结构相关节点特征: $g_i$表示有序的中间结点为$ v_i $的ego图, 其节点特征为$ \lbrace x_{p,q}^{i} \rbrace_{p&#x3D;0,q&#x3D;1}^{k,|V_p(g_i)|} $, 其中$ V_p(g_i) $是$ g_i $的k阶节点集合. 只有对于任意属于ego图的节点$ v_q \in V_p(g_i) $有$ x_{p,q}^{i} &#x3D; [f(g_i)]_{p,q} \in \mathbb{R}^d $, 其中$ f: \mathcal{G} \rightarrow \mathbb{R}^{d \times |V(g_i)|} $, 这样的节点特征才可称为结构相关.</p>
-</blockquote>
-<p>结构相关节点特征要求节点特征是图结构的函数.<br>这样的节点对图结构的变化很敏感, 同时在理想的情况下, 节点特征对图结构是内射的(映射不同的图到不同的特征).<br>这样, 当一个迁移GNN学习到的图过滤器兼容$ G $的结构时, 同样能够兼容$ G $的节点特征.</p>
-<blockquote>
-<p>GNN可迁移性: 源图$ G_a &#x3D; \lbrace (g_, x_i) \rbrace_{i&#x3D;1}^{n} $和目标图$ G_b &#x3D; \lbrace (g_{i’}, x_{i’}) \rbrace_{i’&#x3D;1}^{m} $以及假设与结构相关的节点特征, k层GCN $ \Psi_{\theta} $, 一阶多项式$ \phi $<br>在以上对$ G_a $和$ G_b $的局部谱域合理的假设下, $ \Psi_{\theta} $的经验性能差异通过$ \mathcal{L}_{EGI} $评估, 满足:</p>
-</blockquote>
-<p>$$ | \mathcal{L}_{EGI} (G_{a}) - \mathcal{L}_{EGI} (G_{b})| \leq \mathcal{O}( \Delta_{ \mathcal{D}} (G_{a}, G_{b}) + C) \tag{4} \label{eq:four} $$</p>
-<p>论文原文, <font color="red"> RHS表示公式右侧</font></p>
-<p>其中, $ C $只依赖于图编码器和节点特征.</p>
-<p>$ \Delta_{ \mathcal{D}}(G_a ,G_b) $衡量源图和目标图结构区别的方式:</p>
-<p>$$ \Delta_{\mathcal{D}}(G_a, G_b) &#x3D; \tilde{C} \frac{1}{nm} \sum_{n}^{i&#x3D;1} \sum_{m}^{i^{‘}&#x3D;1} \lambda_{max} (\tilde{L}_{g_i} - \tilde{L}_{g_{i^{‘}}}) \tag{5} \label{eq:five} $$</p>
-<p>其中, $ \lambda_{max} (A) : \lambda_{max}(A^T A)^(1&#x2F;2) $, $ \tilde{L}_{g_i} $通过入度表示$\tilde{g}_i$的归一化图拉普拉斯, $ \tilde{C}$ 一直依赖于 $ \lambda_{max}( \tilde{L}_{g_i}) $ 和 $\mathcal{D}$.</p>
-<p><strong>GNN可迁移性</strong>的分析自然举例了我们对于结构相似性和GNN可迁移性之间对应关系的理解.<br>这使得我们可以告知EGI怎样把在源图上训练好的GNN仅仅通过衡量源图和目标图之间的局部拉普拉斯差异, 而不需要任何微调, 就可以在目标图上很好地工作.</p>
-<h1 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h1><p>直接迁移的图编码器为GIN,<br>存在微调迁移的图编码器为GCN,<br>自监督GNN为GVAE, DGI,<br>互信息衡量方法为GMI, MVC,<br>对于预训练GNN, 有MaskGNN和ContextGNN,<br>此外, 对比方法还有Structural Pre-train.</p>
-<p><img src="/images/egi_img/experiment1.png" alt="(图3: 实验图)"></p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GNN/" rel="tag">GNN</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BF%81%E7%A7%BB%E5%AD%A6%E4%B9%A0/" rel="tag">迁移学习</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-    
-</article>
-
-    
-    <article
-  id="post-build_site"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/build_site.html"
-    >github + hexo 简单搭建 github.io 网站</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/build_site.html" class="article-date">
-  <time datetime="2022-07-02T13:22:45.000Z" itemprop="datePublished">2022-07-02</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%BD%91%E7%AB%99/">网站</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="系统配置"><a href="#系统配置" class="headerlink" title="系统配置"></a>系统配置</h1><p>这里先说一下我的系统配置以供参考</p>
-<blockquote>
-<p>Ubuntu 20.04 5.13.0-51-generic x86_64</p>
-</blockquote>
-<h1 id="本地前置要求"><a href="#本地前置要求" class="headerlink" title="本地前置要求"></a>本地前置要求</h1><ul>
-<li><p>node.js &gt;&#x3D; 10.13</p>
-</li>
-<li><p>Git</p>
-</li>
-<li><p>hexo</p>
-</li>
-</ul>
-<h2 id="node-js"><a href="#node-js" class="headerlink" title="node.js"></a>node.js</h2><p>按照 <a target="_blank" rel="noopener" href="https://github.com/nodesource/distributions">官方安装方式</a> , Ubuntu 采用安装命令行, 这里安装的版本是18.4.0.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -</span><br><span class="line">sudo apt-get install -y nodejs</span><br></pre></td></tr></table></figure>
-
-<p>进行测试</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm --version</span><br></pre></td></tr></table></figure>
-
-<p>出现版本号, 即为安装成功.</p>
-<h2 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h2><p>Ubuntu 安装命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install git</span><br></pre></td></tr></table></figure>
-
-<h2 id="hexo"><a href="#hexo" class="headerlink" title="hexo"></a>hexo</h2><p>创建一个空文件夹作为 hexo 安装路径的同时也会是网站根目录.</p>
-<blockquote>
-<p>为了后述具体,此时假设新建的目录路径为: <font color=red>&#x2F;example</font></p>
-</blockquote>
-<h1 id="github前置要求"><a href="#github前置要求" class="headerlink" title="github前置要求"></a>github前置要求</h1><ul>
-<li><p>github账号</p>
-<blockquote>
-<p>为了后述具体,此时假设github账号</p>
-<p>用户名为: test</p>
-<p>邮箱为: <a href="mailto:&#116;&#x65;&#x73;&#x74;&#x40;&#x31;&#54;&#x33;&#46;&#x63;&#x6f;&#x6d;">&#116;&#x65;&#x73;&#x74;&#x40;&#x31;&#54;&#x33;&#46;&#x63;&#x6f;&#x6d;</a></p>
-<p>密码为: 123456</p>
-</blockquote>
-</li>
-<li><p>ssh密匙</p>
-</li>
-</ul>
-<h2 id="新建网站远程仓库"><a href="#新建网站远程仓库" class="headerlink" title="新建网站远程仓库"></a>新建网站远程仓库</h2><ol>
-<li><p>New Repository, 命名为</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test.github.io</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>打开 <strong>test.github.io</strong> , 在与 <font color="red">code</font> 同级的 <font color="red">Settings</font>下打开与 <font color="red">General</font> 同级的 <font color="red">Pages</font>. 在<font color="red">Theme Chooser</font> 下选择<font color="red">Choose a theme</font>.</p>
-</li>
-<li><p>选择好主题后, 把新弹出的界面拉到底部, 选择<strong>commit changes</strong>, 网站就可以访问了.</p>
-</li>
-<li><p>输入 test.github.io 访问.</p>
-</li>
-</ol>
-<h2 id="设置ssh密匙"><a href="#设置ssh密匙" class="headerlink" title="设置ssh密匙"></a>设置ssh密匙</h2><p>为了hexo能够顺利push到我们的仓库, 需要在本地电脑设置ssh密匙</p>
-<ol>
-<li><p>检查本机是否有ssh密匙</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.ssh <span class="comment">#检查本机已存在的ssh密钥</span></span><br></pre></td></tr></table></figure>
-
-<p> 如果存在 <strong>No such file or directory</strong>, 说明你是第一次使用git, 需要创建ssh.</p>
- <br />
-
-<p> 或者</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.ssh <span class="comment">#检查本机已存在的ssh密钥</span></span><br><span class="line"><span class="built_in">ls</span></span><br></pre></td></tr></table></figure>
-
-<p> 没有任何输出, 需要创建ssh.</p>
- <br />
-
-<p> 若有ssh密匙, 直接跳转至第 3 步.</p>
-</li>
-<li><p>创建ssh密匙</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="built_in">test</span>@163.com</span><br></pre></td></tr></table></figure>
-
-<p> 然后<strong>连续3次回车</strong>, 最终会生成一个文件在 <font color=red>~</font> 下.</p>
-</li>
-<li><p>打开 <font color=red>~</font> , 找到 <font color=red>.ssh\id_rsa.pub</font> 文件.</p>
-<blockquote>
-<p>注: 如果打开 <font color=red>~</font> ,没有 <font color=red>.ssh</font> 文件夹, 需要 <kbd>Ctrl</kbd> + <kbd>H</kbd> 显示隐藏文件夹.</p>
-</blockquote>
-<p> 使用记事本一类的程序打开, 复制所有内容.</p>
-</li>
-<li><p>打开 github , 点击右上角个人头像, 在弹出的窗口中选择 <font color=red>Settings</font>.<br>然后选择与<font color=red>Public profile</font> 同级 <font color=red>Access</font> 下的<br><font color=red>SHH and GPG keys</font>.</p>
-</li>
-<li><p>选择 <font color=red>New SSH key </font>.</p>
-<blockquote>
-<p>title: 随便填</p>
-<p>Key: 粘贴从 <font color=red>.ssh\id_rsa.pub</font> 文件复制的内容</p>
-</blockquote>
-<p> <font color=red>Add SSH key </font>.</p>
-</li>
-<li><p>测试</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com <span class="comment"># 注意邮箱地址不用改</span></span><br></pre></td></tr></table></figure>
-
-<p> 如果提示<font color=blue>Are you sure you want to continue connecting (yes&#x2F;no)?</font>，输入<strong>yes</strong>, 然后会看到:</p>
-<blockquote>
-<p>Hi test! You’ve successfully authenticated, but GitHub does not provide shell access.</p>
-</blockquote>
-<p> 看到这个信息说明SSH已配置成功!</p>
-</li>
-</ol>
-<h2 id="Git本地配置："><a href="#Git本地配置：" class="headerlink" title="Git本地配置："></a>Git本地配置：</h2><p>打开命令行, 输入</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">&quot;test&quot;</span>            // 你的github用户名，非昵称</span><br><span class="line">git config --global user.email  <span class="string">&quot;test@163.com&quot;</span>  // 填写你的github注册邮箱</span><br></pre></td></tr></table></figure>
-
-<h1 id="网站搭建"><a href="#网站搭建" class="headerlink" title="网站搭建"></a>网站搭建</h1><h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>在 <font color=red>&#x2F;example</font> 目录下, 打开命令行, 输入</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install -g hexo-cli</span><br><span class="line">hexo init</span><br></pre></td></tr></table></figure>
-
-<h2 id="加载主题"><a href="#加载主题" class="headerlink" title="加载主题"></a>加载主题</h2><p>在<a target="_blank" rel="noopener" href="https://hexo.io/themes/">Hexo官网</a>选择喜欢的主题, 这里以<a target="_blank" rel="noopener" href="https://shen-yu.gitee.io/2019/ayer/#%E4%BB%8B%E7%BB%8D">Ayer 主题</a>为例, 输入</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i hexo-theme-ayer -S</span><br></pre></td></tr></table></figure>
-
-<h2 id="主题设置"><a href="#主题设置" class="headerlink" title="主题设置"></a>主题设置</h2><ol>
-<li><p>主题使用</p>
- <br />
-
-<p> 将 <font color=red>&#x2F;example</font> 目录下的 <strong>_config.yml</strong> 里的 theme 值修改成 ayer</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme: ayer</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>必要插件</p>
- <br />
- 
-<p> 在 <font color=red>&#x2F;example</font> 目录下, 打开命令行, 输入</p>
- <br />
-
-<ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/theme-next/hexo-generator-searchdb">搜索</a></li>
-</ul>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo-generator-feed">RSS 订阅</a></li>
-</ul>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-feed --save</span><br></pre></td></tr></table></figure>
- <br />
-
-<p> 打开<font color=red>&#x2F;example</font> 目录下的 <strong>_config.yml</strong>, 输入</p>
- <br />
-
-<ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/theme-next/hexo-generator-searchdb">搜索</a></li>
-</ul>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># hexo-generator-searchdb</span><br><span class="line">search:</span><br><span class="line">path: search.xml</span><br><span class="line">field: post</span><br><span class="line">format: html</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo-generator-feed">RSS 订阅</a></li>
-</ul>
- <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">feed:</span><br><span class="line">type: atom</span><br><span class="line">path: atom.xml</span><br><span class="line">limit: 20</span><br><span class="line">hub:</span><br><span class="line">content:</span><br><span class="line">content_limit: 140</span><br><span class="line">content_limit_delim: &quot; &quot;</span><br><span class="line">order_by: -date</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>可选插件</p>
- <br />
- 
-<p> 在 <font color=red>&#x2F;example</font> 目录下, 打开命令行, 输入</p>
- <br />
-
-<ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/netcan/hexo-generator-index-pin-top">文章置顶</a></li>
-</ul>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-index-pin-top --save</span><br></pre></td></tr></table></figure>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/EYHN/hexo-helper-live2d/blob/master/README.zh-CN.md">二次元看板娘</a></li>
-</ul>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-helper-live2d</span><br><span class="line">npm install npm install --save live2d-widget-model-xxx  <span class="comment"># xxx为你选择的模型</span></span><br></pre></td></tr></table></figure>
- <br />
-
-<p> 打开<font color=red>&#x2F;example</font> 目录下的 <strong>_config.yml</strong>, 输入</p>
- <br />
-
-<ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/netcan/hexo-generator-index-pin-top">文章置顶</a></li>
-</ul>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 已存在</span><br><span class="line">index_generator:</span><br><span class="line">path: &#x27;&#x27;</span><br><span class="line">per_page: 10</span><br><span class="line">order_by: -date</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/EYHN/hexo-helper-live2d/blob/master/README.zh-CN.md">二次元看板娘</a></li>
-</ul>
- <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">live2d:</span><br><span class="line">enable: true</span><br><span class="line">scriptFrom: local</span><br><span class="line">pluginRootPath: live2dw/</span><br><span class="line">pluginJsPath: lib/</span><br><span class="line">pluginModelPath: assets/</span><br><span class="line">tagMode: false</span><br><span class="line">debug: false</span><br><span class="line">model:</span><br><span class="line">  use: live2d-widget-model-wanko  # 选择模型</span><br><span class="line">display:</span><br><span class="line">  position: right</span><br><span class="line">  width: 150</span><br><span class="line">  height: 300</span><br><span class="line">mobile:</span><br><span class="line">  show: true</span><br><span class="line">react:</span><br><span class="line">  opacity: 0.7</span><br></pre></td></tr></table></figure>
-
-<p> 更多插件查看 <a target="_blank" rel="noopener" href="https://hexo.io/plugins/">hexo 插件市场</a>.</p>
-</li>
-<li><p>菜单处理</p>
- <br />
-
-<p> Ayer 初始情况下, 菜单的<font color=blue>分类(categories), 标签(tags), 旅行(tags&#x2F;旅行), 友链(friends), 关于我(2019&#x2F;about)</font>, 点击全部显示 <font color=red>error</font>, 需要初始化.</p>
-<p> 模板, 对 XX(path) 的初始化:</p>
- <br />
-
-<p> a. 在 <font color=red>&#x2F;example</font> 目录下, 打开命令行, 输入</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page XX</span><br></pre></td></tr></table></figure>
-
-<p> b. 打开 <font color=red>&#x2F;example&#x2F;source&#x2F;XX</font>, 复制 <strong>index.md</strong> 到 <font color=red>&#x2F;example&#x2F;source&#x2F;path</font>, 删除 <font color=red>&#x2F;example&#x2F;source&#x2F;XX</font> 目录.</p>
- <br />
-
-<p> c. 打开 <strong>index.md</strong>, 全部替换输入</p>
- <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: XX</span><br><span class="line">type: &quot;XX&quot;</span><br><span class="line">layout: &quot;XX&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>本地测试</p>
- <br />
-
-<p> 在完成上述操作后网站模板搭建完毕, 可以在本地查看网站效果.</p>
- <br />
-
-<p> 在 <font color=red>&#x2F;example</font> 目录下, 打开命令行, 输入</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># hexo 网站生成命令</span></span><br><span class="line">hexo g</span><br><span class="line"><span class="comment"># hexo 网站本地部署命令</span></span><br><span class="line">hexo s -p 8008</span><br></pre></td></tr></table></figure>
-
-<p>打开<font color=blue> <a target="_blank" rel="noopener" href="http://localhost:8008/">http://localhost:8008/</a> </font> 即可查看部署效果.</p>
-</li>
-<li><p>部署处理</p>
- <br />
-
-<p> 在push网站到git之前, 要在<font color=red>&#x2F;example</font> 目录下的 <strong>_config.yml</strong>, 输入</p>
- <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">type: git</span><br><span class="line">repository: git@github.com:test/test.github.io.git</span><br><span class="line">branch: master</span><br></pre></td></tr></table></figure>
-
-<p>在 <font color=red>&#x2F;example</font> 目录下, 打开命令行, 输入下述命令部署到云端.</p>
-<br />
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># hexo 网站生成命令</span></span><br><span class="line">hexo g</span><br><span class="line"><span class="comment"># hexo 网站云端部署命令</span></span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-
-<p> 打开<font color=blue> <a target="_blank" rel="noopener" href="https://test.github.io/">https://test.github.io/</a> </font> 即可查看部署效果.</p>
-</li>
-</ol>
-<h2 id="新增页面"><a href="#新增页面" class="headerlink" title="新增页面"></a>新增页面</h2><p>   文章页面的新增和菜单的处理不同.</p>
-<ol>
-<li><p>在 <font color=red>&#x2F;example&#x2F;source&#x2F;_posts</font> 目录下, 新建md文件.</p>
-</li>
-<li><p>md写入:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 文章名</span><br><span class="line">date: 2022-07-02 21:22:45       # 时间</span><br><span class="line">tags: [网站, hexo, github]      # 标签, 可以填入多个</span><br><span class="line">categories: [网站]              # 只能填入一个</span><br><span class="line">---</span><br><span class="line">正文</span><br></pre></td></tr></table></figure></li>
-</ol>
-<p>以上, 网站搭建完成.</p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/" rel="tag">github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BD%91%E7%AB%99/" rel="tag">网站</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-    
-</article>
-
-    
-    <article
-  id="post-paper/maskrcnn_pytorch"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/paper/maskrcnn_pytorch.html"
-    >实现Mask RCNN Pytorch版本</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/paper/maskrcnn_pytorch.html" class="article-date">
-  <time datetime="2022-07-02T13:22:45.000Z" itemprop="datePublished">2022-07-02</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E8%AF%AD%E4%B9%89%E5%88%86%E5%89%B2/">语义分割</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="整体架构"><a href="#整体架构" class="headerlink" title="整体架构"></a>整体架构</h1><p>本次实现的Mask RCNN主要分为以下几个部分：</p>
-<ul>
-<li><p>backbone</p>
-</li>
-<li><p>RPN</p>
-</li>
-</ul>
-<h1 id="backbone"><a href="#backbone" class="headerlink" title="backbone"></a>backbone</h1><p>首先原文提出了四种backbone：</p>
-<ul>
-<li>resnet50</li>
-<li>resnet50 + FPN</li>
-<li>resnet101</li>
-<li>resnet101 + FPN</li>
-</ul>
-<p>本次基于resnet101 + FPN实现</p>
-<h2 id="resnet101-1"><a href="#resnet101-1" class="headerlink" title="resnet101[1]"></a>resnet101<sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="[He K, Zhang X, Ren S, et al. Deep residual learning for image recognition[C]//Proceedings of the IEEE conference on computer vision and pattern recognition. 2016: 770-778.](http://openaccess.thecvf.com/content_cvpr_2016/html/He_Deep_Residual_Learning_CVPR_2016_paper.html)">[1]</span></a></sup></h2><p>就是基础的resnet模型, 可借用torchvision实现</p>
-<p><img src="/images/maskrcnn_pytorch/resnet.png" alt="(resnet模型图)"></p>
-<h2 id="特征金字塔-FPN-2"><a href="#特征金字塔-FPN-2" class="headerlink" title="特征金字塔(FPN)[2]"></a>特征金字塔(FPN)<sup id="fnref:2"><a href="#fn:2" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="[Lin T Y, Dollár P, Girshick R, et al. Feature pyramid networks for object detection[C]//Proceedings of the IEEE conference on computer vision and pattern recognition. 2017: 2117-2125.](https://arxiv.org/abs/1612.03144)">[2]</span></a></sup></h2><p>FPN, 又称特征金字塔, 初始的FPN使用来进行目标检测的, 但由于其性能, 现大多用来做特征提取.</p>
-<p><img src="/images/maskrcnn_pytorch/base_fpn.png" alt="(FPN模型图)"></p>
-<p>基础的FPN先对高层特征图<strong>上采样</strong>(2倍的最邻近插值), 再对低层特征图<strong>升维</strong>(1 * 1 卷积), 最后对维度, 高度, 宽度一致的两个特征图进行元素对应相加, 得到融合特征图.</p>
-<p><img src="/images/maskrcnn_pytorch/rcnn_fpn.jpg" alt="(resnet模型图)&lt;sup id=&quot;fnref:3&quot;&gt;&lt;a href=&quot;#fn:3&quot; rel=&quot;footnote&quot;&gt;&lt;span class=&quot;hint--top hint--error hint--medium hint--rounded hint--bounce&quot; aria-label=&quot;[Mask-RCNN 算法及其实现详解](https://blog.csdn.net/remanented/article/details/79564045)
-&quot;&gt;[3]&lt;/span&gt;&lt;/a&gt;&lt;/sup&gt;"></p>
-<p>Mask RCNN内的FPN上采样部分不变, 在<strong>升维</strong>部分, 这里的处理是把所有特征图维度处理至<font color="blue">256</font>.</p>
-<p>在得到第一次<strong>P5, P4, P3, P2</strong>后, 对每一个特征图作3 * 3 卷积, 输出仍为<font color="blue">256</font>.</p>
-<p>如图示, <strong>P6, P5, P4, P3, P2</strong>会送至<strong>RPN层</strong>.</p>
-<h1 id="RPN"><a href="#RPN" class="headerlink" title="RPN"></a>RPN</h1><div id="footnotes"><hr><div id="footnotelist"><ol style="list-style: none; padding-left: 0; margin-left: 40px"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">1.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;"><a target="_blank" rel="noopener" href="http://openaccess.thecvf.com/content_cvpr_2016/html/He_Deep_Residual_Learning_CVPR_2016_paper.html">He K, Zhang X, Ren S, et al. Deep residual learning for image recognition[C]//Proceedings of the IEEE conference on computer vision and pattern recognition. 2016: 770-778.</a><a href="#fnref:1" rev="footnote"> ↩</a></span></li><li id="fn:2"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">2.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;"><a target="_blank" rel="noopener" href="https://arxiv.org/abs/1612.03144">Lin T Y, Dollár P, Girshick R, et al. Feature pyramid networks for object detection[C]//Proceedings of the IEEE conference on computer vision and pattern recognition. 2017: 2117-2125.</a><a href="#fnref:2" rev="footnote"> ↩</a></span></li><li id="fn:3"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">3.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;"><a target="_blank" rel="noopener" href="https://blog.csdn.net/remanented/article/details/79564045">Mask-RCNN 算法及其实现详解</a><a href="#fnref:3" rev="footnote"> ↩</a></span></li></ol></div></div> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/COCO/" rel="tag">COCO</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/" rel="tag">github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AF%AD%E4%B9%89%E5%88%86%E5%89%B2/" rel="tag">语义分割</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-    
-</article>
-
-    
-    <article
-  id="post-leetcode/1"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/leetcode/1.html"
-    >力扣 1. 两数之和</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/leetcode/1.html" class="article-date">
-  <time datetime="2022-07-02T13:22:45.000Z" itemprop="datePublished">2022-07-02</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="使用快速排序-原数组index记录-双指针"><a href="#使用快速排序-原数组index记录-双指针" class="headerlink" title="使用快速排序 + 原数组index记录 + 双指针"></a>使用快速排序 + 原数组index记录 + 双指针</h1><ol>
-<li>快速排序 + 原数组index记录</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">quick_sort</span>(<span class="params">left, right</span>):</span><br><span class="line">    <span class="keyword">if</span> left &gt;= right: <span class="keyword">return</span></span><br><span class="line">    i, j = left, right</span><br><span class="line">    <span class="keyword">while</span> i &lt; j:</span><br><span class="line">        <span class="keyword">while</span> nums[j] &gt; nums[left] <span class="keyword">and</span> i &lt; j: j -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> nums[i] &lt;= nums[left] <span class="keyword">and</span> i &lt; j: i += <span class="number">1</span></span><br><span class="line">        nums[i], nums[j] = nums[j], nums[i]</span><br><span class="line">        idx[i], idx[j] = idx[j], idx[i]</span><br><span class="line">    nums[left], nums[i] = nums[i], nums[left]</span><br><span class="line">    idx[i], idx[left] = idx[left], idx[i]</span><br><span class="line"></span><br><span class="line">    quick_sort(left, i - <span class="number">1</span>)</span><br><span class="line">    quick_sort(i + <span class="number">1</span>, right)</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>双指针</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">i, j = <span class="number">0</span>, <span class="built_in">len</span>(nums) - <span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> <span class="number">0</span> &lt;= i &lt; j &lt; <span class="built_in">len</span>(nums):</span><br><span class="line">    cur = nums[i] + nums[j]</span><br><span class="line">    <span class="keyword">if</span> cur &gt; target:</span><br><span class="line">        j -= <span class="number">1</span></span><br><span class="line">    <span class="keyword">elif</span> cur &lt; target:</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
-
-
-<h1 id="官方解法-hash表"><a href="#官方解法-hash表" class="headerlink" title="官方解法: hash表"></a>官方解法: hash表</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">in_ = &#123;&#125;</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(nums)):</span><br><span class="line">    <span class="keyword">if</span> target - nums[i] <span class="keyword">in</span> in_:</span><br><span class="line">        <span class="keyword">return</span> [in_[target - nums[i]], i]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        in_[nums[i]] = i</span><br></pre></td></tr></table></figure> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hash%E8%A1%A8/" rel="tag">hash表</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag">双指针</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BF%AB%E6%8E%92/" rel="tag">快排</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-    
-</article>
-
-    
-    <article
-  id="post-leetcode/10"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/leetcode/10.html"
-    >力扣 10. 正则表达式匹配</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/leetcode/10.html" class="article-date">
-  <time datetime="2022-07-02T13:22:45.000Z" itemprop="datePublished">2022-07-02</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="动态规划-二维数组"><a href="#动态规划-二维数组" class="headerlink" title="动态规划-二维数组"></a>动态规划-二维数组</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">isMatch</span>(<span class="params">s, p</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">match</span>(<span class="params">i, j</span>):</span><br><span class="line">        <span class="comment"># 指针未指向字符串s</span></span><br><span class="line">        <span class="keyword">if</span> i == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="comment"># 单个字符匹配任意字符</span></span><br><span class="line">        <span class="keyword">if</span> p[j - <span class="number">1</span>] == <span class="string">&quot;.&quot;</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="comment"># 单个字符一对一匹配</span></span><br><span class="line">        <span class="keyword">return</span> s[i - <span class="number">1</span>] == p[j - <span class="number">1</span>]</span><br><span class="line">    m, n = <span class="built_in">len</span>(s), <span class="built_in">len</span>(p)</span><br><span class="line">    dp = [[<span class="literal">False</span>] * (n + <span class="number">1</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(m + <span class="number">1</span>)]</span><br><span class="line">    dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(m + <span class="number">1</span>):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):</span><br><span class="line">            <span class="comment"># 零到多字符匹配</span></span><br><span class="line">            <span class="keyword">if</span> p[j - <span class="number">1</span>] == <span class="string">&quot;*&quot;</span>:</span><br><span class="line">                dp[i][j] |= dp[i][j - <span class="number">2</span>] <span class="comment"># 匹配零个</span></span><br><span class="line">                <span class="keyword">if</span> match(i, j - <span class="number">1</span>):     <span class="comment"># 要进行匹配</span></span><br><span class="line">                    dp[i][j] |= dp[i - <span class="number">1</span>][j]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="comment"># 一对一字符匹配</span></span><br><span class="line">                <span class="keyword">if</span> match(i, j):</span><br><span class="line">                    dp[i][j] |= dp[i - <span class="number">1</span>][j - <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> dp[m][n]</span><br></pre></td></tr></table></figure>
- 
+<h1 id="动态规划-一维数组"><a href="#动态规划-一维数组" class="headerlink" title="动态规划 - 一维数组"></a>动态规划 - 一维数组</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">uniquePaths</span>(<span class="params">m, n</span>):</span><br><span class="line">    dp = [<span class="number">0</span>] * n</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">            <span class="keyword">if</span> i == <span class="number">0</span> <span class="keyword">and</span> j == <span class="number">0</span>:</span><br><span class="line">                dp[j] = <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> i == <span class="number">0</span>: </span><br><span class="line">                dp[j] = dp[j - <span class="number">1</span>]</span><br><span class="line">            <span class="keyword">elif</span> j == <span class="number">0</span>:</span><br><span class="line">                dp[j] = dp[j]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                dp[j] = dp[j] + dp[j - <span class="number">1</span>]</span><br><span class="line">        <span class="comment"># print(dp)</span></span><br><span class="line">    <span class="keyword">return</span> dp[-<span class="number">1</span>]</span><br></pre></td></tr></table></figure> 
       <!-- reward -->
       
     </div>
@@ -931,7 +211,7 @@
 
     
     <article
-  id="post-leetcode/11"
+  id="post-leetcode/56"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -942,8 +222,8 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/leetcode/11.html"
-    >力扣 11. 盛最多水的容器</a> 
+  <a class="article-title" href="/leetcode/56.html"
+    >力扣 56. 合并区间</a> 
 </h2>
  
 
@@ -951,8 +231,8 @@
     </header>
      
     <div class="article-meta">
-      <a href="/leetcode/11.html" class="article-date">
-  <time datetime="2022-07-02T13:22:45.000Z" itemprop="datePublished">2022-07-02</time>
+      <a href="/leetcode/56.html" class="article-date">
+  <time datetime="2022-07-31T05:15:55.617Z" itemprop="datePublished">2022-07-31</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
@@ -962,11 +242,7 @@
       
     <div class="article-entry" itemprop="articleBody">
        
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="枚举-time-N-x2F-A"><a href="#枚举-time-N-x2F-A" class="headerlink" title="枚举: time N&#x2F;A"></a>枚举: time N&#x2F;A</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">maxArea</span>(<span class="params">height</span>):</span><br><span class="line">    cur = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(height)):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(i, <span class="built_in">len</span>(height)):</span><br><span class="line">            cur = <span class="built_in">max</span>(cur, (j - i) * <span class="built_in">min</span>(height[j], height[i]))</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> cur</span><br></pre></td></tr></table></figure>
-
-<h1 id="双指针收缩"><a href="#双指针收缩" class="headerlink" title="双指针收缩"></a>双指针收缩</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">maxArea</span>(<span class="params">height</span>):</span><br><span class="line">    i, j = <span class="number">0</span>, <span class="built_in">len</span>(height) - <span class="number">1</span></span><br><span class="line">    res = (j - i) * <span class="built_in">min</span>(height[i], height[j])</span><br><span class="line">    <span class="keyword">while</span> i &lt; j:</span><br><span class="line">        <span class="keyword">if</span> height[i] &gt;= height[j]: j -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>: i += <span class="number">1</span></span><br><span class="line">        res = <span class="built_in">max</span>(res, (j - i) * <span class="built_in">min</span>(height[i], height[j]))</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
-
- 
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">merge</span>(<span class="params">intervals</span>):</span><br><span class="line">    ret = []</span><br><span class="line">    intervals = <span class="built_in">sorted</span>(intervals, key=<span class="keyword">lambda</span> x: x[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> inter <span class="keyword">in</span> intervals:</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> ret <span class="keyword">or</span> ret[-<span class="number">1</span>][<span class="number">1</span>] &lt; inter[<span class="number">0</span>]:</span><br><span class="line">            ret.append(inter)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            ret[-<span class="number">1</span>][<span class="number">1</span>] = <span class="built_in">max</span>(ret[-<span class="number">1</span>][<span class="number">1</span>], inter[<span class="number">1</span>])</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> ret</span><br></pre></td></tr></table></figure> 
       <!-- reward -->
       
     </div>
@@ -976,7 +252,7 @@
     
     <footer class="article-footer">
        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag">双指针</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li></ul>
 
     </footer>
   </div>
@@ -987,7 +263,7 @@
 
     
     <article
-  id="post-leetcode/15"
+  id="post-leetcode/55"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -998,8 +274,8 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/leetcode/15.html"
-    >力扣 15. 三数之和</a> 
+  <a class="article-title" href="/leetcode/55.html"
+    >力扣 55. 跳跃游戏</a> 
 </h2>
  
 
@@ -1007,8 +283,8 @@
     </header>
      
     <div class="article-meta">
-      <a href="/leetcode/15.html" class="article-date">
-  <time datetime="2022-07-02T13:22:45.000Z" itemprop="datePublished">2022-07-02</time>
+      <a href="/leetcode/55.html" class="article-date">
+  <time datetime="2022-07-31T02:26:51.893Z" itemprop="datePublished">2022-07-31</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
@@ -1018,17 +294,514 @@
       
     <div class="article-entry" itemprop="articleBody">
        
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="快排-双指针"><a href="#快排-双指针" class="headerlink" title="快排 + 双指针"></a>快排 + 双指针</h1><ol>
-<li>快排</li>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">canJump</span>(<span class="params">nums</span>):</span><br><span class="line">    n_len = <span class="built_in">len</span>(nums)</span><br><span class="line">    <span class="keyword">if</span> n_len == <span class="number">1</span>: <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    dp = [<span class="number">0</span>] * (n_len - <span class="number">1</span>) </span><br><span class="line">    dp[<span class="number">0</span>] = nums[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">if</span> dp[<span class="number">0</span>] == <span class="number">0</span>: <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n_len - <span class="number">1</span>):</span><br><span class="line">        dp[i] = <span class="built_in">max</span>(dp[i - <span class="number">1</span>], i + nums[i])</span><br><span class="line">        <span class="keyword">if</span> dp[i] == i:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="comment"># print(dp)</span></span><br><span class="line">    <span class="keyword">return</span> dp[-<span class="number">1</span>] &gt;= n_len - <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="优化动态规划-x3D-x3D-贪心"><a href="#优化动态规划-x3D-x3D-贪心" class="headerlink" title="优化动态规划 &#x3D;&#x3D; 贪心"></a>优化动态规划 &#x3D;&#x3D; 贪心</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">canJump</span>(<span class="params">nums</span>):</span><br><span class="line">    n_len = <span class="built_in">len</span>(nums)</span><br><span class="line">    <span class="keyword">if</span> n_len == <span class="number">1</span>: <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    max_hop = nums[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">if</span> max_hop == <span class="number">0</span>: <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n_len - <span class="number">1</span>):</span><br><span class="line">        max_hop = <span class="built_in">max</span>(max_hop, i + nums[i])</span><br><span class="line">        <span class="keyword">if</span> max_hop == i:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="comment"># print(dp)</span></span><br><span class="line">    <span class="keyword">return</span> max_hop &gt;= n_len - <span class="number">1</span></span><br></pre></td></tr></table></figure> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%B4%AA%E5%BF%83/" rel="tag">贪心</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
+  id="post-leetcode/53"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/leetcode/53.html"
+    >力扣 53. 最大子数组和</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/leetcode/53.html" class="article-date">
+  <time datetime="2022-07-30T14:03:12.735Z" itemprop="datePublished">2022-07-30</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">maxSubArray</span>(<span class="params">nums</span>):</span><br><span class="line">    cur, ret = <span class="built_in">float</span>(<span class="string">&quot;-inf&quot;</span>), <span class="built_in">float</span>(<span class="string">&quot;-inf&quot;</span>)</span><br><span class="line">    <span class="keyword">for</span> n <span class="keyword">in</span> nums:</span><br><span class="line">        cur = <span class="built_in">max</span>(n, cur + n)</span><br><span class="line">        ret = <span class="built_in">max</span>(cur, ret)</span><br><span class="line">    <span class="keyword">return</span> ret</span><br></pre></td></tr></table></figure> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
+  id="post-leetcode/49"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/leetcode/49.html"
+    >力扣 49. 字母异位词分组</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/leetcode/49.html" class="article-date">
+  <time datetime="2022-07-30T13:56:25.706Z" itemprop="datePublished">2022-07-30</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="排序-hash表"><a href="#排序-hash表" class="headerlink" title="排序 + hash表"></a>排序 + hash表</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">groupAnagrams</span>(<span class="params">strs</span>):</span><br><span class="line">    dic = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> s <span class="keyword">in</span> strs:</span><br><span class="line">        cur = <span class="string">&quot;&quot;</span>.join(<span class="built_in">sorted</span>(s))</span><br><span class="line">        <span class="keyword">if</span> cur <span class="keyword">in</span> dic.keys():</span><br><span class="line">            dic[cur].append(s)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            dic[cur] = [s]</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">list</span>(dic.values())    </span><br></pre></td></tr></table></figure> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hash%E8%A1%A8/" rel="tag">hash表</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
+  id="post-leetcode/48"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/leetcode/48.html"
+    >力扣 48. 旋转图像</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/leetcode/48.html" class="article-date">
+  <time datetime="2022-07-30T03:56:13.418Z" itemprop="datePublished">2022-07-30</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="矩阵处理-转置-列调换"><a href="#矩阵处理-转置-列调换" class="headerlink" title="矩阵处理(转置 + 列调换)"></a>矩阵处理(转置 + 列调换)</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">rotate</span>(<span class="params">matrix</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Do not return anything, modify matrix in-place instead.</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> matrix <span class="keyword">or</span> <span class="keyword">not</span> matrix[<span class="number">0</span>]:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    </span><br><span class="line">    height = <span class="built_in">len</span>(matrix)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(height):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(i, height):</span><br><span class="line">            matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(height // <span class="number">2</span>):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(height):</span><br><span class="line">            matrix[j][i], matrix[j][height - <span class="number">1</span> - i] = matrix[j][height - <span class="number">1</span> - i],  matrix[j][i]</span><br><span class="line"></span><br></pre></td></tr></table></figure> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
+  id="post-leetcode/46"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/leetcode/46.html"
+    >力扣 46. 全排列</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/leetcode/46.html" class="article-date">
+  <time datetime="2022-07-30T03:51:59.718Z" itemprop="datePublished">2022-07-30</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">permute</span>(<span class="params">nums</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">add</span>(<span class="params">ret, num</span>):</span><br><span class="line">        tmp = []</span><br><span class="line">        <span class="keyword">for</span> r <span class="keyword">in</span> ret:</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(r) + <span class="number">1</span>):</span><br><span class="line">                tmp.append(r[:i] + [num] + r[i:])</span><br><span class="line">        <span class="keyword">return</span> tmp</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> nums:</span><br><span class="line">        <span class="keyword">return</span> []</span><br><span class="line">    ret = [[nums[<span class="number">0</span>]]]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="built_in">len</span>(nums)):</span><br><span class="line">        ret = add(ret, nums[i])</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> ret</span><br></pre></td></tr></table></figure> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%80%92%E5%BD%92/" rel="tag">递归</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
+  id="post-leetcode/42"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/leetcode/42.html"
+    >力扣 42. 接雨水</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/leetcode/42.html" class="article-date">
+  <time datetime="2022-07-30T01:52:08.756Z" itemprop="datePublished">2022-07-30</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="按列求-N-x2F-A"><a href="#按列求-N-x2F-A" class="headerlink" title="按列求 N&#x2F;A"></a>按列求 N&#x2F;A</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">trap</span>(<span class="params">height</span>):</span><br><span class="line">    <span class="comment"># 按列求</span></span><br><span class="line">    ret, h_len = <span class="number">0</span>, <span class="built_in">len</span>(height)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, h_len - <span class="number">1</span>):</span><br><span class="line">        left, right = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> l <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, i):</span><br><span class="line">            left = <span class="built_in">max</span>(height[l], left)</span><br><span class="line">        <span class="keyword">for</span> r <span class="keyword">in</span> <span class="built_in">range</span>(i + <span class="number">1</span>, h_len):</span><br><span class="line">            right = <span class="built_in">max</span>(right, height[r])</span><br><span class="line">        </span><br><span class="line">        cur = <span class="built_in">min</span>(left, right)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> cur &gt; height[i]:</span><br><span class="line">            ret += (cur - height[i])</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> ret</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="动态规划-按列求"><a href="#动态规划-按列求" class="headerlink" title="动态规划 + 按列求"></a>动态规划 + 按列求</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">trap</span>(<span class="params">height</span>):</span><br><span class="line">    <span class="comment"># 动态规划 + 按列求</span></span><br><span class="line">    ret, h_len = <span class="number">0</span>, <span class="built_in">len</span>(height)</span><br><span class="line">    left, right = [<span class="number">0</span>] * h_len, [<span class="number">0</span>] * h_len</span><br><span class="line">    left[<span class="number">0</span>] = height[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">for</span> l <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, h_len):</span><br><span class="line">        left[l] = <span class="built_in">max</span>(left[l - <span class="number">1</span>], height[l])</span><br><span class="line">    right[h_len - <span class="number">1</span>] = height[h_len - <span class="number">1</span>]</span><br><span class="line">    <span class="keyword">for</span> r <span class="keyword">in</span> <span class="built_in">range</span>(h_len - <span class="number">2</span>, -<span class="number">1</span>, -<span class="number">1</span>):</span><br><span class="line">        right[r] = <span class="built_in">max</span>(right[r + <span class="number">1</span>], height[r])</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, h_len - <span class="number">1</span>):</span><br><span class="line">        cur = <span class="built_in">min</span>(left[i], right[i])</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> cur &gt; height[i]:</span><br><span class="line">            ret += (cur - height[i])</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> ret</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="双指针-按列求"><a href="#双指针-按列求" class="headerlink" title="双指针 + 按列求"></a>双指针 + 按列求</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">trap</span>(<span class="params">height</span>):</span><br><span class="line">    <span class="comment"># 双指针 + 按列求</span></span><br><span class="line">    ret, h_len = <span class="number">0</span>, <span class="built_in">len</span>(height)</span><br><span class="line">    max_left, max_right = height[<span class="number">0</span>], height[h_len - <span class="number">1</span>]</span><br><span class="line">    left, right = <span class="number">1</span>, h_len - <span class="number">2</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, h_len - <span class="number">1</span>):</span><br><span class="line">        <span class="keyword">if</span> height[left - <span class="number">1</span>] &lt; height[right + <span class="number">1</span>]:</span><br><span class="line">            max_left = <span class="built_in">max</span>(max_left, height[left - <span class="number">1</span>])</span><br><span class="line">            <span class="keyword">if</span> max_left &gt; height[left]:</span><br><span class="line">                ret += (max_left - height[left])</span><br><span class="line">            left += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            max_right = <span class="built_in">max</span>(max_right, height[right + <span class="number">1</span>])</span><br><span class="line">            <span class="keyword">if</span> max_right &gt; height[right]:</span><br><span class="line">                ret += (max_right - height[right])</span><br><span class="line">            right -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> ret</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">trap</span>(<span class="params">height</span>):</span><br><span class="line">    <span class="comment"># 栈</span></span><br><span class="line">    ret, h_len = <span class="number">0</span>, <span class="built_in">len</span>(height)</span><br><span class="line">    stack = [<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, h_len):</span><br><span class="line">        <span class="keyword">while</span> stack <span class="keyword">and</span> height[i] &gt; height[stack[-<span class="number">1</span>]]:</span><br><span class="line">            bottom = stack.pop()</span><br><span class="line">            <span class="keyword">if</span> stack:</span><br><span class="line">                ret += (<span class="built_in">min</span>(height[stack[-<span class="number">1</span>]], height[i]) - height[bottom]) * (i - stack[-<span class="number">1</span>] - <span class="number">1</span>)</span><br><span class="line">        stack.append(i)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> ret</span><br></pre></td></tr></table></figure> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag">双指针</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%88/" rel="tag">栈</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
+  id="post-leetcode/39"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/leetcode/39.html"
+    >力扣 39. 组合总和</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/leetcode/39.html" class="article-date">
+  <time datetime="2022-07-28T11:52:05.624Z" itemprop="datePublished">2022-07-28</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="回溯思想-dfs实现"><a href="#回溯思想-dfs实现" class="headerlink" title="回溯思想, dfs实现"></a>回溯思想, dfs实现</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">combinationSum</span>(<span class="params">candidates, target</span>):</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> candidates: <span class="keyword">return</span> []</span><br><span class="line">    res, cand_len = [], <span class="built_in">len</span>(candidates)</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">dfs</span>(<span class="params">target, combins, idx, begin</span>):</span><br><span class="line">        target -= candidates[idx]</span><br><span class="line">        combins.append(candidates[idx])</span><br><span class="line">        <span class="keyword">if</span> target &lt;= <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">if</span> target == <span class="number">0</span>:</span><br><span class="line">                res.append(combins)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(begin, cand_len):</span><br><span class="line">            dfs(target, combins.copy(), i, i)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(cand_len):</span><br><span class="line">        dfs(target, [], i, i)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># print(res)</span></span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dfs/" rel="tag">dfs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%9E%E6%BA%AF/" rel="tag">回溯</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
+  id="post-paper/swin_text_spotter"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/paper/swin_text_spotter.html"
+    >SwinTextSpotter - Scene Text Spotting via Better Synergy between Text Detection and Text Recognition</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/paper/swin_text_spotter.html" class="article-date">
+  <time datetime="2022-07-27T09:12:54.485Z" itemprop="datePublished">2022-07-27</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/">文献阅读</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>论文地址: <a target="_blank" rel="noopener" href="https://openaccess.thecvf.com/content/CVPR2022/papers/Huang_SwinTextSpotter_Scene_Text_Spotting_via_Better_Synergy_Between_Text_Detection_CVPR_2022_paper.pdf">Huang_SwinTextSpotter_Scene_Text_Spotting_via_Better_Synergy_Between_Text_Detection_CVPR_2022_paper.pdf</a></p>
+<p>代码地址: <a target="_blank" rel="noopener" href="https://github.com/mxin262/SwinTextSpotter">SwinTextSpotter</a></p>
+<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><ol>
+<li><p>近年来SOTA的文字定位方法仅仅是把从backbone得到的特征, 输送到检测与识别分支, 并没有直接利用两个任务之间的特征交互.</p>
+</li>
+<li><p>SwinTextSpotter: 端到端的文字定位框架. 使用动态头的Transformer编码器作为检测器, 此次工作将这两个任务与一种新的识别转换机制统一起来，通过识别损失明确指导文本定位.</p>
+</li>
+<li><p>这样直接的设计产生了一个简洁的框架，既不需要额外的纠正模块，也不需要对任意形状的文本进行字符级注释.</p>
+</li>
 </ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">quick_sort</span>(<span class="params">left, right</span>):</span><br><span class="line">    <span class="keyword">if</span> left &gt;= right: <span class="keyword">return</span></span><br><span class="line">    i, j = left, right</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> i &lt; j:</span><br><span class="line">        <span class="keyword">while</span> nums[j] &gt; nums[left] <span class="keyword">and</span> i &lt; j:</span><br><span class="line">            j -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> nums[i] &lt;= nums[left] <span class="keyword">and</span> i &lt; j:</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">        </span><br><span class="line">        nums[i], nums[j] = nums[j], nums[i]</span><br><span class="line">    nums[i], nums[left] = nums[left], nums[i]</span><br><span class="line"></span><br><span class="line">    quick_sort(left, i - <span class="number">1</span>)</span><br><span class="line">    quick_sort(i + <span class="number">1</span>, right)</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>双指针(三指针)</li>
+<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>传统的文字定位方法把检测和识别视作两个分离的任务. 首先, 从输入图像上定位并裁剪出文本区域, 然后把裁剪的区域送入文本识别器预测文本序列.</p>
+<p>这样的框架会有以下限制:</p>
+<ol>
+<li><p>两个任务的误差累加. eg: 不精确的检测结果会严重影响文字识别的性能.</p>
+</li>
+<li><p>检测与分割两个任务的各自优化或许不会使得文字定位得到最好的效果.</p>
+</li>
+<li><p>内存消耗大, 推理效率低.</p>
+</li>
 </ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">res = []</span><br><span class="line"><span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, num_len - <span class="number">2</span>):</span><br><span class="line">    <span class="keyword">if</span> nums[k] &gt; <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">if</span> k &gt; <span class="number">0</span> <span class="keyword">and</span> nums[k] == nums[k - <span class="number">1</span>]: <span class="keyword">continue</span></span><br><span class="line">    i, j = k + <span class="number">1</span>, num_len - <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> i &lt; j:</span><br><span class="line">        cur = nums[k] + nums[i] + nums[j]</span><br><span class="line">        <span class="keyword">if</span> cur &gt; <span class="number">0</span>:</span><br><span class="line">            j -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> i &lt; j <span class="keyword">and</span> nums[j] == nums[j + <span class="number">1</span>]: j -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> cur &lt; <span class="number">0</span>:</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> i &lt; j <span class="keyword">and</span> nums[i] == nums[i - <span class="number">1</span>]: i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            res.append([nums[k], nums[i], nums[j]])</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">            j -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> i &lt; j <span class="keyword">and</span> nums[i] == nums[i - <span class="number">1</span>]: i += <span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> i &lt; j <span class="keyword">and</span> nums[j] == nums[j + <span class="number">1</span>]: j -= <span class="number">1</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
+<p>为解决以上限制, 现尝试在一个端到端的框架解决文字定位问题.</p>
+<p>现存这样的框架同样存在限制:</p>
+<ol>
+<li><p>如果检测仅仅基于输入特征的视觉信息, 检测器容易被背景噪声分散注意力并提出不一致的检测.</p>
+</li>
+<li><p>检测和识别之间的交互通过共享backbone是不够的, 因为检测器既没有优化识别损失, 识别器也没有利用检测特征.</p>
+</li>
+</ol>
+<p>此次工作提出<strong>SwinTextSpotter</strong>, 是一个端到端训练, 基于Transformer的框架.</p>
+<p>为了更好的区别拥挤场景中密集分散的文本实例, 在<strong>SwinTextSpotter</strong>中使用Transformer和两层自注意力机制激励文本实例之间的交互.</p>
+<p>为了解决任意形状场景文字定位, 把文本检测任务视作集合预测问题, 然后使用基于查询的文字检测器.</p>
+<p>此次工作进一步提出了<strong>识别转换RC</strong>模块, 它通过结合检测特征隐式地引导识别头. <strong>识别转换RC</strong>模块可以反向传播识别信息到检测器, 并且抑制识别特征中的背景噪声, 引导检测器与识别器的联合优化.</p>
+<p>通过使用<strong>识别转换RC</strong>模块, <strong>SwinTextSpotter</strong>是一个简洁的框架, 没有先前工作中用于提升识别器的字符及注释和矫正模块.</p>
+<p>此次工作主要贡献总结如下:</p>
+<ol>
+<li><p><strong>SwinTextSpotter</strong>开创性的展示了Transformer和集合预测在端到端场景文字预测的有效性.</p>
+</li>
+<li><p><strong>SwinTextSpotter</strong>使用了<strong>识别转换RC</strong>模块来利用文字检测和识别之间的协同作用.</p>
+</li>
+<li><p><strong>SwinTextSpotter</strong>是一个简单的框架, 既不需要字符级别的注释, 也不需要为了识别任意形状的文字设计修正模块.</p>
+</li>
+<li><p><strong>SwinTextSpotter</strong>在多个公共场景文字基准上实现了SOTA性能.</p>
+</li>
+</ol>
+<h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><p><span id="model"><img src="/images/swinTextSpotter_img/model.png" alt="图1: SwinTextSpotter model"></span></p>
+<p><strong>SwinTextSpotter</strong>模型的整体结构如<a href="#model">图1</a>所示.它包含四个组件:</p>
+<ol>
+<li>基于Swin-Transformer的backbone,</li>
+<li>基于查询的文字检测器,</li>
+<li>连接文字检测器和识别器的<strong>识别转换RC</strong>模块,</li>
+<li>基于注意力的识别器.</li>
+</ol>
+<p>如<a href="#model">图1</a>绿色箭头所示, <strong>检测</strong>的第一阶段, 首先随机初始化训练参数作为box$ bbox_{0} $和proposal特征$ f_{0}^{prop} $.</p>
+<p>为了proposal特征能够获得全局信息, 使用全局平均池化提取图像特征, 并把他们加入到$ f_{0}^{prop} $中.</p>
+<p>然后使用$ bbox_{0} $提取ROI特征.</p>
+<p>把ROI特征和$ f_{0}^{prop} $送入带动态头的Transformer编码器中.</p>
+<p>Transformer编码器的输出展开并命名为$ f_{1}^{prop} $, 送入检测头输出检测结果.</p>
+<p>box$ bbox_{k - 1} $和proposal特征$ f_{k - 1}^{prop} $作为第$ k^{th} $个阶段检测器的输入.</p>
+<p>proposal特征$ f_{k}^{prop} $通过融合ROI特征与之前的$ f_{k - 1}^{prop} $来反复更新自己, 这样使得proposal特征保存了先前阶段的信息.</p>
+<p>此次工作对总计$ K $个阶段重复这样的细化, 类似与基于查询检测器的迭代结构.</p>
+<p>这样的设计使得在尺寸和纵横比方面进行更加鲁棒的检测.</p>
+<p>在<strong>识别阶段</strong>, <a href="#model">图1</a>即橙色箭头所示, 相较于检测, 需要更高的分辨率.</p>
+<p>此次工作使用检测的第$ K $个阶段的输出box$ bbox_{k} $来获取ROI特征, 此时的分辨率是检测阶段的四倍.</p>
+<p>为了在融合proposal特征时保持分辨率与检测器一致, 对ROI特征进行下采样, 得到三个尺寸递减的特征图, 以$ \lbrace a_1, a_2, a_3 \rbrace $表示.</p>
+<p>通过融合最小的$ a_3 $和proposal特征$ f_{K}^{prop} $得到检测特征$ f^{det} $.</p>
+<p>在识别阶段, 检测特征$ f^{det} $包含先前所有的检测信息.</p>
+<p>最终, $ \lbrace a_1, a_2, a_3 \rbrace $和检测特征$ f^{det} $送入<strong>识别转换RC</strong>模块以及为了生成识别结果的识别器中.</p>
+<h2 id="Dilated-Swin-Transformer"><a href="#Dilated-Swin-Transformer" class="headerlink" title="Dilated Swin-Transformer"></a>Dilated Swin-Transformer</h2><p><span id="Dilated_Swin_Transformer"><img src="/images/swinTextSpotter_img/Dilated_Swin_Transformer.png" alt="图2: Dilated Swin Transformer"></span></p>
+<p>对于文字定位, 建模不同文字之间的关系是十分重要的, 因为同一张图像上的文字有着极强的相似性, 例如其背景和样式.</p>
+<p>考虑到全局建模能力和计算效率, 使用FPN + Swin-Transformer作为backbone. </p>
+<p>鉴于一行文字字之间存在空白, 感受野需要足够大来帮助区分来相邻文字是否属于同一文本行.</p>
+<p>为了获得这样的感受野, 在原始Swin-Transformer中使用了两个空洞卷积, 一个普通卷积和一个残差结构, 如<a href="#Dilated_Swin_Transformer">图2</a>所示, 这样也把CNN的属性引入Transformer中.</p>
+<h2 id="基于查询的检测器"><a href="#基于查询的检测器" class="headerlink" title="基于查询的检测器"></a>基于查询的检测器</h2><p>使用基于查询的检测器检测文本, 基于查询的检测器建立在ISTR之上, 把检测视为一个集合预测问题.</p>
+<p>检测器使用一个proposal boxes集合, 用来替代RPN的庞大候选集, 一个proposal 特征集合表示目标的高阶语义向量.</p>
+<p>检测器根据经验设计为具有六个查询阶段.</p>
+<p>用动态头的Transformer编码器, 使得后续的阶段可以获得存储在proposal特征中的之间阶段的信息.</p>
+<p>通过多个阶段的微调, 检测器可以适用于任何尺寸.</p>
+<p><span id="detection_head"><img src="/images/swinTextSpotter_img/detectionAtKStage.png" alt="图3: k Stage detection head"></span></p>
+<p>检测器在$ k^{th} $阶段的结构如<a href="#detection_head">图2</a>所示.</p>
+<p>$ k - 1 $阶段的输出: proposal 特征$ f_{k - 1}^{prop} \in \mathbb{R}^{N, d} $在$ k^{th} $阶段输入到自注意力模块$ MSA_{k} $来建模关系, 并生成两个卷积的参数. 因此, 先前阶段的检测信息嵌入到卷积之中.</p>
+<p>以先前的proposal特征为约束的卷积用来编码ROI特征.</p>
+<p>$ k - 1 $阶段的输出: $ bbox_{k - 1} $, 利用其在RoI Aligin模块提取ROI特征, ROI特征输入到卷积层中, 然后输入到线性映射中, 生成下一个阶段的输入$ f_{k}^{prop} $.</p>
+<p>$ f_{k}^{prop} $ 接着输入到预测头中生成$ bbox_{k} $和$ mask_{k} $.</p>
+<p>为了减少计算, 2D mask 通过主成分分析(PCA)转换为 1D mask向量.</p>
+<p>当 $ k &#x3D; 1 $时, $ bbox_{0} $和$ f_{0}^{prop} $是随机初始化的参数, 作为输入. </p>
+<p>在整个训练过程中, 这些参数仅仅通过反向传播进行更新, 学习文本高级语义特征的归纳偏置.</p>
+<p>整个文本检测任务是做一个集合预测问题. 使用二分匹配来匹配预测和真值.如$ 式 \eqref{eq:one} $.</p>
+<p>$$ L_{match} &#x3D; \lambda_{cls} \cdot L_{cls} + \lambda_{L1} \cdot L_{L1} + \lambda_{giou} \cdot L_{giou} + \lambda_{mask} \cdot L_{mask} \tag{1} \label{eq:one}$$</p>
+<p>其中, $ \lambda $是用于平衡损失的超参数, $ L_{cls} $是focal 损失, $ L_{L1} $损失是用于回归检测框的L1 损失, $ L_{giou} $ 是generalized IoU 损失, $ L_{mask} $本应计算预测mask和真值之间的余弦相似度, 但检测损失与匹配成本相似，改用 L2 损失和dice 损失来代替余弦相似度.</p>
+<h2 id="识别转换RC模块"><a href="#识别转换RC模块" class="headerlink" title="识别转换RC模块"></a><strong>识别转换RC</strong>模块</h2><p><span id="rc"><img src="/images/swinTextSpotter_img/RC.png" alt="图4: RC模块"></span></p>
+<p>为了更好地协同检测与识别, <strong>识别转换RC</strong>模块被用来在空间上结合从检测头得到的特征到识别阶段, 如<a href="#rc">图4</a>所示.</p>
+<p><strong>识别转换RC</strong>模块由Transformer 编码器和四个上采样结构组成.</p>
+<p><strong>识别转换RC</strong>模块的输入是检测特征$ f^{det} $和三个下采样特征$ \lbrace a_1, a_2, a_3 \rbrace $.</p>
+<p>检测特征输送到Transformer 编码器$ TrE() $中, 使得先前检测阶段的信息与$ a_3 $进一步融合, 然后进行一系列上采样操作$ E_{u}() $和Sigmoid函数$ \phi() $, 生成三个文本区域掩码$ \lbrace M_1, M_2, M_3 \rbrace $.</p>
+<p>$$ d_{1} &#x3D; TrE(f^{det}) \tag{2} \label{eq:two} $$</p>
+<p>$$ d_{2} &#x3D; (E_{u}(d_{1}) + a_{2}) \tag{3} \label{eq:three} $$</p>
+<p>$$ d_{3} &#x3D; (E_{u}(d_{2}) + a_{1}) \tag{4} \label{eq:four} $$</p>
+<p>$$M_{i} &#x3D; \phi (d_{i}), i&#x3D;1,2,3. \tag{5} \label{eq:five} $$</p>
+<p>进一步有效整合文本区域掩码$ \lbrace M_1, M_2, M_3 \rbrace $和输入特征$ \lbrace a_1, a_2, a_3 \rbrace $:</p>
+<p>$$ r_1 &#x3D; M_1 \cdot a_3, \tag{6} \label{eq:six} $$</p>
+<p>$$ r_2 &#x3D; M_2 \cdot (E_u(r_1) +a_2), \tag{7} \label{eq:seven} $$</p>
+<p>$$ r_3 &#x3D; M_3 \cdot (E_u(r_2) +a_1), \tag{8} \label{eq:eight} $$</p>
+<p>其中, $ {r_1, r_2, r_3} $表示识别特征. $ r_3 $ 如<a href="#rc">图4</a>所示, 是最终的融合特征, 会输送到最高分辨率的识别器中.</p>
+<p>如<a href="#rc">图4</a>蓝色虚线所示, 识别损失$ L_{reg} $的梯度能够反向传播到检测特征中, 使得RC通过识别监督隐式改进检测头.</p>
+<p>一般来说, 为了抑制背景, 融合特征会乘以检测头的输出$ L_{mask} $. 然而, 检测框不够精细, 特征图中仍然存在背景噪声. 这个问题可以通过RC模块缓解, 因为RC可以通过使用检测特征生成精细掩码抑制背景噪声, 整个过程受识别损失和检测损失监督.</p>
+<p>如<a href="#rc">图4</a>右上角所示, $ M_3 $相较于$ mask_{K} $更能抑制背景噪声, $ M_3 $在文本区域有着更高的激活, 在背景区域有着更低的激活.因此, RC模块输出的掩码$ \lbrace M_1, M_2, M_3 \rbrace $可以应用于识别特征$ \lbrace r_1, r_2, r_3 \rblace $, 使得识别器更好地专注于文本区域.</p>
+<p>使用RC模块, 识别损失的梯度不仅可以影响backbone网络, 也会影响proposal特征.</p>
+<p>通过检测和识别监督优化, proposal特征能够更好的编码文本高阶语义信息.因此, RC模块可以激励检测与识别之间的协调.</p>
+<h1 id="识别器"><a href="#识别器" class="headerlink" title="识别器"></a>识别器</h1><p>在特征图使用RC模块后, 背景噪声被有效抑制, 因此文本区域的框定更加精细. 这使得仅仅使用序列识别网络就可以得到有保证的识别结果, 而不需要矫正模块或字符级分割模块.</p>
+<p>为了增强细粒度特征提取和序列建模，采用了双层自注意机制作为识别编码器.</p>
+<p>两级自注意力机制分别包含局部邻域区域和全局区域的细粒度和粗粒度自注意力机制. 因此, 可以在维持全局建模能力的同时有效提取细粒度特征. </p>
+<p>解码器使用SAM.</p>
+<p>识别损失如$ 式 \eqref{eq:nine} $.</p>
+<p>$$ L_{reg} &#x3D; -\frac{1}{T} \sum_{k &#x3D; 1}^{T} \log p(y_i) \tag{9} \label{eq: nine} $$</p>
+<p>其中, $ T $是序列的最大长度, $ p(y_i) $是序列概率.</p>
+<h1 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h1><p>在ROIC3, ICDAR 2015, ReCTS, Vintext, Total-Text, SCUT-CTW 1500数据集上进行实验.</p>
+<p><a href="#table1">表1</a>是模型在ICDAR 2015数据集上的结果, S, W和G分别代表强,弱和通用词典的识别.</p>
+<p><span id="table1"><img src="/images/swinTextSpotter_img/table1.png" alt="Table1: ICDAR 2015"></span></p>
+<p><a href="#table2">表2</a>是模型在ReCTS数据集上的结果, P, R, H分别表示准确率, 召回率和H-mean.</p>
+<p><span id="table2"><img src="/images/swinTextSpotter_img/table2.png" alt="Table2: ReCTS"></span></p>
+<p><a href="#table3">表3</a>是模型在RoIC13数据集上的结果, P, R, H分别表示准确率, 召回率和H-mean.</p>
+<p><span id="table3"><img src="/images/swinTextSpotter_img/table3.png" alt="Table3: RoIC13"></span></p>
+<p><a href="#table4">表4</a>是模型在VinText数据集上的结果.</p>
+<p><span id="table4"><img src="/images/swinTextSpotter_img/table4.png" alt="Table4: VinText"></span></p>
+<p><a href="#table5">表5</a>是模型在Total-Text数据集上的结果.</p>
+<p><span id="table5"><img src="/images/swinTextSpotter_img/table5.png" alt="Table5: Total-Text"></span></p>
+<p><a href="#table6">表6</a>是模型在SCUT-CTW1500数据集上的结果.</p>
+<p><span id="table6"><img src="/images/swinTextSpotter_img/table6.png" alt="Table6: SCUT-CTW1500"></span></p>
+<p><a href="#table7">表7</a>是模型的消融实验.</p>
+<p><span id="table7"><img src="/images/swinTextSpotter_img/abl.png" alt="Table7: 消融实验"></span></p>
+<p><a href="#vis">图5</a>是模型的消融实验.</p>
+<p><span id="vis"><img src="/images/swinTextSpotter_img/vis.png" alt="图5: 结果可视化"></span></p>
+<h1 id="限制"><a href="#限制" class="headerlink" title="限制"></a>限制</h1><p>对于长任意形状文本的识别有限制. 长任意形状文本的识别需要分辨率高的特征图, 当特征图越大, 在识别器中的注意力图也会随之扩张. 大的注意力图可能会导致识别器的不匹配, 从而导致端到端文字定位性能的下降.</p>
  
       <!-- reward -->
       
@@ -1039,7 +812,7 @@
     
     <footer class="article-footer">
        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag">双指针</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BF%AB%E6%8E%92/" rel="tag">快排</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%96%87%E5%AD%97%E5%AE%9A%E4%BD%8D/" rel="tag">文字定位</a></li></ul>
 
     </footer>
   </div>
@@ -1055,7 +828,7 @@
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/8/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/10/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/8/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/10/">下一页</a>
   </nav>
   
 </section>

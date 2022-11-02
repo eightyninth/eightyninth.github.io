@@ -1,0 +1,1464 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+      <meta name="google-site-verification" content="yMlXxmAWazMPKfNgrF2K0JWa_oOfOfZMFm5i1eu7E9A" />
+      <meta name="baidu-site-verification" content="code-tf4h4LWHuW" />
+        
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title> EightyNinth</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="EightyNinth" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      
+<section class="cover">
+    
+      
+      <a class="forkMe" href="https://github.com/eightyninth"
+        target="_blank"><img width="149" height="149" src="/images/forkme.png"
+          class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
+    
+  <div class="cover-frame">
+    <div class="bg-box">
+      <img src="/images/cover4.jpg" alt="image frame" />
+    </div>
+    <div class="cover-inner text-center text-white">
+      <h1><a href="/">EightyNinth</a></h1>
+      <div id="subtitle-box">
+        
+        <span id="subtitle"></span>
+        
+      </div>
+      <div>
+        
+      </div>
+    </div>
+  </div>
+  <div class="cover-learn-more">
+    <a href="javascript:void(0)" class="anchor"><i class="ri-arrow-down-line"></i></a>
+  </div>
+</section>
+
+
+
+<script src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js"></script>
+
+
+<!-- Subtitle -->
+
+  <script>
+    try {
+      var typed = new Typed("#subtitle", {
+        strings: ['面朝大海，春暖花开', '愿你一生努力，一生被爱', '想要的都拥有，得不到的都释怀'],
+        startDelay: 0,
+        typeSpeed: 200,
+        loop: true,
+        backSpeed: 100,
+        showCursor: true
+      });
+    } catch (err) {
+      console.log(err)
+    }
+  </script>
+  
+<div id="main">
+  <section class="outer">
+  
+  
+  
+
+<div class="notice" style="margin-top:50px">
+    <i class="ri-heart-fill"></i>
+    <div class="notice-content" id="broad"></div>
+</div>
+<script type="text/javascript">
+    fetch('https://v1.hitokoto.cn')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("broad").innerHTML = data.hitokoto;
+        })
+        .catch(console.error)
+</script>
+
+<style>
+    .notice {
+        padding: 20px;
+        border: 1px dashed #e6e6e6;
+        color: #969696;
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        background: #fbfbfb50;
+        border-radius: 10px;
+    }
+
+    .notice i {
+        float: left;
+        color: #999;
+        font-size: 16px;
+        padding-right: 10px;
+        vertical-align: middle;
+        margin-top: -2px;
+    }
+
+    .notice-content {
+        display: initial;
+        vertical-align: middle;
+    }
+</style>
+  
+  <article class="articles">
+    
+    
+    
+    
+    <article
+  id="post-paper/egi"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/paper/egi.html"
+    >Transfer Learning of Graph Neural Networks with Ego-graph Information Maximization</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/paper/egi.html" class="article-date">
+  <time datetime="2022-07-19T02:47:10.383Z" itemprop="datePublished">2022-07-19</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%96%87%E7%8C%AE%E9%98%85%E8%AF%BB/">文献阅读</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>论文地址: <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2009.05204.pdf">2009.05204.pdf</a></p>
+<p>代码地址: <a target="_blank" rel="noopener" href="https://github.com/GentleZhu/EGI">EGI</a></p>
+<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><ol>
+<li><p>GNN效果良好, 但针对大规模图的训练消耗良多.</p>
+</li>
+<li><p>在近年进行GNN预训练的研究中, 一是没有提供模型设计的理论支撑, 二是没有清楚地提出模型可转移性的要求和保证.</p>
+</li>
+<li><p>本文观点: 首先, 对<strong>基本图信息</strong>提出一个新的观点, 主张捕获<strong>基本图信息</strong>作为迁移GNN训练的目标. 这启发了<strong>EGI</strong>的设计, 使用<strong>EGI</strong>实现此目标.<br>其次, 当节点特征与结构相关时, 对目标图和源图局部拉普拉斯的不同进行EGI可转移性分析.</p>
+</li>
+</ol>
+<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>此次工作为迁移学习GNN构建了一个有理论支撑的框架, 并具现化为一个可实际应用的迁移学习GNN模型.</p>
+<p>下图为模型的概览, 其基于一个新的视角: 把图视作节点特征和k阶ego-图结构的联合分布采样.<br>这样的观点使得我们可以通过定义图的信息和相似度来分析图的可迁移性.</p>
+<p><span id="GNNframework"><img src="/images/egi_img/framework.png" alt="(图1: 图迁移学习框架图)"></span></p>
+<p>我们所设计的模型称作<strong>EGI</strong>.其利用基于ego-图信息最大化的训练目标来有效捕获图信息.</p>
+<p>然后我们进一步具体说明了对可迁移节点特征的要求，并分析了依赖于源图和目标图的本地图拉普拉斯算子的 EGI 的可迁移性.</p>
+<h1 id="迁移GNN"><a href="#迁移GNN" class="headerlink" title="迁移GNN"></a>迁移GNN</h1><p>在图迁移学习设置中, 预训练过程是无法得知下游任务的.我们认为应该优化和量化GNN的一般效用(general utility).<br>而他捕获基础图信息的能力与图的拓扑结构和节点特征有关.</p>
+<p>基于上述观点, 我们设计了ego-图信息最大化模型( ego-graph information maximization model, EGI).<br>然后通过其对目标图和源图建模能力的差距来衡量GNN模型的一般迁移性.</p>
+<h2 id="EGI"><a href="#EGI" class="headerlink" title="EGI"></a>EGI</h2><p>此项工作关注于在原图上进行无监督预训练过后的GNN, 在直接迁移设置下, 不经过微调, 直接应用于目标图上.</p>
+<table>
+<thead>
+<tr>
+<th align="center">含  义</th>
+<th align="center">公  式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">源图</td>
+<td align="center">$ G_{a} $</td>
+</tr>
+<tr>
+<td align="center">目标图</td>
+<td align="center">$ G_{b} $</td>
+</tr>
+<tr>
+<td align="center">节点特征</td>
+<td align="center">$ X $</td>
+</tr>
+<tr>
+<td align="center">节点集</td>
+<td align="center">$ V $</td>
+</tr>
+<tr>
+<td align="center">边集</td>
+<td align="center">$ E $</td>
+</tr>
+<tr>
+<td align="center">图</td>
+<td align="center">$ G &#x3D; \lbrace V, E \rbrace $</td>
+</tr>
+</tbody></table>
+<p>直觉上来说, 只有在源图$ G_{a} $和目标图$ G_{b} $的特征和结构在某些方面相似时, 迁移学习才会成功.<br>因此, 在图$ G_{a} $上进行学习的GNN图滤波( graph filters)能够兼容$ G_{b} $的特征和结构.</p>
+<p>我们提出了一个新的观点: 图可以视为节点特征和k阶ego-图结构的联合分布采样.<br>由于这样操作本质是对k阶ego图采样进行编码, 可以帮助我们在迁移学习下对图的结构信息进行具体定义.<br>这样有利于图之间的相似&#x2F;不相似性度量.</p>
+<p>我们设计了<strong>EGI</strong>, 此网络通过互信息最大化用以代替k阶图的恢复.</p>
+<blockquote>
+<p>k阶ego图: 对于节点$ v_{i} $, 只要它具有k层质心扩展, 使得$ v_{i} $到ego图中的人任何节点的最好距离是k ($ \forall v_{i} \in V(g_{i}), |distance(v_{i}, v_{j})| \leq k $), 它的k阶ego图定义为$g_{i} &#x3D; \lbrace V(g_{i}), E(g_{i}) \rbrace $.</p>
+</blockquote>
+<p>在此次工作中, 我们使用k阶有向图, 其方向由是否到中心节点的输入边还是输出边决定. 当然, 其结果同样适用于无向图.</p>
+<blockquote>
+<p>结构信息: $ \mathcal{G} $是拓扑空间的子图, $ G $ 视作按照概率$ \mu $从$ \mathcal{G} $采样的独立同分布的k阶ego图$ \lbrace g_{i} \rbrace_{i&#x3D;1}^{n} $. 从而$ G $的结构信息定义为k阶ego图集合$ \lbrace g_{i} \rbrace_{i&#x3D;1}^{n} $和经验分布.</p>
+</blockquote>
+<p>如<a href="#GNNframework">图1</a>所示, $ G_{0} $, $ G_{1} $, $ G_{2} $通过1阶ego图的集合和经验分布进行区分, 这使得我们能够衡量图之间的结构相似性.</p>
+<h3 id="ego图信息最大化"><a href="#ego图信息最大化" class="headerlink" title="ego图信息最大化"></a>ego图信息最大化</h3><p><img src="/images/egi_img/model.png" alt="(图2: EGI框架图)"></p>
+<p>给定从经验联合分布$ (g_{i}, x_{i}) \backsim \mathbb{P} $采样的ego图集合$ \lbrace (g_{i}, x_{i}) \rbrace_{i} $.<br>GNN编码器$ \Psi $的训练目标为最大化定义为结构信息的k阶ego图$ g_{i} $和节点嵌入$ z_{i} &#x3D; \Psi(g_{i}, x_{i}) $的互信息$ MI(g_{i}, \Psi(g_{i}, x_{i}))$.<br>为了最大化互信息$ MI $, 引入判别器$ \mathcal{D}(g_{i}, z_{i}): E(g_{i}) \times z_{i} \rightarrow \mathbb{R}^{+} $来计算边$ e $属于ego图$ g_{i} $的概率.<br>EGI模型损失函数使用JS散度:</p>
+<p>$$ \mathcal{L}_{EGI} &#x3D; -MI^{(JSD)}( \mathcal{G}, \Psi ) &#x3D; \frac{1}{N} \sum_{i&#x3D;1}^{N} [sp( \mathcal{D}(g_i, z_{i}^{‘})) + sp(-\mathcal{D}(g_i, z_{i}))] \tag{1} \label{eq:one} $$</p>
+<p>其中, $ sp(x) &#x3D; \log(1 + e^{x}) $ 是softplus function(一种激活函数), $ (g_{i}, z_{i}^{‘}) $是从边缘分布的乘积中随机抽取的, 即$ z_{i}^{‘} &#x3D; \Psi (g_{i^{‘}}, x_{i^{‘}}), (g_{i^{‘}}, x_{i^{‘}}) \backsim \mathbb{P}, i^{‘} \neq i $.</p>
+<p>在$ 式 \eqref{eq:one} $中, 对边是否属于k阶ego图$ E(g_i) $进行计算的判别器$ \mathcal{D} $依赖于节点顺序.<br>以固定的图顺序来描述判别器$ \mathcal{D} $的决策过程.具体来说, $ E(g_i) $的顺序是广度优先遍历(BFS-ordering) $ \pi $.</p>
+<p>$ \mathcal{D} &#x3D; f \circ	\Phi $, 通过另一个GNN编码器$ \Phi $和对边序列$ E^{\pi}: \lbrace e_1 , e_2 , \cdots , e_n \rbrace $在有向图层面是否属于k阶ego图进行预测的得分函数$ f $ 输出的准确度得到的召回率进行相乘.</p>
+<p>根&#x2F; 中心节点编码器$ \Psi $输入$ (g_i, x_i) $, 在判别器$ \mathcal{D} $中对邻域节点处理的编码器$ \phi $输入$ (\tilde{g_i}, x_i) $：</p>
+<p>$$ \Psi(g_i , x_i ) &#x3D; GNN_{\Psi} (A_i, X_i ), \Phi (\tilde{g_i}, x_i ) &#x3D; GNN_{\Phi} (A_{i}^{‘}, X_i) $$</p>
+<p>$ A_i, A_{i}^{‘} $是$ g_i, \tilde{g_i} $包括自向边的邻接矩阵.同时$ A_i &#x3D; A_{i}^{‘T}$.自向边的存在使得GNN可以关注到根节点自身的影响.</p>
+<p>$ \Psi $ 的输出为$ z_i \in \mathbb{R}^n $ 是根节点的节点嵌入, $ \Phi $ 的输出$ K \in \mathbb{R}^{|g_i| \times n} $ 为ego图邻域节点的表示.</p>
+<p>得到$ H $ 后, 就可以计算得分函数$ f $: 对于每个在边序列的节点对$ (p, q) \in E^{\pi} $, $ h_p $是从$ \Phi $得到的源节点表示, $ x_q $是目标节点特征.</p>
+<p>$$ f(h_p, x_q, z_i) &#x3D; \sigma (U^T \cdot	\tau (W^T [h_p || x_q || z_i])) \tag{2} \label{eq:two}$$</p>
+<p>$ \sigma $ 和 $ \tau $ 是Sigmoid和ReLU激活函数. </p>
+<p>然后, 判别器$ \mathcal{D} $用以区分$ g_i $中边的正负对:正对-$ ((p, q), z_i) $,负对-$ ((p, q), z_{i}^{‘}) $:</p>
+<p>$$ \mathcal{D} (g_i, z_i)  &#x3D; \sum_{(p,q) \in E^{\pi}} \log f(h_p, x_q, z_i), \mathcal{D} (g_i, z_{i}^{‘})  &#x3D; \sum_{(p,q)}^{E^{\pi}} \log f(h_p, x_q, z_{i}^{‘}) \tag{3} \label{eq:three} $$</p>
+<p>在节点序列中, 我们考虑了两种边$ (p, q) $, 第一种: 边连接了对于根节点来说跨阶的节点; 第二种: 边连接了对于根节点来说同阶的节点.</p>
+<p>前述提及了节点对的广度优先遍历(BFS-ordering), 而在$ 式 \eqref{eq:three} $中, 对第一种边的序列变化很敏感, 对第二种不敏感.</p>
+<p>基于上述事实, 由于k层GNN的输出仅取决于编码器$ \Psi $和$ \Phi $的k阶ego图, 因此可以通过对$ g_i $的批量采样来并行训练EGI.</p>
+<h3 id="EGI-的使用场合"><a href="#EGI-的使用场合" class="headerlink" title="EGI 的使用场合"></a>EGI 的使用场合</h3><p>EGI 的使用场合为直接迁移, 即目标领域标签未知, 其可迁移性是通过没有进行微调的模型性能差异来衡量的.</p>
+<h2 id="基于局部图的拉普拉斯可迁移性分析"><a href="#基于局部图的拉普拉斯可迁移性分析" class="headerlink" title="基于局部图的拉普拉斯可迁移性分析"></a>基于局部图的拉普拉斯可迁移性分析</h2><p>此次工作主要为基于源图$ G_a $和目标图$ G_b $之间相似性的GNN的可迁移性.</p>
+<p>我们认为GNN的输出由三部分构成: 输入的节点特征, 固定的图拉普拉斯, 学习到的图过滤器.<br>GNN的效用由这三者决定.<br>为了实现这种兼容性，我们要求节点特征与结构有关.</p>
+<blockquote>
+<p>结构相关节点特征: $g_i$表示有序的中间结点为$ v_i $的ego图, 其节点特征为$ \lbrace x_{p,q}^{i} \rbrace_{p&#x3D;0,q&#x3D;1}^{k,|V_p(g_i)|} $, 其中$ V_p(g_i) $是$ g_i $的k阶节点集合. 只有对于任意属于ego图的节点$ v_q \in V_p(g_i) $有$ x_{p,q}^{i} &#x3D; [f(g_i)]_{p,q} \in \mathbb{R}^d $, 其中$ f: \mathcal{G} \rightarrow \mathbb{R}^{d \times |V(g_i)|} $, 这样的节点特征才可称为结构相关.</p>
+</blockquote>
+<p>结构相关节点特征要求节点特征是图结构的函数.<br>这样的节点对图结构的变化很敏感, 同时在理想的情况下, 节点特征对图结构是内射的(映射不同的图到不同的特征).<br>这样, 当一个迁移GNN学习到的图过滤器兼容$ G $的结构时, 同样能够兼容$ G $的节点特征.</p>
+<blockquote>
+<p>GNN可迁移性: 源图$ G_a &#x3D; \lbrace (g_, x_i) \rbrace_{i&#x3D;1}^{n} $和目标图$ G_b &#x3D; \lbrace (g_{i’}, x_{i’}) \rbrace_{i’&#x3D;1}^{m} $以及假设与结构相关的节点特征, k层GCN $ \Psi_{\theta} $, 一阶多项式$ \phi $<br>在以上对$ G_a $和$ G_b $的局部谱域合理的假设下, $ \Psi_{\theta} $的经验性能差异通过$ \mathcal{L}_{EGI} $评估, 满足:</p>
+</blockquote>
+<p>$$ | \mathcal{L}_{EGI} (G_{a}) - \mathcal{L}_{EGI} (G_{b})| \leq \mathcal{O}( \Delta_{ \mathcal{D}} (G_{a}, G_{b}) + C) \tag{4} \label{eq:four} $$</p>
+<p>论文原文, <font color="red"> RHS表示公式右侧</font></p>
+<p>其中, $ C $只依赖于图编码器和节点特征.</p>
+<p>$ \Delta_{ \mathcal{D}}(G_a ,G_b) $衡量源图和目标图结构区别的方式:</p>
+<p>$$ \Delta_{\mathcal{D}}(G_a, G_b) &#x3D; \tilde{C} \frac{1}{nm} \sum_{n}^{i&#x3D;1} \sum_{m}^{i^{‘}&#x3D;1} \lambda_{max} (\tilde{L}_{g_i} - \tilde{L}_{g_{i^{‘}}}) \tag{5} \label{eq:five} $$</p>
+<p>其中, $ \lambda_{max} (A) : \lambda_{max}(A^T A)^(1&#x2F;2) $, $ \tilde{L}_{g_i} $通过入度表示$\tilde{g}_i$的归一化图拉普拉斯, $ \tilde{C}$ 一直依赖于 $ \lambda_{max}( \tilde{L}_{g_i}) $ 和 $\mathcal{D}$.</p>
+<p><strong>GNN可迁移性</strong>的分析自然举例了我们对于结构相似性和GNN可迁移性之间对应关系的理解.<br>这使得我们可以告知EGI怎样把在源图上训练好的GNN仅仅通过衡量源图和目标图之间的局部拉普拉斯差异, 而不需要任何微调, 就可以在目标图上很好地工作.</p>
+<h1 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h1><p>直接迁移的图编码器为GIN,<br>存在微调迁移的图编码器为GCN,<br>自监督GNN为GVAE, DGI,<br>互信息衡量方法为GMI, MVC,<br>对于预训练GNN, 有MaskGNN和ContextGNN,<br>此外, 对比方法还有Structural Pre-train.</p>
+<p><img src="/images/egi_img/experiment1.png" alt="(图3: 实验图)"></p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GNN/" rel="tag">GNN</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BF%81%E7%A7%BB%E5%AD%A6%E4%B9%A0/" rel="tag">迁移学习</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
+  id="post-build_site"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/build_site.html"
+    >github + hexo 简单搭建 github.io 网站</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/build_site.html" class="article-date">
+  <time datetime="2022-07-02T13:22:45.000Z" itemprop="datePublished">2022-07-02</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%BD%91%E7%AB%99/">网站</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="系统配置"><a href="#系统配置" class="headerlink" title="系统配置"></a>系统配置</h1><p>这里先说一下我的系统配置以供参考</p>
+<blockquote>
+<p>Ubuntu 20.04 5.13.0-51-generic x86_64</p>
+</blockquote>
+<h1 id="本地前置要求"><a href="#本地前置要求" class="headerlink" title="本地前置要求"></a>本地前置要求</h1><ul>
+<li><p>node.js &gt;&#x3D; 10.13</p>
+</li>
+<li><p>Git</p>
+</li>
+<li><p>hexo</p>
+</li>
+</ul>
+<h2 id="node-js"><a href="#node-js" class="headerlink" title="node.js"></a>node.js</h2><p>按照 <a target="_blank" rel="noopener" href="https://github.com/nodesource/distributions">官方安装方式</a> , Ubuntu 采用安装命令行, 这里安装的版本是18.4.0.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -</span><br><span class="line">sudo apt-get install -y nodejs</span><br></pre></td></tr></table></figure>
+
+<p>进行测试</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm --version</span><br></pre></td></tr></table></figure>
+
+<p>出现版本号, 即为安装成功.</p>
+<h2 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h2><p>Ubuntu 安装命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install git</span><br></pre></td></tr></table></figure>
+
+<h2 id="hexo"><a href="#hexo" class="headerlink" title="hexo"></a>hexo</h2><p>创建一个空文件夹作为 hexo 安装路径的同时也会是网站根目录.</p>
+<blockquote>
+<p>为了后述具体,此时假设新建的目录路径为: <font color=red>&#x2F;example</font></p>
+</blockquote>
+<h1 id="github前置要求"><a href="#github前置要求" class="headerlink" title="github前置要求"></a>github前置要求</h1><ul>
+<li><p>github账号</p>
+<blockquote>
+<p>为了后述具体,此时假设github账号</p>
+<p>用户名为: test</p>
+<p>邮箱为: <a href="mailto:&#116;&#101;&#x73;&#x74;&#64;&#49;&#x36;&#x33;&#x2e;&#x63;&#x6f;&#x6d;">&#116;&#101;&#x73;&#x74;&#64;&#49;&#x36;&#x33;&#x2e;&#x63;&#x6f;&#x6d;</a></p>
+<p>密码为: 123456</p>
+</blockquote>
+</li>
+<li><p>ssh密匙</p>
+</li>
+</ul>
+<h2 id="新建网站远程仓库"><a href="#新建网站远程仓库" class="headerlink" title="新建网站远程仓库"></a>新建网站远程仓库</h2><ol>
+<li><p>New Repository, 命名为</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test.github.io</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>打开 <strong>test.github.io</strong> , 在与 <font color="red">code</font> 同级的 <font color="red">Settings</font>下打开与 <font color="red">General</font> 同级的 <font color="red">Pages</font>. 在<font color="red">Theme Chooser</font> 下选择<font color="red">Choose a theme</font>.</p>
+</li>
+<li><p>选择好主题后, 把新弹出的界面拉到底部, 选择<strong>commit changes</strong>, 网站就可以访问了.</p>
+</li>
+<li><p>输入 test.github.io 访问.</p>
+</li>
+</ol>
+<h2 id="设置ssh密匙"><a href="#设置ssh密匙" class="headerlink" title="设置ssh密匙"></a>设置ssh密匙</h2><p>为了hexo能够顺利push到我们的仓库, 需要在本地电脑设置ssh密匙</p>
+<ol>
+<li><p>检查本机是否有ssh密匙</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.ssh <span class="comment">#检查本机已存在的ssh密钥</span></span><br></pre></td></tr></table></figure>
+
+<p> 如果存在 <strong>No such file or directory</strong>, 说明你是第一次使用git, 需要创建ssh.</p>
+ <br />
+
+<p> 或者</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.ssh <span class="comment">#检查本机已存在的ssh密钥</span></span><br><span class="line"><span class="built_in">ls</span></span><br></pre></td></tr></table></figure>
+
+<p> 没有任何输出, 需要创建ssh.</p>
+ <br />
+
+<p> 若有ssh密匙, 直接跳转至第 3 步.</p>
+</li>
+<li><p>创建ssh密匙</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="built_in">test</span>@163.com</span><br></pre></td></tr></table></figure>
+
+<p> 然后<strong>连续3次回车</strong>, 最终会生成一个文件在 <font color=red>~</font> 下.</p>
+</li>
+<li><p>打开 <font color=red>~</font> , 找到 <font color=red>.ssh\id_rsa.pub</font> 文件.</p>
+<blockquote>
+<p>注: 如果打开 <font color=red>~</font> ,没有 <font color=red>.ssh</font> 文件夹, 需要 <kbd>Ctrl</kbd> + <kbd>H</kbd> 显示隐藏文件夹.</p>
+</blockquote>
+<p> 使用记事本一类的程序打开, 复制所有内容.</p>
+</li>
+<li><p>打开 github , 点击右上角个人头像, 在弹出的窗口中选择 <font color=red>Settings</font>.<br>然后选择与<font color=red>Public profile</font> 同级 <font color=red>Access</font> 下的<br><font color=red>SHH and GPG keys</font>.</p>
+</li>
+<li><p>选择 <font color=red>New SSH key </font>.</p>
+<blockquote>
+<p>title: 随便填</p>
+<p>Key: 粘贴从 <font color=red>.ssh\id_rsa.pub</font> 文件复制的内容</p>
+</blockquote>
+<p> <font color=red>Add SSH key </font>.</p>
+</li>
+<li><p>测试</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com <span class="comment"># 注意邮箱地址不用改</span></span><br></pre></td></tr></table></figure>
+
+<p> 如果提示<font color=blue>Are you sure you want to continue connecting (yes&#x2F;no)?</font>，输入<strong>yes</strong>, 然后会看到:</p>
+<blockquote>
+<p>Hi test! You’ve successfully authenticated, but GitHub does not provide shell access.</p>
+</blockquote>
+<p> 看到这个信息说明SSH已配置成功!</p>
+</li>
+</ol>
+<h2 id="Git本地配置："><a href="#Git本地配置：" class="headerlink" title="Git本地配置："></a>Git本地配置：</h2><p>打开命令行, 输入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">&quot;test&quot;</span>            // 你的github用户名，非昵称</span><br><span class="line">git config --global user.email  <span class="string">&quot;test@163.com&quot;</span>  // 填写你的github注册邮箱</span><br></pre></td></tr></table></figure>
+
+<h1 id="网站搭建"><a href="#网站搭建" class="headerlink" title="网站搭建"></a>网站搭建</h1><h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>在 <font color=red>&#x2F;example</font> 目录下, 打开命令行, 输入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install -g hexo-cli</span><br><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+
+<h2 id="加载主题"><a href="#加载主题" class="headerlink" title="加载主题"></a>加载主题</h2><p>在<a target="_blank" rel="noopener" href="https://hexo.io/themes/">Hexo官网</a>选择喜欢的主题, 这里以<a target="_blank" rel="noopener" href="https://shen-yu.gitee.io/2019/ayer/#%E4%BB%8B%E7%BB%8D">Ayer 主题</a>为例, 输入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i hexo-theme-ayer -S</span><br></pre></td></tr></table></figure>
+
+<h2 id="主题设置"><a href="#主题设置" class="headerlink" title="主题设置"></a>主题设置</h2><ol>
+<li><p>主题使用</p>
+ <br />
+
+<p> 将 <font color=red>&#x2F;example</font> 目录下的 <strong>_config.yml</strong> 里的 theme 值修改成 ayer</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme: ayer</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>必要插件</p>
+ <br />
+ 
+<p> 在 <font color=red>&#x2F;example</font> 目录下, 打开命令行, 输入</p>
+ <br />
+
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/theme-next/hexo-generator-searchdb">搜索</a></li>
+</ul>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo-generator-feed">RSS 订阅</a></li>
+</ul>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-feed --save</span><br></pre></td></tr></table></figure>
+ <br />
+
+<p> 打开<font color=red>&#x2F;example</font> 目录下的 <strong>_config.yml</strong>, 输入</p>
+ <br />
+
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/theme-next/hexo-generator-searchdb">搜索</a></li>
+</ul>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># hexo-generator-searchdb</span><br><span class="line">search:</span><br><span class="line">path: search.xml</span><br><span class="line">field: post</span><br><span class="line">format: html</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo-generator-feed">RSS 订阅</a></li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">feed:</span><br><span class="line">type: atom</span><br><span class="line">path: atom.xml</span><br><span class="line">limit: 20</span><br><span class="line">hub:</span><br><span class="line">content:</span><br><span class="line">content_limit: 140</span><br><span class="line">content_limit_delim: &quot; &quot;</span><br><span class="line">order_by: -date</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>可选插件</p>
+ <br />
+ 
+<p> 在 <font color=red>&#x2F;example</font> 目录下, 打开命令行, 输入</p>
+ <br />
+
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/netcan/hexo-generator-index-pin-top">文章置顶</a></li>
+</ul>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-index-pin-top --save</span><br></pre></td></tr></table></figure>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/EYHN/hexo-helper-live2d/blob/master/README.zh-CN.md">二次元看板娘</a></li>
+</ul>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-helper-live2d</span><br><span class="line">npm install npm install --save live2d-widget-model-xxx  <span class="comment"># xxx为你选择的模型</span></span><br></pre></td></tr></table></figure>
+ <br />
+
+<p> 打开<font color=red>&#x2F;example</font> 目录下的 <strong>_config.yml</strong>, 输入</p>
+ <br />
+
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/netcan/hexo-generator-index-pin-top">文章置顶</a></li>
+</ul>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 已存在</span><br><span class="line">index_generator:</span><br><span class="line">path: &#x27;&#x27;</span><br><span class="line">per_page: 10</span><br><span class="line">order_by: -date</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/EYHN/hexo-helper-live2d/blob/master/README.zh-CN.md">二次元看板娘</a></li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">live2d:</span><br><span class="line">enable: true</span><br><span class="line">scriptFrom: local</span><br><span class="line">pluginRootPath: live2dw/</span><br><span class="line">pluginJsPath: lib/</span><br><span class="line">pluginModelPath: assets/</span><br><span class="line">tagMode: false</span><br><span class="line">debug: false</span><br><span class="line">model:</span><br><span class="line">  use: live2d-widget-model-wanko  # 选择模型</span><br><span class="line">display:</span><br><span class="line">  position: right</span><br><span class="line">  width: 150</span><br><span class="line">  height: 300</span><br><span class="line">mobile:</span><br><span class="line">  show: true</span><br><span class="line">react:</span><br><span class="line">  opacity: 0.7</span><br></pre></td></tr></table></figure>
+
+<p> 更多插件查看 <a target="_blank" rel="noopener" href="https://hexo.io/plugins/">hexo 插件市场</a>.</p>
+</li>
+<li><p>菜单处理</p>
+ <br />
+
+<p> Ayer 初始情况下, 菜单的<font color=blue>分类(categories), 标签(tags), 旅行(tags&#x2F;旅行), 友链(friends), 关于我(2019&#x2F;about)</font>, 点击全部显示 <font color=red>error</font>, 需要初始化.</p>
+<p> 模板, 对 XX(path) 的初始化:</p>
+ <br />
+
+<p> a. 在 <font color=red>&#x2F;example</font> 目录下, 打开命令行, 输入</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page XX</span><br></pre></td></tr></table></figure>
+
+<p> b. 打开 <font color=red>&#x2F;example&#x2F;source&#x2F;XX</font>, 复制 <strong>index.md</strong> 到 <font color=red>&#x2F;example&#x2F;source&#x2F;path</font>, 删除 <font color=red>&#x2F;example&#x2F;source&#x2F;XX</font> 目录.</p>
+ <br />
+
+<p> c. 打开 <strong>index.md</strong>, 全部替换输入</p>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: XX</span><br><span class="line">type: &quot;XX&quot;</span><br><span class="line">layout: &quot;XX&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>本地测试</p>
+ <br />
+
+<p> 在完成上述操作后网站模板搭建完毕, 可以在本地查看网站效果.</p>
+ <br />
+
+<p> 在 <font color=red>&#x2F;example</font> 目录下, 打开命令行, 输入</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># hexo 网站生成命令</span></span><br><span class="line">hexo g</span><br><span class="line"><span class="comment"># hexo 网站本地部署命令</span></span><br><span class="line">hexo s -p 8008</span><br></pre></td></tr></table></figure>
+
+<p>打开<font color=blue> <a target="_blank" rel="noopener" href="http://localhost:8008/">http://localhost:8008/</a> </font> 即可查看部署效果.</p>
+</li>
+<li><p>部署处理</p>
+ <br />
+
+<p> 在push网站到git之前, 要在<font color=red>&#x2F;example</font> 目录下的 <strong>_config.yml</strong>, 输入</p>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">type: git</span><br><span class="line">repository: git@github.com:test/test.github.io.git</span><br><span class="line">branch: master</span><br></pre></td></tr></table></figure>
+
+<p>在 <font color=red>&#x2F;example</font> 目录下, 打开命令行, 输入下述命令部署到云端.</p>
+<br />
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># hexo 网站生成命令</span></span><br><span class="line">hexo g</span><br><span class="line"><span class="comment"># hexo 网站云端部署命令</span></span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+
+<p> 打开<font color=blue> <a target="_blank" rel="noopener" href="https://test.github.io/">https://test.github.io/</a> </font> 即可查看部署效果.</p>
+</li>
+</ol>
+<h2 id="新增页面"><a href="#新增页面" class="headerlink" title="新增页面"></a>新增页面</h2><p>   文章页面的新增和菜单的处理不同.</p>
+<ol>
+<li><p>在 <font color=red>&#x2F;example&#x2F;source&#x2F;_posts</font> 目录下, 新建md文件.</p>
+</li>
+<li><p>md写入:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 文章名</span><br><span class="line">date: 2022-07-02 21:22:45       # 时间</span><br><span class="line">tags: [网站, hexo, github]      # 标签, 可以填入多个</span><br><span class="line">categories: [网站]              # 只能填入一个</span><br><span class="line">---</span><br><span class="line">正文</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>以上, 网站搭建完成.</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/" rel="tag">github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BD%91%E7%AB%99/" rel="tag">网站</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
+  id="post-paper/maskrcnn_pytorch"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/paper/maskrcnn_pytorch.html"
+    >实现Mask RCNN Pytorch版本</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/paper/maskrcnn_pytorch.html" class="article-date">
+  <time datetime="2022-07-02T13:22:45.000Z" itemprop="datePublished">2022-07-02</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%AF%AD%E4%B9%89%E5%88%86%E5%89%B2/">语义分割</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="整体架构"><a href="#整体架构" class="headerlink" title="整体架构"></a>整体架构</h1><p>本次实现的Mask RCNN主要分为以下几个部分：</p>
+<ul>
+<li><p>backbone</p>
+</li>
+<li><p>RPN</p>
+</li>
+</ul>
+<h1 id="backbone"><a href="#backbone" class="headerlink" title="backbone"></a>backbone</h1><p>首先原文提出了四种backbone：</p>
+<ul>
+<li>resnet50</li>
+<li>resnet50 + FPN</li>
+<li>resnet101</li>
+<li>resnet101 + FPN</li>
+</ul>
+<p>本次基于resnet101 + FPN实现</p>
+<h2 id="resnet101-1"><a href="#resnet101-1" class="headerlink" title="resnet101[1]"></a>resnet101<sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="[He K, Zhang X, Ren S, et al. Deep residual learning for image recognition[C]//Proceedings of the IEEE conference on computer vision and pattern recognition. 2016: 770-778.](http://openaccess.thecvf.com/content_cvpr_2016/html/He_Deep_Residual_Learning_CVPR_2016_paper.html)">[1]</span></a></sup></h2><p>就是基础的resnet模型, 可借用torchvision实现</p>
+<p><img src="/images/maskrcnn_pytorch/resnet.png" alt="(resnet模型图)"></p>
+<h2 id="特征金字塔-FPN-2"><a href="#特征金字塔-FPN-2" class="headerlink" title="特征金字塔(FPN)[2]"></a>特征金字塔(FPN)<sup id="fnref:2"><a href="#fn:2" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="[Lin T Y, Dollár P, Girshick R, et al. Feature pyramid networks for object detection[C]//Proceedings of the IEEE conference on computer vision and pattern recognition. 2017: 2117-2125.](https://arxiv.org/abs/1612.03144)">[2]</span></a></sup></h2><p>FPN, 又称特征金字塔, 初始的FPN使用来进行目标检测的, 但由于其性能, 现大多用来做特征提取.</p>
+<p><img src="/images/maskrcnn_pytorch/base_fpn.png" alt="(FPN模型图)"></p>
+<p>基础的FPN先对高层特征图<strong>上采样</strong>(2倍的最邻近插值), 再对低层特征图<strong>升维</strong>(1 * 1 卷积), 最后对维度, 高度, 宽度一致的两个特征图进行元素对应相加, 得到融合特征图.</p>
+<p><img src="/images/maskrcnn_pytorch/rcnn_fpn.jpg" alt="(resnet模型图)&lt;sup id=&quot;fnref:3&quot;&gt;&lt;a href=&quot;#fn:3&quot; rel=&quot;footnote&quot;&gt;&lt;span class=&quot;hint--top hint--error hint--medium hint--rounded hint--bounce&quot; aria-label=&quot;[Mask-RCNN 算法及其实现详解](https://blog.csdn.net/remanented/article/details/79564045)
+&quot;&gt;[3]&lt;/span&gt;&lt;/a&gt;&lt;/sup&gt;"></p>
+<p>Mask RCNN内的FPN上采样部分不变, 在<strong>升维</strong>部分, 这里的处理是把所有特征图维度处理至<font color="blue">256</font>.</p>
+<p>在得到第一次<strong>P5, P4, P3, P2</strong>后, 对每一个特征图作3 * 3 卷积, 输出仍为<font color="blue">256</font>.</p>
+<p>如图示, <strong>P6, P5, P4, P3, P2</strong>会送至<strong>RPN层</strong>.</p>
+<h1 id="RPN"><a href="#RPN" class="headerlink" title="RPN"></a>RPN</h1><div id="footnotes"><hr><div id="footnotelist"><ol style="list-style: none; padding-left: 0; margin-left: 40px"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">1.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;"><a target="_blank" rel="noopener" href="http://openaccess.thecvf.com/content_cvpr_2016/html/He_Deep_Residual_Learning_CVPR_2016_paper.html">He K, Zhang X, Ren S, et al. Deep residual learning for image recognition[C]//Proceedings of the IEEE conference on computer vision and pattern recognition. 2016: 770-778.</a><a href="#fnref:1" rev="footnote"> ↩</a></span></li><li id="fn:2"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">2.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;"><a target="_blank" rel="noopener" href="https://arxiv.org/abs/1612.03144">Lin T Y, Dollár P, Girshick R, et al. Feature pyramid networks for object detection[C]//Proceedings of the IEEE conference on computer vision and pattern recognition. 2017: 2117-2125.</a><a href="#fnref:2" rev="footnote"> ↩</a></span></li><li id="fn:3"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">3.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;"><a target="_blank" rel="noopener" href="https://blog.csdn.net/remanented/article/details/79564045">Mask-RCNN 算法及其实现详解</a><a href="#fnref:3" rev="footnote"> ↩</a></span></li></ol></div></div> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/COCO/" rel="tag">COCO</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/" rel="tag">github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AF%AD%E4%B9%89%E5%88%86%E5%89%B2/" rel="tag">语义分割</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
+  id="post-leetcode/1"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/leetcode/1.html"
+    >力扣 1. 两数之和</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/leetcode/1.html" class="article-date">
+  <time datetime="2022-07-02T13:22:45.000Z" itemprop="datePublished">2022-07-02</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="使用快速排序-原数组index记录-双指针"><a href="#使用快速排序-原数组index记录-双指针" class="headerlink" title="使用快速排序 + 原数组index记录 + 双指针"></a>使用快速排序 + 原数组index记录 + 双指针</h1><ol>
+<li>快速排序 + 原数组index记录</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">quick_sort</span>(<span class="params">left, right</span>):</span><br><span class="line">    <span class="keyword">if</span> left &gt;= right: <span class="keyword">return</span></span><br><span class="line">    i, j = left, right</span><br><span class="line">    <span class="keyword">while</span> i &lt; j:</span><br><span class="line">        <span class="keyword">while</span> nums[j] &gt; nums[left] <span class="keyword">and</span> i &lt; j: j -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> nums[i] &lt;= nums[left] <span class="keyword">and</span> i &lt; j: i += <span class="number">1</span></span><br><span class="line">        nums[i], nums[j] = nums[j], nums[i]</span><br><span class="line">        idx[i], idx[j] = idx[j], idx[i]</span><br><span class="line">    nums[left], nums[i] = nums[i], nums[left]</span><br><span class="line">    idx[i], idx[left] = idx[left], idx[i]</span><br><span class="line"></span><br><span class="line">    quick_sort(left, i - <span class="number">1</span>)</span><br><span class="line">    quick_sort(i + <span class="number">1</span>, right)</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>双指针</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">i, j = <span class="number">0</span>, <span class="built_in">len</span>(nums) - <span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> <span class="number">0</span> &lt;= i &lt; j &lt; <span class="built_in">len</span>(nums):</span><br><span class="line">    cur = nums[i] + nums[j]</span><br><span class="line">    <span class="keyword">if</span> cur &gt; target:</span><br><span class="line">        j -= <span class="number">1</span></span><br><span class="line">    <span class="keyword">elif</span> cur &lt; target:</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+
+
+<h1 id="官方解法-hash表"><a href="#官方解法-hash表" class="headerlink" title="官方解法: hash表"></a>官方解法: hash表</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">in_ = &#123;&#125;</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(nums)):</span><br><span class="line">    <span class="keyword">if</span> target - nums[i] <span class="keyword">in</span> in_:</span><br><span class="line">        <span class="keyword">return</span> [in_[target - nums[i]], i]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        in_[nums[i]] = i</span><br></pre></td></tr></table></figure> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hash%E8%A1%A8/" rel="tag">hash表</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag">双指针</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BF%AB%E6%8E%92/" rel="tag">快排</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
+  id="post-leetcode/10"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/leetcode/10.html"
+    >力扣 10. 正则表达式匹配</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/leetcode/10.html" class="article-date">
+  <time datetime="2022-07-02T13:22:45.000Z" itemprop="datePublished">2022-07-02</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="动态规划-二维数组"><a href="#动态规划-二维数组" class="headerlink" title="动态规划-二维数组"></a>动态规划-二维数组</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">isMatch</span>(<span class="params">s, p</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">match</span>(<span class="params">i, j</span>):</span><br><span class="line">        <span class="comment"># 指针未指向字符串s</span></span><br><span class="line">        <span class="keyword">if</span> i == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="comment"># 单个字符匹配任意字符</span></span><br><span class="line">        <span class="keyword">if</span> p[j - <span class="number">1</span>] == <span class="string">&quot;.&quot;</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="comment"># 单个字符一对一匹配</span></span><br><span class="line">        <span class="keyword">return</span> s[i - <span class="number">1</span>] == p[j - <span class="number">1</span>]</span><br><span class="line">    m, n = <span class="built_in">len</span>(s), <span class="built_in">len</span>(p)</span><br><span class="line">    dp = [[<span class="literal">False</span>] * (n + <span class="number">1</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(m + <span class="number">1</span>)]</span><br><span class="line">    dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(m + <span class="number">1</span>):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):</span><br><span class="line">            <span class="comment"># 零到多字符匹配</span></span><br><span class="line">            <span class="keyword">if</span> p[j - <span class="number">1</span>] == <span class="string">&quot;*&quot;</span>:</span><br><span class="line">                dp[i][j] |= dp[i][j - <span class="number">2</span>] <span class="comment"># 匹配零个</span></span><br><span class="line">                <span class="keyword">if</span> match(i, j - <span class="number">1</span>):     <span class="comment"># 要进行匹配</span></span><br><span class="line">                    dp[i][j] |= dp[i - <span class="number">1</span>][j]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="comment"># 一对一字符匹配</span></span><br><span class="line">                <span class="keyword">if</span> match(i, j):</span><br><span class="line">                    dp[i][j] |= dp[i - <span class="number">1</span>][j - <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> dp[m][n]</span><br></pre></td></tr></table></figure>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
+  id="post-leetcode/11"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/leetcode/11.html"
+    >力扣 11. 盛最多水的容器</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/leetcode/11.html" class="article-date">
+  <time datetime="2022-07-02T13:22:45.000Z" itemprop="datePublished">2022-07-02</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="枚举-time-N-x2F-A"><a href="#枚举-time-N-x2F-A" class="headerlink" title="枚举: time N&#x2F;A"></a>枚举: time N&#x2F;A</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">maxArea</span>(<span class="params">height</span>):</span><br><span class="line">    cur = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(height)):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(i, <span class="built_in">len</span>(height)):</span><br><span class="line">            cur = <span class="built_in">max</span>(cur, (j - i) * <span class="built_in">min</span>(height[j], height[i]))</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> cur</span><br></pre></td></tr></table></figure>
+
+<h1 id="双指针收缩"><a href="#双指针收缩" class="headerlink" title="双指针收缩"></a>双指针收缩</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">maxArea</span>(<span class="params">height</span>):</span><br><span class="line">    i, j = <span class="number">0</span>, <span class="built_in">len</span>(height) - <span class="number">1</span></span><br><span class="line">    res = (j - i) * <span class="built_in">min</span>(height[i], height[j])</span><br><span class="line">    <span class="keyword">while</span> i &lt; j:</span><br><span class="line">        <span class="keyword">if</span> height[i] &gt;= height[j]: j -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>: i += <span class="number">1</span></span><br><span class="line">        res = <span class="built_in">max</span>(res, (j - i) * <span class="built_in">min</span>(height[i], height[j]))</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag">双指针</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
+  id="post-leetcode/15"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/leetcode/15.html"
+    >力扣 15. 三数之和</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/leetcode/15.html" class="article-date">
+  <time datetime="2022-07-02T13:22:45.000Z" itemprop="datePublished">2022-07-02</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="快排-双指针"><a href="#快排-双指针" class="headerlink" title="快排 + 双指针"></a>快排 + 双指针</h1><ol>
+<li>快排</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">quick_sort</span>(<span class="params">left, right</span>):</span><br><span class="line">    <span class="keyword">if</span> left &gt;= right: <span class="keyword">return</span></span><br><span class="line">    i, j = left, right</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> i &lt; j:</span><br><span class="line">        <span class="keyword">while</span> nums[j] &gt; nums[left] <span class="keyword">and</span> i &lt; j:</span><br><span class="line">            j -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> nums[i] &lt;= nums[left] <span class="keyword">and</span> i &lt; j:</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">        </span><br><span class="line">        nums[i], nums[j] = nums[j], nums[i]</span><br><span class="line">    nums[i], nums[left] = nums[left], nums[i]</span><br><span class="line"></span><br><span class="line">    quick_sort(left, i - <span class="number">1</span>)</span><br><span class="line">    quick_sort(i + <span class="number">1</span>, right)</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>双指针(三指针)</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">res = []</span><br><span class="line"><span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, num_len - <span class="number">2</span>):</span><br><span class="line">    <span class="keyword">if</span> nums[k] &gt; <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">if</span> k &gt; <span class="number">0</span> <span class="keyword">and</span> nums[k] == nums[k - <span class="number">1</span>]: <span class="keyword">continue</span></span><br><span class="line">    i, j = k + <span class="number">1</span>, num_len - <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> i &lt; j:</span><br><span class="line">        cur = nums[k] + nums[i] + nums[j]</span><br><span class="line">        <span class="keyword">if</span> cur &gt; <span class="number">0</span>:</span><br><span class="line">            j -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> i &lt; j <span class="keyword">and</span> nums[j] == nums[j + <span class="number">1</span>]: j -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> cur &lt; <span class="number">0</span>:</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> i &lt; j <span class="keyword">and</span> nums[i] == nums[i - <span class="number">1</span>]: i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            res.append([nums[k], nums[i], nums[j]])</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">            j -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> i &lt; j <span class="keyword">and</span> nums[i] == nums[i - <span class="number">1</span>]: i += <span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> i &lt; j <span class="keyword">and</span> nums[j] == nums[j + <span class="number">1</span>]: j -= <span class="number">1</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag">双指针</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BF%AB%E6%8E%92/" rel="tag">快排</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
+  id="post-leetcode/17"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/leetcode/17.html"
+    >力扣 17. 电话号码的字母组合</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/leetcode/17.html" class="article-date">
+  <time datetime="2022-07-02T13:22:45.000Z" itemprop="datePublished">2022-07-02</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="暴力解法"><a href="#暴力解法" class="headerlink" title="暴力解法"></a>暴力解法</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">letterCombinations</span>(<span class="params">digits</span>):</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> digits:</span><br><span class="line">        <span class="keyword">return</span> []</span><br><span class="line">        </span><br><span class="line">    hash_ = &#123;<span class="string">&quot;2&quot;</span>: [<span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>, <span class="string">&quot;c&quot;</span>],</span><br><span class="line">             <span class="string">&quot;3&quot;</span>: [<span class="string">&quot;d&quot;</span>, <span class="string">&quot;e&quot;</span>, <span class="string">&quot;f&quot;</span>],</span><br><span class="line">             <span class="string">&quot;4&quot;</span>: [<span class="string">&quot;g&quot;</span>, <span class="string">&quot;h&quot;</span>, <span class="string">&quot;i&quot;</span>],</span><br><span class="line">             <span class="string">&quot;5&quot;</span>: [<span class="string">&quot;j&quot;</span>, <span class="string">&quot;k&quot;</span>, <span class="string">&quot;l&quot;</span>],</span><br><span class="line">             <span class="string">&quot;6&quot;</span>: [<span class="string">&quot;m&quot;</span>, <span class="string">&quot;n&quot;</span>, <span class="string">&quot;o&quot;</span>],</span><br><span class="line">             <span class="string">&quot;7&quot;</span>: [<span class="string">&quot;p&quot;</span>, <span class="string">&quot;q&quot;</span>, <span class="string">&quot;r&quot;</span>, <span class="string">&quot;s&quot;</span>],</span><br><span class="line">             <span class="string">&quot;8&quot;</span>: [<span class="string">&quot;t&quot;</span>, <span class="string">&quot;u&quot;</span>, <span class="string">&quot;v&quot;</span>],</span><br><span class="line">             <span class="string">&quot;9&quot;</span>: [<span class="string">&quot;w&quot;</span>, <span class="string">&quot;x&quot;</span>, <span class="string">&quot;y&quot;</span>, <span class="string">&quot;z&quot;</span>]&#125;</span><br><span class="line">    </span><br><span class="line">    tmp, res = [<span class="string">&quot;&quot;</span>], []</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> d <span class="keyword">in</span> digits:</span><br><span class="line">        <span class="keyword">if</span> d <span class="keyword">in</span> hash_:</span><br><span class="line">            <span class="keyword">for</span> t <span class="keyword">in</span> tmp:</span><br><span class="line">                <span class="keyword">for</span> ad <span class="keyword">in</span> hash_[d]:</span><br><span class="line">                    res.append(t + ad)</span><br><span class="line">            <span class="comment"># res += add_</span></span><br><span class="line">            tmp = res</span><br><span class="line">            res = []</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> tmp</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>回溯 + 队列</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">letterCombinations</span>(<span class="params">digits</span>):</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> digits:</span><br><span class="line">        <span class="keyword">return</span> []</span><br><span class="line"></span><br><span class="line">    hash_ = &#123;<span class="string">&quot;2&quot;</span>: [<span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>, <span class="string">&quot;c&quot;</span>],</span><br><span class="line">             <span class="string">&quot;3&quot;</span>: [<span class="string">&quot;d&quot;</span>, <span class="string">&quot;e&quot;</span>, <span class="string">&quot;f&quot;</span>],</span><br><span class="line">             <span class="string">&quot;4&quot;</span>: [<span class="string">&quot;g&quot;</span>, <span class="string">&quot;h&quot;</span>, <span class="string">&quot;i&quot;</span>],</span><br><span class="line">             <span class="string">&quot;5&quot;</span>: [<span class="string">&quot;j&quot;</span>, <span class="string">&quot;k&quot;</span>, <span class="string">&quot;l&quot;</span>],</span><br><span class="line">             <span class="string">&quot;6&quot;</span>: [<span class="string">&quot;m&quot;</span>, <span class="string">&quot;n&quot;</span>, <span class="string">&quot;o&quot;</span>],</span><br><span class="line">             <span class="string">&quot;7&quot;</span>: [<span class="string">&quot;p&quot;</span>, <span class="string">&quot;q&quot;</span>, <span class="string">&quot;r&quot;</span>, <span class="string">&quot;s&quot;</span>],</span><br><span class="line">             <span class="string">&quot;8&quot;</span>: [<span class="string">&quot;t&quot;</span>, <span class="string">&quot;u&quot;</span>, <span class="string">&quot;v&quot;</span>],</span><br><span class="line">             <span class="string">&quot;9&quot;</span>: [<span class="string">&quot;w&quot;</span>, <span class="string">&quot;x&quot;</span>, <span class="string">&quot;y&quot;</span>, <span class="string">&quot;z&quot;</span>]&#125;</span><br><span class="line">    </span><br><span class="line">    tmp, res, digit_len = [], [], <span class="built_in">len</span>(digits)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">back</span>(<span class="params">idx, digit_len</span>):</span><br><span class="line">        <span class="keyword">if</span> idx == digit_len:</span><br><span class="line">            res.append(<span class="string">&quot;&quot;</span>.join(tmp))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            digit = digits[idx]</span><br><span class="line">            <span class="keyword">for</span> d <span class="keyword">in</span> hash_[digit]:</span><br><span class="line">                tmp.append(d)</span><br><span class="line">                back(idx + <span class="number">1</span>, digit_len)</span><br><span class="line">                tmp.pop()</span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">    back(<span class="number">0</span>, digit_len)</span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+
+
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%9E%E6%BA%AF/" rel="tag">回溯</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%98%9F%E5%88%97/" rel="tag">队列</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
+  id="post-leetcode/19"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/leetcode/19.html"
+    >力扣 19. 删除链表的倒数第 N 个结点</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/leetcode/19.html" class="article-date">
+  <time datetime="2022-07-02T13:22:45.000Z" itemprop="datePublished">2022-07-02</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="预置"><a href="#预置" class="headerlink" title="预置"></a>预置</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"># class ListNode:</span></span><br><span class="line"><span class="comment">#     def __init__(self, val=0, next=None):</span></span><br><span class="line"><span class="comment">#         self.val = val</span></span><br><span class="line"><span class="comment">#         self.next = next</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="链表基本操作"><a href="#链表基本操作" class="headerlink" title="链表基本操作"></a>链表基本操作</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">removeNthFromEnd</span>(<span class="params">head, n</span>):</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> head: <span class="keyword">return</span></span><br><span class="line">    node_len, node_cur = <span class="number">0</span>, head</span><br><span class="line">    <span class="keyword">while</span> node_cur:</span><br><span class="line">        node_cur = node_cur.<span class="built_in">next</span></span><br><span class="line">        node_len += <span class="number">1</span></span><br><span class="line">    </span><br><span class="line">    top = ListNode(<span class="built_in">next</span>=head)</span><br><span class="line"></span><br><span class="line">    left_n, cur = node_len - n, top</span><br><span class="line">    <span class="comment"># print(node_len, left_n)</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> left_n &gt; <span class="number">0</span>:</span><br><span class="line">        cur = cur.<span class="built_in">next</span></span><br><span class="line">        left_n -= <span class="number">1</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># print(cur.val)</span></span><br><span class="line">    cur.<span class="built_in">next</span> = cur.<span class="built_in">next</span>.<span class="built_in">next</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> top.<span class="built_in">next</span></span><br></pre></td></tr></table></figure>
+
+
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8/" rel="tag">链表</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
+  id="post-leetcode/2"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/leetcode/2.html"
+    >力扣 2. 两数相加</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/leetcode/2.html" class="article-date">
+  <time datetime="2022-07-02T13:22:45.000Z" itemprop="datePublished">2022-07-02</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="简单遍历链表"><a href="#简单遍历链表" class="headerlink" title="简单遍历链表"></a>简单遍历链表</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">a, b, cur_num, next_ = l1, l2, <span class="number">0</span>, <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> a <span class="keyword">and</span> b:</span><br><span class="line">    total = a.val + b.val + next_</span><br><span class="line">    cur_num = total % <span class="number">10</span></span><br><span class="line">    next_ = total // <span class="number">10</span></span><br><span class="line"></span><br><span class="line">    a.val = cur_num</span><br><span class="line">    b.val = cur_num</span><br><span class="line"></span><br><span class="line">    a = a.<span class="built_in">next</span></span><br><span class="line">    b = b.<span class="built_in">next</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> a:</span><br><span class="line">    <span class="keyword">while</span> a:</span><br><span class="line">        total = a.val + next_</span><br><span class="line">        cur_num = total % <span class="number">10</span></span><br><span class="line">        next_ = total // <span class="number">10</span></span><br><span class="line"></span><br><span class="line">        a.val = cur_num</span><br><span class="line">        a = a.<span class="built_in">next</span></span><br><span class="line">    res = l1</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">while</span> b:</span><br><span class="line">        total = b.val + next_</span><br><span class="line">        cur_num = total % <span class="number">10</span></span><br><span class="line">        next_ = total // <span class="number">10</span></span><br><span class="line"></span><br><span class="line">        b.val = cur_num</span><br><span class="line">        b = b.<span class="built_in">next</span></span><br><span class="line">    res = l2</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> next_ &gt; <span class="number">0</span>:</span><br><span class="line">    cur = res</span><br><span class="line">    <span class="keyword">while</span> cur.<span class="built_in">next</span>:</span><br><span class="line">        cur = cur.<span class="built_in">next</span></span><br><span class="line">    cur.<span class="built_in">next</span> = ListNode(next_)</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8/" rel="tag">链表</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+  </article>
+  
+
+  
+  <nav class="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/10/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/12/">下一页</a>
+  </nav>
+  
+</section>
+</div>
+
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2022
+        <i class="ri-heart-fill heart_icon"></i> eightyninth
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+    <!-- 运行天数 -->
+    <ul>
+        <li><span id="runtime_span"></span></li>
+    </ul>
+  </div>
+</footer>
+<script type="text/javascript">
+    function show_runtime() {
+        window.setTimeout("show_runtime()", 1000);
+        X = new Date("02/22/2020 22:22:22");
+        Y = new Date();
+        T = (Y.getTime() - X.getTime());
+        M = 24 * 60 * 60 * 1000;
+        a = T / M;
+        A = Math.floor(a);
+        b = (a - A) * 24;
+        B = Math.floor(b);
+        c = (b - B) * 60;
+        C = Math.floor((b - B) * 60);
+        D = Math.floor((c - C) * 60);
+        runtime_span.innerHTML = "小站在各种崩坏中坚持了: " + A + "天" + B + "小时" + C + "分" + D + "秒"
+    }
+    show_runtime();
+</script>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="EightyNinth"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2022/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+ 
+<script src="/js/clickLove.js"></script>
+ 
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+ 
+<script src="/js/dz.js"></script>
+ 
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+
+</html>

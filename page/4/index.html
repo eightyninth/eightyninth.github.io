@@ -157,7 +157,7 @@
     
     
     <article
-  id="post-books/network_2"
+  id="post-leetcode/240"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -168,8 +168,8 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/books/network_2.html"
-    >计算机网络笔记 2</a> 
+  <a class="article-title" href="/leetcode/240.html"
+    >力扣 240. 搜索二维矩阵II</a> 
 </h2>
  
 
@@ -177,8 +177,60 @@
     </header>
      
     <div class="article-meta">
-      <a href="/books/network_2.html" class="article-date">
-  <time datetime="2022-08-24T02:41:35.447Z" itemprop="datePublished">2022-08-24</time>
+      <a href="/leetcode/240.html" class="article-date">
+  <time datetime="2022-09-17T13:09:35.172Z" itemprop="datePublished">2022-09-17</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">searchMatrix</span>(<span class="params">matrix, target</span>):</span><br><span class="line">    ret = <span class="literal">False</span></span><br><span class="line">    m, n = <span class="built_in">len</span>(matrix), <span class="built_in">len</span>(matrix[<span class="number">0</span>])</span><br><span class="line">    i, j = <span class="number">0</span>, n - <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">not</span> ret <span class="keyword">and</span> i &lt; m <span class="keyword">and</span> j &gt; -<span class="number">1</span>:</span><br><span class="line">        <span class="keyword">if</span> matrix[i][j] == target:</span><br><span class="line">            ret = <span class="literal">True</span></span><br><span class="line">        <span class="keyword">elif</span> matrix[i][j] &lt; target:</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            j -= <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> ret</span><br></pre></td></tr></table></figure> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
+  id="post-books/network_3"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/books/network_3.html"
+    >计算机网络笔记 3</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/books/network_3.html" class="article-date">
+  <time datetime="2022-09-06T06:07:41.598Z" itemprop="datePublished">2022-09-06</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/%E6%A0%A1%E6%8B%9B/">校招</a>
@@ -188,313 +240,256 @@
       
     <div class="article-entry" itemprop="articleBody">
        
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h1><p>物理层考虑的是怎样才能在连接各种计算机的传输媒体上传输数据比特流。需要尽可能屏蔽计算机网络中的硬件设备和传输媒体以及通信手段的不同，使得物理层上面的数据链路层感觉不到这些差异，让数据链路层只需要考虑如何完成本层的协议和服务，不必考虑网络具体的传输媒体和通信手段。</p>
-<p>物理层<strong>规程</strong>(procedure)指物理层的协议。</p>
-<p>物理层的主要任务是确定与传输媒体的借口有关的一些特性：</p>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h1><p>数据链路层使用的信道主要分为以下两种类型：</p>
 <ol>
-<li>机械特性: 指明接口所用接线器的形状和尺寸，引脚数目和排列，固定和锁定装置等。</li>
-<li>电气特性: 指明在接口电缆的各条线上出现的电压的范围。</li>
-<li>功能特性: 指明某条线上出现的某一点评的电压的意义。</li>
-<li>过程特性: 指明对于不同功能的各种可能事件的出现顺序。</li>
+<li><strong>点对点信道</strong>。一对一的点对点通信。<br/> <br/></li>
+<li><strong>广播信道</strong>。一对多的广播通信方式。</li>
 </ol>
-<h2 id="数据通信系统的模型"><a href="#数据通信系统的模型" class="headerlink" title="数据通信系统的模型"></a>数据通信系统的模型</h2><p>   数据通信系统可划分为三部分: 源系统&#x2F;发送端&#x2F;发送方，传输系统&#x2F;传输网络，目的系统&#x2F;接收端&#x2F;接收方。</p>
-<p>   <img src="/../images/network/data_system.png" alt="数据通信系统的模型"></p>
-<ol>
-<li><p>源系统</p>
-<p>源系统一般包括两个部分，<strong>源点&#x2F;源站&#x2F;信源</strong>(source)和<strong>发送器</strong>。</p>
-<ul>
-<li>源点: 源点设备产生要传输的数据。</li>
-<li>发送器: 通常源点生成的数字比特流要通过发送器编码后才能够在传输系统中进行传输。</li>
-</ul>
-</li>
-<li><p>目的系统<br>目的系统一般包括两个部分，<strong>接收器</strong>和<strong>终点&#x2F;目的站&#x2F;信宿</strong>(destination)。</p>
-<ul>
-<li>接收器: 接收传输系统传送过来的信号，并把它转换为能够被目的设备处理的信息。</li>
-<li>终点: 终点设备从接收器获取传送来的数字比特流，把信息输出。</li>
-</ul>
-</li>
-</ol>
-<p>   在源系统和目的系统之间的传输系统可以是简单的传输线，也可以是连接在源系统和目标系统之间的复杂网络系统。</p>
-<blockquote>
-<p>通信的目的是传送<strong>消息</strong>(message)。</p>
-<p><strong>数据</strong>(data)是运送消息的实体。其严格定义为是使用特定方式表示的信息，通常是有异议的符号序列。</p>
-<p><strong>信号</strong>(signal)则是数据的电气或电磁的表现。</p>
+<h2 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h2><h3 id="数据链路"><a href="#数据链路" class="headerlink" title="数据链路"></a>数据链路</h3><blockquote>
+<p>链路和数据链路的区别: </p>
+<p><strong>链路</strong>(link)是从一个节点到相邻接点的一段物理线路，中间没有任何其他交换节点，只是一条路径的组成部分。</p>
+<p><strong>数据链路</strong>(data link)包括物理线路以及必要的通信协议来控制数据的传输。把实现这些协议的硬件和软件加到链路上，就构成了数据链路。</p>
 </blockquote>
-<p>信号可分为<strong>模拟信号</strong>和<strong>数字信号</strong>:</p>
+<p>最常用的方法是使用<strong>网络适配器</strong>实现用于控制数据传输的协议。一般的适配器都包括了数据链路层和物理层两种功能。</p>
+<blockquote>
+<p>注: 因为早期的数据通信协议也叫做通信<strong>规程</strong>(procedure)。规程和协议是同义词。</p>
+</blockquote>
+<h3 id="帧"><a href="#帧" class="headerlink" title="帧"></a>帧</h3><p>数据链路层把网络层下才来的数据构成<strong>帧</strong>发送到链路上，以及把接收到的<strong>帧</strong>中的数据取出并上交给网络层。</p>
+<h2 id="点对点信道"><a href="#点对点信道" class="headerlink" title="点对点信道"></a>点对点信道</h2><h3 id="数据流向"><a href="#数据流向" class="headerlink" title="数据流向"></a>数据流向</h3><p>为了主要关注数据链路层，使用3层和单层结构表示。</p>
+<p><img src="/../images/network/data_link_3.png" alt="三层简化点对点数据链路层"></p>
+<p><img src="/../images/network/data_link_1.png" alt="单层简化点对点数据链路层"></p>
+<p>点对点的数据链路层进行通信的主要步骤如下：</p>
 <ol>
-<li>模拟信号&#x2F;连续信号: 消息参数的取值是连续的。</li>
-<li>数字信号&#x2F;离散信号: 消息参数的取值是离散的。代表不同离散数值的基本波形成为<strong>码元</strong>。</li>
+<li>节点A的数据链路层把网络层交下来的IP数据报添加首部和尾部封装成<strong>帧</strong>。<br/> <br/></li>
+<li>节点A把封装好的帧发送给节点B的数据链路层。<br/> <br/></li>
+<li>若节点B的数据链路层收到的帧无差错，则从收到的帧中提取出IP数据报交给上面的网络层，否则丢弃这个帧。</li>
+</ol>
+<p>数据链路层不必考虑物理层如何实现比特传输的细节，甚至可以简单的设想数据是沿着两个数据链路层之间的水平方向把帧直接发送到对方。<br/> <br/></p>
+<h3 id="基本问题"><a href="#基本问题" class="headerlink" title="基本问题"></a>基本问题</h3><ol>
+<li><p><strong>封装成帧</strong></p>
+<p><strong>封装成帧</strong>(framing)就是在一段数据的前后分别添加首部和尾部，来构成帧。<br/> <br/> </p>
+<p>接收端在收到物理层上交的比特流后，就能根据首部和尾部的标记，从收到比特流中识别帧的开始和结束。<br/> <br/></p>
+<p><img src="/../images/network/framing.png" alt="封装成帧"></p>
+<p>网络层的IP数据报传送到数据链路层就成为帧的数据部分。在帧的数据部分的前面和后面分别添加上首部和尾部，就构成了完整的帧。<br/> <br/></p>
+<p>一个帧的帧长等于帧的数据部分长度加上帧首部和帧尾部的长度。<br/> <br/></p>
+<p>帧首部和尾部的作用不仅是进行<strong>帧定界</strong>，此外还包含许多必要的控制信息。<br/> <br/></p>
+<p>在发送帧时，是从帧首部开始的。各种数据链路层的协议都对帧首部和帧尾部的格式有明确的规定。<br/> <br/></p>
+<p>为了提高帧的传输效率，应当使帧的数据部分长度尽可能地大于首部和尾部的长度。但是，每一种链路层协议都规定了所能传送帧的数据部分的长度上限:<strong>最大传送单元MTU</strong>(Maximum Transfer Unit)<br/> <br/></p>
+<p>当数据在传输中出现差错时，帧定界符就体现了它的作用。假定发送端在尚未发送完一个帧时突然出现故障，中断了发送，随后恢复正常，重头开始发送刚才未发送完的帧。在接收端，由于使用了帧定界符，接收端就知道前面收到的数据是不完整的帧，需要丢弃。下一个接收的帧是完整的帧，可以收下。<br/> <br/></p>
+</li>
+<li><p><strong>透明传输</strong><br/> <br/><br>所谓透明传输，即在数据链路层透明传送数据，表示无论怎样的比特组合数据，都能够原样没有差错地通过这个数据链路层。也就是说，对于传送的数据，数据链路层是”透明”的。<br/> <br/></p>
+<p>为了解决透明传输问题，在帧的数据部分绝对不可以出现链路层协议所定义的SOH(Start of Header)以及EOT(End of Transmission)。<br/> <br/></p>
+<p>为了解决帧的数据部分出现假性”SOH”和”EOT”，具体方式是<strong>字节填充</strong>(byte stuffing)&#x2F;<strong>字符填充</strong>(character stuffing)，即发送端的数据在假性”SOH”或”EOT”之前插入一个<strong>转义字符(ESC),0x1B</strong>，在接收端的数据链路层把数据送往网络层之前删除这个插入的转义字符。如果<strong>转义字符</strong>也出现在数据中，那么就在转义字符之前插入一个转义字符。<br/> <br/></p>
+<p><img src="/../images/network/character_stuffing.png" alt="字节填充方法"></p>
+</li>
+<li><p><strong>差错检测</strong><br/> <br/></p>
+<blockquote>
+<p>比特差错： 比特在传输过程中可能会产生差错:1可能会变成0，0可能变成1。</p>
+<p>误码率BER(bit error rate): 在一段时间内，传输错误的比特占所传输比特总数的比率。</p>
+</blockquote>
+<p>首先，这里的差错仅指比特差错，但在比特差错之上，还会有<strong>帧丢失</strong>，<strong>帧重复</strong>或<strong>帧失序</strong>。<br/> <br/></p>
+<blockquote>
+<p>发送端发送帧: [#1]-[#2]-[#3]</p>
+<p>帧丢失: 接收端收到[#1]-[#3] 丢失[#2]</p>
+<p>帧重复：收到[#1]-[#2]-[#2]-[#3] 收到两个[#2]</p>
+<p>帧失序：收到[#1]-[#3]-[#2]</p>
+</blockquote>
+<p>无比特差错和无传输差错因此并不是同一个概念。因此在CRC检错(针对比特差错)的基础上增加了<strong>帧编号</strong>，<strong>确认</strong>和<strong>重传机制</strong>。<br/> <br/></p>
+<p>收到正确的帧就要向发送端发送确认。发送端在一定的期限内若没有收到对方的确认，就认为出现了差错，因而就进行重传，直到收到对方的确认的为止。<br/> <br/></p>
+<p>目前的做法是，对于通信质量良好的有线传输线路，数据链路层协议不使用确认和重传机制，不要求数据链路层向上层提供可靠的传输服务。如果出错，改正差错的任务交由上层协议完成。对于通信质量较差的的无线传输链路，数据链路层协议使用确认和重传机制，向上层提供可靠传输的服务。<br/> <br/></p>
+<p>此节仅针对比特差错问题进行讨论，目前在数据链路层广泛使用的是<strong>循环冗余检验CRC</strong>(Cyclic Redundancy Check)技术。<br/> <br/></p>
+<p>在发送端，CRC利用预先约定好的除数<em>P</em>对帧数据作除法操作，最终的余数作为冗余码，又叫<strong>帧检验序列FCS</strong>(Frame Check Sequence)，构成发送数据。<br/> <br/></p>
+<p>在接收端，CRC以帧为单位进行检测。把接收的帧数据除以约定好的除数。如果得出的余数为0，判定此帧没有差错，接受。如果得出的余数不为0，判定此帧有差错，丢弃。<br/> <br/></p>
+<p>使用多项式来表示CRC检验过程。此多项式称为生成多项式。<br/> <br/></p>
+<p>目前广泛使用的生成多项式$ P(X) $包括:</p>
+<ol>
+<li>$ CRC-16 &#x3D; X^{16} + X^{15} + X^{2} + 1 $<br/> <br/></li>
+<li>$ CRC-CCITT &#x3D; X^{16} + X^{12} + X^{5} + 1 $<br/> <br/></li>
+<li>$ CRC-32 &#x3D; X^{32} + X^{26} + X^{23} + X^{22} + X^{16} + X^{12} + X^{11} + X^{10} + X^{8} + X^{7} + X^{5} + X^{4} + X^{2} + X + 1 $<br/> <br/></li>
+</ol>
+</li>
+</ol>
+<h3 id="点对点协议PPP"><a href="#点对点协议PPP" class="headerlink" title="点对点协议PPP"></a>点对点协议PPP</h3><p><strong>点对点协议PPP</strong>(Point-to-Point Protocol)是在目前通信线路质量变好的情况下点对点链路使用的数据链路层协议。<br/> <br/></p>
+<p>PPP协议是用户计算机和ISP进行通信时所使用的数据链路层协议。</p>
+<p>PPP协议应满足的需求：</p>
+<ol>
+<li><strong>简单</strong>。<br/> <br/><br>   互联网体系结构最复杂的部分是TCP协议，其次是IP网络协议，IP协议提供不可靠的数据报服务。<br/> <br/><br>   在此基础上数据链路层没必要提供多于IP协议的功能。<br/> <br/><br>   数据链路层协议: 接收方每收到一个帧，就进行CRC检验。如果CRC检验正确，就收下这个帧；反之，丢弃此帧。<br/> <br/></li>
+<li><strong>封装成帧</strong><br/> <br/><br>   PPP协议必须规定特殊的字符作为帧定界符(SOH EOT)，以便使接收端从收到的比特流中能准确地找出帧的开始和结束位置。<br/> <br/></li>
+<li><strong>透明性</strong><br/> <br/><br>   PPP协议必须保证数据传输的透明性。<br/> <br/></li>
+<li><strong>多种网络层协议</strong><br/> <br/><br>   PPP协议必须能够在<strong>同一条物理链路上同时支持多种网络层协议</strong>的运行。<br/> <br/></li>
+<li><strong>多种类型链路</strong><br/> <br/><br>   PPP协议必须能够在多种类型的链路上运行。<br/> <br/></li>
+<li><strong>差错检测(error detection)</strong><br/> <br/><br>   PPP协议必须能够对接收端收到的帧进行检测，并<strong>立刻丢弃有差错的帧</strong>。<br/> <br/></li>
+<li><strong>检测链接状态</strong><br/> <br/><br>   PPP协议必须具有一种机制能够及时自动检测出链路是否处于正常工作状态。<br/> <br/></li>
+<li><strong>最大传送单元</strong><br/> <br/><br>   PPP协议必须对每一种类型的点对点链路设置<strong>最大传送单元MTU</strong>的标准默认值。<br/> <br/><br>   如果高层协议发送的分组长度超过MTU的数值，PPP就要丢弃这样的帧，并返回差错。<br/> <br/><br>   MTU是数据链路层的帧可以载荷的<strong>数据部分</strong>的最大长度，不是<strong>帧的总长度</strong>。<br/> <br/></li>
+<li><strong>网络层地址协商</strong><br/> <br/><br>   PPP协议必须提供一种机制使通信的两个网络层的实体能够通过协商知道或能够配置彼此的网络地址。<br/> <br/></li>
+<li><strong>数据压缩协商</strong><br/> <br/><br>   PPP协议必须提供一种方法协商来使用数据压缩算法。<br/> <br/></li>
+</ol>
+<p>PPP协议只支持全双工链路。<br/> <br/></p>
+<p><img src="/../images/network/frameformat.png" alt="PPP帧的格式"></p>
+<p>PPP帧的首部和尾部分别为四个字段和两个字段。</p>
+<p>首部的第一个字段和尾部的第二个字段都是<strong>标志字段F(Flag)<strong>，规定为</strong>0x7E</strong>，即二进制的01111110。标志字段表示一个帧的开始或结束，即PPP帧的定界符。</p>
+<p>首部中的<strong>地址字段A</strong>规定为<strong>0xFF</strong>，即二进制的11111111。</p>
+<p>首部中的<strong>控制字段C</strong>规定为<strong>0x03</strong>，即二进制的00000011。</p>
+<p>首部中的第四个字段是2字节的<strong>协议字段</strong>。当协议字段为<strong>0x0021</strong>时，PPP帧的信息字段就是<strong>IP数据报</strong>。若为<strong>0xC021</strong>，信息字段是<strong>PPP协议链路控制协议LCP的数据</strong>。若为<strong>0x8021</strong>，信息字段是<strong>网络层的控制数据</strong>。</p>
+<p>信息字段的长度是可变的，不超过1500字节(MTU)。</p>
+<p>尾部中第一个字段(2字节)，是使用CRC检验的帧检验序列FCS。</p>
+<p>当信息字段中出现和标志字段一样的比特(0x7E)组合时，就必须要采取一些措施使得这种形式上和标志字符一样的比特组合不出现在信息字段中。</p>
+<p>当PPP使用<strong>异步传输(逐个字符地传送)</strong> 时，它把 <strong>转义符</strong>定义为<strong>0x7D</strong>，即二进制的01111101，并使用<strong>字节填充</strong>。填充方法如下：</p>
+<ol>
+<li>把信息字段中出现的每一个0x7E转变为2字节序列(0x7D,0x5E)。<br/> <br/></li>
+<li>若信息字段中出现一个0x7D的字节，则把0x7D转变成为2字节序列(0x7D,0x5D)。<br/> <br/></li>
+<li>若信息字段中出现ASCII码中的控制字符，即小于0x20的字符，则在该字符前加入0x7D字节，同时改变该字符的编码。<br/> <br/></li>
+</ol>
+<p>当PPP协议用在SONET&#x2F;SDH链路时，使用<strong>同步传输(一连串的比特连续发送)<strong>。在这种情况下，PPP协议采用</strong>零比特填充</strong>方法来实现透明传输，具体做法如下：</p>
+<p><img src="/../images/network/zeropadding.png" alt="零比特填充"></p>
+<ol>
+<li>在发送端，扫描整个信息字段，只要发现有连续5个1，则立刻填入一个0。<br/> <br/></li>
+<li>接收端在接收到一个帧时，先找到标志字段F以确定一个帧的边界，接着对比特流进行扫描。<br/> <br/></li>
+<li>每发现5个连续的1时，删除后续的一个0，以还原成原来的信息比特流。<br/> <br/></li>
+</ol>
+<p><img src="/../images/network/PPPstatus.png" alt="PPP协议的状态图"></p>
+<ol>
+<li>用户拨号接入ISP，建立从用户个人电脑到ISP的物理连接。<br/> <br/></li>
+<li>用户个人电脑向ISP发送一系列的链路控制协议LCP分组(封装成多个PPP帧)，以便建立LCP连接。<br/> <br/></li>
+<li>进行网络层配置，网络控制协议NCP给新接入的用户个人电脑分配一个临时的IP地址。<br/> <br/></li>
+<li>用户通信完毕，NCP释放网络层连接，收回原来分配的IP地址。<br/> <br/></li>
+<li>LCP释放数据链路层连接。<br/> <br/></li>
+<li>释放物理层的连接。<br/> <br/></li>
+</ol>
+<p>PPP链路的起始状态和终止状态永远是<strong>链路静止</strong>(Link Dead)状态，这时在用户个人电脑和ISP的路由器之间并不存在物理层的连接。</p>
+<p>当用户个人电脑通过调制解调器呼叫路由器时，路由器就能够检测到调制解调器发出的载波信号。在双方建立了物理层连接后，PPP就进入<strong>链路建立</strong>(Link Establish)状态，目的是建立链路层的LCP连接。</p>
+<p>LCP在建立连接后，开始协商一些<strong>配置选项</strong>，即发送LCP的<strong>配置请求帧</strong>(Configure-Request)。这也是一个PPP帧，其首部的协议字段置为LCP对应的代码(0xC021)，而信息字段包含特定的配置请求。连路的另一端可以发送的响应有：</p>
+<ol>
+<li><strong>配置确认帧</strong>(Configure-Ack) 所有选项都接受。<br/> <br/></li>
+<li><strong>配置否认帧</strong>(Configure-Nak) 所有选项都理解但不能接受。<br/> <br/></li>
+<li><strong>配置拒绝帧</strong>(Configure-Reject) 所有选项有的无法识别或不能接受，需要协商。<br/> <br/></li>
+</ol>
+<p>LCP配置选项包括链路上的最大帧长，所使用的<strong>鉴别协议</strong>(authentication protocol)的规约，以及不使用PPP帧中的地址和控制字段。</p>
+<p>协商结束后双方建立起了LCP链路，接着进入<strong>鉴别</strong>(Authenticate)状态。在这一状态，只允许传送LCP协议的分组，鉴别协议的分组以及监测链路质量的分组。若使用<strong>口令鉴别协议PAP</strong>(Password Authentication Protocol)，则需要发起通信的一方发送身份标识符和口令。系统允许用户重试若干次，如果需要有更好的安全性，则可使用更复杂的<strong>口令握手鉴别协议CHAP</strong>(Challenge-Handshake Authentication Protocol)。若鉴定身份失败，则转到<strong>链路终止</strong>(Link Terminate)状态。若鉴别成功，则进入<strong>网络层协议</strong>(Network-Layer Protocol)状态。</p>
+<p>在<strong>网络层协议</strong>状态，PPP链路的两端的网络控制协议NCP根据网络层的不同协议相互交换网络层特定的网络控制分组，即PPP协议两端网络层可以运行不同的网络层协议，但仍然可以使用同一个PPP协议进行通信。</p>
+<p>如果在PPP链路上运行的是IP协议，则对PPP链路的每一端配置IP协议模块时就要使用NCP中支持IP的协议-<strong>IP控制协议IPCP</strong>(IP Control Protocol)。IPCP分组也封装成PPP帧(帧的首部协议字段为0x8021)在PPP链路上传送。</p>
+<p>当网络层配置完毕后，链路就进入可进行数据通信的<strong>链路打开</strong>(Link Open)状态。链路的连个PPP端点可以彼此向对方发送分组。两个PPP端点还可以发送<strong>回送请求</strong>LCP分组(Echo-Request)和<strong>回送回答</strong>LCP分组(Echo-Reply)，以检查链路的状态。</p>
+<p>数据传输结束后，可以由链路的一端发出<strong>终止请求</strong>LCP分组(Terminate-Request)请求终止链路连接，在收到对方发送的<strong>终止确认</strong>LCP分组(Terminate-Ack)后，转到<strong>链路终止</strong>状态。如果链路出现故障，也会从<strong>链路打开</strong>状态转到<strong>链路终止</strong>状态。当调制解调器的载波停止后，则回到<strong>链路静止</strong>状态。</p>
+<h2 id="广播信道"><a href="#广播信道" class="headerlink" title="广播信道"></a>广播信道</h2><p>广播信道可以进行一对多的通信。</p>
+<h3 id="局域网的数据链路层"><a href="#局域网的数据链路层" class="headerlink" title="局域网的数据链路层"></a>局域网的数据链路层</h3><p>局域网最主要的特点是<strong>网络为一个单位所拥有，且地理范围和站点数目均有限</strong>。</p>
+<p>局域网具有如下优点：</p>
+<ol>
+<li>具有广播功能，从一个站点可很方便的访问全网。局域网的主机可共享连接在局域网上的各种硬件和软件资源。<br/> <br/></li>
+<li>便于系统的扩展和逐渐演变，各设备的位置可灵活调整和改变。<br/> <br/></li>
+<li>提高了系统的可靠性，可用性和生存性。</li>
+</ol>
+<p><img src="/../images/network/WLANcls.png" alt="局域网的拓扑"></p>
+<p>局域网按照<strong>网络拓扑</strong>分类，可分为星形网，环形网和总线网。</p>
+<p><strong>星形网</strong>的出现是因为<strong>集线器</strong>(hub)的出现和双绞线的大量应用。</p>
+<p><strong>环形网</strong>和<strong>总线网</strong>的各站直连在总线上。总线两端的匹配电阻吸收再总线上传播的电磁波信号的能量，避免在总线上产生有害的电磁波反射。</p>
+<p>局域网可使用多种传输媒体，双绞线最便宜，是局域网中的主流传输媒体，但只能在10Mbit&#x2F;s至10Gbit&#x2F;s上使用。在数据率比较高时，往往需要使用光纤作为传输媒体。</p>
+<p>共享信道技术上实现众多用户合理而方便的使用共享信道媒体资源有两种方法：</p>
+<ol>
+<li><p><strong>静态划分信道</strong><br/> <br/><br>频分复用，时分复用，波分复用，码分复用都在此列。用户只要分配到了信道就不会和其他用户发生冲突。但这种划分信道的方式代价较高，不适合局域网使用。<br/> <br/></p>
+</li>
+<li><p><strong>动态媒体接入控制</strong>，又称<strong>多点接入</strong>(multiple access)<br/> <br/><br>特点是信道并非在用户通信是固定分配给用户。<br/> <br/></p>
+<ol>
+<li><strong>随机接入</strong><br/> <br/><br>随机接入的特点是所有的用户可随机地发送信息。<br/> <br/><br>但如果恰巧有两个或更多的用户在同一时刻发送信息，那么在共享媒体上就要产生<strong>碰撞</strong>，使得这些用户的发送都失败。因此，必须有解决碰撞的网络协议。<br/> <br/></li>
+<li><strong>受控接入</strong><br/> <br/><br>受控接入的特点是用户不能随机地发送信息而必须服从一定的控制。<br/> <br/><br>这类的典型代表有分散控制的令牌环局域网和集中控制的多点线路<strong>探询</strong>(polling)或称为<strong>轮询</strong>。<br/> <br/></li>
+</ol>
+</li>
 </ol>
 <blockquote>
-<p><strong>信道</strong>(channel)一般用来表示向某一个方向传送信息的媒体。</p>
-</blockquote>
-<p>从通信的双方信息交互的方式来看，有三种基本方式: <strong>单向通信&#x2F;单工通信</strong>，<strong>双向交替通信&#x2F;半双工通信</strong>和<strong>双向同时通信&#x2F;全双工通信</strong>。</p>
-<ol>
-<li>单向通信: 只能有一个方向的通信而没有反方向的交互，eg: 无线广播，电视。</li>
-<li>双向交替通信: 通信的双方都可以发送信息，但不能双方同时发送&#x2F;同时接收。这种通信方式是一方发送另一方接收，过一段时间后反向工作。</li>
-<li>双向同时通信: 通信的双方可以同时发送和接收信息。</li>
-</ol>
-<h2 id="调制"><a href="#调制" class="headerlink" title="调制"></a>调制</h2><blockquote>
-<p>来自信源的信号称为基带信号(基本频带信号)。</p>
-</blockquote>
-<p>基带信号往往包含有较多的低频成分，甚至有直流成分，而很多信道并不能传输这种低频分量或直流分量。</p>
-<p>为了解决这一问题，就必须对基带信号进行<strong>调制</strong>(modulation)。</p>
-<p>调制可分为两大类:<strong>基带调制</strong>和<strong>带通调制</strong>。</p>
-<ol>
-<li><p>基带调制: 仅仅对基带信号的波形进行变换，使它能够与信道特性相适应。变换后的信号仍是基带信号。</p>
-<p>这种基带调制是把数字信号转换为另一种形式的数字信号，又称为<strong>编码</strong>(coding)。</p>
-</li>
-<li><p>带通调制: 使用<strong>载波</strong>(carrier)的调制。把基带信号的频率范围搬移到较高的频段，并转换为模拟信号，这样就能够更好地在模拟信道中传输。</p>
-<p> 经过载波调制后的信号成为<strong>带通信号</strong>，即仅在一段频率范围内能够通过信道。</p>
-</li>
-</ol>
-<h3 id="常用编码方式"><a href="#常用编码方式" class="headerlink" title="常用编码方式"></a>常用编码方式</h3><p><img src="/../images/network/coding_type.png" alt="数字信号常用的编码方式"></p>
-<ol>
-<li>不归零制: 正电平代表1，负电平代表0。</li>
-<li>归零制: 正脉冲代表1，负脉冲代表0。</li>
-<li>曼彻斯特编码: 位周期中心的向上跳变代表0，为周期中心的向下跳变代表1，但也可以反过来定义。</li>
-<li>差分曼彻斯特编码: 在每一位中心处始终都有跳变。位开始边界有跳变代表0， 而位开始边界没有跳变代表1。</li>
-</ol>
-<p>从信号波形看，曼彻斯特(Manchester)编码产生的信号频率比不归零高。</p>
-<p>从自同步能力看，不归零制不能从信号波形本身中提取信号时钟频率，即没有自同步能力，而曼彻斯特编码具有自同步能力。</p>
-<h3 id="基本的带通调制方法"><a href="#基本的带通调制方法" class="headerlink" title="基本的带通调制方法"></a>基本的带通调制方法</h3><p><img src="/../images/network/cattier_type.png" alt="最基本的三种调制方法"></p>
-<ol>
-<li>调幅(AM): 载波的振幅随基带数字信号而变化。</li>
-<li>调频(FM): 载波的频率随基带数字信号而变化。</li>
-<li>调相(PM): 载波的初始相位随基带数字信号而变化。</li>
-</ol>
-<p>为了达到更多的信息传输速率，必须技术上采用更复杂的多元制的振幅相位混合调制方法，eg:<strong>正交振幅调制</strong>(Quadrature Amplitude Modulation)。</p>
-<h2 id="信道的极限容量"><a href="#信道的极限容量" class="headerlink" title="信道的极限容量"></a>信道的极限容量</h2><p>数字通信的优点: 虽然信号在信道上传输时会不可避免的失真，但在只要在接收端从失真的波形中能够识别出原来的信号，那么这种失真对通信质量就没有影响。</p>
-<p>码元传输的速率越高，或信号传输的距离越远，或噪声干扰越大，或传输媒体质量差，在接收端的波形失真就越严重。</p>
-<p>从概念上讲，限制码元在信道上的传输速率的因素有两个:</p>
-<ol>
-<li><p>信道能够通过的频率范围<br>具体的信道所能通过的频率范围总是有限的，信号中的许多高频分量往往不能通过信道。</p>
-<blockquote>
-<p>码间串扰: 信号中的高频分量在传输时受到衰减，在接收端收到的波形前沿和后沿就变得不陡峭了，每一个码元所占的时间界限就会变得模糊，失去了码元之间的清晰界限。</p>
-</blockquote>
-<p>在任何信道中，码元传输的速率是有上限的，传输速率超过此上限，就会出现严重的码间串扰问题，使接收端对码元的判决&#x2F;识别成为不可能。</p>
-<p>如果信道的频带越宽，能通过的高频分量越多，就可以用更高的速率传送码元而不出现码间干扰。</p>
-</li>
-<li><p>信噪比<br>噪声存在于所有的电子设备和通信信道中，但噪声的影响是相对的。如果信号相对较强，那么噪声的影响就相对较小。</p>
-<blockquote>
-<p>信噪比: 信号的平均功率和噪声的平均功率之比，$S&#x2F;N$。单位为分贝(dB)。</p>
-<p>$ 信噪比 &#x3D; 10 \log_{10}(S&#x2F;N)$</p>
-</blockquote>
-<blockquote>
-<p>香农公式: 信道的极限信息传输速率$ C &#x3D; W \log_2(1 + S&#x2F;N) $</p>
-<p>$ W $为信道的带宽，$ S $为信道内所传信号的平均功率，$ N $为信道内部的高斯噪声功率。</p>
-</blockquote>
-<p>香农公式表明，信道的带宽或信道中的信噪比越大，信息的极限传输速率就越高。</p>
-<p>如果信道频带宽度一定，信噪比无法提升，码元的传输速率也达到了上限值，那么为了提高信息的传输速率，就要使用编码的方法使得每一个码元携带更多比特的信息量。</p>
-</li>
-</ol>
-<h2 id="物理层下的传输媒体"><a href="#物理层下的传输媒体" class="headerlink" title="物理层下的传输媒体"></a>物理层下的传输媒体</h2><p>传输媒体也称传输介质&#x2F;传输媒介，是数据传输系统中在发送器和接收器之间的物理通路。</p>
-<p>传输媒体可分为<strong>导引型传输媒体</strong>和<strong>非导引型传输媒体</strong>。</p>
-<h3 id="导引型传输媒体"><a href="#导引型传输媒体" class="headerlink" title="导引型传输媒体"></a>导引型传输媒体</h3><p>在导引型传输媒体中，电磁波被导引沿着固体媒体传播。</p>
-<ol>
-<li><p>双绞线&#x2F;双扭线</p>
-<p>把两根互相绝缘的铜导线并排放在一起，然后用规则的方法<strong>绞合</strong>(twist)起来就构成了双绞线。</p>
-<p>绞合可以减少对相邻导线的电磁干扰。</p>
-<p>模拟传输和数字传输都可以使用双绞线，其通信距离一般为几到十几公里。距离太长就需要放大器将衰减的信号放大到合适的数值(模拟传输)，中继器对失真的数字信号进行整形(数字传输)。</p>
-<p><img src="/../images/network/twist_pair.png" alt="双绞线的示意图"></p>
-<p>为了提高双绞线抗电磁干扰的能力，可以在双绞线的外面加上一层用金属丝编织成的屏蔽层，即<strong>屏蔽双绞线</strong>(STP，Shielded Twisted Pair)。以此作为区别，还有<strong>无屏蔽双绞线</strong>(UTP，Unshielded Twisted Pair)。</p>
-<p>用于室内传送数据的无屏蔽双绞线和屏蔽双绞线的最新布线标准为EIA&#x2F;TIA-568-A。此标准规定了5个种类的UTP标准(1-5类线)。</p>
-<p>5类线和3类线的最主要区别就是大大增加了每单位长度的绞合次数。3类线的绞合长度是7.5至10cm，5类线的绞合长度是0.6至0.85cm。</p>
-<p><img src="/../images/network/UTP.png" alt="常用的绞合线的类别，带宽和典型应用"></p>
-<p>无论是哪种类别的双绞线，衰减都随频率的升高而增大。使用更粗的导线可以降低衰减，增加导线的重量和价格。</p>
-<p>信号应当有足够大的振幅，以便在噪声干扰下能够在接收端正确的被检测出来。</p>
-<p>双绞线的最高速率还与数字信号的编码方法有关。</p>
-</li>
-<li><p>同轴电缆</p>
-<p><img src="/../images/network/CoaxialCable.png" alt="同轴电缆的结构"></p>
-<p>同轴电缆由内导体铜制芯线(单股实心线或多股绞合线)，绝缘层，网状编织的外导体屏蔽层以及保护塑料外层组成。</p>
-<p>由于外导体屏蔽层的作用，同轴电缆具有很好的抗干扰特性，被广泛用于传输较高速率的数据。</p>
-<p>同轴电缆目前主用于在有限电视网的居民小区中。同轴电缆的带宽取决于电缆的质量。目前高质量的同轴电缆的带宽已接近1GHz。</p>
-</li>
-<li><p>光缆</p>
-<p>光线通信就是利用光导纤维传递光脉冲来进行通信。光纤是光纤通信的传输媒体。</p>
-<p>有光脉冲相当于1，没有光脉冲相当于0。</p>
-<p>在发送端有光源，可以采用发光二极管或半导体激光器，它们在电脉冲的作用下能产生出光脉冲。在接收端利用光电二极管做成光检测器，在检测到光脉冲时可还原出电脉冲。</p>
-<p>光纤通常由非常透明的石英玻璃拉成细丝，主要由纤芯和包层构成双层通信圆柱体。纤芯很细，直径只有8~100微米。</p>
-<p>光波通过纤芯进行传导。包层较纤芯有较低的折射率。当光线从该折射率的媒体射向低折射率媒体时，其折射角将大于入射角。因此，如果入射角足够大，就会出现全反射，即光线碰到包层时就会折射回纤芯。这个过程不断重复，光也就会沿着光纤传输下去。</p>
-<p>只要从纤芯中射到纤芯表面的光线的入射角大于某个临界角度，就可产生全反射。因此，可以存在多条不同角度入射的光线在一条光线中传输。这样的光纤叫做<strong>多模光纤</strong>。</p>
-<p>多模光纤中，光脉冲在多模光纤中传输时会逐渐展宽，造成失真，只适合近距离传输。单模光纤是光纤的直径减少到只有一个光的波长，使光纤一直向前传播，不会产生多次反射。</p>
-<p>光纤通信中常用的三个波段中心是850纳米，1300纳米和1550纳米。带宽为25000~30000GHz。</p>
-<p>一根光缆少则只有一根光纤，多则可包括数十、数百根光纤，再加上加强芯和填充物可提高机械强度，可再加上远供电源线，最后加上包带层和外护套。这样就达到工程施工的强度要求。</p>
-<p>光纤的特点：</p>
-<ol>
-<li>通信容量大</li>
-<li>传输损耗小，中继距离长，对远距离传输很经济。</li>
-<li>抗雷电和电磁干扰性能好。</li>
-<li>无串音干扰，保密性好，也不易被窃听或截取数据。</li>
-<li>体积小，重量轻。</li>
-</ol>
-</li>
-</ol>
-<h3 id="非导引型传输媒体"><a href="#非导引型传输媒体" class="headerlink" title="非导引型传输媒体"></a>非导引型传输媒体</h3><p>非导引型传输媒体，即自由空间。在非导引型传输媒体中电磁波的传输常称为无线传输。</p>
-<p><img src="/../images/network/frequency_spectrum.png" alt="电信领域使用的电磁波的频谱"></p>
-<p>   波段的正式名称：</p>
-<ol>
-<li><p>LF&#x2F;低频：波长1km~10km&#x2F;30kHz~300kHz。</p>
-</li>
-<li><p>MF&#x2F;中频：300kHz~3MHz。</p>
-</li>
-<li><p>HF&#x2F;高频：3MHz~30MHz。</p>
-</li>
-<li><p>VHF&#x2F;甚高频：30MHz~300MHz。</p>
-</li>
-<li><p>UHF&#x2F;特高频：300MHz~3GHz。</p>
-</li>
-<li><p>SHF&#x2F;超高频：3GHz~30GHz。</p>
-</li>
-<li><p>EHF&#x2F;极高频：30GHz~300GHz。</p>
-</li>
-<li><p>短波通信</p>
-<blockquote>
-<p>多径效应：同一个信号经过不同的反射路径到达同一个接收点，但各反射路径的衰减和时延都不相同，时的最后得到的合成信号失真很大。</p>
-</blockquote>
-<p>短波通信&#x2F;高频通信，主要靠电离层反射。但电离层的不稳定所产生的衰落现象以及电离层反射产生的多径效应，使得短波信道的通信质量较差。当必须使用短波无线电台传送数据时，一般是低速传输。</p>
-</li>
-<li><p>地面微波接力通信</p>
-<p>地面微波接力通信和卫星通信同属无线电微波通信。</p>
-<p>微波在空间中主要以直线传播。能够穿透电离层进入宇宙。</p>
-<p>微波在空间中直线传播，地球是球体，传播距离受到限制，一般为50km。若采用100m高的天线塔，可增大到100km。</p>
-<p>为实现远距离通信，在一条微波通信信道的两个终端之间建立若干个中继站。中继站把前一站传送过来的信号经过放大再发送到下一站。</p>
-<p>微波接力通信可传输电话，电报，图像，数据等信息。主要特点是：</p>
-<ol>
-<li>微波波段频率很高，其频段范围很宽，其通信新到的容量很大。</li>
-<li>微波通信因为其高频率，可以避免工业干扰和天气干扰，传输质量较高。</li>
-<li>与相同容量和长度的电缆载波通信比较，微波接力通信建设性价比高。</li>
-</ol>
-<p>微波接力通信的缺点：</p>
-<ol>
-<li>相邻站之间必须直视，不能有障碍物。</li>
-<li>微波的传输有时也会受到恶略天气的影响。</li>
-<li>与电缆通信系统比较，微波通信的隐蔽性和保密性较差。</li>
-<li>对大量中继站的使用和维护要耗费较多的人力和物力。</li>
-</ol>
-</li>
-<li><p>卫星通信</p>
-<p>常用的卫星通信方法是在地球站之间利用位于约3万6千公里高空的人造同步地球卫星作为中继器的一种微波接力通信。</p>
-<p>卫星通信的最大特点是通信距离远，且通信费用与通信距离无关。</p>
-<p>与微波接力通信相似，卫星通信的频带很宽，通信容量很大，信号受到的干扰也比较小，通信比较稳定。</p>
-<p>卫星通信的另一特点是具有较大的传播时延。</p>
-<p>在偏远地区进行通信几乎要完全依赖卫星通信。</p>
-<p>上述卫星通信使用的是对地静止的卫星。现在低轨道卫星通信系统也开始使用。低轨道卫星不停绕地球旋转。目前，大功率，大容量，低轨道宽带卫星已经开始在空间部署，并构成了空间高速链路。</p>
-</li>
-</ol>
-<p>另外，红外通信，激光通信也使用非引导型传输媒体，用于近距离的笔记本电脑相互传送数据。</p>
-<h2 id="信道复用技术"><a href="#信道复用技术" class="headerlink" title="信道复用技术"></a>信道复用技术</h2><p><strong>复用</strong>(multiplexing)最基本的是<strong>频分复用FDM</strong>(Frequency Division Multiplexing)和<strong>时分复用TDM</strong>(Time Division Multiplexing)。</p>
-<p>在进行通信时，<strong>复用器</strong>(multiplexer)总是和<strong>分用器</strong>(demultiplexer)成对的使用。在复用器和分用器之间是用户共享的高速信道。</p>
-<p>在发送端使用复用器，可以让复数用户共享一个信道。分用器把高速信道传送过来的数据进行分用，分别交付给相应的用户。</p>
-<h3 id="频分复用和时分复用"><a href="#频分复用和时分复用" class="headerlink" title="频分复用和时分复用"></a>频分复用和时分复用</h3><p>用户在分配到一定的频带后，在通信过程中自始至终都占用这个频带。频分复用的所有用户在同样的时间占用不同的带宽(频带)资源。</p>
-<p>把时间划分为一段段等长的时分复用帧(TDM帧)。每一个时分复用的用户在每一个TDM帧中占用固定序号的时隙。时分复用的所有用户是在不同的时间占用相同的频带宽度。</p>
-<p>上述两种复用方法的优点是技术比较成熟，但缺点是不够灵活。同时，时分复用更有利于数字传输。</p>
-<h3 id="统计时分复用"><a href="#统计时分复用" class="headerlink" title="统计时分复用"></a>统计时分复用</h3><p>统计时分复用STDM(Statistic TDM)是一种改进的时分复用，能够提高信道利用率。</p>
-<p><strong>集中器</strong>(concentrator)常用于统计时分复用。</p>
-<p><img src="/../images/network/statistic_tdm.png" alt="统计时分复用的工作原理"></p>
-<p>统计时分复用使用STDM帧来传送复用的数据，但每一个STDM帧中的时隙数小于连接在集中器上的用户数。</p>
-<p>各用户有了数据就随时发往集中器的输入缓存，然后集中器按顺序依次扫描输入缓存，把缓存中的输入数据放入STDM帧中。对没有数据的缓存就跳过去。当一个帧的数据放满了，就发送出去。因此，STDM帧不是固定分配时隙，而是按需动态分配时隙。因此，统计时分复用可以提高线路的利用率。</p>
-<p>因为STDM帧中的时隙并不是固定的分配给每个用户，因此在每个时隙中还必须有用户的地址信息，这是统计时分复用必须要有的和不可避免的开销。</p>
-<p>集中器又称智能复用器。它能提供对整个报文的存储转发能力，通过排队方式使各用户更合理地共享信道。</p>
-<h3 id="波分复用"><a href="#波分复用" class="headerlink" title="波分复用"></a>波分复用</h3><p><strong>波分复用WDM</strong>(Wavelength Division Multiplexing)就是光的频分复用。使用一根光纤同时传输多个频率很接近的光载波信号。</p>
-<p>最初的波分复用，一根光纤只能复用两路光载波信号。<strong>密集波分复用</strong>(Dense Wavelength Division Multiplexing)可在一根光纤上复用几十路或更多路的信号。</p>
-<p><img src="/../images/network/wavelength.png" alt="波分复用的概念"></p>
-<p>首先将光载波调制到不同的波长。</p>
-<p>送到光复用器&#x2F;合波器后，在一根光纤中传输。</p>
-<p>光信号会在传输一段距离后衰减，因此需要对衰减了的光信号进行放大才能继续传输。现在利用<strong>掺铒光纤放大器</strong>(Erbium Doped Fiber Amplifier)，其不需要进行光电转换而直接对光信号进行放大。两个光纤放大器之间的光缆线路长度可达120km。</p>
-<p>光复用器&#x2F;合波器和光分用器&#x2F;分波器之间的无光电转换的距离可达600k(4个EDFA光纤放大器)。</p>
-<h3 id="码分复用"><a href="#码分复用" class="headerlink" title="码分复用"></a>码分复用</h3><p><strong>码分复用CDM</strong>(Code Division Multiplexing)也是共享信道的方法。又称<strong>码分多址CDMA</strong>(Code Division Multiple Access)。</p>
-<p>每一个用户可以在同样的时间使用同样的频带进行通信。这是因为各用户使用经过特殊挑选的不同码型，因此各用户之间不会造成干扰。有很强的抗干扰能力，其频谱类似白噪声，不易被敌人发现。</p>
-<p>CDMA可提高通信的话音质量和数据传输的可靠性，减少干扰对通信的影响，增大通信系统的容量，降低手机的平均发射功率等。</p>
-<blockquote>
-<p><strong>码片</strong>(chip)指在CDMA中每一个比特再划分为<em>m</em>个短的间隔。 </p>
-<p>通常<em>m</em>的值是64或者128。</p>
+<p>传统以太网用来称呼最早流行的10Mbit&#x2F;s速率的以太网。<br>现今的以太网数据率已经演进到每秒吉比特乃至100吉比特。</p>
 </blockquote>
 <blockquote>
-<p>扩频: 要发送信息的数据率为<em>b</em> bit&#x2F;s，由于每一个比特要转换成<em>m</em>个比特的码片，因此实际的发送数据率为<em>mb</em> bit&#x2F;s，其所占的频带也提高到原来数值的<em>m</em>倍。</p>
+<p>为讨论原理，从传统以太网入手。</p>
 </blockquote>
-<p>扩频通常有<strong>直接序列扩频DSSS</strong>(Direct Sequence Spread Spectrum)和<strong>跳频扩频FHSS</strong>(Frequency Hopping Spread Spectrum)。</p>
+<h4 id="媒体接入控制MAC-Medium-Access-Control"><a href="#媒体接入控制MAC-Medium-Access-Control" class="headerlink" title="媒体接入控制MAC(Medium Access Control)"></a><strong>媒体接入控制MAC</strong>(Medium Access Control)</h4><p>由于历史原因，局域网802标准难以形成一个统一的局域网标准。为了使数据链路层能更好的适应多种局域网标准，局域网的数据链路层拆分为<strong>逻辑链路控制层LLC</strong>(Logical Link Control)和<strong>媒体接入控制MAC</strong>(Medium Access Control)。与接入媒体有关的内容都放在MAC子层，LLC子层与传输媒体无关。</p>
+<p>在以太网占据局域网市场的垄断地位后，802标准被淘汰，使用DIX Ethernet V2标准。此时LLC的作用已经消失，厂商的适配器仅存在MAC协议。</p>
+<h4 id="适配器"><a href="#适配器" class="headerlink" title="适配器"></a>适配器</h4><p><img src="/../images/network/adapter.png" alt="计算机通过适配器和局域网进行通信"></p>
+<p>计算机和外界局域网的链接是通过通信<strong>适配器</strong>(adapter)实现的。</p>
+<p>原本计算机仅有PCMCIA卡，又称<strong>网络接口卡NIC</strong>(Network Interface Card)，简称<strong>网卡</strong>。现今适配器已经集成到计算机主板上。这种适配器上装有处理器和存储器(RAM和ROM)。</p>
+<p>适配器和局域网之间的通信是通过电缆或双绞线以串行运输方式进行的，而适配器和计算机之间的通信则是通过计算机主板的I&#x2F;O总线以并行运输方式进行的。因此适配器的一个重要功能是进行数据串行传输和并行传输的转换。由于网络上的数据率和计算机总线上的数据率并不相同，因此在适配器中必须装有对数据进行缓存的存储芯片。</p>
+<p>在主板插入适配器时，必须把管理该适配器的设备驱动程序安装在计算机操作系统中。这个驱动程序会告诉适配器额，应当从存储器的什么位置上把多长的数据块发送到局域网，或者应当在存储器的什么位置上把局域网传送的数据块存储下来。</p>
+<p>适配器还需要能够实现以太网协议。</p>
+<p>适配器在接收和发送各种帧时，不使用计算机的CPU。这时计算机中的CPU可以处理其他任务。</p>
+<p>当适配器收到有差错的帧时，就把这个帧直接丢弃而不必通知计算机。当适配器收到正确的帧时，它就使用中断来通知该计算机，并交付协议栈中的网络层。</p>
+<p>当计算机要发送IP数据报时，就由协议栈把IP数据报向下交给适配器，组装成帧后发送到局域网。</p>
+<blockquote>
+<p>计算机的硬件地址在适配器的ROM中，计算机的软件地址-IP地址在计算机的存储器中。</p>
+</blockquote>
+<h3 id="CSMA-x2F-CD-协议"><a href="#CSMA-x2F-CD-协议" class="headerlink" title="CSMA&#x2F;CD 协议"></a>CSMA&#x2F;CD 协议</h3><p>最早的以太网是将许多计算机都连接到一根总线上。当一台计算机发送数据时，总线上的所有计算机都能检测到这个数据，即广播通信。</p>
+<p>为了在总线上实现一对一通信，可以使每一台计算机的适配器拥有一个与其他适配器都不同的地址。在发送数据帧时，在帧的首部写明接收站的地址。</p>
+<p>仅在数据帧中的目的地址与适配器ROM中存放的硬件地址一致时，该适配器才能接收这个数据帧。适配器不是发送给自己的数据帧就丢弃。</p>
+<blockquote>
+<p>局域网上的计算机也称为主机，工作站，站点，站。</p>
+</blockquote>
+<p>为了通信的简便，以太网采取了以下两种措施：</p>
 <ol>
-<li><p>直接序列扩频<br><img src="/../images/network/DSSS.png" alt="直接序列扩频的工作原理"></p>
-<p>使用码分多址的每一站被指派一个唯一的<em>m</em> bit<strong>码片序列</strong>(chip sequence)。</p>
-<p>一个站如果要发送比特1，则发送它的<em>m</em> bit码片序列，如果要发送比特0，则发送该码片序列的反码。</p>
-<p>在实用的系统中使用伪随机码序列，并且需要给每一个站分配的码片序列不相同的同时正交。</p>
-<p>如果需要接收某站发送的数据，使用此站的唯一性码片序列和接受的数据流作内积，得到真实信号。</p>
+<li>采用较为灵活的<strong>无连接</strong>的工作方式，即不必先建立连接就可以直接发送数据。适配器对发送的数据帧<strong>不进行编号，也不要求对方发回确认</strong>。这样做可以使以太网工作起来非常简单，而局域网信道的质量很好，因通信质量不好产生差错的概率是很小的。因此，<strong>以太网提供的服务是尽最大努力的交付</strong>，即<strong>不可靠的交付</strong>。<br/> <br/><br>当目的站收到有差错的数据帧时，就把帧丢弃，其他什么也不做。<strong>对有差错的帧是否需要重传则由高层决定</strong>。<br/> <br/><br>在总线上，只要有一台计算机在发送数据，总线的传输资源就被占用。<strong>在同一时间只能允许一台计算机发送数据</strong>，否则各计算机之间就会互相干扰，使得所发送的数据被破坏。<br/> <br/><br>以太网采用最简单的随机接入，但有很好的协议用来减少冲突发生的概率，即<strong>CSMA&#x2F;CD</strong>，**载波监听多点接入&#x2F;碰撞检测(Carrier Sense Multiple Access with Collision Detection)**。<br/> <br/></li>
+<li>以太网发送的数据都使用<strong>曼彻斯特(Manchester)编码</strong>。<br/> <br/><br>曼彻斯特编码的编码方法是把每一个码元再分成两个相等的间隔。码元1是前一个间隔为低电压而后一个间隔为高电压。码元0正好相反，从高电压到低电压。也可以采用相反的约定。<br/> <br/><br>但这样的操作会使得所占频带宽度会比原始的基带信号增加一倍。</li>
+</ol>
+<h4 id="CSMA-x2F-CD协议要点"><a href="#CSMA-x2F-CD协议要点" class="headerlink" title="CSMA&#x2F;CD协议要点"></a>CSMA&#x2F;CD协议要点</h4><p><strong>多点接入</strong>说明这是总线型网络，许多计算机以多点接入的方式连接在一根总线上。</p>
+<p>协议的实质是<strong>载波监听</strong>和<strong>碰撞检测</strong>。</p>
+<p><strong>载波监听</strong>是用电子技术检测总线上是否有正在发送的数据。它在检测信道。不管在发送前，还是发送中，每个站都必须不停地检测信道。</p>
+<p>在发送前检测信道，是为了获得发送权。如果检测出已经有其他站在发送，则自己就暂时不许发送数据，必须要等到信道变为空闲时才能发送。</p>
+<p>在发送中检测信道，是为了及时发现有没有其他站的发送和本站发送的碰撞，即碰撞检测。</p>
+<p><strong>碰撞检测</strong>即<strong>边发送边监听</strong>。适配器边发送数据边检测信道上的信号电压的变化情况，以便判断自己在发送数据时其他站是否也在发送数据。</p>
+<p>当几个站同时在总线上发送数据时，总线上的信号电压变化幅度将会增大(互相叠加)。当适配器检测到的信号电压变化幅度超过一定的门限值时，就认为总线上至少有两个站同时在发送数据，产生了碰撞。此时，总线上传输的信号产生了严重的失真，无法从中恢复出有用的信息。因此，任何一个正在发送数据的站一但发现总线上出现了碰撞，其适配器就要立刻停止发送，免得继续进行无效的发送，浪费网络资源，然后等待一段随机时间后再次发送。</p>
+<p><img src="/../images/network/collision.png" alt="传播时延对载波监听的影响"></p>
+<p>设图中的局域网两端的站A和B相距1km，用同轴电缆相连。</p>
+<blockquote>
+<p>电磁波在1km电缆的传播时延约为<strong>5微秒</strong>。</p>
+</blockquote>
+<p>A向B发出的数据，约在5微秒后才能传送到B。B若在A发送的数据到达B之前发送自己的帧，则必然要在某个时间和A发送的帧发生碰撞。</p>
+<p>假设总线上<strong>单程端到端传播时延</strong>为$ \tau $。</p>
+<p>A在发送数据后，最迟要经过<strong>两倍的总线端到端的传播时延($ 2\tau $)</strong> 才能知道自己发送的数据和其他站发送的数据有没有发生碰撞。</p>
+<p>由于局域网上任意两个站之间的传播时延有长有短，因此局域网必须按最坏情况设计，即取总线两端的两个站之间的传播时延(距离最大的两个站)为端到端传播时延。</p>
+<p>显然，在使用CSMA&#x2F;CD协议时，一个站<strong>不可能同时进行发送和接收(但必须边发送边监听信道)<strong>。因此，使用CSMA&#x2F;CD协议的以太网不可能进行全双工通信，只能进行</strong>双向交替通信&#x2F;半双工通信</strong>。</p>
+<ol>
+<li><p>在$ t&#x3D;0 $时，A发送数据。B检测到信道为空闲。</p>
 </li>
-<li><p>跳频扩频</p>
-<p><img src="/../images/network/FHSS.jpg" alt="跳频扩频的工作原理"></p>
-<p>使用码分多址的每一站被指派一个唯一的<em>m</em> bit<strong>码片序列</strong>(chip sequence)。</p>
-<p>跳频是载波频率在一定范围内不断跳变意义上的扩频，而不是对被传送信息进行扩谱，不会得到直序扩频的处理增益。</p>
-<p>解扩需要知道扩频码。</p>
+<li><p>在$ t &#x3D; \tau - \delta, \tau &gt; \delta &gt; 0 $时，A发送的数据还没有到达B时，由于B检测到信道是空闲的，因此B发送数据。</p>
+</li>
+<li><p>经过时间$ \delta &#x2F; 2 $后，即在$ t &#x3D; \tau - \delta &#x2F; 2 $时，A发送的数据和B发送的数据发生了碰撞。但这时A和B都不知道发生了碰撞。</p>
+</li>
+<li><p>在$ t &#x3D; \tau $时，B检测到发生了碰撞，于是停止发送数据。</p>
+</li>
+<li><p>在$ t &#x3D; 2\tau - \delta $时，A也检测到发生了碰撞，因此也停止发送数据。</p>
+</li>
+<li><p>A和B发送数据均失败，他们都要推迟一段时间再重新发送。</p>
 </li>
 </ol>
-<h2 id="宽带接入技术"><a href="#宽带接入技术" class="headerlink" title="宽带接入技术"></a>宽带接入技术</h2><p>从宽带接入的媒体来看，可以划分为有线宽带接入技术和无线宽带接入技术。现仅对有线宽带接入进行讨论。</p>
-<h3 id="ADSL技术"><a href="#ADSL技术" class="headerlink" title="ADSL技术"></a>ADSL技术</h3><p><strong>非对称数字用户线ADSL</strong>(Asymmetric Digital Subscriber Line)技术是用数字技术对现有的模拟电话用户线进行改造，使它能够承载宽带数字业务。</p>
-<p>ADSL技术把0-4kHz低端频谱留给传统电话使用，而把原来没有被利用的高端频谱留给用户上网使用。</p>
-<p>ADSL技术的传输距离取决于数据率和用户线的线径。用户线越细，信号传输时的衰减就越大。</p>
-<p>ADSL在用户线的两端各安装一个ADSL调制解调器。我国目前采用的调制解调方案是<strong>离散多音调DMT</strong>(Discrete Multi-Tone)。</p>
-<p>DMT调制技术采用频分复用的方法，把40kHz以上至1.1MHz的高端频谱划分为许多子信道，其中25个子信道用于上行信道，249个子信道用于下行信道，并使用不同的载波进行数字调制。</p>
-<p>ADSL采用自适应调制技术使用户线能够传送尽可能高的数据率。当ADSL启动时，用户线两端的ADSL调制解调器就会测试可用的频率，各子信道受到干扰的情况以及在每一个频率上测试信号的传输质量。这样使得ADSL能够选择合适的调制方案以获得尽可能高的数据率。ADSL不能保证固定的数据率。</p>
-<p>基于ADSL的接入网由以下三个部分组成：</p>
-<p><img src="/../images/network/ADSL.png" alt="基于ADSL的接入网的组成"></p>
+<p><strong>每一个站在自己发送数据之后的一小段时间内，存在着遭遇碰撞的可能性</strong>。这一小段时间是<strong>不确定</strong>的，它取决于另一个发送数据的站到本站的距离。因此，以太网不能保证某一时间之内一定能够把自己的数据帧成功地发送出去。这一特点称为以太网的<strong>发送的不确定性</strong>。</p>
+<p>要使在以太网上发生碰撞的机会很小，必须使整个以太网的平均通信量远小于以太网的最高数据率。</p>
+<p>最先发送数据帧的A站，在发送数据帧后<strong>至多</strong>经过时间$ 2\tau $就能够知道所发送的数据帧是否遭受到了碰撞。这是$ \delta → 0 $的情况。因此，以太网的端到端往返时间$ 2\tau $称为**争用期(contention period)&#x2F;碰撞窗口(collision window)**。</p>
+<p>以太网使用**截断二进制指数退避(truncated binary exponential backoff)**算法来确定碰撞后重传的时机。</p>
+<p>在发生碰撞后，该算法让站在停止发送数据后，不是等待信道变为空闲后就立刻再发送数据，而是<strong>推迟&#x2F;退避</strong>一个随机的时间。</p>
+<p>具体的退避算法如下：<br/> <br/></p>
 <ol>
-<li><strong>数字用户线接入复用器DSLAM</strong>(DSL Access Multiplexer)。</li>
-<li>用户线。</li>
-<li>用户家的一些设施。</li>
+<li>协议规定了基本退避时间为争用期$ 2\tau $，具体的争用期时间是51.2微秒。对于10Mbit&#x2F;s以太网，在争用期内可发送512bit，即64字节。也可以说争用期是512比特时间。<br/> <br/></li>
+<li>从离散的整数集合$ [0,1,\cdots,(2^k-1)] $中随机取出一个数，记为r。重传应推后的时间就是r倍的争用期。上面的参数k按$ 式 \eqref{eq:one} $计算：<br/> <br/><br>$$ k&#x3D;Min[重传次数,10] \tag{1} \label{eq:one}$$<br>可见当重传次数不超过10时，参数k等于重传次数；但当重传次数超过10时，k就不再增大而一直等于10。</li>
+<li>当重传次数达到16次仍不能成功时，则丢弃此帧，并向高层报告。</li>
 </ol>
-<p>   数字用户线接入复用器包括许多ADSL调制解调器。</p>
-<p>   ADSL调制解调器又称<strong>接入端接单元ATU</strong>(Access Termination Unit)。</p>
-<p>   由于ADSL调制解调器必须成对使用，因此把在电话端局&#x2F;远端站和用户家中所用的ADSL调制解调器分别记为ATU-C(entral Office)和ATU-R(emote)。</p>
-<p>   用户电话通过电话<strong>分离器</strong>(Splitter)和ATU-R连在一起，经用户线到端局，并再次经过一个电话分离器把电话连到本地电话交换机。</p>
-<p>   一个DSLAM可支持500~1000个用户。</p>
-<p>ADSL可以利用现有电话网中的用户线，不需要重新布线。</p>
-<p><img src="/../images/network/ATU.png" alt="ATU-R以及电话分离器"></p>
-<p>ADSL调制解调器有两个插口，较大的一个是RJ-45，较小的一个是RJ-11。RJ-45用来与计算机相连，RJ-11用来与电话分离机相连。</p>
-<p>电话分离机只需要用三个带有RJ-11插的连线就可以连接好。</p>
-<p>ADSL借用了在用户线两端安装的ADSL调制解调器对数字信号进行调制，使得调制后的数字信号的频谱适合在原来的用户线上传输。</p>
-<p>ADSL技术也在不断改进，ADSL2(G.992.3 G.992.4)和ADSL2+(G.992.5)是新提出的更高速率的第二代ADSL标准。</p>
-<p>第二代ADSL的主要改进点在于：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/jasonchen_gbd/article/details/80170309">为什么要考虑这种情况？</a>现考虑一种情况，某个站发送了一个很短的帧。但在发送完毕之前并没有检测出碰撞。假定这个帧在继续向前传播到达目的站之前和别的站发送的帧发生了碰撞，因而目的站将收到这个有差错的帧，并丢弃。可是发送站不知道这个帧发生了碰撞，因而不会重传这个帧。为避免发生这种情况，以太网规定了一个最短帧长64字节。如果发送的数据非常少，必须加入填充字节，使得帧长不小于64字节。</p>
+<p>以上，以太网在发送数据时，如果在争用期没有发生碰撞，那么后续发送的数据就一定不会发生冲突。也就是说，如果发生碰撞，一定是在发送的前64字节内。</p>
+<p>由于一检测到冲突就立刻中止发送，这时已经发送出去的数据一定小于64字节，因此，<strong>长度小于64字节的帧都是由于冲突而异常中止的无效帧</strong>。只要收到这种无效帧，就应当立即将其丢弃。</p>
+<p>以太网的争用期确定为51.2微秒，不仅考虑到以太网的端到端时延，而且还包括其他的许多因素，例如存在的转发器所增加的时延，以及强化碰撞的干扰信号的持续时间。</p>
+<p><strong>强化碰撞</strong>是指当发送数据的站一旦发现发生了碰撞时，除了立即停止发送数据外，还要继续发送32bit&#x2F;48bit的**人为干扰信号(jamming signal)**，以便让所有用户都知道现在已经发生了碰撞。</p>
+<p><img src="/../images/network/jamming.png" alt="人为干扰信号的加入"></p>
+<blockquote>
+<p>B站得知发生碰撞后也要发送人为干扰信号，忽略。</p>
+</blockquote>
+<p>A站从发送数据开始到发现碰撞并停止发送的时间间隔是$ T_B $。A站得知碰撞已经发生时所发送的强化碰撞的干扰信号的持续时间是$ T_J $。发生碰撞使A浪费时间$ T_B + T_J $。可是整个信道被占用的时间还要增加一个单程端到端时延$ \tau $。因此，总线被占用的时间是$ T_B + T_J + \tau $。</p>
+<p>以太网还规定了<strong>帧间最小间隔</strong>为9.6微秒。相当于96比特时间。这样做是使得刚接收数据帧的站的接收缓存来得及清理，做好接收下一帧的准备。</p>
+<p>CSMA&#x2F;CD协议的要点归纳如下：</p>
 <ol>
-<li>通过提高调制效率得到了更高的数据率。</li>
-<li>采用了<strong>无缝速率自适应技术SRA</strong>(Seamless Rate Adaptation)。可在运营中不中断通信和不产生误码的情况下根据线路的实时状况，自适应的调整数据率。</li>
-<li>改善了线路质量评测和故障定位功能，这对提高网络的运行维护水平具有非常重要的意义。</li>
+<li>准备发送：适配器从网络层获得一个分组，加上以太网的首部和尾部，组成以太网帧，放入适配器的缓存中。但在发送之前，必须<strong>先检测信道</strong>。<br/> <br/></li>
+<li>检测信道：若检测到信道忙，则应不停地检测，一直等待信道转为空闲，若检测到信道空闲，并在96bit时间内信道保持空闲(帧间最小间隔)，就发送这个帧。<br/> <br/></li>
+<li>在发送过程中仍不停地检测信道，即网络适配器要<strong>边发送边监听</strong>。这里只有两种可能性：<br/> <br/><ol>
+<li>发送成功：在争用期内一直未检测到碰撞。这个帧肯定能够发送成功。发送完毕后，什么也不做，返回第1步。<br/> <br/></li>
+<li>发送失败：在争用期内检测到碰撞。这时立即停止发送数据，并按规定发送人为干扰信号。适配器接着就执行指数退避算法，等待r倍512比特时间后，返回第2步，继续监测信道。若重传16次仍不能成功，则停止重传而向上报错。</li>
 </ol>
-<p>ADSL适用于居民用户，这是因为居民上行数据并不多。但是ADSL技术并不适用于企业。企业需要使用上行信道发送大量数据给用户。为了满足企业的需求，ADSL技术有几种变形。</p>
-<ol>
-<li>对称DSL：把ADSL的带宽平均分配到上行和下行两个方向。</li>
-<li>HDSL(High speed DSL): 使用一对线或两对线的对称DSL，用来取代T1线路的<strong>高速数字用户线</strong>。</li>
-<li>VDSL(Very high speed DSL)，是ADSL的快速版本，又称甚高速数字用户线。</li>
+</li>
 </ol>
-<h3 id="光纤同轴混合网-x2F-HFC网"><a href="#光纤同轴混合网-x2F-HFC网" class="headerlink" title="光纤同轴混合网&#x2F;HFC网"></a>光纤同轴混合网&#x2F;HFC网</h3><p><strong>光纤同轴混合网</strong>(HFC网, Hybrid Fiber Coax)是在目前覆盖面很广的有线电视网的基础上开发的一种居民宽带接入网，除可传送电视节目外，还能提供电话，数据和其他宽带交互型业务。</p>
-<p>最早的有线电视网是树形拓扑结构的同轴电缆网络，它采用模拟技术的频分复用对电视节目进行单向广播传输，改造后，成为光纤同轴混合网。</p>
-<p>光纤同轴混合网的主要特点：</p>
-<p><img src="/../images/network/HFC.png" alt="HFC网的结构图"></p>
-<p>为了提高传输的可靠性和电视信号的质量，同轴电缆主干换为光纤，光纤从头端连接到<strong>光纤节点</strong>(fiber node)。在光纤节点光信号被转换为电信号，然后通过同轴电缆传送到每个用户家庭。</p>
-<p>从头端到用户家庭所需的放大器因为末端采用同轴电缆数目仅有4~5个。</p>
-<p>连接到一个光纤节点的典型用户数是500~2000。</p>
-<p>光纤节点与头端的典型距离为25km，从光纤节点到其用户的距离则不超过2~3km。</p>
-<p>原有有限电视网的最高传输频率是450MHz，并且仅用于电视信号的下行传输。光纤同轴混合网具有双向传输功能，而且扩展了传输频带。</p>
-<p><img src="/../images/network/HFC_freq.png" alt="我国HFC的频带划分"></p>
-<p>要使现有的模拟电视机能够接收数字电视信号，需要把<strong>机顶盒</strong>(set-top box)设备连接在同轴电缆和用户的电视机之间。同时，为了用户使用HFC网接入互联网，以及在上行信道中传送交互数字电视所需的一些信息，需要增加一个为HFC网使用调制解调器：<strong>电缆调制解调器</strong>(cable modem)。电缆调制解调器可以做成一个单独的设备，例如ADSL的猫，也可以做成内置式，安装在电视机的机顶盒中。</p>
-<p>电缆调制解调器不需要成对使用，只需要安装在用户端。电缆调制解调器因为是多用户共享的，需要思考共享信道中可能出现的冲突问题。</p>
-<h3 id="FTTx技术"><a href="#FTTx技术" class="headerlink" title="FTTx技术"></a>FTTx技术</h3><p>为了更快地下载视频文件，以及更加流畅的欣赏网上的各种高清视频节目，需要升级用户的上网效率，<strong>光纤到户FTTH</strong>(Fiber To The Home)从技术上来说是最好的选择。</p>
-<p>光纤到户是把光纤一直铺设到用户家庭。只有到用户家庭后，才从光信号转化为电信号，使用户获得最高的上网效率。</p>
-<p>问题:</p>
-<ol>
-<li>价格不够低。</li>
-<li>用户需求不需要如此高的数据率。</li>
-</ol>
-<p>基于以上两个问题，出现了多种宽带光纤接入方式：FTTx。x表示不同的光纤接入地点。</p>
-<p>为了有限利用光纤资源(问题2)，在光纤干线和广大用户之间还需要铺设一段中间的转换装置：<strong>光配线网ODN</strong>(Optical Distribution Network)，使得数十个家庭用户能够共享一根光纤干线。</p>
-<p>无源光网络表明在光配网中无需配备电源，因此基本不要维护，长期运营和管理成本很低，而无源的光配网又称为<strong>无源光网络PON</strong>(Passive Optical Network)。</p>
-<p><img src="/../images/network/ODN.png" alt="无源光配线网的组成"></p>
-<p><strong>OLT光线路终端</strong>(Optical Line Terminal)是连接到光纤干线的终端设备。</p>
-<p>OLT把收到的下行数据发往无源的1：N<strong>光分路器</strong>(splitter)，然后用广播向所有用户端的<strong>光网络单元ONU</strong>(Optical Network Unit)发送。典型的光分路器使用分路比是1：32，有时也可使用多级的光分路器。每个ONU根据特有的标识只接收发送给自己的数据，然后转换为电信号发往用户家中。每一个ONU到用户家的距离具体情况具体分析，OLT给ONU分配适当的光功率。</p>
-<p>OLT发送上行数据时， 先把电信号转化为光信号，光分路器把各ONU发来的上行数据汇总后，以TDMA方式发往OLT，发送时间和长度由OLT集中控制，以便有序地共享光纤主干。</p>
-<p>光配线网采用波分复用，上行和下行分别使用不同的波长。</p>
-<p>FTTx有光纤到户FTTH，光纤到路边FTTC(urb)，光纤到小区FTTZ(one)，光线到大楼FTTB(uliding)，光纤到楼层FTTF(loor)，光纤到办公室FTTO(ffice)，光纤到桌面FTTD(esk)。</p>
- 
+<p>以太网每发送完一帧，一定要把已发送的帧暂时保留一下。如果在争用期内检测出发生了碰撞，那么在推迟一段时间后再把这个暂时保留的帧重传一次。</p>
+<h3 id="使用集线器的星型拓扑"><a href="#使用集线器的星型拓扑" class="headerlink" title="使用集线器的星型拓扑"></a>使用集线器的星型拓扑</h3> 
       <!-- reward -->
       
     </div>
@@ -515,7 +510,7 @@
 
     
     <article
-  id="post-leetcode/160"
+  id="post-leetcode/239"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -526,8 +521,8 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/leetcode/160.html"
-    >力扣 160. 相交链表</a> 
+  <a class="article-title" href="/leetcode/239.html"
+    >力扣 239. 滑动窗口最大值</a> 
 </h2>
  
 
@@ -535,8 +530,8 @@
     </header>
      
     <div class="article-meta">
-      <a href="/leetcode/160.html" class="article-date">
-  <time datetime="2022-08-23T14:28:29.574Z" itemprop="datePublished">2022-08-23</time>
+      <a href="/leetcode/239.html" class="article-date">
+  <time datetime="2022-09-01T07:52:03.363Z" itemprop="datePublished">2022-09-01</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
@@ -546,9 +541,9 @@
       
     <div class="article-entry" itemprop="articleBody">
        
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="前置"><a href="#前置" class="headerlink" title="前置"></a>前置</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ListNode</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, val=<span class="number">0</span>, <span class="built_in">next</span>=<span class="literal">None</span></span>):</span><br><span class="line">        self.val = val</span><br><span class="line">        self.<span class="built_in">next</span> = <span class="built_in">next</span></span><br></pre></td></tr></table></figure>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="单调队列-N-x2F-A"><a href="#单调队列-N-x2F-A" class="headerlink" title="单调队列 N&#x2F;A"></a>单调队列 N&#x2F;A</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">maxSlidingWindow</span>(<span class="params">nums, k</span>):</span><br><span class="line">    queue, ret = [], []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(nums)):</span><br><span class="line">        <span class="keyword">while</span> queue <span class="keyword">and</span> queue[-<span class="number">1</span>] &lt; nums[i]: queue.pop()</span><br><span class="line">        queue.append(nums[i])</span><br><span class="line">        <span class="keyword">if</span> i &gt;= k - <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">if</span> i &gt;= k <span class="keyword">and</span> nums[i - k] == queue[<span class="number">0</span>]:</span><br><span class="line">                queue.pop(<span class="number">0</span>)</span><br><span class="line">            ret.append(queue[<span class="number">0</span>])</span><br><span class="line">    <span class="keyword">return</span> ret</span><br></pre></td></tr></table></figure>
 
-<h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">getIntersectionNode</span>(<span class="params">headA, headB</span>):</span><br><span class="line">    a, countA, b, countB = headA, <span class="number">0</span>, headB, <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> a:</span><br><span class="line">        countA += <span class="number">1</span></span><br><span class="line">        a = a.<span class="built_in">next</span></span><br><span class="line">    <span class="keyword">while</span> b:</span><br><span class="line">        countB += <span class="number">1</span></span><br><span class="line">        b = b.<span class="built_in">next</span></span><br><span class="line">    <span class="comment"># print(countA, countB)</span></span><br><span class="line">    <span class="keyword">if</span> countA &gt; countB:</span><br><span class="line">        c, cur, other = countA - countB, headA, headB</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        c, cur, other = countB - countA, headB, headA</span><br><span class="line">    <span class="keyword">while</span> c &gt; <span class="number">0</span>:</span><br><span class="line">        cur = cur.<span class="built_in">next</span></span><br><span class="line">        c -= <span class="number">1</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> cur != other:</span><br><span class="line">        cur = cur.<span class="built_in">next</span></span><br><span class="line">        other = other.<span class="built_in">next</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> cur</span><br></pre></td></tr></table></figure> 
+<h1 id="修改单调队列格式"><a href="#修改单调队列格式" class="headerlink" title="修改单调队列格式"></a>修改单调队列格式</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> collections</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">maxSlidingWindow</span>(<span class="params">nums, k</span>):</span><br><span class="line">    queue, ret = collections.deque(), []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(nums)):</span><br><span class="line">        <span class="keyword">while</span> queue <span class="keyword">and</span> queue[-<span class="number">1</span>] &lt; nums[i]:</span><br><span class="line">            queue.pop()</span><br><span class="line">        queue.append(nums[i])</span><br><span class="line">        <span class="keyword">if</span> i &gt;= k - <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">if</span> i &gt;= k <span class="keyword">and</span> nums[i - k] == queue[<span class="number">0</span>]:</span><br><span class="line">                queue.popleft()</span><br><span class="line">            ret.append(queue[<span class="number">0</span>])</span><br><span class="line">        <span class="comment"># print(queue)</span></span><br><span class="line">    <span class="keyword">return</span> ret</span><br></pre></td></tr></table></figure> 
       <!-- reward -->
       
     </div>
@@ -558,7 +553,7 @@
     
     <footer class="article-footer">
        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8/" rel="tag">链表</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%98%9F%E5%88%97/" rel="tag">队列</a></li></ul>
 
     </footer>
   </div>
@@ -569,7 +564,7 @@
 
     
     <article
-  id="post-leetcode/155"
+  id="post-leetcode/238"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -580,8 +575,8 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/leetcode/155.html"
-    >力扣 155. 最小栈</a> 
+  <a class="article-title" href="/leetcode/238.html"
+    >力扣 238. 除自身以外数组的乘积</a> 
 </h2>
  
 
@@ -589,8 +584,8 @@
     </header>
      
     <div class="article-meta">
-      <a href="/leetcode/155.html" class="article-date">
-  <time datetime="2022-08-23T12:40:29.145Z" itemprop="datePublished">2022-08-23</time>
+      <a href="/leetcode/238.html" class="article-date">
+  <time datetime="2022-09-01T03:44:36.136Z" itemprop="datePublished">2022-09-01</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
@@ -600,7 +595,7 @@
       
     <div class="article-entry" itemprop="articleBody">
        
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> collections</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MinStack</span>:</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        self.stack = collections.deque()</span><br><span class="line">        self.min_stack = collections.deque()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">push</span>(<span class="params">self, val: <span class="built_in">int</span></span>) -&gt; <span class="literal">None</span>:</span><br><span class="line">        self.stack.append(val)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.min_stack <span class="keyword">or</span> self.min_stack[-<span class="number">1</span>] &gt;= val:</span><br><span class="line">            self.min_stack.append(val)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">pop</span>(<span class="params">self</span>) -&gt; <span class="literal">None</span>:</span><br><span class="line">        cur = self.stack.pop()</span><br><span class="line">        <span class="keyword">if</span> cur == self.min_stack[-<span class="number">1</span>]: self.min_stack.pop()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">top</span>(<span class="params">self</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        <span class="keyword">return</span> self.stack[-<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">getMin</span>(<span class="params">self</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        <span class="keyword">return</span> self.min_stack[-<span class="number">1</span>]</span><br></pre></td></tr></table></figure> 
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">productExceptSelf</span>(<span class="params">nums</span>):</span><br><span class="line">    nums_len = <span class="built_in">len</span>(nums)</span><br><span class="line">    left = [<span class="number">1</span>] * nums_len</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, nums_len):</span><br><span class="line">        left[i] = left[i - <span class="number">1</span>] * nums[i - <span class="number">1</span>]</span><br><span class="line">    <span class="comment"># print(left)</span></span><br><span class="line">    right = [<span class="number">1</span>] *nums_len</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(nums_len - <span class="number">2</span>, -<span class="number">1</span>, -<span class="number">1</span>):</span><br><span class="line">        right[i] = right[i + <span class="number">1</span>] * nums[i + <span class="number">1</span>]</span><br><span class="line">    <span class="comment"># print(right)</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(nums_len):</span><br><span class="line">        left[i] = left[i] * right[i]</span><br><span class="line">    <span class="keyword">return</span> left</span><br></pre></td></tr></table></figure> 
       <!-- reward -->
       
     </div>
@@ -610,7 +605,7 @@
     
     <footer class="article-footer">
        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%88/" rel="tag">栈</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li></ul>
 
     </footer>
   </div>
@@ -621,43 +616,7 @@
 
     
     <article
-  id="post-leetcode/152"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-     
-    <div class="article-meta">
-      <a href="/leetcode/152.html" class="article-date">
-  <time datetime="2022-08-23T10:01:48.560Z" itemprop="datePublished">2022-08-23</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><p><img src="/../images/leetcode/leetcode152.png" alt="解题思路"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">maxProduct</span>(<span class="params">nums</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">    ret, ma, mi = <span class="built_in">float</span>(<span class="string">&quot;-inf&quot;</span>), <span class="number">1</span>, <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> num <span class="keyword">in</span> nums:</span><br><span class="line">        <span class="keyword">if</span> num &lt; <span class="number">0</span>:</span><br><span class="line">            ma, mi = <span class="built_in">max</span>(mi * num, num), <span class="built_in">min</span>(ma * num, num)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            ma, mi = <span class="built_in">max</span>(ma * num, num), <span class="built_in">min</span>(mi * num, num)</span><br><span class="line">        ret = <span class="built_in">max</span>(ret, ma)</span><br><span class="line">    <span class="keyword">return</span> ret</span><br></pre></td></tr></table></figure> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-    </footer>
-  </div>
-
-   
-    
-</article>
-
-    
-    <article
-  id="post-books/soft_test1"
+  id="post-leetcode/236"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -668,8 +627,8 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/books/soft_test1.html"
-    >软件测试笔记 1</a> 
+  <a class="article-title" href="/leetcode/236.html"
+    >力扣 236. 二叉树的最近公共祖先</a> 
 </h2>
  
 
@@ -677,594 +636,8 @@
     </header>
      
     <div class="article-meta">
-      <a href="/books/soft_test1.html" class="article-date">
-  <time datetime="2022-08-22T08:31:16.250Z" itemprop="datePublished">2022-08-22</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%A0%A1%E6%8B%9B/">校招</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><blockquote>
-<p><strong>软件测试</strong>是通过考虑软件的<font color=blue>可靠性，可伸缩性，可移植性，可重用性，可用性</font>和评估软件组件的执行来查找软件错误或缺陷来识别软件正确性的过程。</p>
-</blockquote>
-<p>软件测试提供了软件的独立视图和目标，并确保软件的适用性。它涉及在所需服务下测试所有组件，以确认它是否满足指定的要求。该过程还向客户提供有关软件质量的信息。</p>
-<blockquote>
-<p><strong>测试</strong>是一组用于预定义脚本下确定应用程序正确性的技术。</p>
-</blockquote>
-<p>测试无法找到应用程序的所有缺陷，其主要目的是检测应用程序的故障，以便发现和纠正故障。其无法证明产品可以在所有条件下都能正常运行，仅表明它在某些特定条件下无法正常工作。</p>
-<p>测试提供了比较软件的行为和状态与机制的比较，可以包括相同指定产品的过去版本，可比较产品，以及预期目的，相关标准或其他标准的界面等。</p>
-<p>测试包括检查代码以及各种环境中的代码执行，条件以及代码的所有检查方面。</p>
-<h1 id="软件开发生命周期"><a href="#软件开发生命周期" class="headerlink" title="软件开发生命周期"></a>软件开发生命周期</h1><blockquote>
-<p>软件开发生命周期是一个创建软件开发结构的过程。</p>
-<p>需求 → 设计 → 开发 → 测试</p>
-</blockquote>
-<ol>
-<li><p>需求阶段</p>
-<p>这是软件开发生命周期中最关键的阶段。</p>
-<p>在此阶段，客户说明要求，规格，期望以及产品或者软件相关的任何其他特殊要求。</p>
-</li>
-<li><p>设计阶段</p>
-<p>这是软件开发生命周期中的高优先阶段。</p>
-<p>设计阶段包括根据需求阶段对新软件的详细分析，系统的逻辑设计转换为物理设计。</p>
-<p>需求阶段的输出是所需事物的集合，设计阶段为实现这些需求提供了方法。</p>
-</li>
-<li><p>建设&#x2F;设计阶段</p>
-<p>这是软件开发周期中花费最长的时间，使用最集中的方法的阶段。</p>
-<p>在成功完成需求和设计阶段后，下一步是将设计实现到软件系统的开发中。</p>
-<p>编码由开发团队根据前一个阶段讨论的设计开始，并根据需求阶段讨论的客户要求产生的所需的结果。</p>
-<p>前端开发人员开发简单的且具有吸引力的GUI和必要的接口，以便与后端操作进行交互，后端开发人员根据所需的操作进行后端编码。</p>
-</li>
-<li><p>测试阶段</p>
-<p>测试阶段是完成软件系统的最后一步。</p>
-<p>在获得开发的的GUI和后端组合之后，将根据需求阶段中的要求对其进行测试。测试确定软件是否实际按照需求阶段中的要求提供结果。</p>
-<p>测试计划包括所有类型的测试。如果软件中存在任何缺陷，或者它没有按照预期工作，那么测试团队会向开发团队提供有关该问题的详细信息。</p>
-</li>
-<li><p>部署&#x2F;交付阶段</p>
-<p>当软件测试完成，且结果令人满意，并且软件工作中没有余留问题时，就可以进行交付，供客户使用。</p>
-<p>当客户收到产品，首先进行beta测试。在beta测试中，客户可以要求软件中没有但在需求文档或任何其他GUI更改中提及的任何更改，以使其更加用户友好。</p>
-</li>
-<li><p>维护阶段</p>
-<p>维护是软件开发生命周期的最后和持久阶段。</p>
-<p>当客户开始使用软件时，实际问题就开始发生，那时需要解决这些问题。同时，还包括对硬件和软件进行更改以维持其运营效率。</p>
-</li>
-</ol>
-<h1 id="软件测试生命周期"><a href="#软件测试生命周期" class="headerlink" title="软件测试生命周期"></a>软件测试生命周期</h1><ol>
-<li><p>需求分析</p>
-<p>手动测试程序的第一步是需求分析。测试人员分析需求文档，检查客户所述的要求。在检查要求后，测试人员制定测试计划以检查软件是否满足要求。</p>
-<p>应当提供应用程序体系结构文档和明确定义的验收标准。</p>
-<p>准备所有要求和查询的列表，列出要执行的所有类型的测试，列出测试环境详细信息。</p>
-<p>此阶段的交付成果是列出可测试要求和测试环境详细信息的所有必要测试。</p>
-</li>
-<li><p>测试计划</p>
-<p>创建测试计划是软件测试生命周期的关键阶段，定义了所有测试策略。</p>
-<p>测试人员确定整个项目的估计工作量和成本。</p>
-<p>列出测试中涉及的方法，测试过程概述。</p>
-<p>解决测试环境，准备测试计划和控制程序，确定角色和责任，列出测试可交付成果，定义风险。</p>
-<p>此阶段的交付成果是测试估算文件。</p>
-</li>
-<li><p>环境设置</p>
-<p>测试环境是一项独立的活动，可以和测试用例开发一起进行。</p>
-<p>环境设置需要一组必要的软件和硬件来创造测试环境。</p>
-<p>通过分析需求规范来准备软件和硬件列表。在设置测试环境后，执行测试用例以检查测试环境的准备情况。</p>
-</li>
-<li><p>测试用例</p>
-<p>测试团队启动案例开发和执行。测试团队记下详细的测试用例，并在需要时准备测试数据。</p>
-<p>此阶段的交付成果是测试执行结果以及具有缺陷详细说明的功能列表。</p>
-</li>
-<li><p>缺陷记录</p>
-<p>测试人员和开发人员根据测试覆盖范围，质量，时间消耗，成本和关键业务目标评估软件的完成标准。此阶段确定了软件的特性和缺点。</p>
-<p>深入分析测试用例和错误报告，以检测缺陷的类型及其严重性、</p>
-<p>缺陷记录分析主要用于根据严重程度和类型找出缺陷分布。</p>
-<p>此阶段的完成标志测试的结束，交付关闭报告和测试指标。</p>
-</li>
-<li><p>测试周期</p>
-<p>关闭测试周期结束报告包括与软件设计，开发，测试结果和缺陷报告相关的所有文档。如果存在具有相同规范的软件，此阶段将评估开发策略，测试过程，可能的缺陷，以便将来使用这些实践。</p>
-<p>此阶段交付测试结束报告。</p>
-</li>
-</ol>
-<h1 id="软件质量保证-QA-和软件质量控制-QC"><a href="#软件质量保证-QA-和软件质量控制-QC" class="headerlink" title="软件质量保证(QA)和软件质量控制(QC)"></a>软件质量保证(QA)和软件质量控制(QC)</h1><h2 id="软件质量保证-QA"><a href="#软件质量保证-QA" class="headerlink" title="软件质量保证(QA)"></a>软件质量保证(QA)</h2><p>   软件质量保证用于防止缺陷并确保为特定应用程序设计的技术，方法，和过程必须正确实施。</p>
-<p>   质量保证测试确保了高质量软件的开发，因为它主要关注软件开发过程中的高质量流程，良好的质量管理体系和定期的一致性审核。</p>
-<p>   软件质量保证是一种管理工具，包括计划和系统的活动文件，以防止与质量有关的问题。</p>
-<p>   软件质量保证的责任是每一个开发团队成员的责任。</p>
-<h2 id="软件质量控制-QC"><a href="#软件质量控制-QC" class="headerlink" title="软件质量控制(QC)"></a>软件质量控制(QC)</h2><p>   软件质量控制也称为质量控制，是一系列任务，也是一个被动的过程，主要目的在于在发布软件之前纠正所有类型的缺陷。</p>
-<p>   通过识别缺陷和纠正开发软件中的缺陷来确保软件质量。</p>
-<p>   通过纠正工具消除问题根源，从而使软件能够满足用户的要求和高质量，从而完成该过程。</p>
-<p>   质量控制的责任在于测试团队，通过验证和纠正工具测试软件的缺陷。</p>
-<h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><table>
-<thead>
-<tr>
-<th align="center">项目</th>
-<th align="center">质量保证QA</th>
-<th align="center">质量控制QC</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">定义</td>
-<td align="center">质量保证是一组活动，可确保始终保持软件开发过程中使用的过程质量。</td>
-<td align="center">QC是一组用于检测已开发软件中的缺陷的活动。</td>
-</tr>
-<tr>
-<td align="center">关注重点</td>
-<td align="center">通过关注流程来防止开发软件中的缺陷。</td>
-<td align="center">通过关注测试过程来识别开发软件中缺陷。</td>
-</tr>
-<tr>
-<td align="center">如何做</td>
-<td align="center">建立高质量的管理系统，并定期审核开发软件的操作是否符合要求。</td>
-<td align="center">通过使用开发软件中的测试技术和工具来检测和消除质量问题。</td>
-</tr>
-<tr>
-<td align="center">为什么做</td>
-<td align="center">通过使用包括文档在内的系统活动来确保质量问题。</td>
-<td align="center">通过使用流程和技术来实现和维护高质量的软件，从而确保识别和消除缺陷。</td>
-</tr>
-<tr>
-<td align="center">面向</td>
-<td align="center">流程</td>
-<td align="center">产品</td>
-</tr>
-<tr>
-<td align="center">过程类型</td>
-<td align="center">积极主动</td>
-<td align="center">QC是一种反应过程，因为它涉及在产品开发之后和产品发布之前识别缺陷。</td>
-</tr>
-<tr>
-<td align="center">责任</td>
-<td align="center">开发团队每个成员</td>
-<td align="center">特定的检测团队</td>
-</tr>
-<tr>
-<td align="center">示例</td>
-<td align="center">验证软件流程</td>
-<td align="center">检验软件功能和流程</td>
-</tr>
-</tbody></table>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%A1%E6%8B%9B/" rel="tag">校招</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/" rel="tag">软件测试</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-    
-</article>
-
-    
-    <article
-  id="post-leetcode/148"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/leetcode/148.html"
-    >力扣 148. 排序链表</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/leetcode/148.html" class="article-date">
-  <time datetime="2022-08-22T04:25:33.906Z" itemprop="datePublished">2022-08-22</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="前置"><a href="#前置" class="headerlink" title="前置"></a>前置</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ListNode</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, val=<span class="number">0</span>, <span class="built_in">next</span>=<span class="literal">None</span></span>):</span><br><span class="line">        self.val = val</span><br><span class="line">        self.<span class="built_in">next</span> = <span class="built_in">next</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">sortList</span>(<span class="params">self, head: <span class="type">Optional</span>[ListNode]</span>) -&gt; <span class="type">Optional</span>[ListNode]:</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> head <span class="keyword">or</span> <span class="keyword">not</span> head.<span class="built_in">next</span>: <span class="keyword">return</span> head</span><br><span class="line">    </span><br><span class="line">    slow, fast = head, head.<span class="built_in">next</span></span><br><span class="line">    <span class="keyword">while</span> fast <span class="keyword">and</span> fast.<span class="built_in">next</span>:</span><br><span class="line">        slow, fast = slow.<span class="built_in">next</span>, fast.<span class="built_in">next</span>.<span class="built_in">next</span></span><br><span class="line">    </span><br><span class="line">    mid, slow.<span class="built_in">next</span> = slow.<span class="built_in">next</span>, <span class="literal">None</span></span><br><span class="line">    left, right = self.sortList(head), self.sortList(mid)</span><br><span class="line"></span><br><span class="line">    res = h = ListNode(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> left <span class="keyword">and</span> right:</span><br><span class="line">        <span class="keyword">if</span> left.val &lt; right.val:</span><br><span class="line">            h.<span class="built_in">next</span> = left</span><br><span class="line">            left = left.<span class="built_in">next</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            h.<span class="built_in">next</span> = right</span><br><span class="line">            right = right.<span class="built_in">next</span></span><br><span class="line">        h = h.<span class="built_in">next</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> left: h.<span class="built_in">next</span> = left</span><br><span class="line">    <span class="keyword">elif</span> right: h.<span class="built_in">next</span> = right</span><br><span class="line">    <span class="keyword">return</span> res.<span class="built_in">next</span></span><br></pre></td></tr></table></figure> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8/" rel="tag">链表</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-    
-</article>
-
-    
-    <article
-  id="post-books/network_1"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/books/network_1.html"
-    >计算机网络笔记 1</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/books/network_1.html" class="article-date">
-  <time datetime="2022-08-18T01:34:40.754Z" itemprop="datePublished">2022-08-18</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%A0%A1%E6%8B%9B/">校招</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><h2 id="21世纪的计算机网络"><a href="#21世纪的计算机网络" class="headerlink" title="21世纪的计算机网络"></a>21世纪的计算机网络</h2><p>21世纪特征: 数字化，网络化， 信息化，是一个以网络为核心的时代。</p>
-<p>网络包括: 电信网络，有线电视网络，计算机网络。</p>
-<ol>
-<li>电信网络: 提供电话，电报及传真服务；</li>
-<li>有线电视网络: 传送各种电视节目；</li>
-<li>计算机网络: 在计算机之间传送数据文件。</li>
-</ol>
-<p>互联网(Internet)的基本特点: 连通性， 共享。</p>
-<h2 id="互联网概述"><a href="#互联网概述" class="headerlink" title="互联网概述"></a>互联网概述</h2><p>计算机网络(网络)由若干节点(node)和连接这些节点的链路(link)组成。<strong>节点</strong>可以是计算机，集线器，交换机或路由器等。</p>
-<blockquote>
-<p>注: 习惯上，把与网络相连的计算机称为主机(host)。<br>注: internet泛指由多个计算机网络互连而成的计算机网络；Internet指当前全球最大的，开放的，由众多网络相互连接而成的特定互联网，它采用TCP&#x2F;IP协议族作为通信的规则，且其前身是美国的ARPANET。</p>
-</blockquote>
-<p>网络把许多计算机连接在一起，而互联网则把许多网络通过路由器连接在一起。</p>
-<h3 id="ISP-Internet-Service-Provider"><a href="#ISP-Internet-Service-Provider" class="headerlink" title="ISP(Internet Service Provider)"></a>ISP(Internet Service Provider)</h3><p><strong>互联网服务提供者ISP</strong>可分为主干ISP，地区ISP，本地ISP。</p>
-<p>主干ISP(移动，联通)服务面积最大(国家级别)，拥有高速主干网，一些地区ISP可直接与主干ISP相连。<br>地区ISP是一些较小的ISP，地区ISP一般通过一个或多个主干ISP连接起来。<br>本地ISP(企业，大学)给用户提供直接的服务。本地ISP可以连接到地区ISP，也可以直接连接到主干ISP。</p>
-<p>理论上讲，只要每一个本地ISP都安装路由器连接到某个地区ISP，每一个地区ISP也有路由器连接到主干ISP，在这些相互连接的ISP共同合作下，就可以完成互联网中的所有分组转发任务。<br>但随着互联网上数据流量的急剧增长，需要研究更快的转发分组，以及更有效地利用网络资源，提出**互联网交换点IXP(Internet eXchange Point)**。</p>
-<h3 id="互联网交换点IXP-Internet-eXchange-Point"><a href="#互联网交换点IXP-Internet-eXchange-Point" class="headerlink" title="互联网交换点IXP(Internet eXchange Point)"></a>互联网交换点IXP(Internet eXchange Point)</h3><p>互联网交换点IXP的主要作用是允许两个网络直接相连并交换分组，不需要通过第三个网络来转发分组。</p>
-<p>若两个地区ISP通过一个IXP连接起来，主机之间进行交换分组时，不必经过主干ISP，直接在两个地区ISP之间用高速链路对等的交换分组。使得互联网上的流量数据分布更加合理，同时减少了分组转发的延迟时间，降低了分组转发的费用。</p>
-<p>典型的IXP由一个或多个网络交换机组成，许多ISP再连接到这些网络交换机的相关端口上。IXP常采用工作在<strong>数据链路层</strong>的数据交换机，这些网络交换机都哟格局与网互联起来。</p>
-<h3 id="互联网组成"><a href="#互联网组成" class="headerlink" title="互联网组成"></a>互联网组成</h3><p>互联网从工作方式看，可以划分为边缘部分及核心部分。</p>
-<ol>
-<li><p>边缘部分: 由所有连接在互联网上的主机组成。是用户直接使用的，用于通信和资源共享。</p>
-</li>
-<li><p>核心部分: 由大量网络和连接这网络的路由器组成。为边缘部分提供服务，提供连通性和交换。</p>
-</li>
-</ol>
-<h4 id="边缘部分"><a href="#边缘部分" class="headerlink" title="边缘部分"></a>边缘部分</h4><p>   处于互联网边缘的部分，连接在互联网上的所有主机。又称为端系统(end system)。</p>
-<p>   边缘部分利用核心部分提供的服务，使众多主机之间能够互相通信并交换或共享信息。</p>
-<p>   更严格的说，主机A和主机B进行通信，应该表述为，运行在主机A上的某个程序和运行在主机B上的另一个程序进行通信，即，主机A的某个进程和主机B上的另一个进程通信。</p>
-<p>   在网络边缘的端系统之间的通信方式通常划分为客户-服务器方式(C&#x2F;S)和对等方式(P2P)。</p>
-<ol>
-<li><p>客户-服务器通信方式</p>
-<p> <img src="/../images/network/C_S.png" alt="客户-服务器方式"></p>
-<p> 这是互联网上最常用，传统的方式。</p>
-<p> 客户(client)和服务器(server)都是指通信中所涉及的两个应用进程。客户-服务器方式所描述的是进程之间服务和被服务的关系。</p>
-<p> 主机A运行客户程序，主机B运行服务器程序。客户是服务请求方，服务器是服务提供方。</p>
-<p> 客户A向服务器B发出服务请求，服务器B向客户A提供服务。二者都要使用网络核心部分所提供的服务。</p>
-<p> 客户程序:</p>
-<p> a. 被用户调用后运行，在通信时主动向远地服务器发起通信(请求服务)。需要知道服务器程序的地址。</p>
-<p> b. 不需要特殊的硬件和很复杂的操作系统。</p>
-<p> 服务器程序: </p>
-<p> a. 专门用来提供某种服务的程序，可同时处理多个远地或本地客户的请求。</p>
-<p> b. 系统启动后即自动调用并一直不断的运行着，被动地等待并接受来自各地的客户的通信请求。不需要知道客户程序地址。</p>
-<p> c. 需要强大的硬件和高级的操作系统支持。</p>
-<p> 在客户和服务器的通信建立后，通信是双向的，二者都可以发送和接收数据。</p>
-</li>
-<li><p>对等连接方式</p>
-<p><img src="/../images/network/p2p.png" alt="对等连接工作方式"></p>
-<p>两台主机在通信时并不区分哪一个是服务请求方，哪一个是服务提供方。只要两台主机都运行了对等连接软件，就可以进行平等，对等连接通信。这时，双方都可以下载对方已经存储在硬盘中的共享文档。</p>
-</li>
-</ol>
-<h4 id="核心部分"><a href="#核心部分" class="headerlink" title="核心部分"></a>核心部分</h4><p>   网络核心部分是互联网中最复杂的部分，因为网络中的核心部分要向网络边缘中的大量主机提供连通性，使边缘部分中的任何一台主机都能够向其他主机通信。</p>
-<p>   在网络核心部分起特殊作用的是<strong>路由器</strong>，它是一种专用计算机，是用于实现分组交换的关键构件，其任务是转发收到的分组，这是网络核心部分最重要的功能。</p>
-<blockquote>
-<p>电路交换<br>必须经过<strong>建立连接</strong>(占用通信资源)，<strong>通话</strong>(一直占用通信资源)，<strong>释放连接</strong>(归还通信资源)三个步骤的交换方式。</p>
-</blockquote>
-<p>   电路交换在通信过程一直占用通信资源，在用来传送计算机数据时，其线路的传输效率会很低。</p>
-<ul>
-<li>分组交换</li>
-</ul>
-<p>   分组交换采用<strong>存储转发</strong>技术。</p>
-<p>   通常把一个报文(message)划分成几个分组(packet, 首部(header) + 比报文小的等长数据段)后再进行传送。</p>
-<p>   分组是在互联网中传送的数据单元。分组(packet)，又称包；首部(header)，又称包头。首部包含了诸如目的地址和源地址等重要控制信息，确保分组在互联网中独立地选择传输路径，并被正确的交付到分组传输的终点。</p>
-<blockquote>
-<p>路由器的分组交换</p>
-<p>路由器收到一个分组，先暂时存储一下，检查其首部，查找转发表(路由器记录)，按照首部中的目标地址，找到合适的接口转发出去，把分组交给下一个路由器。</p>
-<p>这样一步一步地以存储转发的方式，把分组交付给最终的目的主机。</p>
-<p><font color=red> 各路由器之间必须经常交换彼此掌握的路由信息，以便创建和动态维护路由器中转发表，使得转发表能够在整个网络拓扑发生变化时及时更新。 </font></p>
-</blockquote>
-<p>   <img src="/../images/network/packet_eg.png" alt="分组转发示例"></p>
-<p>   假定主机$H_1$向主机$H_5$发送数据。</p>
-<p>   主机$H_1$先将分组逐个地发往与它直接相连的路由器$A$中。此时除链路$H_1 - A$外，其他通信链路并不被目前通信的双方所占用。<br>   即使是链路$H_1 - A$，也只是当分组正在此链路上传送时才被占用。在各分组传送之间的空闲时间，链路$H_1 - A$仍可为其他主机发送的分组使用。</p>
-<p>   路由器A把主机$H_1$发来的分组放入缓存。假定从路由器$A$的转发表中查出应把该分组转发到链路$A - C$。于是把分组就转发到路由器$C$，再转发到路由器$E$，最终到主机$H_5$。<br>   若链路$A- C$的通信量太大，路由器$A$可以把分组沿另一个路由传送，即把分组转发到路由器$B$，再转发到路由器$E$，最终到主机$H_5$。</p>
-<p>   分组转发在传送数据之前不必先占用一条端到端的链路的通信资源，同时省去了建立连接和释放连接的开销，因此数据的传输效率更高。</p>
-<p>   采用存储转发的分组转发实际是采用了在数据通信的过程中断续&#x2F;动态分配传输带宽的策略。</p>
-<p>   为了提高分组交换的可靠性，互联网的核心部分常采用网络拓扑结构，使得当发生网络堵塞或少数节点，链路出现故障时，路由器可以灵活地改变转发路由器而不致引起通信的中断或全网瘫痪。<br>   此外，通信网络的主干线路往往由一些高速链路构成，这样就可以较高的数据率迅速地传送计算机数据。</p>
-<p>   分组交换的优点：</p>
-<ol>
-<li>高效: 在分组传输的过程中动态分配传输带宽，对通信链路是逐段占用。</li>
-<li>灵活: 为每一个分组独立地选择最合适的转发路由。</li>
-<li>迅速: 以分组为传送单位，可以不先建立链接就可以向其他主机发送分组。</li>
-<li>可靠: 保证可靠性的网络协议；分布式多路由的分组交换网，使网络有很好的生存性。</li>
-</ol>
-<p>   电路交换: 整个报文的比特流连续的从源点直达终点，好像在一个管道中传送。</p>
-<p>   报文交换: 整个报文先传送到相邻接点，全部存储下来后查找转发表，转发到下一个节点。</p>
-<p>   分组交换: 单个交换传送到相邻节点，存储下来后查找转发表，转发到下一个节点。</p>
-<p>   <img src="/../images/network/differ.png" alt="电路交换 报文交换 分组交换的区别"></p>
-<p>   若要连续传送大量的数据，且其传送时间远大于链接建立时间，则电路交换的传输速率较快。<br>   报文交换和分组交换不需要预先分配传输带宽，在传送突发数据时可提高整个网络的信道利用率。<br>   由于一个分组的长度往往远小于整个报文的长度，因此分组交换币报文交换的时延小，同时具有更好的灵活性。</p>
-<h3 id="计算机网络分类"><a href="#计算机网络分类" class="headerlink" title="计算机网络分类"></a>计算机网络分类</h3><p>   按照网络的作用范围进行分类:</p>
-<ol>
-<li>广域网WAN(Wide Area Network): 是互联网的核心部分，通过长距离(跨国)运送主机所发送的数据。连接广域网各节点交换机的链路一般是高速链路，具有较大的通信容量。</li>
-<li>城域网MAN(Metropolitan Area Network): 可跨越几个街区乃至整个城市。用于将多个局域网进行互连。目前很多城域网采用的是以太网技术。</li>
-<li>局域网LAN(Local Area Network): 一般用微型计算机或工作站通过高速通信线路相连，地理局限范围小。</li>
-<li>个人区域网PAN(Personal Area Network): 在10m左右的范围把属于个人的电子设备用无线技术连接起来的网络。</li>
-</ol>
-<p>   按照网络的使用者进行分类:</p>
-<ol>
-<li>公用网(public network): 所有按照愿意按电信公司的规定缴纳费用的人都可以使用这种网络。</li>
-<li>专用网(private network): 某个部门为了满足本单位的特殊业务工作的需要而建造的网络。不向本单位以外的人提供服务。</li>
-</ol>
-<h3 id="计算机网络的性能指标"><a href="#计算机网络的性能指标" class="headerlink" title="计算机网络的性能指标"></a>计算机网络的性能指标</h3><ol>
-<li><p>速率</p>
-<p>数据的传送速率，数据率(data rate)&#x2F;比特率(bit rate)。</p>
-<p>一般提到网络的速率，指的是额定速率或标称速率，不是实际的网络运行速率。</p>
-</li>
-<li><p>带宽</p>
-<p>在频域中，衡量模拟信号时，带宽指某个信号具有的频带宽度，单位为赫兹，表示某信道允许通过的信号频带范围。</p>
-<p>在时域中，衡量数字信号时，带宽指在单位时间内网络中某信道所能通过的最高数据率，单位为比特每秒。表示网络中某通道传送数据的能力。</p>
-</li>
-<li><p>吞吐量(throughout)</p>
-<p>表示在单位时间内通过某个网络&#x2F;信道&#x2F;接口的实际的数据量。</p>
-<p>吞吐量是对实际网络数据量通过的衡量，受网络的带宽或网络的额定速率的限制。</p>
-</li>
-<li><p>各种时延</p>
-<p>时延(delay&#x2F;latency)，又称延迟&#x2F;迟延，指数据从网络的一端传送到另一端所需的时间。</p>
-<p><img src="/../images/network/time_delay.png" alt="各种时延"></p>
-<p><strong>发送时延</strong>(transmission delay)，又称传输时延，是主机或路由器发送数据帧所需要的时间，即从发送数据帧的第一个比特算起，到该帧的最后一个比特发送完毕所需的时间。</p>
-<p>$$ 发送时延 &#x3D; \frac{数据帧长度(bit)}{发送速率(bit&#x2F;s)} $$</p>
-<p>发送时延并非固定不变，而是与发送的帧长成正比，与发送速率成反比。</p>
-<p><strong>传播时延</strong>(propagation delay)是电磁波在信道中传播一定的距离需要花费的时间。</p>
-<p>$$ 传播时延 &#x3D; \frac{信道长度(m)}{电磁波在信道上的传播速率(m&#x2F;s)} $$</p>
-<p>传播时延与信号的发送速率无关，信号传送的距离越远，传播时延越大。</p>
-<p><strong>处理时延</strong>即主机或路由器在收到分组时需要花费一定的时间进行处理。</p>
-<p><strong>排队时延</strong>即分组在经过网络传输时，要经过许多路由器。分组在进入路由器后要先在输入队列中排队等待处理。路由器确定转发接口后，在输出队列中排队等待转发，产生排队时延。</p>
-<p>$$ 总时延 &#x3D; 发送时延 + 传播时延 + 处理时延 + 排队时延 $$</p>
-</li>
-<li><p>时延带宽积</p>
-<p>$$ 时延带宽积 &#x3D; 传播时延 \times 带宽 $$</p>
-<p>以比特为单位的链路长度。</p>
-</li>
-<li><p>往返时间RTT</p>
-<p>RTT(Round-Trip Time)表示信息双向交互的时间。</p>
-</li>
-<li><p>利用率</p>
-<p>分为信道利用率和网络利用率。</p>
-<p>信道利用率指某信道有数据通过的时间；网络利用率指全网络的信道利用率的加权平均值。</p>
-<p>信道利用率不是越大越好，根据公式</p>
-<p>$$ D &#x3D; \frac{D_0}{1 - U} $$</p>
-<p>信道或网络的利用率过高会产生非常大的时延。</p>
-<p><img src="/../images/network/delay_use.png" alt="时延与利用率的关系"></p>
-</li>
-</ol>
-<h3 id="计算机网络的非性能指标"><a href="#计算机网络的非性能指标" class="headerlink" title="计算机网络的非性能指标"></a>计算机网络的非性能指标</h3><ol>
-<li><p>费用</p>
-<p>一般，网络的速率越高，价格越高。</p>
-</li>
-<li><p>质量</p>
-<p>网络的质量取决于网络中所有构件的质量，以及这些构建是怎样组成网络的。</p>
-</li>
-<li><p>标准化</p>
-<p>网络的硬件和软件的设计即可以按照通用的国际标准，也可以遵循特定的专用网络标准。最好遵循国际标准，可以得到更好的互操作性，易于升级换代和维修，以及技术上的支持。</p>
-</li>
-<li><p>可靠性</p>
-<p>可靠性与网络的质量和性能密切相关。</p>
-</li>
-<li><p>可扩展性和可升级性</p>
-<p>网络的性能越高，其扩展费用往往也越高，难度也会相应增加。</p>
-</li>
-<li><p>易于管理和维护</p>
-<p>网络如果没有良好的管理和维护，就很难达到和保持所设计的性能。</p>
-</li>
-</ol>
-<h2 id="计算机网络体系结构"><a href="#计算机网络体系结构" class="headerlink" title="计算机网络体系结构"></a>计算机网络体系结构</h2><p>   计算机网络的各层及其协议的集合就是网络的体系结构，即计算机网络机器狗和构建所应完成的功能。</p>
-<p>   分层带来的优点:</p>
-<ol>
-<li>各层之间是独立的：层级之间只需要知道该层通过层间的接口所提供的服务。</li>
-<li>灵活性好：只要层间接口关系保持不变，层内部的改变不影响这层以上或以下各层。</li>
-<li>结构上可分隔开。</li>
-<li>易于实现和维护。</li>
-<li>促进标准化工作：<br>各层完成的功能可以是以下的任务的集合：<ol>
-<li>差错控制：使相应层次对等方的通信更加可靠。</li>
-<li>流量控制：发送端的发送速率必须使接收端来得及接收，不要太快。</li>
-<li>分段和重装：发送端将要发送的数据块划分为更小的单位，在接收端将其还原。</li>
-<li>复用和分用 发送端几个高层会话复用一条底层的链接，在接收端再分用。</li>
-<li>连接建立和释放：交换数据前先建立一条逻辑连接，数据传送结束后释放链接。</li>
-</ol>
-</li>
-</ol>
-<p>   网络协议用来实现在计算机网络中有条不紊的交换数据，明确规定了所交换数据的格式以及有关的同步问题。</p>
-<p>   网络协议(network protocol)是为进行网络中的数据交换而建立的规则，标准或约定。</p>
-<p>   网络协议包含三个要素：</p>
-<ol>
-<li>语法：数据与控制信息的结构或格式。</li>
-<li>语义：需要发出何种控制信息，完成何种动作以及做出何种相应。</li>
-<li>同步：时间实现顺序的详细说明。</li>
-</ol>
-<p>   <img src="/../images/network/OSI_TCPIP.png" alt="计算机网络体系结构"></p>
-<p>   目前，计算机体系结构中，TCP&#x2F;IP的四层结构是常实现的结构，为了讲解清楚，采用OSI和TCP&#x2F;IP的优点，讲解5层体系结构。</p>
-<ol>
-<li><p>应用层(application layer)</p>
-<p>应用层是体系结构中的最高层。</p>
-<p>任务是通过应用进程之间的交互来完成特定网络应用。</p>
-<p>应用层协议定义的是应用进程之间通信和交互的规则。互联网中的应用层协议有: 域名系统DNS，支持万维网应用的HTTP等。</p>
-<p>应用层交互的数据单元称为报文。</p>
-</li>
-<li><p>运输层(transport layer)</p>
-<p>运输层的任务是负责向两台主机中进程之间提供通用的数据传输服务。应用进程利用该服务传送应用层报文。</p>
-<p>由于一台主机可同时运行多个进程，因此运输层有复用和分用的功能。</p>
-<blockquote>
-<p><strong>复用</strong>：多个应用层进程可同时使用下面的运输层服务。</p>
-<p><strong>分用</strong>：运输层把收到的信息分别交付给上面应用层的相应进程。</p>
-</blockquote>
-<p>运输层主要使用TCP协议和UDP协议。</p>
-<blockquote>
-<p><strong>传输控制协议TCP</strong>(Transmission Control Protocol)：提供面向连接，可靠的的数据传输服务，其数据传输的单位是报文段(segment)。</p>
-<p><strong>用户数据报协议UDP</strong>(User Datagram Protocol)：提供无连接，尽最大努力的数据传输服务。其数据传输的单位是用户数据报。</p>
-</blockquote>
-</li>
-<li><p>网络层(network layer)</p>
-<p>一个任务是为分组交换网上的不同主机提供通信服务，另一个任务是选择合适的路由，使源主机运输层所传下来的分组能够通过网络中的路由器找到目的主机。</p>
-<p>在发送数据时，网络层把运输层产生的报文段或用户数据包封装成分组或包进行传送。在TCP&#x2F;IP体系中，由于网络层使用IP协议，因此分组&#x2F;包也叫IP数据报，或简称数据报。</p>
-</li>
-<li><p>数据链路层&#x2F;链路层(data link layer)</p>
-<p>两台主机之间的数据传输，总是在一段一段的链路上传送的，因此需要使用专门的链路层协议。</p>
-<p>在两个相邻节点之间传送数据时，数据链路层将网络层交下来的IP数据报<strong>组装成帧</strong>(framing)，在两个相邻节点间的链路上传送<strong>帧</strong>(frame)。</p>
-<p>每一帧包括数据和必要的控制信息。控制信息一是使得接收端在接收数据时能够知道一个帧从哪个比特开始和到那个比特结束，使得数据链路层在收到一个帧后从中提取数据部分上交给网络层。二是使得接收端能够检测到所收到的帧中是否有差错，若存在差错，数据链路层丢弃该帧，或者需要修正差错，需要使用可靠传输协议来纠错。</p>
-</li>
-<li><p>物理层(physical layer)</p>
-<p>在物理层上所传送的数据的单位是比特。物理层需要考虑用多大的电压代表二进制位，以及接收方如何识别发送方所发送的比特，还需要确认连接电缆的插头应当有多少根引脚以及各引脚应如何连接。</p>
-</li>
-</ol>
-<p>   <img src="/../images/network/data_in_network.png" alt="数据在各层之间的传递过程"></p>
-<p>   假定两台主机通过一台路由器连接起来，主机1的应用进程$ AP_1 $向主机2的应用进程$ AP_2 $传送数据。说明应用进程的数据在各层之间传递过程中经历的变化。</p>
-<ol>
-<li>$ AP_1 $先将数据交给本主机的应用层。</li>
-<li>应用层加上必要的控制信息$ H_5 $就变成了下一层的数据单元。</li>
-<li>运输层收到这个数据单元后，加上本层的控制信息$ H_4 $就变成了下一层的数据单元。</li>
-<li>网络层收到这个数据单元后，加上本层的控制信息$ H_3 $就变成了下一层的数据单元。</li>
-<li>数据链路收到这个数据单元后，本层控制信息分为头部$ H_2 $和尾部$ T_2 $进行添加就变成了下一层的数据单元。</li>
-<li>物理层收到这个数据单元后，以比特进行传送。</li>
-<li>比特流离开主机1网络的物理媒体传送到路由器时，就从路由器的第一层依次上升到第三层，每一层都根据控制信息进行必要的操作，将控制信息剥去，该层剩下的数据单元上交给更高一层。</li>
-<li>当分组上升到第3层时，根据首部中的目的地址查找路由器中的转发表，找出转发分组的接口，往下传送到第2层，加上新的首部和尾部控制信息后。再到最下面第1层，接着在物理媒体上把每一个比特发送出去。</li>
-<li>比特流离开路由器到达目的站主机2时，就从主机2的的第1层依次上升到最高层第5层。</li>
-<li>最后，应用进程$ AP_1 $发送的数据交给目的站的应用程序$ AP_2 $。</li>
-</ol>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%A1%E6%8B%9B/" rel="tag">校招</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-    
-</article>
-
-    
-    <article
-  id="post-leetcode/146"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/leetcode/146.html"
-    >力扣 146. LRU缓存</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/leetcode/146.html" class="article-date">
-  <time datetime="2022-08-12T06:38:08.878Z" itemprop="datePublished">2022-08-12</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="暴力"><a href="#暴力" class="headerlink" title="暴力"></a>暴力</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">关键在于时间戳的处理</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">LRUCache</span>:</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, capacity: <span class="built_in">int</span></span>):</span><br><span class="line">        self.cap = &#123;&#125;</span><br><span class="line">        self.count = <span class="number">0</span></span><br><span class="line">        self.tim = []</span><br><span class="line">        self.<span class="built_in">all</span> = capacity</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">get</span>(<span class="params">self, key: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        cur = self.cap.get(key, -<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">if</span> cur != -<span class="number">1</span>:</span><br><span class="line">            self.tim.pop(self.tim.index(key))</span><br><span class="line">            self.tim.append(key)</span><br><span class="line">        <span class="keyword">return</span> cur</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">put</span>(<span class="params">self, key: <span class="built_in">int</span>, value: <span class="built_in">int</span></span>) -&gt; <span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">if</span> key <span class="keyword">in</span> self.cap.keys():</span><br><span class="line">            self.tim.pop(self.tim.index(key))</span><br><span class="line">            self.tim.append(key)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">if</span> self.count &lt; self.<span class="built_in">all</span>:</span><br><span class="line">                self.count += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                cur = self.tim.pop(<span class="number">0</span>)</span><br><span class="line">                <span class="keyword">del</span> self.cap[cur]</span><br><span class="line">            </span><br><span class="line">            self.tim.append(key)</span><br><span class="line">        self.cap[key] = value</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Your LRUCache object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"># obj = LRUCache(capacity)</span></span><br><span class="line"><span class="comment"># param_1 = obj.get(key)</span></span><br><span class="line"><span class="comment"># obj.put(key,value)</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="hash-双向链表-只有虚拟头结点"><a href="#hash-双向链表-只有虚拟头结点" class="headerlink" title="hash + 双向链表(只有虚拟头结点)"></a>hash + 双向链表(只有虚拟头结点)</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">关键在于时间戳的处理, 官方建议用双向链表实现</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Node</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, key, val, nex=<span class="literal">None</span>, pre=<span class="literal">None</span></span>):</span><br><span class="line">        self.key = key</span><br><span class="line">        self.val = val</span><br><span class="line">        self.<span class="built_in">next</span> = nex</span><br><span class="line">        self.pre = pre</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">LRUCache</span>:</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, capacity: <span class="built_in">int</span></span>):</span><br><span class="line">        self.capacity = capacity</span><br><span class="line">        self.size = <span class="number">0</span></span><br><span class="line">        self.lis = Node(-<span class="number">1</span>, -<span class="number">1</span>)   </span><br><span class="line">        self.values = &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">get</span>(<span class="params">self, key: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        <span class="keyword">if</span> key <span class="keyword">not</span> <span class="keyword">in</span> self.values:</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">        node = self.values[key]</span><br><span class="line">        self.remove(node)</span><br><span class="line">        self.add_head(node)</span><br><span class="line">        <span class="keyword">return</span> node.val</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">put</span>(<span class="params">self, key: <span class="built_in">int</span>, value: <span class="built_in">int</span></span>) -&gt; <span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">if</span> key <span class="keyword">not</span> <span class="keyword">in</span> self.values:</span><br><span class="line">            node = Node(key, value)</span><br><span class="line">            self.add_head(node)</span><br><span class="line">            <span class="keyword">if</span> self.size == self.capacity:</span><br><span class="line">                del_key = self.remove_tail()</span><br><span class="line">                <span class="keyword">del</span> self.values[del_key]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                self.size += <span class="number">1</span></span><br><span class="line">            self.values[key] = node</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            node = self.values[key]</span><br><span class="line">            self.remove(node)</span><br><span class="line">            node.val = value</span><br><span class="line">            self.values[key] = node</span><br><span class="line">            self.add_head(node)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">remove</span>(<span class="params">self, node</span>):</span><br><span class="line">        node.pre.<span class="built_in">next</span> = node.<span class="built_in">next</span></span><br><span class="line">        <span class="keyword">if</span> node.<span class="built_in">next</span>: node.<span class="built_in">next</span>.pre = node.pre</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">add_head</span>(<span class="params">self, node</span>):</span><br><span class="line">        cur = self.lis.<span class="built_in">next</span></span><br><span class="line">        <span class="keyword">if</span> cur:</span><br><span class="line">            cur.pre.<span class="built_in">next</span> = node</span><br><span class="line">            node.<span class="built_in">next</span> = cur</span><br><span class="line">            node.pre = self.lis</span><br><span class="line">            cur.pre = node</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.lis.<span class="built_in">next</span> = node</span><br><span class="line">            node.pre = self.lis</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">remove_tail</span>(<span class="params">self</span>):</span><br><span class="line">        cur = self.lis</span><br><span class="line">        <span class="keyword">while</span> cur.<span class="built_in">next</span>:</span><br><span class="line">            cur = cur.<span class="built_in">next</span></span><br><span class="line">        self.remove(cur)</span><br><span class="line">        <span class="keyword">return</span> cur.key</span><br></pre></td></tr></table></figure>
-
-<h1 id="hash-双向链表-存在虚拟头结点和虚拟尾节点"><a href="#hash-双向链表-存在虚拟头结点和虚拟尾节点" class="headerlink" title="hash + 双向链表(存在虚拟头结点和虚拟尾节点)"></a>hash + 双向链表(存在虚拟头结点和虚拟尾节点)</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">关键在于时间戳的处理, 官方建议用双向链表实现</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Node</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, key, val, nex=<span class="literal">None</span>, pre=<span class="literal">None</span></span>):</span><br><span class="line">        self.key = key</span><br><span class="line">        self.val = val</span><br><span class="line">        self.<span class="built_in">next</span> = nex</span><br><span class="line">        self.pre = pre</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">LRUCache</span>:</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, capacity: <span class="built_in">int</span></span>):</span><br><span class="line">        self.capacity = capacity</span><br><span class="line">        self.size = <span class="number">0</span></span><br><span class="line">        self.start = Node(-<span class="number">1</span>, -<span class="number">1</span>)   </span><br><span class="line">        self.end = Node(-<span class="number">1</span>, -<span class="number">1</span>)</span><br><span class="line">        self.start.<span class="built_in">next</span> = self.end</span><br><span class="line">        self.end.pre = self.start</span><br><span class="line">        self.values = &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">get</span>(<span class="params">self, key: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        <span class="keyword">if</span> key <span class="keyword">not</span> <span class="keyword">in</span> self.values:</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">        node = self.values[key]</span><br><span class="line">        self.remove(node)</span><br><span class="line">        self.add_tail(node)</span><br><span class="line">        <span class="keyword">return</span> node.val</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">put</span>(<span class="params">self, key: <span class="built_in">int</span>, value: <span class="built_in">int</span></span>) -&gt; <span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">if</span> key <span class="keyword">not</span> <span class="keyword">in</span> self.values:</span><br><span class="line">            node = Node(key, value)</span><br><span class="line">            self.add_tail(node)</span><br><span class="line">            <span class="keyword">if</span> self.size == self.capacity:</span><br><span class="line">                del_key = self.remove_head()</span><br><span class="line">                <span class="keyword">del</span> self.values[del_key]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                self.size += <span class="number">1</span></span><br><span class="line">            self.values[key] = node</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            node = self.values[key]</span><br><span class="line">            self.remove(node)</span><br><span class="line">            node.val = value</span><br><span class="line">            self.values[key] = node</span><br><span class="line">            self.add_tail(node)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">remove</span>(<span class="params">self, node</span>):</span><br><span class="line">        node.pre.<span class="built_in">next</span> = node.<span class="built_in">next</span></span><br><span class="line">        node.<span class="built_in">next</span>.pre = node.pre</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">add_tail</span>(<span class="params">self, node</span>):</span><br><span class="line">        self.end.pre.<span class="built_in">next</span> = node</span><br><span class="line">        node.<span class="built_in">next</span> = self.end</span><br><span class="line">        node.pre = self.end.pre</span><br><span class="line">        self.end.pre = node</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">remove_head</span>(<span class="params">self</span>):</span><br><span class="line">        cur = self.start.<span class="built_in">next</span></span><br><span class="line">        self.remove(cur)</span><br><span class="line">        <span class="keyword">return</span> cur.key</span><br></pre></td></tr></table></figure>
-
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hash%E8%A1%A8/" rel="tag">hash表</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/" rel="tag">双向链表</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-    
-</article>
-
-    
-    <article
-  id="post-leetcode/142"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/leetcode/142.html"
-    >力扣 142. 环形链表II</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/leetcode/142.html" class="article-date">
-  <time datetime="2022-08-09T02:51:52.788Z" itemprop="datePublished">2022-08-09</time>
+      <a href="/leetcode/236.html" class="article-date">
+  <time datetime="2022-08-28T12:52:46.259Z" itemprop="datePublished">2022-08-28</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
@@ -1276,8 +649,9 @@
        
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="前置"><a href="#前置" class="headerlink" title="前置"></a>前置</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">TreeNode</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, val=<span class="number">0</span>, left=<span class="literal">None</span>, right=<span class="literal">None</span></span>):</span><br><span class="line">        self.val = val</span><br><span class="line">        self.left = left</span><br><span class="line">        self.right = right</span><br></pre></td></tr></table></figure>
 
-<h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><p><img src="/../images/leetcode/leetcode142.jpeg" alt="解法"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">detectCycle</span>(<span class="params">head</span>):</span><br><span class="line">    <span class="comment"># 异步</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> head <span class="keyword">or</span> <span class="keyword">not</span> head.<span class="built_in">next</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line">    s1, s2 = head, head</span><br><span class="line">    <span class="keyword">while</span> s2 <span class="keyword">and</span> s2.<span class="built_in">next</span>:</span><br><span class="line">        s1 = s1.<span class="built_in">next</span></span><br><span class="line">        s2 = s2.<span class="built_in">next</span>.<span class="built_in">next</span></span><br><span class="line">        <span class="keyword">if</span> s1 == s2: <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> s2 <span class="keyword">or</span> <span class="keyword">not</span> s2.<span class="built_in">next</span>: <span class="keyword">return</span></span><br><span class="line">    s2 = head</span><br><span class="line">    <span class="keyword">while</span> s1 != s2:</span><br><span class="line">        s1 = s1.<span class="built_in">next</span></span><br><span class="line">        s2 = s2.<span class="built_in">next</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> s2</span><br></pre></td></tr></table></figure> 
+<h1 id="递归1"><a href="#递归1" class="headerlink" title="递归1"></a>递归1</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        self.ret = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">lowestCommonAncestor</span>(<span class="params">self, root: <span class="string">&#x27;TreeNode&#x27;</span>, p: <span class="string">&#x27;TreeNode&#x27;</span>, q: <span class="string">&#x27;TreeNode&#x27;</span></span>) -&gt; <span class="string">&#x27;TreeNode&#x27;</span>:</span><br><span class="line">        <span class="comment"># 后序遍历</span></span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">order</span>(<span class="params">root</span>):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> root: <span class="keyword">return</span> root</span><br><span class="line">            left = order(root.left)</span><br><span class="line">            right = order(root.right)</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> p <span class="keyword">in</span> (left, root, right) <span class="keyword">and</span> q <span class="keyword">in</span> (left, root, right):</span><br><span class="line">                self.ret = root</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line">            <span class="keyword">elif</span> p <span class="keyword">in</span> (left, root, right):</span><br><span class="line">                <span class="keyword">return</span> p</span><br><span class="line">            <span class="keyword">elif</span> q <span class="keyword">in</span> (left, root, right):</span><br><span class="line">                <span class="keyword">return</span> q</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">        order(root)</span><br><span class="line">        <span class="keyword">return</span> self.ret</span><br></pre></td></tr></table></figure>
+
+<h1 id="递归2"><a href="#递归2" class="headerlink" title="递归2"></a>递归2</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">lowestCommonAncestor</span>(<span class="params">root, p, q</span>):</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> root: <span class="keyword">return</span> root</span><br><span class="line">    <span class="keyword">if</span> root == p <span class="keyword">or</span> root == q: <span class="keyword">return</span> root</span><br><span class="line">    left = lowestCommonAncestor(root.left, p, q)</span><br><span class="line">    right = lowestCommonAncestor(root.right, p, q)</span><br><span class="line">    <span class="keyword">if</span> left <span class="keyword">and</span> right: <span class="keyword">return</span> root</span><br><span class="line">    <span class="keyword">return</span> left <span class="keyword">if</span> left <span class="keyword">else</span> right</span><br></pre></td></tr></table></figure> 
       <!-- reward -->
       
     </div>
@@ -1287,7 +661,7 @@
     
     <footer class="article-footer">
        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8/" rel="tag">链表</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%91/" rel="tag">树</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%80%92%E5%BD%92/" rel="tag">递归</a></li></ul>
 
     </footer>
   </div>
@@ -1298,7 +672,7 @@
 
     
     <article
-  id="post-leetcode/141"
+  id="post-leetcode/234"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -1309,8 +683,8 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/leetcode/141.html"
-    >力扣 141. 环形链表</a> 
+  <a class="article-title" href="/leetcode/234.html"
+    >力扣 234. 回文链表</a> 
 </h2>
  
 
@@ -1318,8 +692,62 @@
     </header>
      
     <div class="article-meta">
-      <a href="/leetcode/141.html" class="article-date">
-  <time datetime="2022-08-09T02:49:29.438Z" itemprop="datePublished">2022-08-09</time>
+      <a href="/leetcode/234.html" class="article-date">
+  <time datetime="2022-08-28T10:06:58.909Z" itemprop="datePublished">2022-08-28</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="前置"><a href="#前置" class="headerlink" title="前置"></a>前置</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ListNode</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, val=<span class="number">0</span>, <span class="built_in">next</span>=<span class="literal">None</span></span>):</span><br><span class="line">        self.val = val</span><br><span class="line">        self.<span class="built_in">next</span> = <span class="built_in">next</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">isPalindrome</span>(<span class="params">head</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">digui</span>(<span class="params">s, e</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> e: <span class="keyword">return</span> s, <span class="literal">True</span></span><br><span class="line">        s, ret = digui(s, e.<span class="built_in">next</span>)</span><br><span class="line">        ret = ret <span class="keyword">and</span> s.val == e.val</span><br><span class="line">        <span class="keyword">return</span> s.<span class="built_in">next</span>, ret</span><br><span class="line">    _, ret = digui(head, head)</span><br><span class="line">    <span class="keyword">return</span> ret</span><br></pre></td></tr></table></figure> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%80%92%E5%BD%92/" rel="tag">递归</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8/" rel="tag">链表</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
+  id="post-leetcode/226"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/leetcode/226.html"
+    >力扣 226. 翻转二叉树</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/leetcode/226.html" class="article-date">
+  <time datetime="2022-08-28T08:14:56.588Z" itemprop="datePublished">2022-08-28</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
@@ -1331,7 +759,7 @@
        
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="前置"><a href="#前置" class="headerlink" title="前置"></a>前置</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">TreeNode</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, val=<span class="number">0</span>, left=<span class="literal">None</span>, right=<span class="literal">None</span></span>):</span><br><span class="line">        self.val = val</span><br><span class="line">        self.left = left</span><br><span class="line">        self.right = right</span><br></pre></td></tr></table></figure>
 
-<h1 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">hasCycle</span>(<span class="params">head</span>):</span><br><span class="line">    <span class="comment"># 异步</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> head <span class="keyword">or</span> <span class="keyword">not</span> head.<span class="built_in">next</span>: <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    s2, s1 = head.<span class="built_in">next</span>, head</span><br><span class="line">    <span class="keyword">while</span> s1 != s2:</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> s2 <span class="keyword">or</span> <span class="keyword">not</span> s2.<span class="built_in">next</span>: <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        s1 = s1.<span class="built_in">next</span></span><br><span class="line">        s2 = s2.<span class="built_in">next</span>.<span class="built_in">next</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure> 
+<h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">invertTree</span>(<span class="params">root</span>):</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> root: <span class="keyword">return</span> root</span><br><span class="line">    invertTree(root.left)</span><br><span class="line">    invertTree(root.right)</span><br><span class="line">    root.left, root.right = root.right, root.left</span><br><span class="line">    <span class="keyword">return</span> root</span><br></pre></td></tr></table></figure> 
       <!-- reward -->
       
     </div>
@@ -1341,7 +769,165 @@
     
     <footer class="article-footer">
        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8/" rel="tag">链表</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%91/" rel="tag">树</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%80%92%E5%BD%92/" rel="tag">递归</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
+  id="post-leetcode/221"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/leetcode/221.html"
+    >力扣 221. 最大正方形</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/leetcode/221.html" class="article-date">
+  <time datetime="2022-08-28T04:04:18.462Z" itemprop="datePublished">2022-08-28</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">maximalSquare</span>(<span class="params">matrix</span>):</span><br><span class="line">    <span class="comment"># 动态规划</span></span><br><span class="line">    m, n = <span class="built_in">len</span>(matrix), <span class="built_in">len</span>(matrix[<span class="number">0</span>])</span><br><span class="line">    dp = [[<span class="number">0</span>] * n <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(m)]</span><br><span class="line">    ret = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">            <span class="keyword">if</span> matrix[i][j] == <span class="string">&quot;1&quot;</span>:</span><br><span class="line">                <span class="keyword">if</span> i == <span class="number">0</span> <span class="keyword">or</span> j == <span class="number">0</span>:</span><br><span class="line">                    dp[i][j] = <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    dp[i][j] = <span class="built_in">min</span>(dp[i - <span class="number">1</span>][j], dp[i][j - <span class="number">1</span>], dp[i - <span class="number">1</span>][j - <span class="number">1</span>]) + <span class="number">1</span></span><br><span class="line">            ret = <span class="built_in">max</span>(ret, dp[i][j])</span><br><span class="line">    <span class="keyword">return</span> ret ** <span class="number">2</span></span><br></pre></td></tr></table></figure> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
+  id="post-leetcode/215"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/leetcode/215.html"
+    >力扣 215. 数组中第K个最大元素</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/leetcode/215.html" class="article-date">
+  <time datetime="2022-08-27T11:57:51.476Z" itemprop="datePublished">2022-08-27</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="无脑解法-根本思想是排序解决"><a href="#无脑解法-根本思想是排序解决" class="headerlink" title="无脑解法,根本思想是排序解决"></a>无脑解法,根本思想是排序解决</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">findKthLargest</span>(<span class="params">nums, k</span>):</span><br><span class="line">    nums.sort()</span><br><span class="line">    <span class="keyword">return</span> nums[-k]</span><br></pre></td></tr></table></figure>
+
+<h1 id="大顶堆"><a href="#大顶堆" class="headerlink" title="大顶堆"></a>大顶堆</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">findKthLargest</span>(<span class="params">nums, k</span>):</span><br><span class="line">    <span class="comment"># 以大顶堆实现</span></span><br><span class="line">    nums_len= <span class="built_in">len</span>(nums)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 建堆处理</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, nums_len):</span><br><span class="line">        <span class="comment"># 父节点</span></span><br><span class="line">        j = (i - <span class="number">1</span>) &gt;&gt; <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> i &gt; <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">if</span> nums[i] &gt; nums[j]:</span><br><span class="line">                nums[i], nums[j] = nums[j], nums[i]</span><br><span class="line">            i, j = j, (j - <span class="number">1</span>) &gt;&gt; <span class="number">1</span></span><br><span class="line">    <span class="comment"># print(nums)</span></span><br><span class="line">    <span class="comment"># 堆排序</span></span><br><span class="line">    nums_len -= <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(k - <span class="number">1</span>):</span><br><span class="line">        nums[<span class="number">0</span>], nums[nums_len] = nums[nums_len], nums[<span class="number">0</span>]</span><br><span class="line">        nums_len -= <span class="number">1</span></span><br><span class="line">        j = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> j &lt;= nums_len:</span><br><span class="line">            l, r, i = <span class="number">2</span> * j + <span class="number">1</span>, <span class="number">2</span> * j + <span class="number">2</span>, j</span><br><span class="line">            <span class="keyword">if</span> l &lt;= nums_len <span class="keyword">and</span> nums[l] &gt; nums[i]:</span><br><span class="line">                i = l</span><br><span class="line">            <span class="keyword">if</span> r &lt;= nums_len <span class="keyword">and</span> nums[r] &gt; nums[i]:</span><br><span class="line">                i = r</span><br><span class="line">            <span class="keyword">if</span> i != j:</span><br><span class="line">                nums[i], nums[j] = nums[j], nums[i]</span><br><span class="line">                j = i</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># print(nums)</span></span><br><span class="line">    <span class="keyword">return</span> nums[<span class="number">0</span>]</span><br></pre></td></tr></table></figure> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%A0%86/" rel="tag">堆</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
+  id="post-leetcode/208"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/leetcode/208.html"
+    >力扣 208. 前缀树</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/leetcode/208.html" class="article-date">
+  <time datetime="2022-08-26T06:52:35.816Z" itemprop="datePublished">2022-08-26</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="字典树"><a href="#字典树" class="headerlink" title="字典树"></a>字典树</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Tree</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, val</span>):</span><br><span class="line">        self.val = val</span><br><span class="line">        self.<span class="built_in">next</span> = &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Trie</span>:</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        self.tree = Tree(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">insert</span>(<span class="params">self, word: <span class="built_in">str</span></span>) -&gt; <span class="literal">None</span>:</span><br><span class="line">        tree = self.tree</span><br><span class="line">        <span class="keyword">for</span> w <span class="keyword">in</span> word:</span><br><span class="line">            <span class="keyword">if</span> w <span class="keyword">not</span> <span class="keyword">in</span> tree.<span class="built_in">next</span>.keys():</span><br><span class="line">                tree.<span class="built_in">next</span>[w] = Tree(w)</span><br><span class="line"></span><br><span class="line">            tree = tree.<span class="built_in">next</span>[w]</span><br><span class="line">        tree.<span class="built_in">next</span>[-<span class="number">1</span>] = <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">search</span>(<span class="params">self, word: <span class="built_in">str</span></span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        tree = self.tree</span><br><span class="line">        <span class="keyword">for</span> w <span class="keyword">in</span> word:</span><br><span class="line">            <span class="keyword">if</span> w <span class="keyword">not</span> <span class="keyword">in</span> tree.<span class="built_in">next</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">            tree = tree.<span class="built_in">next</span>[w]</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> tree.<span class="built_in">next</span>.get(-<span class="number">1</span>, <span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">startsWith</span>(<span class="params">self, prefix: <span class="built_in">str</span></span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        tree = self.tree</span><br><span class="line">        <span class="keyword">for</span> w <span class="keyword">in</span> prefix:</span><br><span class="line">            <span class="keyword">if</span> w <span class="keyword">not</span> <span class="keyword">in</span> tree.<span class="built_in">next</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">            tree = tree.<span class="built_in">next</span>[w]</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%91/" rel="tag">树</a></li></ul>
 
     </footer>
   </div>
@@ -1357,7 +943,7 @@
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/3/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/5/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/3/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/5/">下一页</a>
   </nav>
   
 </section>
